@@ -36,23 +36,21 @@ public class Character
 	{
 		
 	}
-
-	/**
-	 * This method add a number of health point for a character.
-	 */
-	public void addHealth(int hp)
-	{
-		this.health += hp;
-	}
 	
 	/**
-	 * This method remove a number of health point for a charcater.
+	 * This method add a number of health point for a charcater.
 	 */
-	public void removeHealth(int hp)
-	{
-		this.health -= hp;
-	}
-	
+    public void addHealth(int hp){
+    	
+    }
+    
+	/**
+	 * This method removes a number of health point for a charcater.
+	 */
+    public void removeHealth(int hp){
+    	
+    }
+				
 	/**
 	 * This method displays the invertory of the character.
 	 */
