@@ -7,7 +7,7 @@
  */
 public class NPC extends Character{
 	
-	private boolean enemy; //indicate if the npc is friendly or not
+	private boolean enemy; //indicate if the npc is friendly or not 
 
 	public Character getEnemy() {
 		return enemy;
