@@ -1,7 +1,7 @@
 
 public class Key extends Item{
 	
-	Lock associatedLock;
+	private Lock associatedLock;
 	
 	public Key(String newName, String desc, int pric, boolean sell, Lock aLock)
 	{
