@@ -7,7 +7,7 @@ public class Item {
 	//private int weight;
 	
 	public Item(String newName, String desc, int pric, boolean sell)
-	{  
+	{
 		name = newName;
 		description = desc;
 		price = pric;
