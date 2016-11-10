@@ -7,7 +7,7 @@ public class MainClass {
 <<<<<<< HEAD
 bfqo
 =======
-		System.out.println("test2");
+		System.out.println("test22");
 		System.out.println("tamer fait des gauffres au chocolat");
 =======
 		System.out.println("hello world coucou !");
