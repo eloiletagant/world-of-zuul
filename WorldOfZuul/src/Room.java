@@ -22,7 +22,7 @@ public class Room
 	 */
 	public HashMap<String, ExitRoom> getExitRoom()
 	{
-		
+		return exit;
 	}
 	
 	/**
@@ -30,7 +30,7 @@ public class Room
 	 */
 	public ArrayList<Event> getEvents()
 	{
-		
+		return events;
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class Room
 	 */
 	public String getRoomName()
 	{
-		
+		return nameRoom;
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class Room
 	 */
 	public int getLevel()
 	{
-		
+		return level;
 	}
 
 }
