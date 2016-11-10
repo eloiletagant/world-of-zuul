@@ -6,5 +6,3 @@ public class MainClass {
 		System.out.println("hello world coucou !");
 	}
 }
-
-public
