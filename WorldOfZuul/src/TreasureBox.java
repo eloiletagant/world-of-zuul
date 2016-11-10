@@ -2,7 +2,7 @@
  * 
  * @author gp4
  * This class manage treasure boxes. Boxes contains mmany items and are protected by a Lock
- *
+ * 
  */
 public class TreasureBox extends Item{
 	

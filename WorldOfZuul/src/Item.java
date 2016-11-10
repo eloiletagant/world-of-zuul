@@ -1,7 +1,7 @@
 /**
  * 
  * @author gp4
- * @version
+ * @version 
  * This class manage the game items.
  */
 public class Item {

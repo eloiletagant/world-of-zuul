@@ -1,5 +1,5 @@
 /**
- * 
+ *  
  * @author gp4
  * @version 
  * This class manage keys and his locket

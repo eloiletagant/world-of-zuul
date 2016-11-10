@@ -2,7 +2,7 @@
  * 
  * @author gp4
  * This class manage consumables. Consumables may have differents effects and are destroyed when they are used.
- *
+ * 
  */
 public class Consumable extends Item{
 
