@@ -18,14 +18,17 @@ public class Item {
 	{
 		return description;
 	}
+	
 	public String getName()
 	{
 		return name;
 	}
+	
 	public int getPrince()
 	{
 		return price;
 	}
+	
 	public boolean getSellAble()
 	{
 		return sellAble;
