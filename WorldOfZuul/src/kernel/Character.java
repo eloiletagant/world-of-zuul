@@ -15,6 +15,13 @@ public class Character
 	private int nbHandsAvailable;
 
 	/**
+	 * Constructor to create a character.
+	 */
+	public Character(String name){
+		
+	}
+	
+	/**
 	 * This method displays the number of hands which is avaiblable of a character.
 	 */
 	public int getNbHandsAvailable()
