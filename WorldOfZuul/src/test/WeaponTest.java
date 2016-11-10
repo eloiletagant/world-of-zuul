@@ -6,9 +6,11 @@ import org.junit.Test;
 
 public class WeaponTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	/**
+    * @Test This method allow testing if a weapon is not equipped.
+    */
+    public void testUnequipWeapon(Weapon weap)  throws Exception {
+        assertFalse(unequipeWeapon(weap));
+    }
 
 }
