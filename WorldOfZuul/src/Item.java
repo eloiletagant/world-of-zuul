@@ -1,19 +1,21 @@
 /**
- * This class manages the item which is in the inventory of a charcater.
  * 
- * @author Groupe 4
- * @version 10/11/2016
- *
+ * @author gp4
+ * @version 
+ * This class manage the game items.
  */
 public class Item {
 	private String name;
 	private String description;
 	private int price;
 	private boolean sellAble;
-	private int weight;
-	
+	//private int weight;
 	/**
-	 * constructor of the class item
+	 * This is the constructor of the class
+	 * @param newName String : name of the item
+	 * @param desc String : description of the item and it's effects
+	 * @param pric Int : price of the item
+	 * @param sell Boolean : is the item sellAble
 	 */
 	public Item(String newName, String desc, int pric, boolean sell)
 	{
@@ -24,7 +26,8 @@ public class Item {
 	}
 	
 	/**
-	 * This method displays the description of an item.
+	 * 
+	 * @return String : description of the item
 	 */
 	public String getDescription()
 	{
@@ -32,7 +35,8 @@ public class Item {
 	}
 	
 	/**
-	 * This method displays the name of the item.
+	 * 
+	 * @return String : description of the item
 	 */
 	public String getName()
 	{
@@ -40,7 +44,8 @@ public class Item {
 	}
 	
 	/**
-	 * This method displays the price of an item.
+	 * 
+	 * @return Integer : price of the item
 	 */
 	public int getPrince()
 	{
@@ -48,7 +53,8 @@ public class Item {
 	}
 	
 	/**
-	 * This method informed us if an item can be selled.
+	 * 
+	 * @return Boolean : cant the object be sell
 	 */
 	public boolean getSellAble()
 	{
