@@ -17,7 +17,7 @@ public class Inventory
 	 */
 	public Inventory()
 	{
-		
+		gold = 1000;	
 	}
 	
 	/**
@@ -29,10 +29,35 @@ public class Inventory
 	}
 	
 	/**
-	 * This 
+	 * This method returns gold from the inventory of a character
 	 */
-	public getGold() : int
-	private resetInventory() : void
-	private deleteItem() : void
-	private addItem(): void
+	public int getGold()
+	{
+		return gold;
+	}
+	
+	/**
+	 * This method deletes the content of an inventory.
+	 */
+	private void resetInventory()
+	{
+		
+	}
+	
+	/**
+	 * This method deletes an item of an inventory.
+	 */
+	private void deleteItem()
+	{
+		
+	}
+	
+	/**
+	 * This method adds an item in an inventory.
+	 */
+	private void addItem()
+	{
+		
+	}
+	
 }
