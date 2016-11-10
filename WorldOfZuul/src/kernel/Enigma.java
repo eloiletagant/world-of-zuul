@@ -5,7 +5,7 @@ package kernel;
  * @version 10/11/2016
  *
  */
-public class Enigma
+public class Enigma extends Event
 {
 	private String question;
 	private String answer;

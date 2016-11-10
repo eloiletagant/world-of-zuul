@@ -5,7 +5,7 @@ package kernel;
  * @version 10/11/2016
  *
  */
-public class Fight
+public class Fight extends Event
 {
 	private NPC anAdversary;
 
