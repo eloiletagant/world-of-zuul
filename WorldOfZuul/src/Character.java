@@ -48,7 +48,7 @@ public class Character
 	 * This method removes a number of health point for a charcater.
 	 */
     public void removeHealth(int hp){
-    	
+ 
     }
 				
 	/**
