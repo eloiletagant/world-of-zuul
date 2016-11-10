@@ -7,11 +7,11 @@
  */
 public class Character
 {
-	private String name
-	private int health
-	private Inventory inventory
-	private Room location
-	private int nbHandsAvailable
+	private String name;
+	private int health;
+	private Inventory inventory;
+	private Room location;
+	private int nbHandsAvailable;
 
 	/**
 	 * This method displays the number of hands which is avaiblable of a character.
