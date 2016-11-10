@@ -16,6 +16,7 @@ public class Event
 			
 	}
 
+<<<<<<< HEAD
 	/**
 	 * This method will give an item to the character after a win event.
 	 */
@@ -23,4 +24,15 @@ public class Event
 	{
 		
 	}
+=======
+public class Event {
+
+	private String description;
+	private Item loot;
+	
+	public Item getLoot() {
+		return loot;
+	}
+
+>>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul
 }
