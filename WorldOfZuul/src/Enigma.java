@@ -1,6 +1,6 @@
 /**
  * This method generates an enigma. This enigma will be resolved by the character to win an item or a price.
- * @author Group 4
+ * @author Group 4 
  * @version 10/11/2016
  *
  */
