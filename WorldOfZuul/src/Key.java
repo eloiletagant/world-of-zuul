@@ -15,7 +15,7 @@ public class Key extends Item{
 	 * @param desc String : description of the item and it's effects
 	 * @param pric Int : price of the item
 	 * @param sell Boolean : is the item sellAble
-	 * @param aLock Lock : associated locket
+	 * @param aLock Lock : associated locket 
 	 */
 	public Key(String newName, String desc, int pric, boolean sell, Lock aLock)
 	{

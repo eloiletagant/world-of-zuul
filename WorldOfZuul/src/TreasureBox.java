@@ -44,7 +44,7 @@ public class TreasureBox extends Item{
 	
 	/**
 	 * Access to the chest locket
-	 * @return Lock : chest locket
+	 * @return Lock : chest locket 
 	 */
 	public Lock getLock()
 	{

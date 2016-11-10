@@ -30,7 +30,7 @@ public class Consumable extends Item{
 	}
 	
 	/**
-	 * 
+	 *  
 	 * @return String : effect of this consumable
 	 */
 	public String getEffect()
