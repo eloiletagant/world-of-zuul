@@ -5,8 +5,8 @@ package kernel;
  * @version 10/11/2016
  *
  */
-public class Lock
-{
+public class Lock {
+	
 	private Key associatedKey;
 	private boolean lock;
 

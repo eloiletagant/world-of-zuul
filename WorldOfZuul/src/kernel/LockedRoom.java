@@ -10,6 +10,10 @@ public class LockedRoom extends ExitRoom{
 
 	private Lock blockingLock;
 
+	public LockedRoom(){
+		
+	}
+	
 	/**
 	 * This method returns the next room of the current room.
 	 */
