@@ -65,9 +65,9 @@ public class Weapon extends Item{
 	}
 	
 	/**
-	 * This method allows the character not to equip this weapon.
+	 * This method allows the character to unequip this weapon.
 	 */
-	public void unEquip()
+	public void unequip()
 	{
 		equiped = false;
 	}
