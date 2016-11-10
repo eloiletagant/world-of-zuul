@@ -1,7 +1,7 @@
 /**
- * 
- * @author gp4
- * This class manage consumables. Consumables may have differents effects and are destroyed when they are used.
+ * This class manages consumables. Consumables may have different effects and are destroyed when they are used.
+ * @author Group 4
+ * @version 10/11/2016
  * 
  */
 public class Consumable extends Item{
@@ -22,19 +22,19 @@ public class Consumable extends Item{
 	}
 	
 	/**
-	 * this method use the item : the effects will applies and the item will be destroyed
-	 */
-	public void use()
-	{
-	
-	}
-	
-	/**
-	 *  
+	 *  This method returns an effect.
 	 * @return String : effect of this consumable
 	 */
 	public String getEffect()
 	{
 		return effect;
+	}
+	
+	/**
+	 * This method uses the item : the effects will apply and the item will be destroyed
+	 */
+	private void use()
+	{
+	
 	}
 }
