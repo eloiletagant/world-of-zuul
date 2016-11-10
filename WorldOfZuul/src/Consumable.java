@@ -17,5 +17,5 @@ public class Consumable extends Item{
 	public String getEffect()
 	{
 		return effect;
-	} 
+	}
 }
