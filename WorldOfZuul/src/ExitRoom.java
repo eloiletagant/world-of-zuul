@@ -5,7 +5,7 @@
  *
  */
 public class ExitRoom {
-	private Room nextRoom;
+	protected Room nextRoom;
 
 	/**
 	 * This method returns the next room of the current room.
