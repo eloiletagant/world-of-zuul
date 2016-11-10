@@ -9,8 +9,13 @@ package kernel;
 public class NPC extends Character{
 	
 	private boolean enemy; //indicate if the npc is friendly or not 
-
-	public Character getEnemy() {
+	
+	/**
+	 * This method returns an boolean true if the NPC can fight a character.
+	 * @return
+	 */
+	public boolean getEnemy()
+	{
 		return enemy;
 	}
 
