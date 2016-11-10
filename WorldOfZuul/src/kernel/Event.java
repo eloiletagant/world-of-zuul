@@ -28,7 +28,7 @@ public class Event
 	/**
 	 * This method will set a new item for the event loot.
 	 */
-	public Item setLoot(Item loot) {
+	public void setLoot(Item loot) {
 	}
 
 }
