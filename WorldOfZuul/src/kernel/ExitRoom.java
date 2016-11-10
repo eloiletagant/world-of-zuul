@@ -8,6 +8,10 @@ package kernel;
 public class ExitRoom {
 	protected Room nextRoom;
 
+	public ExitRoom(){
+		
+	}
+	
 	/**
 	 * This method returns the next room of the current room.
 	 * @return
