@@ -1,3 +1,3 @@
 public class Actors {
-	int test;
+	int testa;
 }
