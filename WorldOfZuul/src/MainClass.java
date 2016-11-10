@@ -8,6 +8,7 @@ public class MainClass {
 bfqo
 =======
 		System.out.println("test");
+		System.out.println("tamer fait des gauffres au chocolat");
 =======
 		System.out.println("hello world coucou !");
 >>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul
