@@ -1,8 +1,8 @@
 package kernel;
 /**
- * 
- * @author gp4
- * This class manage treasure boxes. Boxes contains mmany items and are protected by a Lock
+ * This class manage treasure boxes. Boxes contains many items and are protected by a Lock.
+ * @author Group4
+ * @version 10/11/2016
  * 
  */
 public class TreasureBox extends Item{
@@ -16,7 +16,7 @@ public class TreasureBox extends Item{
 	 * @param desc String : description of the item and it's effects
 	 * @param pric Int : price of the item
 	 * @param sell Boolean : is the item sellAble
-	 * @param aLock Lock : Locket of the chest
+	 * @param aLock Lock : Locked of the chest
 	 */
 	public TreasureBox(String newName, String desc, int pric, boolean sell, Lock aLock)
 	{

@@ -1,3 +1,5 @@
+package kernel;
+
 /**
  * This method manages a trade between a character and a NPC.
  * @author Group4
