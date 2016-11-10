@@ -18,7 +18,7 @@ public class Character
 	 */
 	public int getNbHandsAvailable()
 	{
-		
+		return nbHandsAvailable;
 	}
 	
 	/**
@@ -26,7 +26,7 @@ public class Character
 	 */
 	public String getName()
 	{
-		
+		return name;
 	}
 	
 	/**
@@ -34,29 +34,31 @@ public class Character
 	 */
 	public int getHealth()
 	{
-		
+		return health;
 	}
 	
 	/**
 	 * This method add a number of health point for a charcater.
 	 */
-    public void addHealth(int hp){
+    public void addHealth(int hp)
+    {
     	
     }
     
 	/**
 	 * This method removes a number of health point for a charcater.
 	 */
-    public void removeHealth(int hp){
+    public void removeHealth(int hp)
+    {
  
     }
 				
 	/**
-	 * This method displays the invertory of the character.
+	 * This method displays the inventory of the character.
 	 */
 	public Inventory getInventory()
 	{
-		
+		return inventory;
 	}
 	
 	/**
@@ -64,6 +66,6 @@ public class Character
 	 */
 	public Room getLocation()
 	{
-		
+		return location;
 	}
 }
