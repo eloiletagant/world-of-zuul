@@ -1,4 +1,8 @@
-package kernel;
+package character;
+
+import item.Inventory;
+import room.Room;
+
 /**
  * This class describes and manages a character.
  * 

@@ -1,4 +1,6 @@
-package kernel;
+package event;
+
+import character.NPC;
 
 /**
  * This method manages a trade between a character and a NPC.

@@ -1,4 +1,5 @@
-package kernel;
+package event;
+
 /**
  * This method generates an enigma. This enigma will be resolved by the character to win an item or a price.
  * @author Group 4 

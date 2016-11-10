@@ -1,4 +1,7 @@
-package kernel;
+package item;
+
+import room.Lock;
+
 /**
  * This class manage treasure boxes. Boxes contains many items and are protected by a Lock.
  * @author Group4

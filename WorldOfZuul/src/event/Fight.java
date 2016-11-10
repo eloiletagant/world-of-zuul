@@ -1,4 +1,7 @@
-package kernel;
+package event;
+
+import character.NPC;
+
 /**
  * This class manages a fight between a character and a NPC.
  * @author Group4

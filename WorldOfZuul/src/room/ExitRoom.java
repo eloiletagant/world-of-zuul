@@ -1,4 +1,5 @@
-package kernel;
+package room;
+
 /**
  * This class manages the door of the room in order to changes the location of a character.
  * @author Group 4

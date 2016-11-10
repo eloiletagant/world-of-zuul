@@ -1,4 +1,7 @@
-package kernel;
+package item;
+
+import room.Lock;
+
 /**
  *  
  * @author gp4

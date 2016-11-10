@@ -1,4 +1,7 @@
-package kernel;
+package room;
+
+import item.Key;
+
 /**
  * This class manages the lock system of a door or a treasure box.
  * @author Group4

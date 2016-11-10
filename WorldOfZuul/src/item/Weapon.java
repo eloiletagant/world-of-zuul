@@ -1,4 +1,5 @@
-package kernel;
+package item;
+
 /**
  * This class manages weapons which are in the inventory of the character. 
  * 

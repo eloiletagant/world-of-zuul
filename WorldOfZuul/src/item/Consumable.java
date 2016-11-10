@@ -1,4 +1,5 @@
-package kernel;
+package item;
+
 /**
  * This class manages consumables. Consumables may have different effects and are destroyed when they are used.
  * @author Group 4

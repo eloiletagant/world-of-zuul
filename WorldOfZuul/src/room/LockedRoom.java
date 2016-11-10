@@ -1,4 +1,5 @@
-package kernel;
+package room;
+
 /**
  * This method manages the room which are locked by a locker.
  * 

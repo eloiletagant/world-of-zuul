@@ -1,4 +1,7 @@
-package kernel;
+package event;
+
+import item.Item;
+
 /**
  * This class will create an event (enigma, fight, or trade)
  * @author Group 4
