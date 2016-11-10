@@ -18,7 +18,7 @@ public class Character
 	 */
 	public int getNbHandsAvailable()
 	{
-		
+		return nbHandsAvailable;
 	}
 	
 	/**
@@ -26,7 +26,7 @@ public class Character
 	 */
 	public String getName()
 	{
-		
+		return name;
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class Character
 	 */
 	public int getHealth()
 	{
-		
+		return health;
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class Character
 	 */
 	public Inventory getInventory()
 	{
-		
+		return inventory;
 	}
 	
 	/**
@@ -50,6 +50,6 @@ public class Character
 	 */
 	public Room getLocation()
 	{
-		
+		return location;
 	}
 }
