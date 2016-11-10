@@ -12,6 +12,14 @@ public class Inventory
 	private int gold;
 	
 	/**
+	 * Constructor of an inventory
+	 */
+	public Inventory()
+	{
+		
+	}
+	
+	/**
 	 * This method returns a list of item from the inventory.
 	 */
 	public ArrayList<Item> getItems()
@@ -20,13 +28,10 @@ public class Inventory
 	}
 	
 	/**
-	 * The 
+	 * This 
 	 */
 	public getGold() : int
 	private resetInventory() : void
 	private deleteItem() : void
 	private addItem(): void
-
-
-
 }
