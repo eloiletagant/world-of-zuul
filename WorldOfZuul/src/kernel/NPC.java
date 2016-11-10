@@ -1,3 +1,4 @@
+package kernel;
 /**
  * This class describes and manages a NPC.
  * 
