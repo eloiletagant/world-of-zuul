@@ -12,5 +12,5 @@ public class Key extends Item{
 	public Lock getLock()
 	{
 		return associatedLock;
-	}
+	} 
 } 
