@@ -1,5 +1,5 @@
 
-public class LockedRoom {
+public class LockedRoom extends ExitRoom{
 
 	private Lock blockingLock;
 
