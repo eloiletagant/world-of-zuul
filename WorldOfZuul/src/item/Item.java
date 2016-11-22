@@ -3,7 +3,7 @@ package item;
  * 
  * @author gp4
  * @version 
- * This class manage the game items.
+ * This class manage the game items. 
  */
 public class Item {
 	private String name; // It is the name of the Item. It can not be changed after its assignment.
