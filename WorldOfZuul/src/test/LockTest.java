@@ -1,6 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.util.concurrent.locks.Lock;
+
 import static org.junit.After;
 import static org.junit.Before;
 import static org.junit.Test;
