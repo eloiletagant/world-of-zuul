@@ -51,7 +51,7 @@ public class TreasureBoxTest {
 	@Test
 	public void testDescriptionBox() {
 		// The parameter "keys open the door" must be set as the name attribute
-		assertEquals("Box link to a key, contains items", treasureBox.getDescription();	
+		assertEquals("Box link to a key, contains items", treasureBox.getDescription());	
 	}
 	 
 }
