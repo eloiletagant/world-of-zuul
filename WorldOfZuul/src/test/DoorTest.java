@@ -6,18 +6,28 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import room.Room;
+import room.Door;
 
 
 public class DoorTest {
 
-	private Room room;
+	private Door door;
 	
 	/**
-	 * test if the character success to move to another room
+	 * test if the current room is not empty
 	 */
-	@After
-	public void testNotEmptyRoom() {
-		assertNotNull(room);
+	@Before
+	public void testNotEmptyCurRoom() {
+		assertNotNull(door.getCurrentRoom());
 	}
 
+	/**
+	 * test if the next room is not empty
+	 */
+	@Before
+	public void testNotEmptyNextRoom() {
+		assertNotNull(door.getNextRoom());
+	}
+	
+	
 }

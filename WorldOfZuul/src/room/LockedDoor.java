@@ -11,23 +11,20 @@ public class LockedDoor extends Door{
 
 	//this is the lock which allow to keep the door close.
 	private Lock lock;
+	//state of the lock
+	private boolean isLocked;
 
 	/**
 	 * Constructor
 	 */
-	public LockedDoor(){
-		super();
+	public LockedDoor(Room currentRoom, Room nextRoom){
+		super(currentRoom, nextRoom);
+		isLocked = true; //the door is closed by default
 	}
 	
-	/**
-	 * This method returns the next room of the current room.
-	 */
-	public Room getNextRoom(){
-		return super.nextRoom;
-	}
 	
 	/**
-	 * This method return the state lock or unlock of a lockedDoor.
+	 * This method return the lock of a lockedDoor.
 	 * @return the lock
 	 */
 	public Lock getLock(){
@@ -35,10 +32,22 @@ public class LockedDoor extends Door{
 	}
 	
 	/**
+	 * This method return the state lock or unlock of a lockedDoor.
+	 * @return the state of the lock
+	 */
+	public boolean isLocked(){
+		return isLocked;
+	}
+	
+	/**
 	 * This method locks or unlocks a lockedDoor, so allow the character to move away;
 	 */
 	public void lockingDoor(){
-		
+		if (isLocked) {
+			isLocked = false;
+		} else {
+			isLocked = true;
+		}
 	}
 
 }

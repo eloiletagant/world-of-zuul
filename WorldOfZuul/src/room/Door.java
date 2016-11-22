@@ -13,14 +13,25 @@ package room;
  */
 public class Door {
 	
+	//room where the character is
+	protected Room currentRoom;
 	//the next room of the current one, it can exist just one next room
 	protected Room nextRoom;
 
 	/**
 	 * Constructor of the door class, there is just one room given in parameters
 	 */
-	public Door(Room room){
-		nextRoom = room;
+	public Door(Room currentRoom, Room nextRoom){
+		this.currentRoom = currentRoom;
+		this.nextRoom = nextRoom;
+	}
+
+	/**
+	 * This method returns the current room.
+	 * @return Room 
+	 */
+	public Room getCurrentRoom(){
+		return currentRoom;
 	}
 	
 	/**

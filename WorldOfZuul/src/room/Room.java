@@ -27,6 +27,7 @@ public class Room {
 	public Room(String nameRoom, int level){
 		this.nameRoom = nameRoom;
 		this.level = level;
+		
 	}
 	
 	/**
