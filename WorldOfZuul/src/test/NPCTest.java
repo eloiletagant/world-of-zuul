@@ -4,12 +4,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
-import npc.NPC;
+import character.NPC;
 
 public class NPCTest {
 	
 	private NPC myNPC;
-	
+	/**
+	 * sets up
+	 * <p> rghjk </p>
+	 */
 	@Before
 	public void setUp()
 	{
@@ -24,6 +27,7 @@ public class NPCTest {
 	public void testNameChevalier()
 	{
 		assertEquals("Chevalier au lion",myNPC.getName());
+		assertEquals(true,myNPC.getEnemy());
 	}
 	
 	/**
@@ -34,6 +38,20 @@ public class NPCTest {
 	public void testNameNPC() {
 		character.NPC friend = new NPC ("");
 		assertEquals("Zuul",friend.getName());
+		assertEquals(true,myNPC.getEnemy());
+	}
+	
+	/**
+	 * Method testSwapFriendShip
+	 * <p> checks if the swapping works well </p>
+	 */
+	@Test
+	public void testSwapFriendShip()
+	{
+		myNPC.swapFriendShip();
+		assertEquals(false,myNPC.getEnemy());
+		myNPC.swapFriendShip();
+		assertEquals(true,myNPC.getEnemy());
 	}
 
 }
