@@ -3,7 +3,8 @@ package room;
 import item.Key;
 
 /**
- * This class manages the lock system of a door or a treasure box.
+ * This class manages a lock system for a door or a treasure box.
+ * The lock has an associated key used to open it. The lock is closed by default. 
  * @author Group4
  * @version 10/11/2016
  *
@@ -14,19 +15,27 @@ public class Lock {
 	private boolean lock;
 
 	/**
-	 * This method returns a boolean true if the door or a treasure box is locked
-	 * @return
-	 */
+	 * Constructor used to instantiate a lock
+	 * @param: The associated key
+	*/
+	public Lock(Key associatedKey){
+		this.associatedKey = associatedKey;
+	}
+	
+	/**
+	 * Simple accessor
+	 * @return A boolean if the lock is open or not
+	*/
 	public boolean getLock()
 	{
 		return lock;
 	}
 	
 	/**
-	 * This method opens a locked door/treasure box.
-	 */
-	public void openLock(Key)
+	 * This method is used to open a lock if the key corresponds to the associated key
+	 * @param: A key that will be compared with the associated key
+	*/
+	public void openLock(Key k)
 	{
-		
 	}
 }
