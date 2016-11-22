@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import room.LockedDoor;
-import room.Room;
 
 public class LockedDoorTest {
 
@@ -17,7 +16,6 @@ public class LockedDoorTest {
 	 */
 	@Test
 	public void testLockedDoor(){
-		assertNotNull(lockedDoor.getCurrentRoom());
 		assertNotNull(lockedDoor.getNextRoom());
 	}
 	
@@ -26,7 +24,7 @@ public class LockedDoorTest {
 	 */
 	@Test
 	public void testLockingDoor() {
-		lockedDoor = new LockedDoor(null, null, null, null, 0, true);
+		lockedDoor = new LockedDoor(null, null, null, 0, true);
 		isLocked = lockedDoor.isLocked();
 		lockedDoor.lockingDoor();
 		assertNotSame(isLocked, lockedDoor.isLocked());
