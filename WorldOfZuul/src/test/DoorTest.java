@@ -1,14 +1,15 @@
 package test;
 
 import static org.junit.Assert.*;
+import org.junit.*;
 
-import org.junit.After;
-import org.junit.Test;
-import character.Character;
 import room.Room;
+import character.Character;
 
-public class CharacterTest {
 
+public class DoorTest {
+
+	private Door door;
 	private Character character;
 	private Room firstRoom, secondRoom;
 	
@@ -21,21 +22,6 @@ public class CharacterTest {
 		character.moveRoom();
 		secondRoom = character.getLocation(); 
 		assertNotSame(firstRoom, secondRoom);
-	}
-	
-	@Test
-	public void testCharacter()
-	{
-		Character C1 = new Character("");
-		if(C1.getName() != "Zuul")
-		{
-			fail("Name definition fail");
-		}
-	}
-	 
-	@Test
-	public void testAddHealth() {
-		fail("Not yet implemented");
 	}
 
 }

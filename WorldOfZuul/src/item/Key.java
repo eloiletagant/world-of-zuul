@@ -1,7 +1,6 @@
 
 
 package item;
-
 import room.Lock;
 
 /**
@@ -31,7 +30,7 @@ public class Key extends Item{
 	public Key(String newName, String aDescription, int aPrice, boolean sell,String anEffect, Lock aLock)
 	{
 		super(newName,aDescription,aPrice,sell);
-		if (Item.nameIsEmpty())
+		if (super.name.isEmpty())
 		{
 			newName="Key"; 
 		}
