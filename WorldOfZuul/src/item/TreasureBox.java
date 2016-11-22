@@ -40,9 +40,9 @@ public class TreasureBox extends Item{
 	 * @return: return true if is the correct key and false if is the false key
 	 * 
 	 */
-	public Boolean open(Key aKey)
+	public boolean open(Key aKey)
 	{
-		return Boolean;
+		return true;
 	}
 	
 	/**
