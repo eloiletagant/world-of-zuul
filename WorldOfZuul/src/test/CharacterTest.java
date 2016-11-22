@@ -17,10 +17,13 @@ public class CharacterTest {
 	 */
 	@After
 	public void testMoveRoom() {
-		firstRoom = character.getLocation();
-		character.moveRoom();
+		firstRoom = new Room("test1",0);
+		character.moveRoom(firstRoom);
+		assertEquals(firstRoom,character.getLocation());
+		secondRoom = new Room("test2",1);
+		character.moveRoom(secondRoom);
 		secondRoom = character.getLocation(); 
-		assertNotSame(firstRoom, secondRoom);
+		assertEquals(secondRoom, character.getLocation());
 	}
 	
 	@Test

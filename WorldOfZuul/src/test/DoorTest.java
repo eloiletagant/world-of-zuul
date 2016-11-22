@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
+import room.Door;
 import room.Room;
 import character.Character;
 

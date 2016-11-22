@@ -12,7 +12,7 @@ package character;
 
 public class NPC extends Character{
 	
-	private boolean enemy; //indicate if the npc is friendly or not 
+	private boolean enemy; //indicate if the NPC is friendly or not 
 	
 	/**
 	 * Function NPC he change the name in the class Character.
@@ -24,6 +24,7 @@ public class NPC extends Character{
 	
 	/**
 	 * This method returns an boolean true if the NPC can fight a character.
+	 * Boolean false if the NPC can trade with the character
 	 * @return boolean enemy
 	 */
 	public boolean getEnemy()

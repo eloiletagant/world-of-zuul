@@ -1,12 +1,21 @@
 package test;
 
 import static org.junit.Assert.*;
+<<<<<<< HEAD
 
 import java.util.concurrent.locks.Lock;
 
 import static org.junit.After;
 import static org.junit.Before;
 import static org.junit.Test;
+=======
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import item.Key;
+import room.Lock;
+>>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul
 
 /**
  * The test class LockTest
@@ -18,13 +27,13 @@ import static org.junit.Test;
 public class LockTest {
 	
 	private Lock myLock;
+	private Key myKey, goodKey, badKey;
 	
 	public LockTest(){
 	}
 
 	@Before
 	public void setUp() {
-		Key myKey;
 		myLock = new Lock(myKey);
 	}
 	
@@ -38,7 +47,6 @@ public class LockTest {
 	
 	@Test
 	public void testOpenRight(){
-		Key goodKey;
 		myLock.openLock(goodKey);
 		assertEquals(goodKey,myLock.getAssociatedKey());
 		assertEquals(false,myLock.getLock());
@@ -46,7 +54,6 @@ public class LockTest {
 	
 	@Test
 	public void testOpenBad(){
-		Key badKey;
 		myLock.openLock(badKey);
 		assertNotSame(badKey,myLock.getAssociatedKey());
 		assertEquals(true,myLock.getLock());
