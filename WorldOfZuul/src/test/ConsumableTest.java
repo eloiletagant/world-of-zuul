@@ -52,17 +52,36 @@ public class ConsumableTest
 	}
 	
 	/**
-	 * Method testBad
+	 * Method testDefault
 	 * Checks the default parameters
 	 * 
 	 */
 	@Test
-	public void testBad()
+	public void testDefault()
 	{
-		Consumable bad = new Consumable("", "", -10, true, "blabla");
-		assertEquals("Unidentified object",bad.getName());
-		assertEquals("This object seems strange and come from nowhere.",bad.getDescription());
-		assertEquals(100,bad.getPrice());
+		Consumable def = new Consumable("", "", -10, true, "blabla");
+		assertEquals("Unidentified object",def.getName());
+		assertEquals("This object seems strange and come from nowhere.",def.getDescription());
+		assertEquals(100,def.getPrice());
 	}
 	
+	/**
+	 * Method testUse
+	 * <p>Checks if the effect is correctly apply</p>
+	 */
+	@Test
+	public void testUseEffect()
+	{
+		
+	}
+	
+	/**
+	 * Method testUseDestroyItem
+	 * <p>Checks if the effect is correctly apply</p>
+	 */
+	@Test
+	public void testUseDestroyItem()
+	{
+		
+	}
 }

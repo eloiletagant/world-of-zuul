@@ -45,7 +45,7 @@ public class Consumable extends Item
 	
 	/**
 	 * This method allows using the item.
-	 * The effect will apply to the player who used it.
+	 * The effect will apply to the player or the weapon who used it.
 	 * The item is destroyed automatically.
 	 */ 
 	private void use()
