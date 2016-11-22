@@ -1,21 +1,15 @@
 package test;
 
 import static org.junit.Assert.*;
-<<<<<<< HEAD
 
-import java.util.concurrent.locks.Lock;
 
-import static org.junit.After;
-import static org.junit.Before;
-import static org.junit.Test;
-=======
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import item.Key;
 import room.Lock;
->>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul
+
 
 /**
  * The test class LockTest
