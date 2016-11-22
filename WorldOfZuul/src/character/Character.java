@@ -88,9 +88,11 @@ public class Character
 	
 	/**
 	 * Move the character into another room
+	 * @param newRoom The room the player will be in
 	 */
-	public void moveRoom(){
-		
+	public void moveRoom(Room newRoom)
+	{
+		location = newRoom;
 	}
 	
 }
