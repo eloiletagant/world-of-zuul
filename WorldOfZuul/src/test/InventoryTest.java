@@ -25,7 +25,7 @@ public class InventoryTest
 	@Before
 	public void setUp()
 	{
-		myInventory=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it");
+		myInventory = new Inventory();
 	}
 	
 	/**
@@ -35,16 +35,5 @@ public class InventoryTest
 	@After
 	public void tearDown()
 	{
-	}
-
-	/**
-	 * Method testNameBread
-	 * Checks if the name given as parameter in the constructor is correctly set to the attribute.
-	 * 
-	 */
-	@Test
-	public void testNameBread()
-	{
-		assertEquals("Bread",myConsumable.getName());
 	}	
 }
