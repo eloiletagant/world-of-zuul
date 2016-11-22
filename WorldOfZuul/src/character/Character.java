@@ -24,6 +24,21 @@ public class Character
 	private int nbHandsAvailable; //Number of hands open to wear weapons
 
 	/**
+	 * Constructeur de la classe
+	 */
+	public Character(String newName)
+	{
+		if(name.equals(""))
+		{
+			name = "Zuul";
+		}
+		else
+			name = newName;
+		health = 20;
+		inventory = new Inventory();
+		nbHandsAvailable = 2;
+	}
+	/**
 	 * This method returns the number of hands which is available for a character.
 	 */
 	public int getNbHandsAvailable()
