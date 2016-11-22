@@ -29,9 +29,9 @@ public class Key extends Item{
 	public Key(String newName, String aDescription, int aPrice, boolean sell,String anEffect, Lock aLock)
 	{
 		super(newName,aDescription,aPrice,sell);
-		if (item.nameisEmpty())
+		if (Item.nameIsEmpty())
 		{
-			name="Key";
+			newName="Key";
 		}
 		associatedLock = aLock;
 	}
