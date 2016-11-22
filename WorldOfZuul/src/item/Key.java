@@ -32,7 +32,7 @@ public class Key extends Item{
 	
 	/**
 	 * This method returns the lock associated with the key.
-	 * @return Lock : locket associated to the key
+	 * @return Lock : locket  associated to the key
 	 */
 	/**
 	 * public Lock getLock()
