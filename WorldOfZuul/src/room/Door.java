@@ -1,3 +1,5 @@
+//en cours : anatole
+
 package room;
 
 /**
@@ -25,8 +27,7 @@ public class Door {
 	 * This method returns the next room of the current room.
 	 * @return Room
 	 */
-	public Room getNextRoom()
-	{
+	public Room getNextRoom(){
 		return nextRoom;
 	}
 }
