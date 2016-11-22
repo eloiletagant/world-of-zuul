@@ -9,8 +9,8 @@ package item;
  * @version 22/11/2016
  * 
  */
-public class Consumable extends Item{
-
+public class Consumable extends Item
+{
 	// description of the effect of a consumable
 	private String effect;
 	
