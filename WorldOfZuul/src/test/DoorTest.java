@@ -3,9 +3,8 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-import room.Room;
 import room.Door;
-
+import character.Character;
 
 
 public class DoorTest {
@@ -27,7 +26,7 @@ public class DoorTest {
 	 */
 	@Test
 	public void testDifferentRooms() {
-		assertNotSame(character.getCurrentRoom(), door.getNextRoom());
+		assertNotSame(character.getLocation(), door.getNextRoom());
 	}
 	
 	
