@@ -54,7 +54,7 @@ public class Item
 	 * This method returns the price of an item.
 	 * @return Integer	price of the item
 	 */
-	public int getPrince()
+	public int getPrice()
 	{
 		return price;
 	}
