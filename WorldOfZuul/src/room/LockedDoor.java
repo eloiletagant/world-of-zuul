@@ -1,7 +1,9 @@
 package room;
 
+import item.Key;
+
 /**
- * This method manages the door which are locked by a locker.
+ * This method manages the door which are locked by a locker (which inherits from Door).
  * 
  * @author Group 4
  * @version 10/11/2016
@@ -11,14 +13,19 @@ public class LockedDoor extends Door{
 
 	//this is the lock which allow to keep the door close.
 	private Lock lock;
+	//the key associate to the lock
+	private Key key;
 	//state of the lock
 	private boolean isLocked;
 
 	/**
-	 * Constructor
+	 * Constructor which need the informations about the rooms (current and next one)
+	 * and all informations about the key
 	 */
-	public LockedDoor(Room currentRoom, Room nextRoom){
+	public LockedDoor(Room currentRoom, Room nextRoom, String keyName, String keyDescription, int keyPrice, boolean keySell){
 		super(currentRoom, nextRoom);
+		key = new Key(keyName, keyDescription, keyPrice, keySell);
+		lock = new Lock(key);
 		isLocked = true; //the door is closed by default
 	}
 	

@@ -29,5 +29,13 @@ public class DoorTest {
 		assertNotNull(door.getNextRoom());
 	}
 	
+	/**
+	 * test if the current and the next rooms are different
+	 */
+	@Test
+	public void testDifferentRooms() {
+		assertNotSame(door.getCurrentRoom(), door.getNextRoom());
+	}
+	
 	
 }
