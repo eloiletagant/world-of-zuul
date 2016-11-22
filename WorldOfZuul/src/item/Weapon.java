@@ -2,12 +2,12 @@ package item;
 
 /**
  * This class manages weapons which are in the inventory of the character. 
- * <p> Thanks to this class the player is able to : <:p>
+ * <p> Thanks to this class the player is able to : <p>
  * <ul>
- * <il> check if the weapons is onehand or not <il>
- * <il> check the weapon's damages <il>
- * <il> Equipe with an weapon <il>
- * <il> put the weapon <il>
+ * <li> check if the weapons is onehand or not <li>
+ * <li> check the weapon's damages <li>
+ * <li> Equipe with an weapon <li>
+ * <li> put the weapon <li>
  * </ul>
  * @author Group 4
  * @version 22/11/2016
