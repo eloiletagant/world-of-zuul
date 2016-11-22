@@ -6,7 +6,9 @@ import room.Lock;
  *  
  * @author gp4
  * @version 
- * This class manage keys and his locket
+ * This class manage keys and his locket.
+ * A key must have all same parameters of an item.
+ * 
  *
  */
 public class Key extends Item{
@@ -35,7 +37,7 @@ public class Key extends Item{
 	}
 	
 	/**
-	 * 
+	 * This method returns the lock associated with the key.
 	 * @return Lock : locket associated to the key
 	 */
 	public Lock getLock()
