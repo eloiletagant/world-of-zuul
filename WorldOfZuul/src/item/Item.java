@@ -11,7 +11,7 @@ package item;
 public class Item
 {
 	// the name of an Item. It can not be changed after its assignment.
-	private String name;
+	protected String name;
 	// the description of an Item. It can not be changed after its assignment.
 	private String description; 
 	// The price can not be negative

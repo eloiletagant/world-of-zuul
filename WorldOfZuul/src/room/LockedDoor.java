@@ -10,7 +10,7 @@ package room;
 public class LockedDoor extends Door{
 
 	//this is the lock which allow to keep the door close.
-	private Lock blockingLock;
+	private Lock lock;
 
 	/**
 	 * Constructor
@@ -28,16 +28,16 @@ public class LockedDoor extends Door{
 	
 	/**
 	 * This method return the state lock or unlock of a lockedDoor.
-	 * @return
+	 * @return the lock
 	 */
 	public Lock getLock(){
-		return blockingLock;
+		return lock;
 	}
 	
 	/**
-	 * This method unlocks a lockedDoor.
+	 * This method locks or unlocks a lockedDoor, so allow the character to move away;
 	 */
-	public void unlockRoom(){
+	public void lockingDoor(){
 		
 	}
 
