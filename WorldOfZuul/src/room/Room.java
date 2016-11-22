@@ -26,7 +26,7 @@ public class Room {
 	*/
 	public Room(String nameRoom, int level){
 		this.nameRoom = nameRoom;
-		if (level != 1 || level != 0)
+		if (level != 1 && level != 0)
 			this.level = 0;
 		this.level = level;
 	}
