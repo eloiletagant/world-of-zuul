@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Group4
  * @version 22/11/2016
  *
- */ 
+ */
 public class Inventory
 {
 	// an array of items
