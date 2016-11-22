@@ -26,7 +26,7 @@ public class RoomTest {
 
 	@Before
 	public void setUp() {
-		myRoom = new Room("Salle 1", 0);
+		myRoom = new Room("Salle 1", 1);
 	}
 	
 	@After
@@ -38,8 +38,23 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void testLevel(){
-		assertEquals(0,myRoom.getLevel());
+	public void testEmptyName()
+	{
+		Room myRoom2 = new Room("", 1);
+		assertEquals("UnnamedRoom",myRoom2.getRoomName());
 	}
+	
+	@Test
+	public void testLevel(){
+		assertEquals(1,myRoom.getLevel());
+	}
+	
+	@Test
+	public void testNegativeLevel(){
+		Room myRoom2 = new Room("Salle 2", -2);
+		assertEquals(0,myRoom2.getLevel());
+	}
+		
+	
 	
 }
