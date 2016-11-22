@@ -2,18 +2,21 @@ package item;
 import java.util.ArrayList;
 
 /**
- * This class manages all items of a character in a inventory.
+ * This class manages all items of a character in an inventory.
  * @author Group4
  * @version 22/11/2016
  *
  */
 public class Inventory
 {
+	// an array of items
 	private ArrayList<Item> items;
+	// money of a player
 	private int gold;
 	
 	/**
-	 * Constructor of an inventory
+	 * Constructor of an inventory.
+	 * By default the inventory has any item and 1000 gold. 
 	 */
 	public Inventory()
 	{
@@ -21,7 +24,7 @@ public class Inventory
 	}
 	
 	/**
-	 * This method returns a list of item from the inventory.
+	 * This method returns a list of item from the inventory - simple accessor
 	 */
 	public ArrayList<Item> getItems()
 	{
@@ -29,7 +32,7 @@ public class Inventory
 	}
 	
 	/**
-	 * This method returns gold from the inventory of a character
+	 * This method returns gold from the inventory of a character - simple accessor
 	 */
 	public int getGold()
 	{
@@ -37,7 +40,7 @@ public class Inventory
 	}
 	
 	/**
-	 * This method deletes the content of an inventory.
+	 * This method deletes all items in an inventory.
 	 */
 	private void resetInventory()
 	{
@@ -45,7 +48,7 @@ public class Inventory
 	}
 	
 	/**
-	 * This method deletes an item of an inventory.
+	 * This method deletes one item in an inventory.
 	 */
 	private void deleteItem()
 	{
@@ -53,7 +56,7 @@ public class Inventory
 	}
 	
 	/**
-	 * This method adds an item in an inventory.
+	 * This method adds one item in an inventory.
 	 */
 	private void addItem()
 	{
