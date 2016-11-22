@@ -13,7 +13,7 @@ import event.Event;
  * @version 10/11/2016
  *
  */
-public class Room {
+public class Room { 
 	
 	private String nameRoom; // initiate to "UnnamedRoom" is empty
 	private HashMap<String, Door> exitDoors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap
@@ -77,7 +77,7 @@ public class Room {
 	/**
 	 * Add an exit to the room. An exit can't be add if it exist or if the direction is already taken.
 	 */
-	public void addExit()
+	public void addExit(Door newDoor, String way)
 	{
 			
 	}
@@ -86,6 +86,22 @@ public class Room {
 	 * Add an event to the room. The same event can't be add twice on the same room
 	 */
 	public void addEvent()
+	{
+		
+	}
+	
+	/**
+	 * Remove an exit to the room.
+	 */
+	public void removeExit(String way)
+	{
+			
+	}
+	
+	/**
+	 * Remove an event to the room.
+	 */
+	public void removeEvent()
 	{
 		
 	}
