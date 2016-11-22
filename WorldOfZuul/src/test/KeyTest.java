@@ -9,10 +9,11 @@ import org.junit.Test;
 public class KeyTest {
 	
 	private Key myKey;
-
-
+	
 	/**
-	 * 
+	 * Sets up the test fixture
+	 * Called before every test method
+	 * Initialize one key with specific parameters
 	 */
 	@Before
 	public void setUp()
@@ -20,14 +21,15 @@ public class KeyTest {
 		myKey = new Key("Key1", "Open the door", 0, false);
 	}
 	
+	/**
+	 * Tear down the test fixture
+	 * Called after every test case method. Nothing to do in this case.
+	 */
 	@After
-	public void tearDown ()
-	{
-	
-	}
+	public void tearDown (){}
 	
 	 /**
-	  * Checks if the name given as parameter in the constructor is correctly set to the attribute</p>
+	  * Checks if the name given as parameter in the constructor is correctly set to the attribute
 	  */
 	 @Test
 	 public void testNameKey()
@@ -37,22 +39,22 @@ public class KeyTest {
 	 }
 	 
 	 /**
-	  * Checks if the description given as parameter in the constructor is correctly set to the attribute</p>
+	  * Checks if the description given as parameter in the constructor is correctly set to the attribute
 	  */
 	 @Test
 	 public void testDescriptionKey()
 	 {
-		 // The parameter "Key1" must be set as the name attribute
+		 // The parameter "Open the door" must be set as the name attribute
 		 assertEquals("Open the door", myKey.getDescription());
 	 }
 	 
 	 /**
-	  * Checks if the price given as parameter in the constructor is correctly set to the attribute</p>
+	  * Checks if the price given as parameter in the constructor is correctly set to the attribute
 	  */
 	 @Test
 	 public void testPriceKey()
 	 {
-		 // The parameter "Key1" must be set as the name attribute
+		 // The parameter "0" must be set as the name attribute
 		 assertEquals(0, myKey.getPrice());
 	 }
 	 

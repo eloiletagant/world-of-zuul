@@ -1,17 +1,13 @@
 package item;
-import room.Lock;
 
 /**
  *  
  * @author Group4
  * @version 22/11/2016
- * This class manages keys and its locket.
+ * This class manages keys.
  * A key must have all same parameters of an item.
- * 
- *
  */
 public class Key extends Item{
-	
 	
 	/**
 	 * Constructor of this class.
@@ -26,7 +22,5 @@ public class Key extends Item{
 	{
 		super(newName,aDescription,aPrice,sell);
 	}
-	
-
 	
 }
