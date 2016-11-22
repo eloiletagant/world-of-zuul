@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * This class manages all items of a character in a inventory.
  * @author Group4
- * @version 10/11/2016
+ * @version 22/11/2016
  *
  */
 public class Inventory
