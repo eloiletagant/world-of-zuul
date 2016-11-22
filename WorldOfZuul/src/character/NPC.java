@@ -33,10 +33,11 @@ public class NPC extends Character{
 		return enemy;
 	}
 	
+	/**
+	 * This method is used to modify the enemy attribute in true or false. 
+	 */
 	public void swapFriendShip()
 	{
 		
 	}
-
-
 }
