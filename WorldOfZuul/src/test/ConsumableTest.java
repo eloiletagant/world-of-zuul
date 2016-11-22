@@ -46,16 +46,5 @@ public class ConsumableTest
 	public void testNameBread()
 	{
 		assertEquals("Bread",myConsumable.getName());
-	}
-	
-	/**
-	 * Method testDefaultName
-	 * Checks that the default name is "Potion", if the given name is empty.
-	 */
-	@Test
-	public void testDefaultName()
-	{
-		Consumable bad = new Consumable("","This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it");
-		assertEquals("Potion",bad.getName());
-	}
+	}	
 }
