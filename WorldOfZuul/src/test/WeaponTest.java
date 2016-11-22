@@ -14,7 +14,7 @@ public class WeaponTest {
 	private Weapon myWeapon;
 
 	/**
-	 * Default construcot for test class Weapon
+	 * Default constructor for test class Weapon
 	 */
 	public WeaponTest()
 	{
