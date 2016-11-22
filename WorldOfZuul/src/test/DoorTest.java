@@ -1,5 +1,3 @@
-//en cours : anatole
-
 package test;
 
 import static org.junit.Assert.*;
@@ -9,17 +7,12 @@ import room.Room;
 import room.Door;
 
 
+
 public class DoorTest {
 
 	private Door door;
+	private Character character;
 	
-	/**
-	 * test if the current room is not empty
-	 */
-	@Before
-	public void testNotEmptyCurRoom() {
-		assertNotNull(door.getCurrentRoom());
-	}
 
 	/**
 	 * test if the next room is not empty
@@ -34,7 +27,7 @@ public class DoorTest {
 	 */
 	@Test
 	public void testDifferentRooms() {
-		assertNotSame(door.getCurrentRoom(), door.getNextRoom());
+		assertNotSame(character.getCurrentRoom(), door.getNextRoom());
 	}
 	
 	

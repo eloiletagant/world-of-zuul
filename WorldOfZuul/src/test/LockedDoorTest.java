@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import room.LockedDoor;
-import room.Room;
 
 public class LockedDoorTest {
 
