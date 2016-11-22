@@ -24,8 +24,8 @@ public class Room {
 	 * @param String name: Room name
 	 * @param int level: Room level
 	*/
-	public Room(String name, int level){
-		this.name = name;
+	public Room(String nameRoom, int level){
+		this.nameRoom = nameRoom;
 		this.level = level;
 	}
 	
