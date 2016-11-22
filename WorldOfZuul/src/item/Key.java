@@ -15,17 +15,25 @@ public class Key extends Item{
 	
 	/**
 	 * Constructor of this class.
-	 * @param newName String : name of the item
-	 * @param desc String : description of the item and it's effects
-	 * @param pric Int : price of the item
-	 * @param sell Boolean : is the item sellAble
-	 * @param aLock Lock : associated locket 
+	 * If the name is a null string, the given name is "Key".
+	 * 
+	 * @param newName String		name of the item
+	 * @param aDescription String	description of the item
+	 * @param aPrice Int			price of the item
+	 * @param sell Boolean			true if the item can be sell
+	 * @param anEffect String		effect of the item
+	 * @param aLock Lock			associated locket 
 	 */
-	public Key(String newName, String desc, int pric, boolean sell, Lock aLock)
+	public Key(String newName, String aDescription, int aPrice, boolean sell,String anEffect, Lock aLock)
 	{
-		super(newName,desc,pric,sell);
+		super(newName,aDescription,aPrice,sell);
+		if (item.nameisEmpty())
+		{
+			name="Potion";
+		}
 		associatedLock = aLock;
 	}
+	
 	/**
 	 * 
 	 * @return Lock : locket associated to the key
@@ -34,4 +42,4 @@ public class Key extends Item{
 	{
 		return associatedLock;
 	}
-} 
+}
