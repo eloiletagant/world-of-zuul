@@ -3,7 +3,6 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import character.Character;
 import character.NPC;
 
 public class NPCTest {
