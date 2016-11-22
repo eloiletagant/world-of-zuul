@@ -1,32 +1,25 @@
-package character;
-
-import item.Inventory;
-import room.Room;
-
 /**
  * This class describes and manages a character.
+ * We can get the character position, his HP, his name and his inventory. 
+ * A character can lose HP and retrieve it.
+ * The HP can't rise over 20.
+ * When his HP felt to 0, the character die. 
+ *  
  * 
  * @author Groupe4
- * @version 10/11/2016
+ * @version 10/11/2016 
  *
  */
 public class Character
 {
-	private String name;
-	private int health;
-	private Inventory inventory;
-	private Room location;
-	private int nbHandsAvailable;
+	private String name; //Name of the character. If empty, it will be Zuul by default
+	private int health; //Start with 20 HP by default. The character die when his hp felt to 0
+	private Inventory inventory; //All items of the char are present on the inventory
+	private Room location; //Position of the character
+	private int nbHandsAvailable; //Number of hands open to wear weapons
 
 	/**
-	 * Constructor to create a character.
-	 */
-	public Character(String name){
-		
-	}
-	
-	/**
-	 * This method displays the number of hands which is avaiblable of a character.
+	 * This method returns the number of hands which is available for a character.
 	 */
 	public int getNbHandsAvailable()
 	{
@@ -34,7 +27,7 @@ public class Character
 	}
 	
 	/**
-	 * This method displays the name of the charcater.
+	 * This method returns the name of the character.
 	 */
 	public String getName()
 	{
@@ -42,7 +35,7 @@ public class Character
 	}
 	
 	/**
-	 * This method displays the number of health point of a charcater.
+	 * This method returns the number of health point of a charcater.
 	 */
 	public int getHealth()
 	{
@@ -50,23 +43,7 @@ public class Character
 	}
 	
 	/**
-	 * This method add a number of health point for a charcater.
-	 */
-    public void addHealth(int hp)
-    {
-    	
-    }
-    
-	/**
-	 * This method removes a number of health point for a charcater.
-	 */
-    public void removeHealth(int hp)
-    {
- 
-    }
-				
-	/**
-	 * This method displays the inventory of the character.
+	 * This method returns the inventory of the character.
 	 */
 	public Inventory getInventory()
 	{
@@ -80,4 +57,13 @@ public class Character
 	{
 		return location;
 	}
+	/**
+	 * This method modify HP of the character
+	 * @param hp HP added to the character. Negative value to take damages. HP max are 20
+	 */
+	public void setHealth(int hp)
+	{
+		health += hp;
+	}
+	
 }
