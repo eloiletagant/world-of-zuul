@@ -13,7 +13,7 @@ import event.Event;
  * @version 10/11/2016
  *
  */
-public class Room {
+public class Room { 
 	
 	private String nameRoom; // initiate to "UnnamedRoom" is empty
 	private HashMap<String, Door> exitDoors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap

@@ -58,7 +58,7 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void testAddExit()
+	public void testAddExit() 
 	{
 		Room room2 = new Room("Salle 2", 1);
 		Room room3 = new Room("Salle 3", 1);
