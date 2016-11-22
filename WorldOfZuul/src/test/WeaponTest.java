@@ -1,4 +1,3 @@
-//********* EN COURS ON ESSAIS *********
 package test;
 import item.Key;
 import item.Weapon;
