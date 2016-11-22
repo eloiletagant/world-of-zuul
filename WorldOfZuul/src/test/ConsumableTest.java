@@ -58,4 +58,6 @@ public class ConsumableTest
 		Consumable bad = new Consumable("","This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it");
 		assertEquals("Potion",bad.getName());
 	}
+	
+	
 }
