@@ -15,7 +15,7 @@ public class LockedDoorTest {
 	 * 
 	 */
 	@Test
-	public void testLockingDoor() {
+	public boolean testLockingDoor() {
 		return assertNotSame(lockedDoor.getLock(), lockedDoor.lockingDoor());
 	}
 

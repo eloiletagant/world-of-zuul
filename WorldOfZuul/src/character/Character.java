@@ -86,4 +86,11 @@ public class Character
 		health += hp;
 	}
 	
+	/**
+	 * Move the character into another room
+	 */
+	public void moveRoom(){
+		
+	}
+	
 }
