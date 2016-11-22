@@ -15,7 +15,7 @@ public class NPC extends Character{
 	private boolean enemy; //indicate if the NPC is friendly or not 
 	
 	/**
-	 * Function NPC he change the name in the class Character.
+	 * Function NPC create Character.
 	 * @param String name
 	 */
 	public NPC(String name){

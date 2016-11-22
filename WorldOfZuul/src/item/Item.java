@@ -8,7 +8,7 @@ package item;
  * @version 22/11/2016
  * 
  */
-public class Item
+public abstract class Item
 {
 	// the name of an Item. It can not be changed after its assignment.
 	private String name;
