@@ -37,6 +37,8 @@ public class Character
 		health = 20;
 		inventory = new Inventory();
 		nbHandsAvailable = 2;
+		//set up a start room (useful for test)
+		location = new Room("Home",0);
 	}
 	/**
 	 * This method returns the number of hands which is available for a character.
@@ -77,6 +79,7 @@ public class Character
 	{
 		return location;
 	}
+	
 	/**
 	 * This method modify HP of the character
 	 * @param hp HP added to the character. Negative value to take damages. HP max are 20
