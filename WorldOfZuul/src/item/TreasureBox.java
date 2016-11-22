@@ -3,9 +3,15 @@ package item;
 import room.Lock;
 
 /**
- * This class manage treasure boxes. Boxes contains many items and are protected by a Lock.
+ * The TreasureBox class stand for an box which contains item's player
+ * <p> to this class, the player can to : </p>
+ * <ul>
+ * <li> open the box <li>
+ * <li> CHeck the items which are in the box <li>
+ * <li> Obtains the padlock <li>
+ *  </ul>
  * @author Group4
- * @version 10/11/2016
+ * @version 22/11/2016
  * 
  */
 public class TreasureBox extends Item{
@@ -31,10 +37,12 @@ public class TreasureBox extends Item{
 	/**
 	 * This method open the chest if the key you try to use is the good one
 	 * @param aKey Key : the key you want to try
+	 * @return: return true if is the correct key and false if is the false key
+	 * 
 	 */
-	public void open(Key aKey)
+	public Boolean open(Key aKey)
 	{
-		
+		return Boolean;
 	}
 	
 	/**
