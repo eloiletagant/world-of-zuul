@@ -74,7 +74,7 @@ public class WeaponTest {
 	 @Test
 	 public void testPriceKnife()
 	 {
-		 // The parameter "Knife" must be set as the name attribute
+		 // The parameter "50" must be set as the price attribute
 		 assertEquals(50, myWeapon.getPrice());
 	 }
 	 /**
@@ -83,7 +83,7 @@ public class WeaponTest {
 	 @Test
 	 public void testSellKnife()
 	 {
-		 // The parameter "Knife" must be set as the name attribute
+		 // The parameter "true" must be set as the boolean sell attribute
 		 assertEquals(true, myWeapon.getSellAble());
 	 }
 	 
@@ -93,7 +93,7 @@ public class WeaponTest {
 	 @Test
 	 public void testDamageKnife()
 	 {
-		 // The parameter "Knife" must be set as the name attribute
+		 // The parameter "150" must be set as the damage attribute
 		 assertEquals(150, myWeapon.getDamages());
 	 }
 	 /**
@@ -102,7 +102,7 @@ public class WeaponTest {
 	 @Test
 	 public void testHandleKnife()
 	 {
-		 // The parameter "Knife" must be set as the name attribute
+		 // The parameter "true" must be set as the boolean handle attribute
 		 assertEquals(true, myWeapon.getOneHand());
 	 }
 	 
