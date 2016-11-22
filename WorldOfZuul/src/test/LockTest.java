@@ -20,7 +20,7 @@ import room.Lock;
 
 public class LockTest {
 	
-	private Lock myLock;
+	private Lock myLock, otherLock;
 	private Key myKey, goodKey, badKey;
 	
 	public LockTest(){
@@ -28,7 +28,11 @@ public class LockTest {
 
 	@Before
 	public void setUp() {
+		myKey = new Key("Key", null, 0, false, null, myLock);
+		goodKey = new Key("Key", null, 0, false, null, myLock);
+		badKey = new Key("Key", null, 0, false, null, otherLock);
 		myLock = new Lock(myKey);
+		otherLock = new Lock(badKey);
 	}
 	
 	@After
