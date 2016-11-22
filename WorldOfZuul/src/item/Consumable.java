@@ -37,7 +37,7 @@ public class Consumable extends Item
 	/**
 	 *  This method returns an effect - simple accessor
 	 * @return String	effect of this consumable
-	 */
+	 */ 
 	public String getEffect()
 	{
 		return effect;

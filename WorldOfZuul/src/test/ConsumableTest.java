@@ -69,7 +69,7 @@ public class ConsumableTest
 	 * Method testUse
 	 * <p>Checks if the effect is correctly apply</p>
 	 */
-	@Test
+	@Test 
 	public void testUseEffect()
 	{
 		
