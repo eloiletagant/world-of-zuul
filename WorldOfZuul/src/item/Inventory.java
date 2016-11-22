@@ -12,7 +12,7 @@ public class Inventory
 	// an array of items
 	private ArrayList<Item> items;
 	// money of a player
-	private int gold;
+	private int gold; 
 	
 	/**
 	 * Constructor of an inventory.
