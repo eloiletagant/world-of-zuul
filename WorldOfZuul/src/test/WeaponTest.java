@@ -14,7 +14,7 @@ public class WeaponTest {
 	private Weapon myWeapon;
 
 	/**
-	 * Constructor
+	 * Default construcot for test class Weapon
 	 */
 	public WeaponTest()
 	{
@@ -22,9 +22,17 @@ public class WeaponTest {
 	}
 	
 	/**
-	 * Create a weapon
+	 * sets up the test fixture.
+	 * <p> Initialize one weapon for the test which have their parameters:
+	 * 				- name : knife
+	 * 				- description :Sharp instrument, consisting of handle with a blade
+	 * 				- damages : 50
+	 * 				- sell : true
+	 * 				- price : 150
+	 * 				- oneHandle : true
 	 */
-	@Before
+	
+		@Before
 	public void setUp()
 	{
 		myWeapon = new Weapon ("Knife", "Sharp instrument, consisting of handle with a blade", 50, true, 150, true);	
@@ -32,16 +40,16 @@ public class WeaponTest {
 	}
 	
 	/**
-	 * 
+	 * Tears down the test fixture
+	 * <p> Called after every test case method. NOthing to do in this case </p>
 	 */
 	 @After
 	 public void tearDown()
 	 {
-		 // on comprends pas a quoi elle sert
 	 }
 	 
 	 /**
-	  * 
+	  * Checks if the name given as parameter in the constructor is correctly set to the attribute</p>
 	  */
 	 @Test
 	 public void testNameKnife()
@@ -51,7 +59,7 @@ public class WeaponTest {
 	 }
 	 
 	 /**
-	  * 
+	  * Checks if the description given as parameter in the constructor is correctly set to the attribute</p>
 	  */
 	 @Test
 	 public void testDescriptionKnife()
@@ -61,7 +69,7 @@ public class WeaponTest {
 	 }
 	 
 	 /**
-	  * 
+	  * Checks if the price given as parameter in the constructor is correctly set to the attribute</p>
 	  */
 	 @Test
 	 public void testPriceKnife()
@@ -70,7 +78,7 @@ public class WeaponTest {
 		 assertEquals(50, myWeapon.getPrice());
 	 }
 	 /**
-	  * 
+	  * Checks if the boolean sell given  as parameter in the constructor is correctly set to the attribute</p>
 	  */
 	 @Test
 	 public void testSellKnife()
@@ -80,7 +88,7 @@ public class WeaponTest {
 	 }
 	 
 	 /**
-	  * 
+	  * Checks if the damage given as parameter in the constructor is correctly set to the attribute</p>
 	  */
 	 @Test
 	 public void testDamageKnife()
@@ -89,7 +97,7 @@ public class WeaponTest {
 		 assertEquals(150, myWeapon.getDamages());
 	 }
 	 /**
-	  * 
+	  * Checks if the boolean handle given as parameter in the constructor is correctly set to the attribute</p>
 	  */
 	 @Test
 	 public void testHandleKnife()
