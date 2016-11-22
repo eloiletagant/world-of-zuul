@@ -20,19 +20,17 @@ import room.Lock;
 
 public class LockTest {
 	
-	private Lock myLock, otherLock;
-	private Key myKey, goodKey, badKey;
+	private Lock myLock;
+	private Key myKey, badKey;
 	
 	public LockTest(){
 	}
 
 	@Before
 	public void setUp() {
-		myKey = new Key("Key", null, 0, false, null, myLock);
-		goodKey = new Key("Key", null, 0, false, null, myLock);
-		badKey = new Key("Key", null, 0, false, null, otherLock);
+		myKey = new Key("Key", null, 0, false);
+		badKey = new Key("badKey", null, 0, false);
 		myLock = new Lock(myKey);
-		otherLock = new Lock(badKey);
 	}
 	
 	@After
@@ -45,8 +43,8 @@ public class LockTest {
 	
 	@Test
 	public void testOpenRight(){
-		myLock.openLock(goodKey);
-		assertEquals(goodKey,myLock.getAssociatedKey());
+		myLock.openLock(myKey);
+		assertEquals(myKey,myLock.getAssociatedKey());
 		assertEquals(false,myLock.getLock());
 	}
 	
