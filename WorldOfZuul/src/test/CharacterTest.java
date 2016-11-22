@@ -17,7 +17,7 @@ public class CharacterTest {
 			fail("Name definition fail");
 		}
 	}
-	
+	 
 	@Test
 	public void testAddHealth() {
 		fail("Not yet implemented");
