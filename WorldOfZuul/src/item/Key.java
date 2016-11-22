@@ -31,7 +31,7 @@ public class Key extends Item{
 		super(newName,aDescription,aPrice,sell);
 		if (Item.nameIsEmpty())
 		{
-			newName="Key";
+			newName="Key"; 
 		}
 		associatedLock = aLock;
 	}
