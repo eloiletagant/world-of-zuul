@@ -8,9 +8,9 @@ import room.Room;
  * We can get the character position, his HP, his name and his inventory. 
  * A character can lose HP and retrieve it.
  * The HP can't rise over 20.
- * When his HP felt to 0, the character die. 
+ * When his HP felt to 0, the character die.
+ * He have two hands. Here is the number of hands available counter : 0 ==> 2 
  *  
- * 
  * @author Groupe4
  * @version 10/11/2016 
  *
@@ -21,7 +21,7 @@ public class Character
 	private int health; //Start with 20 HP by default. The character die when his hp felt to 0
 	private Inventory inventory; //All items of the char are present on the inventory
 	private Room location; //Position of the character
-	private int nbHandsAvailable; //Number of hands open to wear weapons
+	private int nbHandsAvailable; //Number of hands open to wear weapons : 2 by default and max, and never < 0
 
 	/**
 	 * Constructeur de la classe
@@ -95,4 +95,13 @@ public class Character
 		location = newRoom;
 	}
 	
+	/**
+	 * Calculate the new number of hands available to wear weapons
+	 * @param nbr number of hand of the new weapon (negative to equip weapon)
+	 * @return true : the weapon can be equiped / unequiped; false : it cant
+	 */
+	public boolean swapWeapon(int nbr)
+	{
+		return true;
+	}
 }
