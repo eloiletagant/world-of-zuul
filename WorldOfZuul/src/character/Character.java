@@ -1,3 +1,8 @@
+package character;
+
+import item.Inventory;
+import room.Room;
+
 /**
  * This class describes and manages a character.
  * We can get the character position, his HP, his name and his inventory. 
