@@ -1,5 +1,6 @@
 //********* EN COURS ON ESSAIS *********
 package test;
+import item.Key;
 import item.Weapon;
 import org.junit.Before;
 
@@ -106,5 +107,18 @@ public class WeaponTest {
 		 assertEquals(true, myWeapon.getOneHand());
 	 }
 	 
+    /**
+     * Method TestBad
+     * Test the default parameters
+ 	 */
+	 @Test
+	 public void testBadWeapon()
+	 {
+		    Weapon bad = new Weapon("", "", -10, true, -50, true);
+			assertEquals("Unidentified object",bad.getName());
+			assertEquals("This object seems strange and come from nowhere.",bad.getDescription());
+			assertEquals(100,bad.getPrice());
+			assertEquals(2, bad.getDamages());
+	 }
 
 }
