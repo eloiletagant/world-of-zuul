@@ -15,7 +15,7 @@ public class Lock {
 	private boolean lock;
 
 	/**
-	 * Lock constructor used to instantiate a lock
+	 * Constructor used to instantiate a lock
 	 * @param: The associated key
 	*/
 	public Lock(Key associatedKey){
