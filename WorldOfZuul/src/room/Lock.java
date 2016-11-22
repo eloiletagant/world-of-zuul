@@ -32,6 +32,15 @@ public class Lock {
 	}
 	
 	/**
+	 * Simple accessor
+	 * @return Key: The key associated to the lock
+	*/
+	public Key getAssociatedKey()
+	{
+		return associatedKey;
+	}
+	
+	/**
 	 * This method is used to open a lock if the key corresponds to the associated key
 	 * @param: A key that will be compared with the associated key
 	*/
