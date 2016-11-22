@@ -27,9 +27,9 @@ public class Consumable extends Item{
 	public Consumable(String newName, String aDescription, int aPrice, boolean sell,String anEffect)
 	{
 		super(newName,aDescription,aPrice,sell);
-		if (item.nameisEmpty())
+		if (Item.nameIsEmpty())
 		{
-			name="Potion";
+			newName="Potion";
 		}
 		effect = anEffect;
 	}
