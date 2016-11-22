@@ -5,8 +5,8 @@ import room.Lock;
 /**
  *  
  * @author gp4
- * @version 
- * This class manage keys and his locket.
+ * @version 22/11/2016
+ * This class manages keys and its locket.
  * A key must have all same parameters of an item.
  * 
  *
@@ -31,7 +31,7 @@ public class Key extends Item{
 		super(newName,aDescription,aPrice,sell);
 		if (item.nameisEmpty())
 		{
-			name="Potion";
+			name="Key";
 		}
 		associatedLock = aLock;
 	}
