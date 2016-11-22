@@ -10,7 +10,7 @@ public class NPCTest {
 	private NPC myNPC;
 	/**
 	 * sets up
-	 * <p> rghjk </p>
+	 * <p> Initialize one NPC for each test, whose name is "chevalier au lion" </p>
 	 */
 	@Before
 	public void setUp()

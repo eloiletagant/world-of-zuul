@@ -1,4 +1,3 @@
-
 package item;
 import room.Lock;
 
@@ -13,7 +12,6 @@ import room.Lock;
  */
 public class Key extends Item{
 	
-	//private Lock associatedLock;
 	
 	/**
 	 * Constructor of this class.
@@ -23,22 +21,12 @@ public class Key extends Item{
 	 * @param aDescription String	description of the item
 	 * @param aPrice Int			price of the item
 	 * @param sell Boolean			true if the item can be sell
-	 * @param aLock Lock			associated locket 
 	 */
 	public Key(String newName, String aDescription, int aPrice, boolean sell)
 	{
 		super(newName,aDescription,aPrice,sell);
 	}
 	
-	/**
-	 * This method returns the lock associated with the key.
-	 * @return Lock : locket  associated to the key
-	 */
-	/**
-	 * public Lock getLock()
-	 * {
-	 * return associatedLock;
-		
-		 */
+
 	
 }

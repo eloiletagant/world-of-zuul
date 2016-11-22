@@ -38,13 +38,31 @@ public class ConsumableTest
 	}
 
 	/**
-	 * Method testNameBread
+	 * Method testBread
 	 * Checks if the name given as parameter in the constructor is correctly set to the attribute.
 	 * 
 	 */
 	@Test
-	public void testNameBread()
+	public void testBread()
 	{
 		assertEquals("Bread",myConsumable.getName());
-	}	
+		assertEquals("This bread was cooked by the baker of the village",myConsumable.getDescription());
+		assertEquals(20,myConsumable.getPrice());
+		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
+	}
+	
+	/**
+	 * Method testBad
+	 * Checks the default parameters
+	 * 
+	 */
+	@Test
+	public void testBad()
+	{
+		Consumable bad = new Consumable("", "", -10, true, "blabla");
+		assertEquals("Unidentified object",bad.getName());
+		assertEquals("This object seems strange and come from nowhere.",bad.getDescription());
+		assertEquals(100,bad.getPrice());
+	}
+	
 }

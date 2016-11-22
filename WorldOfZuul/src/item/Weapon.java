@@ -32,6 +32,10 @@ public class Weapon extends Item{
 	public Weapon(String newName, String desc, int pric, boolean sell,int dmg, boolean hand)
 	{
 		super(newName,desc,pric,sell);
+		if (dmg<0)
+		{
+			dmg=2;
+		}
 		damages = dmg;
 		oneHand = hand;
 		equiped = false;
