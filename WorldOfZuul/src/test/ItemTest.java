@@ -1,4 +1,4 @@
-// *************** NE PAS FAIRE CLASSE A REVOIR (CLASSE ABSTRACT)**************************
+// *************** NE PAS FAIRE CLASSE A REVOIR (CLASSE ABSTRACT)************************
 package test;
 import item.Item;
 import static org.junit.Assert.*;
