@@ -13,6 +13,8 @@ public class Inventory
 	private ArrayList<Item> items;
 	// money of a player
 	private int gold; 
+	// number maximum of items in the inventory
+	private int nbMaxItems;
 	
 	/**
 	 * Constructor of an inventory.
@@ -20,7 +22,9 @@ public class Inventory
 	 */
 	public Inventory()
 	{
-		gold = 1000;	
+		items = new ArrayList<Item>();
+		gold = 1000;
+		nbMaxItems=10;
 	}
 	
 	/**

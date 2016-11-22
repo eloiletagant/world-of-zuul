@@ -1,30 +1,50 @@
 package test;
-
 import static org.junit.Assert.*;
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import item.Inventory;
 
-public class InventoryTest {
+
+/**
+ * The test class ConsumableTest
+ * Unit tests of the Consumable class
+ * @author Group4
+ * @version 22/11/2016
+ *
+ */
+public class InventoryTest
+{
+	private Inventory myInventory;
+
+	/**
+	 * Sets up the test fixture.
+	 * Called before every test case method.
+	 * Initialize one consumable for each test, whose name is "Bread".
+	 */
+	@Before
+	public void setUp()
+	{
+		myInventory=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it");
+	}
 	
 	/**
-	* @Test This method allow testing the conservation of the entity of the item
-    */
-    public void testAddItem () throws Exception { 
-    	Item a = new Item(“epée”,”arme”,50,true);
-    	assertSame("Same item", a,Item.addItem(a));
-	    for (String anObject: Inventory) {
-	        assertEquals(a,Inventory.addItem(anObject));
-	    }
-	         
-	    
-	    
-	/**
-	 * @Test This method allow testing if the method deleteItem works well.
+	 * Tears down the test fixture.
+	 * Called after every test case method. Nothing to do in this case.
 	 */
-	 public void testDeletingItem (Item a) throws Exception { 
-		 for (String anObject: Inventory) {
-		     assertNotSame(a,Inventory.deleteItem(anObject));
-		 }
-	 }
+	@After
+	public void tearDown()
+	{
+	}
 
+	/**
+	 * Method testNameBread
+	 * Checks if the name given as parameter in the constructor is correctly set to the attribute.
+	 * 
+	 */
+	@Test
+	public void testNameBread()
+	{
+		assertEquals("Bread",myConsumable.getName());
+	}	
 }

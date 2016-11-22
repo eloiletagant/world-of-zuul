@@ -33,6 +33,7 @@ public abstract class Item
 		description = aDescription; // Assignement of the descrition.
 		price = aPrice; // Assignement of the price.
 		sellAble = sell; // Assignement of the boolean if we can sell this item or not.
+	
 	}
 	
 	/**
