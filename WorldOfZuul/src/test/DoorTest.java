@@ -3,8 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-import room.*;
-import character.*;
+import room.Room;
 import character.Character;
 
 
@@ -18,11 +17,11 @@ public class DoorTest {
 	 * test if the character success to move to another room
 	 */
 	@After
-	public boolean testMoveRoom() {
+	public void testMoveRoom() {
 		firstRoom = character.getLocation();
 		character.moveRoom();
 		secondRoom = character.getLocation(); 
-		return assertNotSame(firstRoom, secondRoom);
+		assertNotSame(firstRoom, secondRoom);
 	}
 
 }
