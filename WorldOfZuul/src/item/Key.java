@@ -4,7 +4,7 @@ import room.Lock;
 
 /**
  *  
- * @author gp4
+ * @author Group4
  * @version 22/11/2016
  * This class manages keys and its locket.
  * A key must have all same parameters of an item.
