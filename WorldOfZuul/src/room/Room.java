@@ -17,7 +17,7 @@ public class Room {
 	
 	private String nameRoom; // initiate to "UnnamedRoom" is empty
 	private HashMap<String, Door> exitDoors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap
-	private ArrayList<Event> events;
+	private ArrayList<Event> events; // an event can appear once on a room
 	private int level; // initiate to 0 if the level declaration is < 0
 
 	/**
