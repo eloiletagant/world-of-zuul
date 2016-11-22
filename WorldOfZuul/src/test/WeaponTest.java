@@ -36,7 +36,7 @@ public class WeaponTest {
 		@Before
 	public void setUp()
 	{
-		myWeapon = new Weapon ("Knife", "Sharp instrument, consisting of handle with a blade", 50, true, 150, true);	
+		myWeapon = new Weapon ("Knife", "Sharp instrument, consisting of handle with a blade", 50, true, 15, true);	
 		
 	}
 	
@@ -65,7 +65,7 @@ public class WeaponTest {
 	 @Test
 	 public void testDescriptionKnife()
 	 {
-		 // The descritption must be set as the description attribute
+		 // The description must be set as the description attribute
 		 assertEquals("Sharp instrument, consisting of handle with a blade", myWeapon.getDescription());
 	 }
 	 
@@ -94,8 +94,8 @@ public class WeaponTest {
 	 @Test
 	 public void testDamageKnife()
 	 {
-		 // The parameter "150" must be set as the damage attribute
-		 assertEquals(150, myWeapon.getDamages());
+		 // The parameter "15" must be set as the damage attribute
+		 assertEquals(15, myWeapon.getDamages());
 	 }
 	 /**
 	  * Checks if the boolean handle given as parameter in the constructor is correctly set to the attribute</p>
@@ -114,7 +114,7 @@ public class WeaponTest {
 	 @Test
 	 public void testBadWeapon()
 	 {
-		    Weapon bad = new Weapon("", "", -10, true, -50, true);
+		    Weapon bad = new Weapon("", "", -10, true, -5, true);
 			assertEquals("Unidentified object",bad.getName());
 			assertEquals("This object seems strange and come from nowhere.",bad.getDescription());
 			assertEquals(100,bad.getPrice());
