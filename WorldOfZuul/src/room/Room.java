@@ -28,7 +28,8 @@ public class Room {
 		this.nameRoom = nameRoom;
 		if (level != 1 && level != 0)
 			this.level = 0;
-		else this.level = level;
+		else 
+			this.level = level;
 	}
 	
 	/**
