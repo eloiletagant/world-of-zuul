@@ -32,7 +32,7 @@ public class LockTest {
 	/**
 	 * Sets up the test fixture
 	 * Called before every test method
-	 * Initialize one key and its lock associated
+	 * Initialize one key and the lock associated
 	 */
 	@Before
 	public void setUp() {
@@ -40,21 +40,37 @@ public class LockTest {
 		myLock = new Lock(myKey);
 	}
 	
+	/**
+	 * Tear down the test fixture
+	 * Called after every test case method. Nothing to do in this case.
+	 */
 	@After
 	public void tearDown(){}
 	
+	/**
+	 * Method test key
+	 * Checks if the key given in Lock constructor is correctly set to the attribute
+	 */
 	@Test
 	public void testKey(){
-		assertEquals(myKey,myLock.getAssociatedKey());
+		assertSame(myKey,myLock.getAssociatedKey());
 	}
 	
+	/**
+	 * Method testOpenRight
+	 * Checks the attributed key given in method openLock and checks if the Lock is open too.
+	 */
 	@Test
 	public void testOpenRight(){
 		myLock.openLock(myKey);
-		assertEquals(myKey,myLock.getAssociatedKey());
+		assertSame(myKey,myLock.getAssociatedKey());
 		assertEquals(false,myLock.getLock());
 	}
 	
+	/**
+	 * Method testOpenRight
+	 * Checks if a key given in method openLock is the good key attributed to the Lock. Checks if the Lock is open too.
+	 */
 	@Test
 	public void testOpenBad(){
 		badKey = new Key("BadKey", null, 0, false);
