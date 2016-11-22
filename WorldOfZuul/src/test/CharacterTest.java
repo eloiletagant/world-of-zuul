@@ -13,7 +13,7 @@ public class CharacterTest {
 	private Room firstRoom, secondRoom;
 	
 	/**
-	 * 
+	 * Initialize the character with the name "pseudo"
 	 */
 	@Before
 	public void setUp()
