@@ -15,13 +15,13 @@ import static org.junit.Test;
 public class LockTest {
 	
 	private Lock myLock;
-	private Key myKey;
 	
 	public LockTest(){
 	}
 
 	@Before
 	public void setUp() {
+		Key myKey;
 		myLock = new Lock(myKey);
 	}
 	
