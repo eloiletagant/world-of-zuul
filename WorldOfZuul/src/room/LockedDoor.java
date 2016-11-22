@@ -23,7 +23,7 @@ public class LockedDoor extends Door{
 	 * and all informations about the key
 	 */
 	public LockedDoor(Room currentRoom, Room nextRoom, String keyName, String keyDescription, int keyPrice, boolean keySell){
-		super(currentRoom, nextRoom);
+		super(currentRoom);
 		key = new Key(keyName, keyDescription, keyPrice, keySell);
 		lock = new Lock(key);
 		isLocked = true; //the door is closed by default
