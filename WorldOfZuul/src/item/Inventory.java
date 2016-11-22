@@ -53,16 +53,18 @@ public class Inventory
 	
 	/**
 	 * This method deletes one item in an inventory.
+	 * @param item: The item deleted to the inventory
 	 */
-	private void deleteItem()
+	private void deleteItem(Item item)
 	{
 		
 	}
 	
 	/**
 	 * This method adds one item in an inventory.
+	 * @param item: The item added to the inventory
 	 */
-	private void addItem()
+	private void addItem(Item item)
 	{
 		
 	}
