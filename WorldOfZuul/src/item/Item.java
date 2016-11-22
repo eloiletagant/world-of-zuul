@@ -1,3 +1,4 @@
+// *************** EN COURS *********************************
 package item;
 /**
  * This class manage the game items.
