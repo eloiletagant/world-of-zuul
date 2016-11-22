@@ -28,13 +28,6 @@ public class Consumable extends Item
 	{
 		super(newName,aDescription,aPrice,sell);
 		effect = anEffect;
-		if (super.name.isEmpty() || super.description.isEmpty() || super.effect.isEmpty())
-		{
-			super.name="Potion";
-			super.description="blabla";
-			super.effect="blou";
-		}
-
 	}
 	
 	/**
