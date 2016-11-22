@@ -58,7 +58,7 @@ public class LockTest {
 	
 	/**
 	 * Method testOpenRight
-	 * Checks the method openLock with an associated key given in parameter. Checks if the Lock is open too.
+	 * Checks the method openLock with the associated key given in parameter. Checks if the Lock is open too.
 	 */
 	@Test
 	public void testOpenRight(){
