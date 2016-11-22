@@ -22,6 +22,9 @@ public abstract class Item
 	
 	/**
 	 * Constructor of the Item class
+	 * If the given name is a null string, the name is "Unidentified object".
+	 * If the given description is a null string, the description is "This object seems strange".
+	 * If the given price is negative, the price is 100 gold.
 	 * @param newName String		name of the item
 	 * @param aDescription String	description of the item
 	 * @param aPrice Int			price of the item
@@ -29,6 +32,19 @@ public abstract class Item
 	 */
 	public Item(String newName, String aDescription, int aPrice, boolean sell)
 	{
+		if (newName.isEmpty())
+		{
+			newName="Unidentified object";
+			aDescription="This object seems strange and come from nowhere.";
+		}
+		if (aDescription.isEmpty())
+		{
+			aDescription="This object seems strange.";
+		}
+		if (aPrice<0)
+		{
+			aPrice=100;
+		}
 		name = newName; // Assignment of the name.
 		description = aDescription; // Assignement of the descrition.
 		price = aPrice; // Assignement of the price.
