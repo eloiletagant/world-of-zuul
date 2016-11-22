@@ -2,9 +2,15 @@ package item;
 
 /**
  * This class manages weapons which are in the inventory of the character. 
- * 
+ * <p> Thanks to this class the player is able to : <:p>
+ * <ul>
+ * <il> check if the weapons is onehand or not <il>
+ * <il> check the weapon's damages <il>
+ * <il> Equipe with an weapon <il>
+ * <il> put the weapon <il>
+ * </ul>
  * @author Group 4
- * @version 10/11/2016
+ * @version 22/11/2016
  *
  */
 public class Weapon extends Item{
@@ -32,8 +38,8 @@ public class Weapon extends Item{
 	}
 	
 	/**
-	 * This method returns a boolean true if 
-	 * @return
+	 * This method check if the weapon is an onehand
+	 * @return true if the weapon is an oneHand, else return false
 	 */
 	public boolean getOneHand()
 	{
@@ -41,8 +47,8 @@ public class Weapon extends Item{
 	}
 	
 	/**
-	 * This method returns a boolean true if the weapon is equipped by a character.
-	 * @return
+	 * This method check if th weapon is already use by a player
+	 * @return  a boolean true if the weapon is equipped by a character.
 	 */
 	public boolean getEquiped()
 	{
@@ -60,6 +66,7 @@ public class Weapon extends Item{
 	
 	/**
 	 * This method allows the character to equip this weapon.
+	 * @return true if the player is equip, else return false
 	 */
 	public void equip()
 	{
@@ -68,6 +75,7 @@ public class Weapon extends Item{
 	
 	/**
 	 * This method allows the character to unequip this weapon.
+	 * @return false if the player is unequip
 	 */
 	public void unequip()
 	{
