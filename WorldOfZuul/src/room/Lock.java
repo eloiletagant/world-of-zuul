@@ -12,14 +12,17 @@ import item.Key;
 public class Lock {
 	
 	private Key key;
-	private boolean lock;
+	private boolean lock = false;
 
 	/**
 	 * Constructor used to instantiate a lock
 	 * @param: The associated key
 	*/
-	public Lock(Key key){
-		this.key = key;
+	public Lock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
+		
+		this.key = new Key(keyName, keyDescription, keyPrice, keySellAble);
+		lock = true;
+	
 	}
 	
 	/**
