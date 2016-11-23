@@ -38,6 +38,6 @@ public class NPC extends Character{
 	 */
 	public void swapFriendShip()
 	{
-		
+
 	}
 }
