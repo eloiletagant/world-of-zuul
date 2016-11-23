@@ -16,9 +16,9 @@ public class Event
 	/**
 	 * Constructor of the class event.
 	 */
-	public Event()
-	{
-			
+	public Event(String description, Item loot) {
+		this.description = description;
+		this.loot = loot;
 	}
 
 	/**
@@ -32,6 +32,7 @@ public class Event
 	 * This method will set a new item for the event loot.
 	 */
 	public void setLoot(Item loot) {
+	
 	}
 
 }

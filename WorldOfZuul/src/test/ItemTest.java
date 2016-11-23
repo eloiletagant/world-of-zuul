@@ -13,7 +13,7 @@ import org.junit.Test;
  */
 public class ItemTest {
 	
-	private Item TestItem;
+	private Item item;
 
 	public ItemTest () {	
 	}
@@ -24,7 +24,7 @@ public class ItemTest {
 	@Before
 	public void setUp()
 	{
-		myItem= new Item()
+		item = new Item();
 	}
 	
 	public void test() {
