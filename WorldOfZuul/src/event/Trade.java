@@ -24,13 +24,13 @@ public class Trade extends Event
 	private void buy()
 	{
 		Inventory.removeGold(Item.getPrice());
-		addItem(Inventory.item);
+		Inventory.addItem(Inventory.item);
 	}
 	
 	private void sell ()
 	{
-		addGold(Item.getPrice);
-		deleteItem(Inventory.item);
+		Inventory.addGold(Item.getPrice);
+		Inventory.deleteItem(Inventory.item);
 	}
 
 }
