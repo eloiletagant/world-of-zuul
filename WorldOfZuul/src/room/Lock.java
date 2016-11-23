@@ -18,8 +18,8 @@ public class Lock {
 	 * Constructor used to instantiate a lock
 	 * @param: The associated key
 	*/
-	public Lock(Key associatedKey){
-		this.associatedKey = associatedKey;
+	public Lock(Key k){
+		associatedKey = k;
 	}
 	
 	/**
@@ -47,6 +47,6 @@ public class Lock {
 	public void openLock(Key k)
 	{
 		if (k == associatedKey)
-			
+			lock = false;		
 	}
 }

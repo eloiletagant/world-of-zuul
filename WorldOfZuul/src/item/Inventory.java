@@ -63,7 +63,7 @@ public class Inventory
 	/**
 	 * This method deletes all items in an inventory.
 	 */
-	private void resetInventory()
+	public void resetInventory()
 	{
 		items.clear();
 	}
@@ -72,7 +72,7 @@ public class Inventory
 	 * This method deletes one item in an inventory.
 	 * @param item: The item deleted to the inventory
 	 */
-	private void deleteItem(Item itemToDelete)
+	public void deleteItem(Item itemToDelete)
 	{
 		items.remove(itemToDelete);
 	}
@@ -81,7 +81,7 @@ public class Inventory
 	 * This method adds one item in an inventory.
 	 * @param item: The item added to the inventory
 	 */
-	private void addItem(Item itemToAdd)
+	public void addItem(Item itemToAdd)
 	{
 		items.add(itemToAdd);
 	}
