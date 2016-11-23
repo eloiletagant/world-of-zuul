@@ -72,26 +72,17 @@ public class Inventory
 	 * This method deletes one item in an inventory.
 	 * @param item: The item deleted to the inventory
 	 */
-	private void deleteItem(Item item)
+	private void deleteItem(Item itemToDelete)
 	{
-		for(int i = 1; i <= 10; i++)
-		{
-			if (items.Item)
-			{}
-			if (item.getName() ==  items.Item)
-			{
-				items.remove();
-			}
-		}
+		items.remove(itemToDelete);
 	}
 	
 	/**
 	 * This method adds one item in an inventory.
 	 * @param item: The item added to the inventory
 	 */
-	private void addItem(Item item)
+	private void addItem(Item itemToAdd)
 	{
-		
+		items.add(itemToAdd);
 	}
-	
 }
