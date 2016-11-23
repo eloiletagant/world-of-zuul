@@ -11,20 +11,20 @@ import item.Key;
  */
 public class Lock {
 	
-	private Key associatedKey;
+	private Key key;
 	private boolean lock;
 
 	/**
 	 * Constructor used to instantiate a lock
 	 * @param: The associated key
 	*/
-	public Lock(Key k){
-		associatedKey = k;
+	public Lock(Key key){
+		this.key = key;
 	}
 	
 	/**
 	 * Simple accessor
-	 * @return A boolean if the lock is open or not
+	 * @return A boolean true if the lock is open false if is not
 	*/
 	public boolean getLock()
 	{
@@ -35,18 +35,23 @@ public class Lock {
 	 * Simple accessor
 	 * @return Key: The key associated to the lock
 	*/
-	public Key getAssociatedKey()
+	public Key getKey()
 	{
-		return associatedKey;
+		return key;
 	}
 	
 	/**
 	 * This method is used to open a lock if the key corresponds to the associated key
 	 * @param: A key that will be compared with the associated key
 	*/
-	public void openLock(Key k)
+	public boolean unlock(Key key)
 	{
-		if (k == associatedKey)
-			lock = false;		
+		if (key.getKeyToken() == this.key.getKeyToken()) {
+			lock = false; //the lock is open
+			return lock;
+		} else {
+			lock = true; //the lock stray closed
+			return lock;
+		}
 	}
 }

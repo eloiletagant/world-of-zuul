@@ -18,7 +18,7 @@ public class Trade extends Event
 	 */
 	public Trade()
 	{   
-		
+		  
 	}
 	
 	private void buy()
@@ -29,7 +29,7 @@ public class Trade extends Event
 	
 	private void sell ()
 	{
-		Inventory.addGold(Item.getPrice);
+		Inventory.addGold(Item.getPrice());
 		Inventory.deleteItem(Inventory.item);
 	}
 

@@ -30,10 +30,11 @@ public class Inventory
 	 * By default the inventory has any item. 
 	 */
 	public Inventory(String name, String description, int maxItems, Lock lock) {
-		this.name = name;
-		items = new ArrayList<Item>();
-		this.maxItems = maxItems;
+		this.setName(name);
+		this.setDescription(description);
+		this.setMaxItems(maxItems);
 		this.lock = lock;
+		this.items = new ArrayList<Item>();
 	}
 	
 	/**
@@ -44,9 +45,9 @@ public class Inventory
 	 * By default the inventory has any item. 
 	 */
 	public Inventory(String name, String description, int maxItems) {
-		this.name = name;
+		this.setName(name);
 		items = new ArrayList<Item>();
-		this.maxItems = maxItems;
+		this.setMaxItems(maxItems);
 	}
 	
 	
@@ -73,13 +74,56 @@ public class Inventory
 	}
 	
 	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return the maxItems
+	 */
+	public int getMaxItems() {
+		return maxItems;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @param maxItems the maxItems to set
+	 */
+	public void setMaxItems(int maxItems) {
+		this.maxItems = maxItems;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	
+	/**
 	 * This method allow to add or remove money (by minus int) from the inventory
 	 */
 	public void manageGold(int money)
 	{
 		gold += money;
 	}
-	
 	
 	/**
 	 * This method deletes all items in an inventory.
@@ -115,8 +159,6 @@ public class Inventory
 	 * 
 	 */
 	public boolean openInventory(Key key) {
-		boolean done = false;
-		
-		return done;
+		return lock.unlock(key);
 	}
 }

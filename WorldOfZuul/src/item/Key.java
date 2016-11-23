@@ -1,5 +1,7 @@
 package item;
 
+import java.util.UUID;
+
 /**
  *  
  * @author Group4
@@ -8,6 +10,8 @@ package item;
  * A key must have all same parameters of an item.
  */
 public class Key extends Item{
+	
+	private String keyToken;
 	
 	/**
 	 * Constructor of this class.
@@ -18,9 +22,18 @@ public class Key extends Item{
 	 * @param aPrice Int			price of the item
 	 * @param sell Boolean			true if the item can be sell
 	 */
-	public Key(String newName, String aDescription, int aPrice, boolean sell)
+	public Key(String name, String description, int price, boolean sellAble)
 	{
-		super(newName,aDescription,aPrice,sell);
+		super(name,description,price,sellAble);
+		keyToken = UUID.randomUUID().toString(); //generate a random token
 	}
+
+	/**
+	 * @return the key token
+	 */
+	public String getKeyToken() {
+		return keyToken;
+	}
+
 	
 }
