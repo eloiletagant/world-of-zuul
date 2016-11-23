@@ -18,8 +18,8 @@ public class Enigma extends Event
 	 * @param q		a question
 	 * @param a		an answer
 	 */
-	public Enigma(String description, Item loot, String q, String a) {
-		super(description, loot);
+	public Enigma(String description, Item loot, Character player, String q, String a) {
+		super(description, loot, player);
 		question = q;
 		answer = a;
 	}
@@ -30,7 +30,7 @@ public class Enigma extends Event
 	 */
 	public void testAnswer (String test) {
 		if (test.equals(answer)) {
-			
+			player.getInventory.addItem(loot);
 		}
 	}
 	

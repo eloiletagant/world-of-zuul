@@ -10,15 +10,17 @@ import item.Item;
  */
 public class Event
 {
-	private String description;
-	private Item loot;
+	protected String description;
+	protected Item loot;
+	protected Character player;
 	
 	/**
 	 * Constructor of the class event.
 	 */
-	public Event(String description, Item loot) {
+	public Event(String description, Item loot, Character player) {
 		this.description = description;
 		this.loot = loot;
+		this.player = player;
 	}
 
 	/**
