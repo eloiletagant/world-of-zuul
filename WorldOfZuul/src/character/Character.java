@@ -86,7 +86,12 @@ public class Character
 	 */
 	public void setHealth(int hp)
 	{
-		health += hp;
+		if(health + hp > 20)
+			health = 20;
+		else if(health + hp < 0)
+			health = 0;
+		else 
+			health += hp;
 	}
 	
 	/**
@@ -100,11 +105,24 @@ public class Character
 	
 	/**
 	 * Calculate the new number of hands available to wear weapons
-	 * @param nbr number of hand of the new weapon (negative to equip weapon)
+	 * @param nbr number of hand of the new weapon (positive : unequip, negative to equip weapon)
 	 * @return true : the weapon can be equiped / unequiped; false : it cant
 	 */
 	public boolean swapWeapon(int nbr)
 	{
-		return true;
+		if(nbHandsAvailable + nbr > 2)
+		{
+			nbHandsAvailable = 2;
+			return true;
+		}
+		else if(nbHandsAvailable + nbr < 0)
+		{
+			return false;
+		}
+		else
+		{
+			nbHandsAvailable += nbr;
+			return true;
+		}
 	}
 }
