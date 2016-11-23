@@ -3,9 +3,9 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
+import item.Lock;
 import item.TreasureBox;
 import item.Weapon;
-import room.Lock;
 
 public class TreasureBoxTest {
 

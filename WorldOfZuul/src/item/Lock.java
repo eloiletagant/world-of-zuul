@@ -1,6 +1,4 @@
-package room;
-
-import item.Key;
+package item;
 
 /**
  * This class manages a lock system for a door or a treasure box.

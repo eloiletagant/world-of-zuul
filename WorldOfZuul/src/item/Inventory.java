@@ -1,8 +1,6 @@
 package item;
 import java.util.ArrayList;
 
-import room.Lock;
-
 /**
  * This class manages all items of a character in an inventory.
  * @author Group4
