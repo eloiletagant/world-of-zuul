@@ -18,7 +18,7 @@ public class Trade extends Event
 	 */
 	public Trade()
 	{   
-		
+		  
 	}
 	
 	private void buy()
