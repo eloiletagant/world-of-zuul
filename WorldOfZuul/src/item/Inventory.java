@@ -22,7 +22,7 @@ public class Inventory
 	private Lock lock;
 	
 	/**
-	 * Constructor of the class
+	 * Constructor of the class (with a lock to use like a locked chest)
 	 * @param name String : name of the item
 	 * @param description String : description of the item and it's effects
 	 * @param maxItmes int : number max of items in the inventory
@@ -38,7 +38,7 @@ public class Inventory
 	}
 	
 	/**
-	 * Constructor of the class
+	 * Constructor of the class, same one without the lock (for a real inventory)
 	 * @param name String : name of the item
 	 * @param description String : description of the item and it's effects
 	 * @param maxItmes int : number max of items in the inventory
