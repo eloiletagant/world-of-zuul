@@ -17,20 +17,20 @@ public class Trade extends Event
 	 * Constructor of a trade
 	 */
 	public Trade()
-	{ 
+	{   
 		
 	}
 	
 	private void buy()
 	{
-		removeGold(Item.getPrice());
-		addItem(Inventory.item);
+		Inventory.removeGold(Item.getPrice());
+		Inventory.addItem(Inventory.item);
 	}
 	
 	private void sell ()
 	{
-		addGold(Item.getPrice);
-		deleteItem(Inventory.item);
+		Inventory.addGold(Item.getPrice);
+		Inventory.deleteItem(Inventory.item);
 	}
 
 }
