@@ -65,6 +65,14 @@ public class Inventory
 	}
 	
 	/**
+	 * Access to the chest locket
+	 * @return Lock : chest locket 
+	 */
+	public Lock getLock() {
+		return lock;
+	}
+	
+	/**
 	 * This method allow to add or remove money (by minus int) from the inventory
 	 */
 	public void manageGold(int money)
