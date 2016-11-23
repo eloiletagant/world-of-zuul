@@ -50,6 +50,7 @@ public class Consumable extends Item
 	 */ 
 	private void use()
 	{
+		//appliquer les effets sur le 
 		
 	}
 }
