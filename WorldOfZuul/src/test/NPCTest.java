@@ -15,29 +15,24 @@ public class NPCTest {
 	@Before
 	public void setUp()
 	{
-		myNPC = new NPC ("Chevalier au lion");
-	}
-	
-	/**
-	 * Method testNameChevalier
-	 * <p> checks if the name given as parameter in the constructor is correctly set to the attribute </p>
-	 */
-	@Test
-	public void testNameChevalier()
-	{
-		assertEquals("Chevalier au lion",myNPC.getName());
-		assertEquals(true,myNPC.getEnemy());
+		myNPC = new NPC ("Chevalier au lion",40,3);
 	}
 	
 	/**
 	 * Method testNameNPC
-	 * <p> checks that the default name is Zuul, if the given name is empty</p>
+	 * <p> checks that the name and default name is Zuul, if the given name is empty. </p>
+	 * <p> checks the number of hand and health limit </p>
 	 */
 	@Test
-	public void testNameNPC() {
-		character.NPC friend = new NPC ("");
-		assertEquals("Zuul",friend.getName());
+	public void testNPC() {
+		assertEquals("Chevalier au lion",myNPC.getName());
 		assertEquals(true,myNPC.getEnemy());
+		assertEquals(3,myNPC.getNbHandsAvailable());
+		assertEquals(40,myNPC.getHealth());	
+		NPC friend = new NPC ("",150,5);
+		assertEquals("Zuul",friend.getName());
+		assertEquals(5,friend.getNbHandsAvailable());
+		assertEquals(150,friend.getHealth());		
 	}
 	
 	/**
