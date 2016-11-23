@@ -159,8 +159,6 @@ public class Inventory
 	 * 
 	 */
 	public boolean openInventory(Key key) {
-		boolean done = false;
-		
-		return done;
+		return lock.unlock(key);
 	}
 }
