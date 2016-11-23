@@ -1,4 +1,5 @@
 package item;
+import character.Character;
 
 /**
  * This class manages consumables.
@@ -13,6 +14,12 @@ public class Consumable extends Item
 {
 	// description of the effect of a consumable
 	private String effect;
+	// number of health care point
+	private int care;
+	// number of health point to increase the damage
+	private int increaseDamage;
+	// the increase damage can be apply to a weapon (true) or a character (false)
+	private boolean weapon;
 	
 	/**
 	 * Constructor of Consumable class.
@@ -24,14 +31,26 @@ public class Consumable extends Item
 	 * @param sell Boolean			true if the item can be sell
 	 * @param anEffect String		effect of the item
 	 */
-	public Consumable(String newName, String aDescription, int aPrice, boolean sell,String anEffect)
+	public Consumable(String newName, String aDescription, int aPrice, boolean sell,String anEffect, int HPcare, int HPdamage, boolean inWeapon)
 	{
 		super(newName,aDescription,aPrice,sell);
-		if (anEffect.isEmpty())
+		if (HPcare < 0)
+		{
+			HPcare=0;
+			inWeapon=false;
+		}
+		if (HPdamage < 0)
+		{
+			HPdamage=0;
+		}
+		if ((anEffect.isEmpty()) || (HPcare==0 && HPdamage==0))
 		{
 			anEffect = "This consumable has no effect.";
 		}
 		effect = anEffect;
+		care=HPdamage;
+		increaseDamage=HPcare;
+		weapon=inWeapon;
 	}
 	
 	/**
@@ -48,11 +67,26 @@ public class Consumable extends Item
 	 * The effect will apply to the player or the weapon who used it.
 	 * The item is destroyed automatically.
 	 */ 
-	private void use(Item itemUsed)
+	private void use(Character aCharacter, Consumable itemUsed)
 	{
-		//appliquer les effets sur le joueur
-		
-		//suppression de l'objet
+		//applique les effets sur le joueur
+		if (care > 0)
+		{
+			aCharacter.addHealth(care);
+		}
+		else if (increaseDamage > 0)
+		{
+			if (weapon == true)
+			{
+				
+			}
+			else
+			{
+				aCharacter.
+			}
+
+		}
+		//delete an item in the inventory
 		Inventory.deleteItem(itemUsed);
 	}
 }
