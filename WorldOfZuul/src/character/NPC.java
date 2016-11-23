@@ -2,8 +2,11 @@ package character;
 
 /**
  * This class describes and manages a NPC.
- * A NPC can be an enemy or a friend.
- * He have a name and other parameter of a class Character. 
+ * A NPC can be an enemy or a friend. By default NPC are enemies.
+ * He have a name and other parameter of a class Character.
+ * A NPC may have more than 2 hands (4 max) it allows him to wear more weapons 
+ * A NPC have no HP limit, but he can't heal himself. 
+ * His functions are redifined compare to a normal Character to respect this.
  * 
  * @author Groupe4
  * @version 10/11/2016
