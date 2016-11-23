@@ -27,11 +27,24 @@ public class TreasureBox extends Item{
 	 * @param canBeSold Boolean : is the item sellAble
 	 * @param aLock Lock : Locked of the chest
 	 */
-	public TreasureBox(String name, String description, int price, boolean sellAble, Lock lock)
+	public TreasureBox(String name, String description, int price, Lock lock)
 	{
-		super(name, description, price, sellAble);
+		super(name, description, price, false);
 		inventory = new Inventory();
 		this.lock = lock;
+	}
+	
+	/**
+	 * Constructor of the class, same parameters without the lock
+	 * @param name String : name of the item
+	 * @param description String : description of the item and it's effects
+	 * @param price Int : price of the item
+	 * @param canBeSold Boolean : is the item sellAble
+	 */
+	public TreasureBox(String name, String description, int price)
+	{
+		super(name, description, price, false);
+		inventory = new Inventory();
 	}
 	
 	/**
