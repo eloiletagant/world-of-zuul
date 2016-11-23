@@ -84,7 +84,7 @@ public class Character
 	 * This method modify HP of the character
 	 * @param hp HP added to the character. Negative value to take damages. HP max are 20
 	 */
-	public void setHealth(int hp)
+	public void addHealth(int hp)
 	{
 		if(health + hp > 20)
 			health = 20;
