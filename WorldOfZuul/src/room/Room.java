@@ -79,7 +79,7 @@ public class Room {
 	 */
 	public void addExit(Door newDoor, String way)
 	{
-		if ((exitDoors.containsValue(newDoor) == false) && (exitDoors.containsKey(way) == false))
+		if (exitDoors.containsValue(newDoor) == false && exitDoors.containsKey(way) == false)
 			exitDoors.put(way, newDoor);
 	}
 	
