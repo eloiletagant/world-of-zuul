@@ -1,6 +1,8 @@
 package item;
 import java.util.ArrayList;
 
+import room.Lock;
+
 /**
  * This class manages all items of a character in an inventory.
  * @author Group4
@@ -12,51 +14,70 @@ public class Inventory
 	// an array of items
 	private ArrayList<Item> items;
 	// money of a player
-	private int gold; 
+	private int gold;
 	// number maximum of items in the inventory
-	private int nbMaxItems;
+	private int maxItems;
+	private String name;
+	private String description;
+	private Lock lock;
 	
 	/**
-	 * Constructor of an inventory.
-	 * By default the inventory has any item and 1000 gold. 
+	 * Constructor of the class
+	 * @param name String : name of the item
+	 * @param description String : description of the item and it's effects
+	 * @param maxItmes int : number max of items in the inventory
+	 * @param lock Lock : Locked of the inventory
+	 * By default the inventory has any item. 
 	 */
-	public Inventory()
-	{
+	public Inventory(String name, String description, int maxItems, Lock lock) {
+		this.name = name;
 		items = new ArrayList<Item>();
-		gold = 1000;
-		nbMaxItems=10;
+		this.maxItems = maxItems;
+		this.lock = lock;
 	}
+	
+	/**
+	 * Constructor of the class
+	 * @param name String : name of the item
+	 * @param description String : description of the item and it's effects
+	 * @param maxItmes int : number max of items in the inventory
+	 * By default the inventory has any item. 
+	 */
+	public Inventory(String name, String description, int maxItems) {
+		this.name = name;
+		items = new ArrayList<Item>();
+		this.maxItems = maxItems;
+	}
+	
 	
 	/**
 	 * This method returns a list of item from the inventory - simple accessor
 	 */
-	public ArrayList<Item> getItems()
-	{
+	public ArrayList<Item> getItems() {
 		return items;
 	}
 	
 	/**
 	 * This method returns gold from the inventory of a character - simple accessor
 	 */
-	public int getGold()
-	{
+	public int getGold() {
 		return gold;
 	}
 	
 	/**
-	 * This method adds some gold in the inventory of a character
+	 * Access to the chest locket
+	 * @return Lock : chest locket 
 	 */
-	public void addGold(int money)
-	{
-		gold=gold+money;
+	public Lock getLock() {
+		return lock;
 	}
 	
 	/**
-	 * This method removes some gold in the inventory of a character
+	 * This method allow to add or remove money (by minus int) from the inventory
 	 */
-	public void removeGold(int money)
+	public void manageGold(int money)
 	{
-		gold=gold-money;
+		gold += money;
 	}
 	
 	
@@ -84,5 +105,18 @@ public class Inventory
 	public void addItem(Item itemToAdd)
 	{
 		items.add(itemToAdd);
+	}
+	
+	/**
+	 * This method open the inventory if it's locked
+	 *  if the key you try to use is the good one
+	 * @param key Key : the key you want to try
+	 * @return: return true if is the correct key and false if is the false key
+	 * 
+	 */
+	public boolean openInventory(Key key) {
+		boolean done = false;
+		
+		return done;
 	}
 }

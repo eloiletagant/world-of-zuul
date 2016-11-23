@@ -48,9 +48,11 @@ public class Consumable extends Item
 	 * The effect will apply to the player or the weapon who used it.
 	 * The item is destroyed automatically.
 	 */ 
-	private void use()
+	private void use(Item itemUsed)
 	{
-		//appliquer les effets sur le 
+		//appliquer les effets sur le joueur
 		
+		//suppression de l'objet
+		Inventory.deleteItem(itemUsed);
 	}
 }
