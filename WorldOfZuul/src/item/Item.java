@@ -74,7 +74,7 @@ public abstract class Item
 	 * This method returns the price of an item.
 	 * @return Integer	price of the item
 	 */
-	public int getPrice()
+	public static int getPrice()
 	{
 		return price;
 	}

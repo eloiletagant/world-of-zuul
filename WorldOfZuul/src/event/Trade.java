@@ -23,7 +23,7 @@ public class Trade extends Event
 	
 	private void buy()
 	{
-		removeGold(Item.getPrice());
+		Inventory.removeGold(Item.getPrice());
 		addItem(Inventory.item);
 	}
 	
