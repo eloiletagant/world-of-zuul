@@ -1,5 +1,6 @@
 package event;
-
+import item.Item;
+import item.Inventory;
 import character.NPC;
 
 /**
@@ -22,12 +23,14 @@ public class Trade extends Event
 	
 	private void buy()
 	{
-		
+		removeGold(Item.getPrice());
+		addItem(Inventory.item);
 	}
 	
 	private void sell ()
 	{
-		
+		addGold(Item.getPrice);
+		deleteItem(Inventory.item);
 	}
 
 }
