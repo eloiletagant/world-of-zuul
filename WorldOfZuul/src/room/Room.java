@@ -79,15 +79,17 @@ public class Room {
 	 */
 	public void addExit(Door newDoor, String way)
 	{
-			
+		if ((exitDoors.containsValue(newDoor) == false) && (exitDoors.containsKey(way) == false))
+			exitDoors.put(way, newDoor);
 	}
 	
 	/**
 	 * Add an event to the room. The same event can't be add twice on the same room
 	 */
-	public void addEvent()
+	public void addEvent(Event anEvent)
 	{
-		
+		if (events.contains(anEvent) == false) 
+			events.add(anEvent);
 	}
 	
 	/**
@@ -95,15 +97,14 @@ public class Room {
 	 */
 	public void removeExit(String way)
 	{
-			
+		exitDoors.remove(way);
 	}
 	
 	/**
 	 * Remove an event to the room.
 	 */
-	public void removeEvent()
+	public void removeEvent(Event anEvent)
 	{
-		
+		events.remove(anEvent);
 	}
-
 }
