@@ -17,7 +17,7 @@ public class Trade extends Event
 	 * Constructor of a trade
 	 */
 	public Trade()
-	{ 
+	{   
 		
 	}
 	

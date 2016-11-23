@@ -41,7 +41,7 @@ public abstract class Item
 		{
 			aDescription="This object seems strange.";
 		}
-		if (aPrice<0)
+		if (aPrice<0) 
 		{
 			aPrice=100;
 		}
