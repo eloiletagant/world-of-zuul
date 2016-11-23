@@ -39,12 +39,7 @@ public abstract class Item
 		if (aDescription.isEmpty()) {
 			aDescription="This object seems strange.";
 		}
-<<<<<<< HEAD
 		if (aPrice<0) {
-=======
-		if (aPrice<0) 
-		{
->>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul
 			aPrice=100;
 		}
 		name = newName; // Assignment of the name.
