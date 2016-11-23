@@ -46,5 +46,7 @@ public class Lock {
 	*/
 	public void openLock(Key k)
 	{
+		if (k == associatedKey)
+			
 	}
 }
