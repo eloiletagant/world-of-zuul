@@ -44,11 +44,28 @@ public class Inventory
 	}
 	
 	/**
+	 * This method adds some gold in the inventory of a character
+	 */
+	public void addGold(int money)
+	{
+		gold=gold+money;
+	}
+	
+	/**
+	 * This method removes some gold in the inventory of a character
+	 */
+	public void removeGold(int money)
+	{
+		gold=gold-money;
+	}
+	
+	
+	/**
 	 * This method deletes all items in an inventory.
 	 */
 	private void resetInventory()
 	{
-		
+		items.clear();
 	}
 	
 	/**
@@ -57,7 +74,15 @@ public class Inventory
 	 */
 	private void deleteItem(Item item)
 	{
-		
+		for(int i = 1; i <= 10; i++)
+		{
+			if (items.Item)
+			{}
+			if (item.getName() ==  items.Item)
+			{
+				items.remove();
+			}
+		}
 	}
 	
 	/**
