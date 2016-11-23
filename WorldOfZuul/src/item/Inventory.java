@@ -29,9 +29,7 @@ public class Inventory
 	 * @param lock Lock : Locked of the inventory
 	 * By default the inventory has any item. 
 	 */
-	public Inventory(String name, String description, int maxItems, Lock lock) {
-		this.setName(name);
-		this.setDescription(description);
+	public Inventory(int maxItems, Lock lock) {
 		this.setMaxItems(maxItems);
 		this.lock = lock;
 		this.items = new ArrayList<Item>();
@@ -44,8 +42,7 @@ public class Inventory
 	 * @param maxItmes int : number max of items in the inventory
 	 * By default the inventory has any item. 
 	 */
-	public Inventory(String name, String description, int maxItems) {
-		this.setName(name);
+	public Inventory( int maxItems) {
 		items = new ArrayList<Item>();
 		this.setMaxItems(maxItems);
 	}

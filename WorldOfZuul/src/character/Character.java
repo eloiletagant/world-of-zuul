@@ -22,9 +22,11 @@ public class Character
 	private Inventory inventory; //All items of the char are present on the inventory
 	private Room location; //Position of the character
 	private int nbHandsAvailable; //Number of hands open to wear weapons : 2 by default and max, and never < 0
-
+	private int maxHealth; // the maximum hp of the character (20) nobody can have maxhp < 5
+	private int maxHands;
+	private int damagesBonus;
 	/**
-	 * Constructeur de la classe
+	 * basic constructor
 	 */
 	public Character(String newName)
 	{
@@ -35,11 +37,49 @@ public class Character
 		else
 			name = newName;
 		health = 20;
-		inventory = new Inventory();
+		inventory = new Inventory(10);
 		nbHandsAvailable = 2;
 		//set up a start room (useful for test)
 		location = new Room("Home",0);
+		maxHealth = 20;
+		maxHands = 2;
+		damagesBonus = 0;
 	}
+	
+	/**
+	 * Special constructor
+	 */
+	public Character(String newName,int hpMax, int nbHandsMax)
+	{
+		if(name.equals(""))
+		{
+			name = "Zuul";
+		}
+		else
+			name = newName;
+		
+		if(nbHandsMax < 0)
+			maxHands = 0;
+		else if(nbHandsMax > 4)
+			maxHands = 4;
+		else
+			maxHands = nbHandsMax;
+		nbHandsAvailable = maxHands;
+		
+		if(hpMax < 5)
+		{
+			maxHealth = 5;
+		}
+		else 
+			maxHealth = hpMax;
+		health = maxHealth;
+		
+		inventory = new Inventory(10);
+		//set up a start room (useful for test)
+		location = new Room("Home",0);
+		damagesBonus = 0;
+	}
+	
 	/**
 	 * This method returns the number of hands which is available for a character.
 	 */
@@ -86,8 +126,8 @@ public class Character
 	 */
 	public void addHealth(int hp)
 	{
-		if(health + hp > 20)
-			health = 20;
+		if(health + hp > maxHealth)
+			health = maxHealth;
 		else if(health + hp < 0)
 			health = 0;
 		else 
@@ -110,9 +150,9 @@ public class Character
 	 */
 	public boolean swapWeapon(int nbr)
 	{
-		if(nbHandsAvailable + nbr > 2)
+		if(nbHandsAvailable + nbr > maxHands)
 		{
-			nbHandsAvailable = 2;
+			nbHandsAvailable = maxHands;
 			return true;
 		}
 		else if(nbHandsAvailable + nbr < 0)
@@ -124,5 +164,18 @@ public class Character
 			nbHandsAvailable += nbr;
 			return true;
 		}
+	}
+	
+	/**
+	 * 
+	 */
+	public int getBonusDamages()
+	{
+		return damagesBonus;		
+	}
+	
+	public void addBonusDamages(int bonus)
+	{
+		
 	}
 }
