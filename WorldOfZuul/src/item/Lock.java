@@ -9,15 +9,14 @@ package item;
  */
 public class Lock {
 	
-	private Key key;
+	private Key key = null;
 	private boolean lock = false;
 
 	/**
 	 * Constructor used to instantiate a lock
 	 * @param: The associated key
 	*/
-	public Lock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
-		this.key = new Key(keyName, keyDescription, keyPrice, keySellAble);
+	public Lock() {
 		lock = true;
 	}
 	
@@ -38,7 +37,16 @@ public class Lock {
 	{
 		return key;
 	}
-	
+
+	/**
+	 * associate a key to the lock
+	 */
+	public void addKey(Key key) {
+		if (this.key == null) {
+            this.key = key;
+        }
+	}
+
 	/**
 	 * This method is used to open a lock if the key corresponds to the associated key
 	 * @param: A key that will be compared with the associated key
