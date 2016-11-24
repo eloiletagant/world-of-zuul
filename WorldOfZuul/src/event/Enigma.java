@@ -34,12 +34,14 @@ public class Enigma extends Event {
      *
      * @param test
      */
-    public void testAnswer(String test) {
+    public boolean testAnswer(String test) {
         if (test.equals(answer)) {
             player.getInventory().addItem(loot);
             System.out.println("Well play, you got it!");
+            return true;
         } else {
             System.out.println("You are close...");
+            return false;
         }
     }
 
