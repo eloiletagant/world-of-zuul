@@ -16,6 +16,7 @@ import event.Event;
 
 public class Room {
 
+
     private String description; // initiate to "UndescribedRoom" is empty
     private HashMap<String, Door> doors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap
     private ArrayList<Event> events; // an event can appear once on a room
