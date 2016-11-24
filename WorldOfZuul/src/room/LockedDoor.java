@@ -23,10 +23,9 @@ public class LockedDoor extends Door{
 	 * Constructor which need the informations about the rooms (current and next one)
 	 * and all informations about the key
 	 */
-	public LockedDoor(Room nextRoom, String keyName, String keyDescription, int keyPrice, boolean keySell){
+	public LockedDoor(Room nextRoom, String keyName, String keyDescription, int keyPrice, boolean keySellAble){
 		super(nextRoom);
-		key = new Key(keyName, keyDescription, keyPrice, keySell);
-		lock = new Lock(key);
+		lock = new Lock(keyName, keyDescription, keyPrice, keySellAble);
 		isLocked = true; //the door is closed by default
 	}
 	
