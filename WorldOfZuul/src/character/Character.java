@@ -178,4 +178,14 @@ public class Character
 	{
 		
 	}
+	
+	public int getMaxHealth()
+	{
+		return maxHealth;
+	}
+	
+	public int getMaxHands()
+	{
+		return maxHands;
+	}
 }

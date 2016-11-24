@@ -67,7 +67,7 @@ public class CharacterTest {
 	public void testSetHealth() 
 	{
 		c1.addHealth(21);
-		assertEquals(c1.getHealth(),20);
+		assertEquals(c1.getHealth(),c1.get);
 		c1.addHealth(-21);
 		assertEquals(c1.getHealth(),0);
 		c1.addHealth(10);
