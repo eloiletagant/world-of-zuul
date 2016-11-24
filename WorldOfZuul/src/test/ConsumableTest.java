@@ -28,7 +28,7 @@ public class ConsumableTest
 	public void setUp()
 	{
 		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
-		myInventory=new Inventory();
+		myInventory=new Inventory(10);
 	}
 	
 	/**
@@ -82,7 +82,8 @@ public class ConsumableTest
 	@Test
 	public void testAddConsumableInInventory()
 	{
-		
+		myInventory.addItem(myConsumable);
+		assertEquals(Arrays.asList(myConsumable),myInventory);
 	}
 	
 	/**
@@ -92,6 +93,8 @@ public class ConsumableTest
 	@Test
 	public void testDeleteConsumableInInventory()
 	{
+		myInventory.addItem(myConsumable);
+		myInventory.deleteItem(myConsumable);
 		
 	}
 }
