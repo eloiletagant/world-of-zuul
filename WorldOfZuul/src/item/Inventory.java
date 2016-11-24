@@ -1,8 +1,6 @@
 package item;
 import java.util.ArrayList;
 
-import room.Lock;
-
 /**
  * This class manages all items of a character in an inventory.
  * @author Group4
@@ -22,30 +20,27 @@ public class Inventory
 	private Lock lock;
 	
 	/**
-	 * Constructor of the class
+	 * Constructor of the class (with a lock to use like a locked chest)
 	 * @param name String : name of the item
 	 * @param description String : description of the item and it's effects
 	 * @param maxItmes int : number max of items in the inventory
 	 * @param lock Lock : Locked of the inventory
 	 * By default the inventory has any item. 
 	 */
-	public Inventory(String name, String description, int maxItems, Lock lock) {
-		this.setName(name);
-		this.setDescription(description);
+	public Inventory(int maxItems, Lock lock) {
 		this.setMaxItems(maxItems);
 		this.lock = lock;
 		this.items = new ArrayList<Item>();
 	}
 	
 	/**
-	 * Constructor of the class
+	 * Constructor of the class, same one without the lock (for a real inventory)
 	 * @param name String : name of the item
 	 * @param description String : description of the item and it's effects
 	 * @param maxItmes int : number max of items in the inventory
 	 * By default the inventory has any item. 
 	 */
-	public Inventory(String name, String description, int maxItems) {
-		this.setName(name);
+	public Inventory( int maxItems) {
 		items = new ArrayList<Item>();
 		this.setMaxItems(maxItems);
 	}

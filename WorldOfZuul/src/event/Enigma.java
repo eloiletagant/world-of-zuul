@@ -30,7 +30,7 @@ public class Enigma extends Event
 	 */
 	public void testAnswer (String test) {
 		if (test.equals(answer)) {
-			player.getInventory.addItem(loot);
+			player.getInventory().addItem(loot);
 		}
 	}
 	

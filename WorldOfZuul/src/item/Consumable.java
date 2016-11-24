@@ -42,14 +42,15 @@ public class Consumable extends Item
 		if (HPdamage < 0)
 		{
 			HPdamage=0;
+			inWeapon=false;
 		}
 		if ((anEffect.isEmpty()) || (HPcare==0 && HPdamage==0))
 		{
 			anEffect = "This consumable has no effect.";
 		}
 		effect = anEffect;
-		care=HPdamage;
-		increaseDamage=HPcare;
+		care=HPcare;
+		increaseDamage=HPdamage;
 		weapon=inWeapon;
 	}
 	
@@ -63,30 +64,31 @@ public class Consumable extends Item
 	}
 	
 	/**
-	 * This method allows using the item.
-	 * The effect will apply to the player or the weapon who used it.
-	 * The item is destroyed automatically.
-	 */ 
-	private void use(Character aCharacter, Consumable itemUsed)
+	 *  This method returns the number of health points which will be cared when a player uses this consumable - simple accessor
+	 * @return int	number of health points cared
+	 */
+	public int getCare()
 	{
-		//applique les effets sur le joueur
-		if (care > 0)
-		{
-			aCharacter.addHealth(care);
-		}
-		else if (increaseDamage > 0)
-		{
-			if (weapon == true)
-			{
-				
-			}
-			else
-			{
-				aCharacter.
-			}
-
-		}
-		//delete an item in the inventory
-		Inventory.deleteItem(itemUsed);
+		return care;
+	}
+	
+	/**
+	 *  This method returns the number of damages which will be added to the damages of the player who used this consumable - simple accessor
+	 * @return int	number of damages added
+	 */
+	public int getDamage()
+	{
+		return increaseDamage;
+	}
+	
+	/**
+	 *  This method returns a boolean : - simple accessor
+	 *  - true if the damages are increased to the weapon of a player
+	 *  - false if damages are increased to the player
+	 * @return String	weapon or player
+	 */
+	public boolean getWeapon()
+	{
+		return weapon;
 	}
 }

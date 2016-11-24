@@ -1,6 +1,7 @@
 package room;
 
 import item.Key;
+import item.Lock;
 
 /**
  * This method manages the door which are locked by a locker (which inherits from Door).

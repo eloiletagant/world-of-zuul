@@ -21,8 +21,8 @@ public class NPC extends Character{
 	 * Function NPC create Character.
 	 * @param String name
 	 */
-	public NPC(String name){
-		super(name);
+	public NPC(String name, int hp, int nbHands){
+		super(name,hp,nbHands);
 		enemy=true;
 	}
 	
@@ -41,29 +41,24 @@ public class NPC extends Character{
 	 */
 	public void swapFriendShip()
 	{
+<<<<<<< HEAD
 
+=======
+		if(enemy = false)
+			enemy = true;
+		else
+			enemy = false;
+>>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul.git
 	}
 	
-	/**
-	 * 
-	 */
-	public void setNbHands(int newNb)
-	{
-		
-	}
 	
 	/**
-	 * 
+	 * This methods add Health to a NPC (Only negative values are accepted because an NPC cant heal)
+	 * @param hp Negative value : damages taken by the NPC
 	 */
 	public void addHealth(int hp)
 	{
-		if
-		super.addHealth(hp);
-		if(health + hp > 20)
-			health = 20;
-		else if(health + hp < 0)
-			health = 0;
-		else 
-			health += hp;
+		if(hp < 0)
+			super.addHealth(hp);
 	}
 }

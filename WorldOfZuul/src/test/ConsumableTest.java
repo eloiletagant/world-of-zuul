@@ -25,7 +25,7 @@ public class ConsumableTest
 	@Before
 	public void setUp()
 	{
-		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it");
+		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
 	}
 	
 	/**
@@ -49,6 +49,9 @@ public class ConsumableTest
 		assertEquals("This bread was cooked by the baker of the village",myConsumable.getDescription());
 		assertEquals(20,myConsumable.getPrice());
 		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
+		assertEquals(0,myConsumable.getCare());
+		assertEquals(3,myConsumable.getDamage());
+		assertEquals(false,myConsumable.getWeapon());
 	}
 	
 	/**
@@ -59,10 +62,14 @@ public class ConsumableTest
 	@Test
 	public void testDefault()
 	{
-		Consumable def = new Consumable("", "", -10, true, "blabla");
+		Consumable def = new Consumable("", "", -10, true, "An effect",-2,-3,true);
 		assertEquals("Unidentified object",def.getName());
 		assertEquals("This object seems strange and come from nowhere.",def.getDescription());
 		assertEquals(100,def.getPrice());
+		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
+		assertEquals(0,myConsumable.getCare());
+		assertEquals(0,myConsumable.getDamage());
+		assertEquals(false,myConsumable.getWeapon());
 	}
 	
 	/**

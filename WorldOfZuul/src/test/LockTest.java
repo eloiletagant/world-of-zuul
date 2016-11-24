@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import item.Key;
-import room.Lock;
+import item.Lock;
 
 
 /**
