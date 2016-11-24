@@ -101,7 +101,7 @@ public class Interface extends JFrame {
             buttonDirection.add(left);
             buttonDirection.add(right);
             buttonDirection.add(front);
-            buttonDirection.add(back);
+            buttonDirection.add(back); 
             
             panelButton.add(buttonDirection, BorderLayout.EAST);
             
