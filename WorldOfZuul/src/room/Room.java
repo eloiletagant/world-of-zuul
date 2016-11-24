@@ -21,7 +21,6 @@ public class Room {
     private ArrayList<Event> events; // an event can appear once on a room
     private int level; // initiate to 0 if the level declaration is < 0
 
-    
     /**
      * Constructor used to instantiate a room
      *
