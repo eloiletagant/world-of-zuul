@@ -21,7 +21,7 @@ import item.Lock;
 public class LockTest {
 	
 	private Lock myLock;
-	private Key myKey, badKey;
+	private Key badKey;
 	
 	/**
 	 * Default constructor for test class LockTest
@@ -36,8 +36,8 @@ public class LockTest {
 	 */
 	@Before
 	public void setUp() {
-		myKey = new Key("Key", null, 0, false);
-		myLock = new Lock(myKey);
+		myLock = new Lock("MyKey", "Test key", 10, true);
+		badKey = new Key("badKey", "Test bad key", 10, true);
 	}
 	
 	/**
@@ -53,7 +53,10 @@ public class LockTest {
 	 */
 	@Test
 	public void testKey(){
-		assertSame(myKey,myLock.getAssociatedKey());
+		assertEquals("MyKey",myLock.getKey().getName());
+		assertEquals("Test Key",myLock.getKey().getDescription());
+		assertEquals(10,myLock.getKey().getPrice());
+		assertEquals(true,myLock.getKey().getSellAble());
 	}
 	
 	/**
@@ -61,10 +64,10 @@ public class LockTest {
 	 * Checks the method openLock with the associated key given in parameter. Checks if the Lock is open too.
 	 */
 	@Test
-	public void testOpenRight(){
-		myLock.openLock(myKey);
-		assertSame(myKey,myLock.getAssociatedKey());
-		assertEquals(false,myLock.getLock());
+	public void testUnlock(){
+		myLock.unlock(badKey);
+		assertSame(badKey,myLock.getKey());
+		assertEquals(true,myLock.getLock());
 	}
 	
 	/**
