@@ -58,7 +58,7 @@ public class CharacterTest {
 		secondRoom = c1.getLocation(); 
 		assertEquals(secondRoom, c1.getLocation());
 	}
-	
+	 
 	/**
 	 * Method testSetHealth
 	 * <p>This method test that a player's hp will never go out of 0/20</p>
