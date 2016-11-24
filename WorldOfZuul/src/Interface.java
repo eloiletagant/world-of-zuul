@@ -69,9 +69,7 @@ public class Interface extends JFrame {
         this.add(myPanel);
         this.setSize(500, 500);
         this.pack();
-        this.setVisible(true);
-        
-        
+        this.setVisible(true);       
     }
     
   
