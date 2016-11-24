@@ -61,39 +61,57 @@ public class CharacterTest {
 	 
 	/**
 	 * Method testSetHealth
-	 * <p>This method test that a player's hp will never go out of 0/20</p>
+	 * <p>This method test that a player's hp will never go out of [0/MaxHp]</p>
+	 * <p>It also test if the health is correctly modified</p>
 	 */
 	@Test
-	public void testSetHealth() 
+	public void testAddHealth() 
 	{
-		c1.addHealth(21);
-		assertEquals(c1.getHealth(),c1.get);
-		c1.addHealth(-21);
+		c1.addHealth(c1.getMaxHealth() + 1);
+		assertEquals(c1.getHealth(),c1.getMaxHealth());
+		c1.addHealth(-(c1.getMaxHealth() + 1));
 		assertEquals(c1.getHealth(),0);
-		c1.addHealth(10);
-		assertEquals(c1.getHealth(),10);
-		c1.addHealth(5);
-		assertEquals(c1.getHealth(),5);
+		c1.addHealth(c1.getMaxHealth()/2);
+		assertEquals(c1.getHealth(),c1.getMaxHealth()/2);
+		c1.addHealth(-(c1.getMaxHealth()/4));
+		assertEquals(c1.getHealth(),c1.getMaxHealth()/4);
 	}
 
 	/**
 	 * Method testSwapWeapon
-	 * <p>This method return false of the number of hands will go out of [0,2].</p>
+	 * <p>This method test if the number of hands will never go out of [0,MaxHands].</p>
 	 * <p>Overwise, the number of available hands will be modified and the method will return true </p>
 	 */
 	@Test
 	public void testSwapWeapon() 
 	{
-		c1.swapWeapon(3);
-		assertEquals(c1.getNbHandsAvailable(),2);
-		c1.swapWeapon(-3);
+		c1.swapWeapon(c1.getMaxHands() + 1);
+		assertEquals(c1.getNbHandsAvailable(),c1.getMaxHands());
+		c1.swapWeapon(-(c1.getMaxHands()+1));
+		assertEquals(c1.getNbHandsAvailable(),c1.getMaxHands());
+		c1.swapWeapon(-c1.getMaxHands());
 		assertEquals(c1.getNbHandsAvailable(),0);
+		c1.swapWeapon(c1.getMaxHands()/2);
+		assertEquals(c1.getNbHandsAvailable(),c1.getMaxHands()/2);
 		c1.swapWeapon(1);
-		assertEquals(c1.getNbHandsAvailable(),1);
-		c1.swapWeapon(1);
-		c1.swapWeapon(1);
-		assertEquals(c1.getNbHandsAvailable(),2);
+		assertEquals(c1.getNbHandsAvailable(),(c1.getMaxHands()/2) + 1);
 		c1.swapWeapon(-1);
-		assertEquals(c1.getNbHandsAvailable(),1);
+		assertEquals(c1.getNbHandsAvailable(),c1.getMaxHands()/2);
+	}
+	
+	/**
+	 * Method testAddBonusDamages
+	 * <p>This method test if the bonus damages are well applied and if it don't go out of [-5,5]</p>
+	 */
+	public void testAddBonusDamages()
+	{
+		c1.addBonusDamages(6);
+		assertEquals(c1.getBonusDamages(),5);
+		c1.addBonusDamages(-11);
+		assertEquals(c1.getBonusDamages(),-5);
+		c1.addBonusDamages(5);
+		assertEquals(c1.getBonusDamages(),0);
+		c1.addBonusDamages(-1);
+		assertEquals(c1.getBonusDamages(),-1);
 	}
 }
