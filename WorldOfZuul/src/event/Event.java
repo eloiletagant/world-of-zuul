@@ -11,30 +11,30 @@ import character.Character;
  */
 public class Event {
     protected String description;
-    protected Item loot;
+    protected Item item;
     protected Character player;
 
     /**
      * Constructor of the class event.
      */
-    public Event(String description, Item loot, Character player) {
+    public Event(String description, Item item, Character player) {
         this.description = description;
-        this.loot = loot;
+        this.item = item;
         this.player = player;
     }
 
     /**
      * This method will give an item to the character after a win event.
      */
-    public Item getLoot() {
-        return loot;
+    public Item getItem() {
+        return item;
     }
 
     /**
-     * This method will set a new item for the event loot.
+     * This method will set a new item for the event item.
      */
-    public void setLoot(Item loot) {
-
+    public void setItem(Item item) {
+        this.item = item;
     }
 
 }
