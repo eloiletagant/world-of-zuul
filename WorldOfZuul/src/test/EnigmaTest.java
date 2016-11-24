@@ -12,7 +12,7 @@ import item.Consumable;
 public class EnigmaTest {
 	
 	private Enigma myEnigma;
-	/** 
+	/**
 	 * sets up
 	 * <p> Initialize one Enigma for each test </p>
 	 */
