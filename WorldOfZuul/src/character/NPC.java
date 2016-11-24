@@ -15,7 +15,7 @@ package character;
 
 public class NPC extends Character{
 	
-	private boolean enemy; //indicate if the NPC is friendly or not 
+	private boolean enemy; //indicate if the NPC is friendly or not. 
 	
 	/**
 	 * Function NPC create Character.
