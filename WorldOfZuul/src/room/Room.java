@@ -33,7 +33,7 @@ public class Room {
             this.description = "UndescribedRoom";
         else
             this.description = description;
-        if (level < 0)
+        if (lvl < 0)
             level = 0;
         else
             level = lvl;
