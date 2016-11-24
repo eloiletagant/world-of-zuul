@@ -23,8 +23,8 @@ public class Character
 	private Room location; //Position of the character
 	private int nbHandsAvailable; //Number of hands open to wear weapons : 2 by default and max, and never < 0
 	private int maxHealth; // the maximum hp of the character (20) nobody can have maxhp < 5
-	private int maxHands;
-	private int damagesBonus;
+	private int maxHands;// [0,4]
+	private int damagesBonus;// [-5,5]
 	/**
 	 * basic constructor
 	 */
@@ -51,7 +51,7 @@ public class Character
 	 */
 	public Character(String newName,int hpMax, int nbHandsMax)
 	{
-		if(name.equals(""))
+		if(newName.equals(""))
 		{
 			name = "Zuul";
 		}
