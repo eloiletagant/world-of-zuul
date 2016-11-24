@@ -7,11 +7,8 @@ import org.junit.Test;
 import item.Consumable;
 import item.Inventory;
 import item.Item;
-import item.Lock;
-import item.Chest;
-import item.Lock;
 import item.Weapon;
-
+import item.Key;
 
 /**
  * The test class ConsumableTest
@@ -25,9 +22,8 @@ public class InventoryTest
 	private Inventory myInventory;
 	private ArrayList<Item> myInventory2;
 	private Consumable myConsumable;
-	private Chest myChest;
-	private Lock aLock;
 	private Weapon myWeapon;
+	private Key myKey;
 
 	/**
 	 * Sets up the test fixture.
@@ -39,10 +35,9 @@ public class InventoryTest
 	{
 		myInventory = new Inventory(10);
 		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
-		aLock= new Lock();
-		myChest=new Chest("Treasure Box", "This treasure box can contain some items", 5, 0, aLock);
-		myWeapon=new Weapon("Sword",String desc, int pric, boolean sell,int dmg, boolean hand");
-
+		myKey=new Key("Key1","This key can open something",0,false);
+		//myChest=new Chest("Treasure Box", "This treasure box can contain some items", 5, 0, aLock);
+		myWeapon=new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5, true);
 	}
 	
 	/**
@@ -63,7 +58,11 @@ public class InventoryTest
 	{
 		myInventory2= new ArrayList<Item>();
 		myInventory2.add(myConsumable);
+		myInventory2.add(myWeapon);
+		myInventory2.add(myKey);
 		myInventory.addItem(myConsumable);
+		myInventory.addItem(myWeapon);
+		myInventory.addItem(myKey);
 		assertEquals(myInventory2,myInventory.getItems());
 	}
 	
@@ -76,9 +75,17 @@ public class InventoryTest
 	{
 		myInventory2= new ArrayList<Item>();
 		myInventory2.add(myConsumable);
+		myInventory2.add(myWeapon);
+		myInventory2.add(myKey);
 		myInventory2.remove(myConsumable);
+		myInventory2.remove(myWeapon);
+		myInventory2.remove(myKey);
 		myInventory.addItem(myConsumable);
+		myInventory.addItem(myWeapon);
+		myInventory.addItem(myKey);
 		myInventory.deleteItem(myConsumable);
+		myInventory.deleteItem(myWeapon);
+		myInventory.deleteItem(myKey);
 		assertEquals(myInventory2,myInventory.getItems());
 	}
 	
@@ -89,6 +96,14 @@ public class InventoryTest
 	@Test
 	public void testResetItem()
 	{
-		
+		myInventory2.add(myConsumable);
+		myInventory2.add(myWeapon);
+		myInventory2.add(myKey);
+		myInventory2.clear();
+		myInventory.addItem(myConsumable);
+		myInventory.addItem(myWeapon);
+		myInventory.addItem(myKey);
+		myInventory.resetInventory();
+		assertEquals(myInventory2,myInventory.getItems());
 	}
 }
