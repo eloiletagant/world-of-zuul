@@ -1,5 +1,4 @@
 package item;
-import character.Character;
 
 /**
  * This class manages consumables.
