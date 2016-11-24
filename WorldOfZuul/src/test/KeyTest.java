@@ -1,5 +1,4 @@
 package test;
-import item.Consumable;
 import item.Key;
 import org.junit.Before;
 import static org.junit.Assert.*;

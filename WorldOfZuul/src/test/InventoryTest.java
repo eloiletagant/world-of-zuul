@@ -52,7 +52,7 @@ public class InventoryTest
 	
 	/**
 	 * Method testAddItemsInventory
-	 * <p>Checks if the consumable is correctly added in an inventory</p>
+	 * <p>Checks if items is correctly added in an inventory</p>
 	 */
 	@Test
 	public void testAddItemsInventory()
@@ -70,7 +70,7 @@ public class InventoryTest
 	
 	/**
 	 * Method testDeleteItemsInventory
-	 * <p>Checks if the consumable is correctly deleted in an inventory</p>
+	 * <p>Checks if items is correctly deleted in an inventory</p>
 	 */
 	@Test
 	public void testDeleteItemsInventory()
