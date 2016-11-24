@@ -40,7 +40,35 @@ public class Interface extends JFrame {
         //Icon myIcon= new ImageIcon("./chateau.jpg");
         JPanel myPanel = new JPanel(new BorderLayout ());
         JPanel panelButton = new JPanel (new BorderLayout ());
+        JPanel buttonDirection = new JPanel (new GridLayout(2,2));
         JPanel Button = new JPanel (new GridLayout (2,1));
+
+        Icon flecheRIght = new ImageIcon("./Fdroite.jpg");
+        Icon flecheFront = new ImageIcon("./Fhaut.jpg");
+        Icon flecheRecul = new ImageIcon ("./Fbas.jpg");
+        Icon flecheGauche = new ImageIcon("./Fgauche.jpg");
+        //(new javax.swing.ImageIcon(getClass().getResource("chateau.jpg"))).getImage();
+   
+
+        //Image on the background
+
+
+        right= new JButton(flecheRIght);
+        right.setBackground(Color.black);
+        front = new JButton(flecheFront);
+        front.setBackground(Color.black);
+        back = new JButton(flecheRecul);
+        back.setBackground(Color.black);
+        left = new JButton(flecheGauche);
+        left.setBackground(Color.black);
+      
+        left.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        right.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        back.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        front.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        
+        
+        
         if (salle == "Acceuil")
         {        
             Icon myIcon= new ImageIcon("./chateau.jpg");
@@ -48,10 +76,10 @@ public class Interface extends JFrame {
             //(new javax.swing.ImageIcon(getClass().getResource("chateau.jpg"))).getImage();
        
         
-            //Mise d'une image en fond
+            //Image on the background
             JLabel label = new JLabel (myIcon);
         
-            //Créatio bouton play
+            //Create button play
             //Buttons design
             Font police = new Font ("Kristen ITC", Font.BOLD, 14);
        
@@ -75,90 +103,36 @@ public class Interface extends JFrame {
             myPanel.add(label,BorderLayout.NORTH);
             myPanel.add(panelButton, BorderLayout.SOUTH);
         
-        
-        
+               
         }   
         else if (salle == "3Doors")
         {        
-            Icon myIcon= new ImageIcon("./Room3Doors.jpg");
-            Icon flecheRIght = new ImageIcon("./Fdroite.jpg");
-            Icon flecheFront = new ImageIcon("./Fhaut.jpg");
-            Icon flecheRecul = new ImageIcon ("./Fbas.jpg");
-            Icon flecheGauche = new ImageIcon("./Fgauche.jpg");
-            //(new javax.swing.ImageIcon(getClass().getResource("chateau.jpg"))).getImage();
-       
-        
-            //Mise d'une image en fond
+            Icon myIcon= new ImageIcon("./Room3Doors.png");
             JLabel label = new JLabel (myIcon);
-        
-      
-
-            right= new JButton(flecheRIght);
-            right.setBackground(Color.black);
-            front = new JButton(flecheFront);
-            front.setBackground(Color.black);
-            back = new JButton(flecheRecul);
-            back.setBackground(Color.black);
-            left = new JButton(flecheGauche);
-            left.setBackground(Color.black);
-          
-            left.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            right.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            back.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            front.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-       
-        
-        
-            panelButton.add(left,BorderLayout.WEST);
-            panelButton.add(right,BorderLayout.EAST);
-            panelButton.add(front,BorderLayout.NORTH);
-            panelButton.add(back,BorderLayout.SOUTH);
-        
+            
+            buttonDirection.add(left,BorderLayout.WEST);
+            buttonDirection.add(right,BorderLayout.EAST);
+            buttonDirection.add(front,BorderLayout.NORTH);
+            buttonDirection.add(back,BorderLayout.SOUTH);
+            
+            
             myPanel.add(label,BorderLayout.NORTH);
-            myPanel.add(panelButton, BorderLayout.SOUTH);
+            myPanel.add(buttonDirection, BorderLayout.SOUTH);
         
-        
-        
-         }  
+   
+        }  
          else if (salle == "2Doors")
         {        
             Icon myIcon= new ImageIcon("./Room2Doors.png");
-            Icon flecheRIght = new ImageIcon("./Fdroite.jpg");
-            Icon flecheFront = new ImageIcon("./Fhaut.jpg");
-            Icon flecheRecul = new ImageIcon ("./Fbas.jpg");
-            Icon flecheGauche = new ImageIcon("./Fgauche.jpg");
-            //(new javax.swing.ImageIcon(getClass().getResource("chateau.jpg"))).getImage();
-       
-
-            //Mise d'une image en fond
             JLabel label = new JLabel (myIcon);
-
-            right= new JButton(flecheRIght);
-            right.setBackground(Color.black);
-            front = new JButton(flecheFront);
-            front.setBackground(Color.black);
-            back = new JButton(flecheRecul);
-            back.setBackground(Color.black);
-            left = new JButton(flecheGauche);
-            left.setBackground(Color.black);
-          
-            left.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            right.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            back.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            front.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-       
-        
-            panelButton.add(left,BorderLayout.WEST);
-            panelButton.add(right,BorderLayout.EAST);
-            panelButton.add(front,BorderLayout.NORTH);
-            panelButton.add(back,BorderLayout.SOUTH);
+            
+        	buttonDirection.add(right,BorderLayout.EAST);
+        	buttonDirection.add(front,BorderLayout.NORTH);
+        	buttonDirection.add(back,BorderLayout.SOUTH);
         
             myPanel.add(label,BorderLayout.NORTH);
-            myPanel.add(panelButton, BorderLayout.SOUTH);
-        
-        
-        
-         } 
+            myPanel.add(buttonDirection, BorderLayout.SOUTH);
+        } 
          
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       this.setTitle("WOZ");    
