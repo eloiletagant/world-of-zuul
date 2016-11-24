@@ -13,8 +13,8 @@ package item;
  * @version 22/11/2016
  *
  */
-public class Weapon extends Item{
-
+public class Weapon extends Item
+{
 	private int damages;
 	private boolean oneHand;
 	private boolean equiped;

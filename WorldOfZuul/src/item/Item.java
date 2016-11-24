@@ -32,15 +32,20 @@ public abstract class Item
 	 */
 	public Item(String newName, String aDescription, int aPrice, boolean sell)
 	{
-		if (newName.isEmpty()) {
-			newName="Unidentified object";
-			aDescription="This object seems strange and come from nowhere.";
-		}
-		if (aDescription.isEmpty()) {
+		if (aDescription.isEmpty())
+		{
 			aDescription="This object seems strange.";
 		}
-		if (aPrice<0) {
+		if (aPrice<0)
+		{
 			aPrice=100;
+		}
+		if (newName.isEmpty())
+		{
+			newName="Unidentified object";
+			aDescription="This object seems strange and come from nowhere";
+			sell=false;
+			aPrice=0;
 		}
 		name = newName; 
 		description = aDescription;

@@ -33,7 +33,5 @@ public class Key extends Item
 	public String getKeyToken()
 	{
 		return keyToken;
-	}
-
-	
+	}	
 }

@@ -47,7 +47,7 @@ public class ConsumableTest
 
 	/**
 	 * Method testBread
-	 * Checks if the name given as parameter in the constructor is correctly set to the attribute.
+	 * Checks if the given parameter in the constructor is correctly set to the attribute.
 	 * 
 	 */
 	@Test
@@ -56,6 +56,7 @@ public class ConsumableTest
 		assertEquals("Bread",myConsumable.getName());
 		assertEquals("This bread was cooked by the baker of the village",myConsumable.getDescription());
 		assertEquals(20,myConsumable.getPrice());
+		assertEquals(true,myConsumable.getSellAble());
 		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
 		assertEquals(0,myConsumable.getCare());
 		assertEquals(3,myConsumable.getDamage());
@@ -72,39 +73,12 @@ public class ConsumableTest
 	{
 		Consumable bad = new Consumable("", "", -10, true, "An effect",-2,-3,true);
 		assertEquals("Unidentified object",bad.getName());
-		assertEquals("This object seems strange and come from nowhere.",bad.getDescription());
-		assertEquals(100,bad.getPrice());
-		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
+		assertEquals("This object seems strange and come from nowhere",bad.getDescription());
+		assertEquals(0,bad.getPrice());
+		assertEquals(false,bad.getSellAble());
+		assertEquals("This consumable has no effect",bad.getEffect());
 		assertEquals(0,bad.getCare());
 		assertEquals(0,bad.getDamage());
 		assertEquals(false,bad.getWeapon());
-	}
-	
-	/**
-	 * Method testAddConsumableInInventory
-	 * <p>Checks if the consumable is correctly added in an inventory</p>
-	 */
-	@Test
-	public void testAddConsumableInInventory()
-	{
-		myInventory2= new ArrayList<Item>();
-		myInventory2.add(myConsumable);
-		myInventory.addItem(myConsumable);
-		assertEquals(myInventory2,myInventory.getItems());
-	}
-	
-	/**
-	 * Method testDeleteConsumableInInventory
-	 * <p>Checks if the consumable is correctly deleted in an inventory</p>
-	 */
-	@Test
-	public void testDeleteConsumableInInventory()
-	{
-		myInventory2= new ArrayList<Item>();
-		myInventory2.add(myConsumable);
-		myInventory2.remove(myConsumable);
-		myInventory.addItem(myConsumable);
-		myInventory.deleteItem(myConsumable);
-		assertEquals(myInventory2,myInventory.getItems());
 	}
 }

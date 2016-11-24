@@ -55,9 +55,9 @@ public class Consumable extends Item
 			increaseDamage=HPdamage;
 			weapon=inWeapon;
 		}
-		if ((anEffect.isEmpty()) || (care==0 && increaseDamage==0))
+		if ((newName.isEmpty() || (anEffect.isEmpty())) || (care==0 && increaseDamage==0))
 		{
-			effect = "This consumable has no effect.";
+			effect = "This consumable has no effect";
 			weapon=false;
 		}
 		else
