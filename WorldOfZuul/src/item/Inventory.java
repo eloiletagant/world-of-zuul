@@ -15,37 +15,33 @@ public class Inventory
 	private int gold;
 	// number maximum of items in the inventory
 	private int maxItems;
-	private String name;
-	private String description;
-	private Lock lock;
+
 	
 	/**
-	 * Constructor of the class (with a lock to use like a locked chest)
-	 * @param name String : name of the item
-	 * @param description String : description of the item and it's effects
-	 * @param maxItmes int : number max of items in the inventory
-	 * @param lock Lock : Locked of the inventory
+	 * Constructor by default of an inventory
+	 * @param nbMaxItems int : number max of items in the inventory
 	 * By default the inventory has any item. 
 	 */
-	public Inventory(int maxItems, Lock lock) {
-		this.setMaxItems(maxItems);
-		this.lock = lock;
-		this.items = new ArrayList<Item>();
-	}
-	
-	/**
-	 * Constructor of the class, same one without the lock (for a real inventory)
-	 * @param name String : name of the item
-	 * @param description String : description of the item and it's effects
-	 * @param maxItmes int : number max of items in the inventory
-	 * By default the inventory has any item. 
-	 */
-	public Inventory( int maxItems) {
+	public Inventory(int nbMaxItems) {
 		items = new ArrayList<Item>();
-		this.setMaxItems(maxItems);
+		gold = 1000;
+		maxItems=nbMaxItems;
 	}
 	
+	/**
+	 * Constructor used only to create a chest
+	 * @param nbMaxItems int : number max of items in the inventory
+	 * @param gold int : number of gold in the inventory
+	 * By default the inventory has any item. 
+	 */
+	public Inventory(int nbMaxItems, int golds)
+	{
+		items = new ArrayList<Item>();
+		gold = golds;
+		maxItems=nbMaxItems;
+	}
 	
+
 	/**
 	 * This method returns a list of item from the inventory - simple accessor
 	 */
@@ -59,21 +55,6 @@ public class Inventory
 	public int getGold() {
 		return gold;
 	}
-	
-	/**
-	 * Access to the chest locket
-	 * @return Lock : chest locket 
-	 */
-	public Lock getLock() {
-		return lock;
-	}
-	
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
 
 	/**
 	 * @return the maxItems
@@ -82,35 +63,6 @@ public class Inventory
 		return maxItems;
 	}
 
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	/**
-	 * @param maxItems the maxItems to set
-	 */
-	public void setMaxItems(int maxItems) {
-		this.maxItems = maxItems;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	
 	
 	/**
 	 * This method allow to add or remove money (by minus int) from the inventory
@@ -144,16 +96,5 @@ public class Inventory
 	public void addItem(Item itemToAdd)
 	{
 		items.add(itemToAdd);
-	}
-	
-	/**
-	 * This method open the inventory if it's locked
-	 *  if the key you try to use is the good one
-	 * @param key Key : the key you want to try
-	 * @return: return true if is the correct key and false if is the false key
-	 * 
-	 */
-	public boolean openInventory(Key key) {
-		return lock.unlock(key);
 	}
 }

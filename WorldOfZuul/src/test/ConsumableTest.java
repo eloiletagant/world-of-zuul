@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import item.Consumable;
+import item.Inventory;
 
 
 /**
@@ -16,6 +17,7 @@ import item.Consumable;
 public class ConsumableTest
 {
 	private Consumable myConsumable;
+	private Inventory myInventory;
 
 	/**
 	 * Sets up the test fixture.
@@ -26,6 +28,7 @@ public class ConsumableTest
 	public void setUp()
 	{
 		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
+		myInventory=new Inventory();
 	}
 	
 	/**
@@ -51,7 +54,7 @@ public class ConsumableTest
 		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
 		assertEquals(0,myConsumable.getCare());
 		assertEquals(3,myConsumable.getDamage());
-		assertEquals(false,myConsumable.getWeapon());
+		assertEquals(true,myConsumable.getWeapon());
 	}
 	
 	/**
@@ -62,32 +65,32 @@ public class ConsumableTest
 	@Test
 	public void testDefault()
 	{
-		Consumable def = new Consumable("", "", -10, true, "An effect",-2,-3,true);
-		assertEquals("Unidentified object",def.getName());
-		assertEquals("This object seems strange and come from nowhere.",def.getDescription());
-		assertEquals(100,def.getPrice());
+		Consumable bad = new Consumable("", "", -10, true, "An effect",-2,-3,true);
+		assertEquals("Unidentified object",bad.getName());
+		assertEquals("This object seems strange and come from nowhere.",bad.getDescription());
+		assertEquals(100,bad.getPrice());
 		assertEquals("This bread get 2 health points to the person who eats it",myConsumable.getEffect());
-		assertEquals(0,myConsumable.getCare());
-		assertEquals(0,myConsumable.getDamage());
-		assertEquals(false,myConsumable.getWeapon());
+		assertEquals(0,bad.getCare());
+		assertEquals(0,bad.getDamage());
+		assertEquals(false,bad.getWeapon());
 	}
 	
 	/**
-	 * Method testUse
-	 * <p>Checks if the effect is correctly apply</p>
+	 * Method testAddConsumableInInventory
+	 * <p>Checks if the consumable is correctly added in an inventory</p>
 	 */
 	@Test
-	public void testUseEffect()
+	public void testAddConsumableInInventory()
 	{
 		
 	}
 	
 	/**
-	 * Method testUseDestroyItem
-	 * <p>Checks if the effect is correctly apply</p>
+	 * Method testDeleteConsumableInInventory
+	 * <p>Checks if the consumable is correctly deleted in an inventory</p>
 	 */
 	@Test
-	public void testUseDestroyItem()
+	public void testDeleteConsumableInInventory()
 	{
 		
 	}

@@ -34,24 +34,34 @@ public class Consumable extends Item
 	public Consumable(String newName, String aDescription, int aPrice, boolean sell,String anEffect, int HPcare, int HPdamage, boolean inWeapon)
 	{
 		super(newName,aDescription,aPrice,sell);
-		if (HPcare < 0)
+		if (HPcare<0)
 		{
-			HPcare=0;
-			inWeapon=false;
+			care=0;
 		}
-		if (HPdamage < 0)
+		else
 		{
-			HPdamage=0;
-			inWeapon=false;
+			care=HPcare;
 		}
-		if ((anEffect.isEmpty()) || (HPcare==0 && HPdamage==0))
+		if (HPdamage<=0)
 		{
-			anEffect = "This consumable has no effect.";
+			increaseDamage=0;
+			weapon=false;
 		}
-		effect = anEffect;
-		care=HPcare;
-		increaseDamage=HPdamage;
-		weapon=inWeapon;
+		else
+		{
+			increaseDamage=HPdamage;
+			weapon=inWeapon;
+		}
+		if ((anEffect.isEmpty()) || (care==0 && increaseDamage==0))
+		{
+			effect = "This consumable has no effect.";
+			weapon=false;
+		}
+		else
+		{
+			effect = anEffect;
+			weapon=inWeapon;
+		}
 	}
 	
 	/**
