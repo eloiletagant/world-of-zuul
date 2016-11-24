@@ -148,7 +148,7 @@ public class Character
 	 * @param nbr number of hand of the new weapon (positive : unequip, negative to equip weapon)
 	 * @return true : the weapon can be equiped / unequiped; false : it cant
 	 */
-	public boolean swapWeapon(int nbr)
+	public boolean swapWeapon(int nbr) 
 	{
 		if(nbHandsAvailable + nbr > maxHands)
 		{

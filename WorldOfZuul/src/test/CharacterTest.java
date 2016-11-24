@@ -83,7 +83,7 @@ public class CharacterTest {
 	 * <p>Overwise, the number of available hands will be modified and the method will return true </p>
 	 */
 	@Test
-	public void testSwapWeapon() 
+	public void testSwapWeapon()
 	{
 		c1.swapWeapon(c1.getMaxHands() + 1);
 		assertEquals(c1.getNbHandsAvailable(),c1.getMaxHands());
