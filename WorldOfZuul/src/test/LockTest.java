@@ -55,7 +55,7 @@ public class LockTest {
 	@Test
 	public void testKey(){
 		myLock.addKey(goodKey);
-		assertSame("goodKey",myLock.getKey().getName());
+		assertSame(goodKey,myLock.getKey());
 	}
 	
 	/**
