@@ -7,16 +7,16 @@ package item;
  * @version 10/11/2016
  *
  */
-public class Lock {
-	
+public class Lock
+{	
 	private Key key = null;
-	private boolean lock = false;
+	private boolean lock;
 
 	/**
 	 * Constructor used to instantiate a lock
-	 * @param: The associated key
-	*/
-	public Lock() {
+	 */
+	public Lock()
+	{
 		lock = true;
 	}
 	
@@ -41,8 +41,10 @@ public class Lock {
 	/**
 	 * associate a key to the lock
 	 */
-	public void addKey(Key key) {
-		if (this.key == null) {
+	public void addKey(Key key)
+	{
+		if (this.key == null)
+		{
             this.key = key;
         }
 	}
