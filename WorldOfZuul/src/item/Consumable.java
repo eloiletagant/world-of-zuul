@@ -49,8 +49,8 @@ public class Consumable extends Item
 			anEffect = "This consumable has no effect.";
 		}
 		effect = anEffect;
-		care=HPdamage;
-		increaseDamage=HPcare;
+		care=HPcare;
+		increaseDamage=HPdamage;
 		weapon=inWeapon;
 	}
 	
