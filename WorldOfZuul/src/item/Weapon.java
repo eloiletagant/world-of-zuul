@@ -6,7 +6,7 @@ package item;
  * <ul>
  * <li> check if the weapons is onehand or not <li>
  * <li> check the weapon's damages <li>
- * <li> Equipe with an weapon <li>
+ * <li> Equip with an weapon <li>
  * <li> put the weapon <li>
  * </ul>
  * @author Group 4
@@ -20,23 +20,27 @@ public class Weapon extends Item{
 	private boolean equiped;
 	
 	/**
-	 * constructor of the class weapon.
+	 * Constructor of the Weapon class
+	 * If the given name is a null string, the name is "Unidentified object".
+	 * If the given description is a null string, the description is "This object seems strange".
+	 * If the given price is negative, the price is 100 gold.
+	 * If the given nbDamage is negative, it will be equals to 0.
 	 * 
-	 * @param newName	name of the weapon
-	 * @param desc		description of the weapon
-	 * @param pric		price of the weapon
-	 * @param sell		true if the weapon is able to sell
-	 * @param dmg		damages induced by the weapon
-	 * @param hand		true if the weapon needs just one hand to be equipped. 
+	 * @param newName String		name of the item
+	 * @param aDescription String	description of the item
+	 * @param aPrice Int			price of the item
+	 * @param sell Boolean			true if the item can be sell
+	 * @param nbDamage Int			damages induced by the weapon
+	 * @param hand					true if the weapon needs just one hand to be equipped. 
 	 */
-	public Weapon(String newName, String desc, int pric, boolean sell,int dmg, boolean hand)
+	public Weapon(String newName, String aDescription, int aPrice, boolean sell, int nbDamage, boolean hand)
 	{
-		super(newName,desc,pric,sell);
-		if (dmg<0)
+		super(newName,aDescription,aPrice,sell);
+		if (nbDamage<0)
 		{
-			dmg=2;
+			nbDamage=2;
 		}
-		damages = dmg;
+		damages = nbDamage;
 		oneHand = hand;
 		equiped = false;
 	}

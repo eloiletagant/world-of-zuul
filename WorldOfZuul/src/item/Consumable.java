@@ -21,8 +21,12 @@ public class Consumable extends Item
 	private boolean weapon;
 	
 	/**
-	 * Constructor of Consumable class.
-	 * If the name is a null string, the given name is "Potion".
+	 * Constructor of the Consumable class
+	 * If the given name is a null string, the name is "Unidentified object".
+	 * If the given description is a null string, the description is "This object seems strange".
+	 * If the given price is negative, the price is 100 gold.
+	 * If the given effect is a null string, the effect is "This consumable has no effect".
+	 * If given HPcare and increaseDamage are negative, they will be equals to 0.
 	 * 
 	 * @param newName String		name of the item
 	 * @param aDescription String	description of the item
@@ -30,7 +34,7 @@ public class Consumable extends Item
 	 * @param sell Boolean			true if the item can be sell
 	 * @param anEffect String		effect of the item
 	 */
-	public Consumable(String newName, String aDescription, int aPrice, boolean sell,String anEffect, int HPcare, int HPdamage, boolean inWeapon)
+	public Consumable(String newName, String aDescription, int aPrice, boolean sell, String anEffect, int HPcare, int HPdamage, boolean inWeapon)
 	{
 		super(newName,aDescription,aPrice,sell);
 		if (HPcare<0)
