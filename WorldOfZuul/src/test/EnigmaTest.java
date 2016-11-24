@@ -8,14 +8,13 @@ public class EnigmaTest {
 
 	@Test
     /**
-    * This method allow testing if the answer is the good for an enigma.
-    */
+     * Method testTestAnswer
+     * This method checks if the method of comparison of answer works well.
+     */
 	public void testTestAnswer() throws Exception {
-		 Enigma a= new Enigma(   );
-	     assertTrue(a.testAnswer(  ));
-	     assertFalse(a.testAnswer(  ));
+		 Enigma a= new Enigma("chaussettes");
+	     assertTrue(testAnswer(a));
+	     Enigma a= new Enigma("other");
+	     assertFalse(a.testAnswer(testAnswer(a));
 	}
-	
-
-
 }
