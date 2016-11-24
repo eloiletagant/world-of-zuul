@@ -20,6 +20,7 @@ public class Lock {
 		
 		this.key = new Key(keyName, keyDescription, keyPrice, keySellAble);
 		lock = true;
+		
 	}
 	
 	/**
