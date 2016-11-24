@@ -41,7 +41,7 @@ public class NPC extends Character{
 	 */
 	public void swapFriendShip()
 	{
-		if(enemy = false)
+		if(enemy == false)
 			enemy = true;
 		else
 			enemy = false;

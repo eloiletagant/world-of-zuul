@@ -23,8 +23,8 @@ public class Character
 	private Room location; //Position of the character
 	private int nbHandsAvailable; //Number of hands open to wear weapons : 2 by default and max, and never < 0
 	private int maxHealth; // the maximum hp of the character (20) nobody can have maxhp < 5
-	private int maxHands;
-	private int damagesBonus;
+	private int maxHands;// [0,4]
+	private int damagesBonus;// [-5,5]
 	/**
 	 * basic constructor
 	 */
@@ -51,7 +51,7 @@ public class Character
 	 */
 	public Character(String newName,int hpMax, int nbHandsMax)
 	{
-		if(name.equals(""))
+		if(newName.equals(""))
 		{
 			name = "Zuul";
 		}
@@ -148,7 +148,7 @@ public class Character
 	 * @param nbr number of hand of the new weapon (positive : unequip, negative to equip weapon)
 	 * @return true : the weapon can be equiped / unequiped; false : it cant
 	 */
-	public boolean swapWeapon(int nbr)
+	public boolean swapWeapon(int nbr) 
 	{
 		if(nbHandsAvailable + nbr > maxHands)
 		{
@@ -174,9 +174,18 @@ public class Character
 		return damagesBonus;		
 	}
 	
+	/**
+	 * Add or remove some damages to the character
+	 * @param bonus negative ==> diminution of damages. Can't be over 5 and under -5
+	 */
 	public void addBonusDamages(int bonus)
 	{
-		
+		if(damagesBonus + bonus > 5)
+			damagesBonus = 5;
+		else if(damagesBonus + bonus < -5)
+			damagesBonus = -5;
+		else
+			damagesBonus += bonus;
 	}
 	
 	public int getMaxHealth()

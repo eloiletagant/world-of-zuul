@@ -21,7 +21,7 @@ import item.Lock;
 public class LockTest {
 	
 	private Lock myLock;
-	private Key myKey, badKey;
+	private Key badKey, goodKey;
 	
 	/**
 	 * Default constructor for test class LockTest
@@ -35,9 +35,11 @@ public class LockTest {
 	 * Initialize one key and the lock associated
 	 */
 	@Before
-	public void setUp() {
-		myKey = new Key("Key", null, 0, false);
-		myLock = new Lock(myKey);
+	public void setUp() {		
+		goodKey = new Key("goodKey", "Test good key", 10, true);
+		badKey = new Key("badKey", "Test bad key", 10, true);
+		myLock = new Lock();
+		myLock.addKey(goodKey);
 	}
 	
 	/**
@@ -46,36 +48,34 @@ public class LockTest {
 	 */
 	@After
 	public void tearDown(){}
-	
 	/**
 	 * Method test key
 	 * Checks if the key given in Lock constructor is correctly set to the attribute
 	 */
 	@Test
 	public void testKey(){
-		assertSame(myKey,myLock.getAssociatedKey());
+		assertSame(goodKey,myLock.getKey());
 	}
 	
 	/**
-	 * Method testOpenRight
-	 * Checks the method openLock with the associated key given in parameter. Checks if the Lock is open too.
+	 * Method goodUnlock
+	 * Checks the method unlock with the associated key given in parameter. Checks if the Lock is unlocked too.
 	 */
 	@Test
-	public void testOpenRight(){
-		myLock.openLock(myKey);
-		assertSame(myKey,myLock.getAssociatedKey());
+	public void goodUnlock(){
+		myLock.unlock(goodKey);
+		assertSame(goodKey,myLock.getKey());
 		assertEquals(false,myLock.getLock());
 	}
 	
 	/**
-	 * Method testOpenBad
-	 * Checks the method openLock with a non associated key given in parameter. Checks if the Lock stay close too.
+	 * Method badUnlock
+	 * Checks the method unlock with a non associated key given in parameter. Checks if the Lock is locked too.
 	 */
 	@Test
-	public void testOpenBad(){
-		badKey = new Key("BadKey", null, 0, false);
-		myLock.openLock(badKey);
-		assertNotSame(badKey,myLock.getAssociatedKey());
+	public void badUnlock(){
+		myLock.unlock(badKey);
+		assertNotSame(badKey,myLock.getKey());
 		assertEquals(true,myLock.getLock());
 	}
 }

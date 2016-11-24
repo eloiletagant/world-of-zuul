@@ -35,20 +35,16 @@ public class RoomTest {
 	public void tearDown(){}
 	
 	@Test
-	public void testName(){
-		assertEquals("Salle 1",myRoom.getRoomName());
+	public void testRoom(){
+		assertEquals("Salle 1",myRoom.getDescription());
+		assertEquals(1,myRoom.getLevel());
 	}
 	
 	@Test
-	public void testEmptyName()
+	public void testEmptyDescription()
 	{
 		Room myRoom2 = new Room("", 1);
-		assertEquals("UnnamedRoom",myRoom2.getRoomName());
-	}
-	
-	@Test
-	public void testLevel(){
-		assertEquals(1,myRoom.getLevel());
+		assertEquals("UndescribedRoom",myRoom2.getDescription());
 	}
 	
 	@Test
@@ -58,7 +54,7 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void testAddExit() 
+	public void testGoodAddExit() 
 	{
 		Room room2 = new Room("Salle 2", 1);
 		Room room3 = new Room("Salle 3", 1);
@@ -66,6 +62,7 @@ public class RoomTest {
 		Door d2 = new Door(room2);
 		Door d3 = new Door(room3);
 		Door d4 = new Door(myRoom);
+		
 		myRoom.addExit(d1, "front");
 		HashMap<String, Door> map = new HashMap<String, Door>();
 		map.put("front", d1);
@@ -84,5 +81,11 @@ public class RoomTest {
 	}
 		
 	
+/* Test addExit avec salle pas déjà présente, direction pas déjà prise
+ * Test addexit avec salle déjà présente et direction déjà prise 
+ * Test remove door avec salle présente
+ * Avec salle pas présente
+ * ......
+ * */
 	
 }

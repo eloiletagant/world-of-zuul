@@ -1,10 +1,14 @@
 package test;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import item.Consumable;
 import item.Inventory;
+import item.Item;
 
 
 /**
@@ -18,6 +22,7 @@ public class ConsumableTest
 {
 	private Consumable myConsumable;
 	private Inventory myInventory;
+	private ArrayList<Item> myInventory2;
 
 	/**
 	 * Sets up the test fixture.
@@ -82,8 +87,10 @@ public class ConsumableTest
 	@Test
 	public void testAddConsumableInInventory()
 	{
+		myInventory2= new ArrayList<Item>();
+		myInventory2.add(myConsumable);
 		myInventory.addItem(myConsumable);
-		assertEquals(Arrays.asList(myConsumable),myInventory);
+		assertEquals(myInventory2,myInventory.getItems());
 	}
 	
 	/**
@@ -93,8 +100,11 @@ public class ConsumableTest
 	@Test
 	public void testDeleteConsumableInInventory()
 	{
+		myInventory2= new ArrayList<Item>();
+		myInventory2.add(myConsumable);
+		myInventory2.remove(myConsumable);
 		myInventory.addItem(myConsumable);
 		myInventory.deleteItem(myConsumable);
-		
+		assertEquals(myInventory2,myInventory.getItems());
 	}
 }
