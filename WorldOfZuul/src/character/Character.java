@@ -165,7 +165,7 @@ public class Character
 			return true;
 		}
 	}
-	
+	 
 	/**
 	 * 
 	 */
@@ -177,5 +177,15 @@ public class Character
 	public void addBonusDamages(int bonus)
 	{
 		
+	}
+	
+	public int getMaxHealth()
+	{
+		return maxHealth;
+	}
+	
+	public int getMaxHands()
+	{
+		return maxHands;
 	}
 }
