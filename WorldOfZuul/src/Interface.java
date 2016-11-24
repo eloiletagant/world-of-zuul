@@ -71,7 +71,6 @@ public class Interface extends JFrame {
         this.pack();
         this.setVisible(true);       
     }
-    
-  
-
+ 
+ 
 }
