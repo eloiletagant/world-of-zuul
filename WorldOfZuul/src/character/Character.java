@@ -30,7 +30,7 @@ public class Character
 	 */
 	public Character(String newName)
 	{
-		if(name.equals(""))
+		if(newName.equals(""))
 		{
 			name = "Zuul";
 		}
