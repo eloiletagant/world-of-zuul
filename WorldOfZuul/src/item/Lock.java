@@ -17,10 +17,8 @@ public class Lock {
 	 * @param: The associated key
 	*/
 	public Lock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
-		
 		this.key = new Key(keyName, keyDescription, keyPrice, keySellAble);
 		lock = true;
-		
 	}
 	
 	/**
