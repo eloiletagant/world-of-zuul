@@ -14,7 +14,7 @@ public class Enigma extends Event
 	private String answer;
 
 	/**
-	 * Constructor of the class enigma. This method will generate an enigma.
+	 * Constructor of the class enigma.This method will generate an enigma.
 	 * @param q		a question
 	 * @param a		an answer
 	 */
