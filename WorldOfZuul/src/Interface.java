@@ -19,7 +19,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.Scanner;
 
-
 public class Interface extends JFrame {
     
     
@@ -28,8 +27,6 @@ public class Interface extends JFrame {
     protected JButton myButton1= new JButton("PLAY");
     protected JButton myButton2= new JButton("SETTING");
     protected JButton left = new JButton("left");
-    //protected JButton right = new JButton ("right");
-    //protected JButton front= new JButton("front");
     protected JButton back = new JButton ("back");
     protected JButton right,front;
     protected Icon myIcon;
@@ -40,18 +37,12 @@ public class Interface extends JFrame {
         //Icon myIcon= new ImageIcon("./chateau.jpg");
         JPanel myPanel = new JPanel(new BorderLayout ());
         JPanel panelButton = new JPanel (new BorderLayout ());
-        JPanel buttonDirection = new JPanel (new GridLayout(2,2));
         JPanel Button = new JPanel (new GridLayout (2,1));
 
         Icon flecheRIght = new ImageIcon("./Fdroite.jpg");
         Icon flecheFront = new ImageIcon("./Fhaut.jpg");
         Icon flecheRecul = new ImageIcon ("./Fbas.jpg");
         Icon flecheGauche = new ImageIcon("./Fgauche.jpg");
-        //(new javax.swing.ImageIcon(getClass().getResource("chateau.jpg"))).getImage();
-   
-
-        //Image on the background
-
 
         right= new JButton(flecheRIght);
         right.setBackground(Color.black);
@@ -70,20 +61,13 @@ public class Interface extends JFrame {
         
         
         if (salle == "Acceuil")
-        {        
-            Icon myIcon= new ImageIcon("./chateau.jpg");
-        
-            //(new javax.swing.ImageIcon(getClass().getResource("chateau.jpg"))).getImage();
-       
-        
-            //Image on the background
+        {      
+        	//Image on the background
+            Icon myIcon= new ImageIcon("./chateau.jpg"); 
             JLabel label = new JLabel (myIcon);
         
-            //Create button play
             //Buttons design
             Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-       
-
             myButton1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
             myButton1.setBackground(Color.black);
             myButton1.setForeground(Color.white);
@@ -94,12 +78,12 @@ public class Interface extends JFrame {
             myButton2.setForeground(Color.yellow);
             myButton2.setFont(police);
         
-            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.setTitle("WOZ");
-        
+            
+            //Add buttons on the panel
             panelButton.add(myButton1,BorderLayout.WEST);
             panelButton.add(myButton2,BorderLayout.EAST);
         
+            //Creation final panel
             myPanel.add(label,BorderLayout.NORTH);
             myPanel.add(panelButton, BorderLayout.SOUTH);
         
@@ -107,33 +91,47 @@ public class Interface extends JFrame {
         }   
         else if (salle == "3Doors")
         {        
+        	//Image on the background
             Icon myIcon= new ImageIcon("./Room3Doors.png");
             JLabel label = new JLabel (myIcon);
             
-            buttonDirection.add(left,BorderLayout.WEST);
-            buttonDirection.add(right,BorderLayout.EAST);
-            buttonDirection.add(front,BorderLayout.NORTH);
-            buttonDirection.add(back,BorderLayout.SOUTH);
+            JPanel buttonDirection = new JPanel(new GridLayout(2,2));
             
+            //Add buttons on the panel
+            buttonDirection.add(left);
+            buttonDirection.add(right);
+            buttonDirection.add(front);
+            buttonDirection.add(back);
             
+            panelButton.add(buttonDirection, BorderLayout.EAST);
+            
+            //Creation final panel
             myPanel.add(label,BorderLayout.NORTH);
-            myPanel.add(buttonDirection, BorderLayout.SOUTH);
+            myPanel.add(panelButton, BorderLayout.SOUTH);
         
    
         }  
          else if (salle == "2Doors")
         {        
+        	//Image on the background
             Icon myIcon= new ImageIcon("./Room2Doors.png");
             JLabel label = new JLabel (myIcon);
             
-        	buttonDirection.add(right,BorderLayout.EAST);
-        	buttonDirection.add(front,BorderLayout.NORTH);
-        	buttonDirection.add(back,BorderLayout.SOUTH);
+            JPanel buttonDirection = new JPanel(new GridLayout(1,1));
+            
+            //Add buttons on the panel
+        	buttonDirection.add(right);
+        	buttonDirection.add(front);
+        	buttonDirection.add(back);
+        	
+        	panelButton.add(buttonDirection, BorderLayout.EAST);
         
+        	//Creation final panel
             myPanel.add(label,BorderLayout.NORTH);
-            myPanel.add(buttonDirection, BorderLayout.SOUTH);
+            myPanel.add(panelButton, BorderLayout.SOUTH);
         } 
          
+      //Display the final panel with specifics parameters 
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       this.setTitle("WOZ");    
       this.add(myPanel);
@@ -141,7 +139,6 @@ public class Interface extends JFrame {
       this.pack();
       this.setVisible(true);
  }
-    
-  
+      
 
 }
