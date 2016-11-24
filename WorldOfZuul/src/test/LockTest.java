@@ -21,7 +21,7 @@ import item.Lock;
 public class LockTest {
 	
 	private Lock myLock;
-	private Key badKey;
+	private Key badKey, goodKey;
 	
 	/**
 	 * Default constructor for test class LockTest
@@ -38,6 +38,7 @@ public class LockTest {
 	public void setUp() {
 		myLock = new Lock("MyKey", "Test key", 10, true);
 		badKey = new Key("badKey", "Test bad key", 10, true);
+		goodKey = myLock.getKey();
 	}
 	
 	/**
@@ -54,7 +55,7 @@ public class LockTest {
 	@Test
 	public void testKey(){
 		assertEquals("MyKey",myLock.getKey().getName());
-		assertEquals("Test Key",myLock.getKey().getDescription());
+		assertEquals("Test key",myLock.getKey().getDescription());
 		assertEquals(10,myLock.getKey().getPrice());
 		assertEquals(true,myLock.getKey().getSellAble());
 	}
@@ -64,21 +65,20 @@ public class LockTest {
 	 * Checks the method openLock with the associated key given in parameter. Checks if the Lock is open too.
 	 */
 	@Test
-	public void testUnlock(){
-		myLock.unlock(badKey);
-		assertSame(badKey,myLock.getKey());
-		assertEquals(true,myLock.getLock());
+	public void goodUnlock(){
+		myLock.unlock(goodKey);
+		assertSame(goodKey,myLock.getKey());
+		assertEquals(false,myLock.getLock());
 	}
 	
 	/**
-	 * Method testOpenBad
-	 * Checks the method openLock with a non associated key given in parameter. Checks if the Lock stay close too.
+	 * Method badUnlock
+	 * Checks the method unlock with a non associated key given in parameter. Checks if the Lock stay close too.
 	 */
 	@Test
-	public void testOpenBad(){
-		badKey = new Key("BadKey", null, 0, false);
-		myLock.openLock(badKey);
-		assertNotSame(badKey,myLock.getAssociatedKey());
+	public void badUnlock(){
+		myLock.unlock(badKey);
+		assertNotSame(badKey,myLock.getKey());
 		assertEquals(true,myLock.getLock());
 	}
 }
