@@ -41,14 +41,10 @@ public class NPC extends Character{
 	 */
 	public void swapFriendShip()
 	{
-<<<<<<< HEAD
-
-=======
 		if(enemy = false)
 			enemy = true;
 		else
 			enemy = false;
->>>>>>> branch 'master' of https://github.com/eloiletagant/WorldOfZuul.git
 	}
 	
 	

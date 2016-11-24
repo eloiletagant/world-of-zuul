@@ -66,13 +66,13 @@ public class CharacterTest {
 	@Test
 	public void testSetHealth() 
 	{
-		c1.setHealth(21);
+		c1.addHealth(21);
 		assertEquals(c1.getHealth(),20);
-		c1.setHealth(-21);
+		c1.addHealth(-21);
 		assertEquals(c1.getHealth(),0);
-		c1.setHealth(10);
+		c1.addHealth(10);
 		assertEquals(c1.getHealth(),10);
-		c1.setHealth(5);
+		c1.addHealth(5);
 		assertEquals(c1.getHealth(),5);
 	}
 
