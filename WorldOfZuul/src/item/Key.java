@@ -1,5 +1,4 @@
 package item;
-
 import java.util.UUID;
 
 /**
@@ -9,8 +8,8 @@ import java.util.UUID;
  * This class manages keys.
  * A key must have all same parameters of an item.
  */
-public class Key extends Item{
-	
+public class Key extends Item
+{
 	private String keyToken;
 	
 	/**
@@ -31,7 +30,8 @@ public class Key extends Item{
 	/**
 	 * @return the key token
 	 */
-	public String getKeyToken() {
+	public String getKeyToken()
+	{
 		return keyToken;
 	}
 

@@ -85,6 +85,7 @@ public class RoomTest {
  * Test addexit avec salle déjà présente et direction déjà prise 
  * Test remove door avec salle présente
  * Avec salle pas présente
+ * ......
  * */
 	
 }

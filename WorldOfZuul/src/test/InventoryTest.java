@@ -1,11 +1,14 @@
 package test;
-import item.Item;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import item.Consumable;
 import item.Inventory;
-
+import item.Item;
+import item.Weapon;
+import item.Key;
 
 /**
  * The test class ConsumableTest
@@ -17,7 +20,10 @@ import item.Inventory;
 public class InventoryTest
 {
 	private Inventory myInventory;
-	private Item itemToAdd;
+	private ArrayList<Item> myInventory2;
+	private Consumable myConsumable;
+	private Weapon myWeapon;
+	private Key myKey;
 
 	/**
 	 * Sets up the test fixture.
@@ -27,7 +33,11 @@ public class InventoryTest
 	@Before
 	public void setUp()
 	{
-		myInventory = new Inventory();
+		myInventory = new Inventory(10);
+		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
+		myKey=new Key("Key1","This key can open something",0,false);
+		//myChest=new Chest("Treasure Box", "This treasure box can contain some items", 5, 0, aLock);
+		myWeapon=new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5, true);
 	}
 	
 	/**
@@ -40,26 +50,43 @@ public class InventoryTest
 	}
 	
 	/**
-	 * Method testUse
-	 * <p>Checks if an item is correctly add in an inventory</p>
+	 * Method testAddConsumableInInventory
+	 * <p>Checks if the consumable is correctly added in an inventory</p>
 	 */
 	@Test
-	public void testAddItem()
+	public void testAddConsumableInInventory()
 	{
-		//ça marche pas j'arrive pas à créer d'item vu que c'est en abstract
-		itemToAdd = new Item("Unidentified object", "This object seems strange and come from nowhere.", 100, true);
-		myInventory.addItem(itemToAdd);
-		
+		myInventory2= new ArrayList<Item>();
+		myInventory2.add(myConsumable);
+		myInventory2.add(myWeapon);
+		myInventory2.add(myKey);
+		myInventory.addItem(myConsumable);
+		myInventory.addItem(myWeapon);
+		myInventory.addItem(myKey);
+		assertEquals(myInventory2,myInventory.getItems());
 	}
 	
 	/**
-	 * Method testUseDestroyItem
-	 * <p>Checks if an item is correctly delete from an inventory</p>
+	 * Method testDeleteConsumableInInventory
+	 * <p>Checks if the consumable is correctly deleted in an inventory</p>
 	 */
 	@Test
-	public void testDeleteItem()
+	public void testDeleteConsumableInInventory()
 	{
-		
+		myInventory2= new ArrayList<Item>();
+		myInventory2.add(myConsumable);
+		myInventory2.add(myWeapon);
+		myInventory2.add(myKey);
+		myInventory2.remove(myConsumable);
+		myInventory2.remove(myWeapon);
+		myInventory2.remove(myKey);
+		myInventory.addItem(myConsumable);
+		myInventory.addItem(myWeapon);
+		myInventory.addItem(myKey);
+		myInventory.deleteItem(myConsumable);
+		myInventory.deleteItem(myWeapon);
+		myInventory.deleteItem(myKey);
+		assertEquals(myInventory2,myInventory.getItems());
 	}
 	
 	/**
@@ -69,6 +96,14 @@ public class InventoryTest
 	@Test
 	public void testResetItem()
 	{
-		
+		myInventory2.add(myConsumable);
+		myInventory2.add(myWeapon);
+		myInventory2.add(myKey);
+		myInventory2.clear();
+		myInventory.addItem(myConsumable);
+		myInventory.addItem(myWeapon);
+		myInventory.addItem(myKey);
+		myInventory.resetInventory();
+		assertEquals(myInventory2,myInventory.getItems());
 	}
 }

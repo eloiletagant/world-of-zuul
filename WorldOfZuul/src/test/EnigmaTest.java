@@ -11,9 +11,9 @@ public class EnigmaTest {
     * This method allow testing if the answer is the good for an enigma.
     */
 	public void testTestAnswer() throws Exception {
-		 Enigma a= new Enigma(”answer”);
-	     assertTrue(a.testAnswer(“answer”));
-	     assertFalse(a.testAnswer(“falseAnswer”));
+		 Enigma a= new Enigma(   );
+	     assertTrue(a.testAnswer(  ));
+	     assertFalse(a.testAnswer(  ));
 	}
 	
 

@@ -45,21 +45,24 @@ public class Inventory
 	/**
 	 * This method returns a list of item from the inventory - simple accessor
 	 */
-	public ArrayList<Item> getItems() {
+	public ArrayList<Item> getItems()
+	{
 		return items;
 	}
 	
 	/**
 	 * This method returns gold from the inventory of a character - simple accessor
 	 */
-	public int getGold() {
+	public int getGold()
+	{
 		return gold;
 	}
 
 	/**
 	 * @return the maxItems
 	 */
-	public int getMaxItems() {
+	public int getMaxItems()
+	{
 		return maxItems;
 	}
 

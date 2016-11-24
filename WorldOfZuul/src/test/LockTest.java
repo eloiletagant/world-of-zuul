@@ -35,10 +35,11 @@ public class LockTest {
 	 * Initialize one key and the lock associated
 	 */
 	@Before
-	public void setUp() {
-		myLock = new Lock("MyKey", "Test key", 10, true);
+	public void setUp() {		
+		goodKey = new Key("goodKey", "Test good key", 10, true);
 		badKey = new Key("badKey", "Test bad key", 10, true);
-		goodKey = myLock.getKey();
+		myLock = new Lock();
+		myLock.addKey(goodKey);
 	}
 	
 	/**
@@ -47,17 +48,13 @@ public class LockTest {
 	 */
 	@After
 	public void tearDown(){}
-	
 	/**
 	 * Method test key
 	 * Checks if the key given in Lock constructor is correctly set to the attribute
 	 */
 	@Test
 	public void testKey(){
-		assertEquals("MyKey",myLock.getKey().getName());
-		assertEquals("Test key",myLock.getKey().getDescription());
-		assertEquals(10,myLock.getKey().getPrice());
-		assertEquals(true,myLock.getKey().getSellAble());
+		assertSame(goodKey,myLock.getKey());
 	}
 	
 	/**
