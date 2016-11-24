@@ -16,30 +16,27 @@ import event.Event;
 
 public class Room {
 
-    private String nameRoom; // initiate to "UnnamedRoom" is empty
-    private HashMap<String, Door> exitDoors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap
+    private String description; // initiate to "UndescribedRoom" is empty
+    private HashMap<String, Door> doors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap
     private ArrayList<Event> events; // an event can appear once on a room
     private int level; // initiate to 0 if the level declaration is < 0
 
-    
-    
-    
     /**
      * Constructor used to instantiate a room
      *
-     * @param String newName: Room name
+     * @param String description: Room name
      * @param int    lvl: Room level
      */
-    public Room(String newName, int lvl) {
-        if (newName == "")
-            nameRoom = "UnnamedRoom";
+    public Room(String description, int lvl) {
+        if (description == "")
+            this.description = "UndescribedRoom";
         else
-            nameRoom = newName;
+            this.description = description;
         if (level < 0)
             level = 0;
         else
             level = lvl;
-        exitDoors = new HashMap<String, Door>();
+        doors = new HashMap<String, Door>();
         events = new ArrayList<Event>();
     }
 
@@ -48,8 +45,8 @@ public class Room {
      *
      * @return HashMap<String, Door>: doors associated to the room
      */
-    public HashMap<String, Door> getExitDoors() {
-        return exitDoors;
+    public HashMap<String, Door> getDoors() {
+        return doors;
     }
 
     /**
@@ -66,8 +63,8 @@ public class Room {
      *
      * @return String: Room name
      */
-    public String getRoomName() {
-        return nameRoom;
+    public String getDescription() {
+        return description;
     }
 
     /**
@@ -83,8 +80,8 @@ public class Room {
      * Add an exit to the room. An exit can't be add if it exist or if the direction is already taken.
      */
     public void addExit(Door newDoor, String way) {
-        if (exitDoors.containsValue(newDoor) == false && exitDoors.containsKey(way) == false)
-            exitDoors.put(way, newDoor);
+        if (doors.containsValue(newDoor) == false && doors.containsKey(way) == false)
+            doors.put(way, newDoor);
     }
 
     /**
@@ -99,7 +96,7 @@ public class Room {
      * Remove an exit to the room.
      */
     public void removeExit(String way) {
-        exitDoors.remove(way);
+        doors.remove(way);
     }
 
     /**
