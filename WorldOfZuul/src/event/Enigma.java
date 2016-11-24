@@ -11,7 +11,7 @@ import character.Character;
  */
 public class Enigma extends Event {
     private String question;
-    private String answer;
+    private String answer; 
 
     /**
      * Constructor of the class enigma. This method will generate an enigma.
