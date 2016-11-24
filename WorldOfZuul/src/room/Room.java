@@ -81,7 +81,16 @@ public class Room {
      * Add an exit to the room. An exit can't be add if it exist or if the direction is already taken.
      */
     public void addExit(Door newDoor, String way) {
-        if (doors.containsValue(newDoor) == false && doors.containsKey(way) == false)
+    	boolean isOk = true;
+    	for(HashMap.Entry<String, Door> entry : doors.entrySet())
+    	{
+    		if(entry.getValue().getNextRoom().equals(newDoor.getNextRoom()))
+    		{
+    			isOk = false;
+    			break;
+    		}
+    	}
+        if (isOk && doors.containsKey(way) == false && !newDoor.getNextRoom().equals(this))
             doors.put(way, newDoor);
     }
 
@@ -106,4 +115,6 @@ public class Room {
     public void removeEvent(Event anEvent) {
         events.remove(anEvent);
     }
+    
+   
 }
