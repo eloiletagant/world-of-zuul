@@ -61,8 +61,8 @@ public class LockTest {
 	}
 	
 	/**
-	 * Method testOpenRight
-	 * Checks the method openLock with the associated key given in parameter. Checks if the Lock is open too.
+	 * Method goodUnlock
+	 * Checks the method unlock with the associated key given in parameter. Checks if the Lock is unlocked too.
 	 */
 	@Test
 	public void goodUnlock(){
@@ -73,7 +73,7 @@ public class LockTest {
 	
 	/**
 	 * Method badUnlock
-	 * Checks the method unlock with a non associated key given in parameter. Checks if the Lock stay close too.
+	 * Checks the method unlock with a non associated key given in parameter. Checks if the Lock is locked too.
 	 */
 	@Test
 	public void badUnlock(){
