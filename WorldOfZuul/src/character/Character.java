@@ -148,7 +148,7 @@ public class Character
 	 * @param nbr number of hand of the new weapon (positive : unequip, negative to equip weapon)
 	 * @return true : the weapon can be equiped / unequiped; false : it cant
 	 */
-	public boolean swapWeapon(int nbr)
+	public boolean swapWeapon(int nbr) 
 	{
 		if(nbHandsAvailable + nbr > maxHands)
 		{
@@ -174,9 +174,18 @@ public class Character
 		return damagesBonus;		
 	}
 	
+	/**
+	 * Add or remove some damages to the character
+	 * @param bonus negative ==> diminution of damages. Can't be over 5 and under -5
+	 */
 	public void addBonusDamages(int bonus)
 	{
-		
+		if(damagesBonus + bonus > 5)
+			damagesBonus = 5;
+		else if(damagesBonus + bonus < -5)
+			damagesBonus = -5;
+		else
+			damagesBonus += bonus;
 	}
 	
 	public int getMaxHealth()
