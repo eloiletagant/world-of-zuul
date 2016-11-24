@@ -31,7 +31,7 @@ public class NPCTest {
 		assertEquals(40,myNPC.getHealth());	
 		NPC friend = new NPC ("",150,5);
 		assertEquals("Zuul",friend.getName());
-		assertEquals(5,friend.getNbHandsAvailable());
+		assertEquals(4,friend.getNbHandsAvailable());
 		assertEquals(150,friend.getHealth());		
 	}
 	
@@ -46,6 +46,21 @@ public class NPCTest {
 		assertEquals(false,myNPC.getEnemy());
 		myNPC.swapFriendShip();
 		assertEquals(true,myNPC.getEnemy());
+	}
+	
+	/**
+	 * Method testAddHealth
+	 * The super method have to be test before this one.
+	 */
+	@Test
+	public void testAddHealth()
+	{
+		myNPC.addHealth(-2);
+		assertEquals(myNPC.getHealth(),myNPC.getMaxHealth()-2);
+		myNPC.addHealth(1);
+		assertEquals(myNPC.getHealth(),myNPC.getMaxHealth()-2);
+		myNPC.addHealth(-myNPC.getMaxHealth());
+		assertEquals(myNPC.getHealth(),0);
 	}
 
 }
