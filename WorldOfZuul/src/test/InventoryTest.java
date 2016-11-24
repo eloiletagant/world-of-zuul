@@ -38,6 +38,7 @@ public class InventoryTest
 		myKey=new Key("Key1","This key can open something",0,false);
 		//myChest=new Chest("Treasure Box", "This treasure box can contain some items", 5, 0, aLock);
 		myWeapon=new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5, true);
+		myInventory2= new ArrayList<Item>();
 	}
 	
 	/**
@@ -54,14 +55,15 @@ public class InventoryTest
 	 * <p>Checks if the consumable is correctly added in an inventory</p>
 	 */
 	@Test
-	public void testAddConsumableInInventory()
+	public void testAddItemsInventory()
 	{
-		myInventory2= new ArrayList<Item>();
 		myInventory2.add(myConsumable);
-		myInventory2.add(myWeapon);
-		myInventory2.add(myKey);
 		myInventory.addItem(myConsumable);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myWeapon);
 		myInventory.addItem(myWeapon);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myKey);
 		myInventory.addItem(myKey);
 		assertEquals(myInventory2,myInventory.getItems());
 	}
@@ -71,20 +73,24 @@ public class InventoryTest
 	 * <p>Checks if the consumable is correctly deleted in an inventory</p>
 	 */
 	@Test
-	public void testDeleteConsumableInInventory()
-	{
-		myInventory2= new ArrayList<Item>();
+	public void testDeleteItemsInventory()
+	{		
 		myInventory2.add(myConsumable);
-		myInventory2.add(myWeapon);
-		myInventory2.add(myKey);
-		myInventory2.remove(myConsumable);
-		myInventory2.remove(myWeapon);
-		myInventory2.remove(myKey);
 		myInventory.addItem(myConsumable);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myWeapon);
 		myInventory.addItem(myWeapon);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myKey);
 		myInventory.addItem(myKey);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.remove(myConsumable);
 		myInventory.deleteItem(myConsumable);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.remove(myWeapon);
 		myInventory.deleteItem(myWeapon);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.remove(myKey);
 		myInventory.deleteItem(myKey);
 		assertEquals(myInventory2,myInventory.getItems());
 	}
@@ -97,12 +103,15 @@ public class InventoryTest
 	public void testResetItem()
 	{
 		myInventory2.add(myConsumable);
-		myInventory2.add(myWeapon);
-		myInventory2.add(myKey);
-		myInventory2.clear();
 		myInventory.addItem(myConsumable);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myWeapon);
 		myInventory.addItem(myWeapon);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myKey);
 		myInventory.addItem(myKey);
+		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.clear();
 		myInventory.resetInventory();
 		assertEquals(myInventory2,myInventory.getItems());
 	}
