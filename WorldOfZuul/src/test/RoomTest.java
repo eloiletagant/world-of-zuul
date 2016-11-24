@@ -66,18 +66,23 @@ public class RoomTest {
 		myRoom.addExit(d1, "front");
 		HashMap<String, Door> map = new HashMap<String, Door>();
 		map.put("front", d1);
-		assertEquals(myRoom.getExitDoors(),map);
+		assertEquals(myRoom.getDoors(),map);
+
 		myRoom.addExit(d1, "front");
-		assertEquals(myRoom.getExitDoors(),map);
+		assertEquals(myRoom.getDoors(),map);
+
 		myRoom.addExit(d2, "right");
-		assertEquals(myRoom.getExitDoors(),map);
+		assertEquals(myRoom.getDoors(),map);
+
 		myRoom.addExit(d3, "front");
-		assertEquals(myRoom.getExitDoors(),map);
+		assertEquals(myRoom.getDoors(),map);
+
 		myRoom.addExit(d3, "right");
 		map.put("right", d3);
-		assertEquals(myRoom.getExitDoors(),map);
+		assertEquals(myRoom.getDoors(),map);
+
 		myRoom.addExit(d4, "left");
-		assertEquals(myRoom.getExitDoors(),map);
+		assertEquals(myRoom.getDoors(),map);
 	}
 		
 	

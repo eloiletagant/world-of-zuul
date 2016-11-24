@@ -4,7 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import character.NPC;
 import event.Enigma;
+import item.Consumable;
 
 public class EnigmaTest {
 	
@@ -16,7 +19,9 @@ public class EnigmaTest {
 	@Before
 	public void setUp()
 	{
-		myEnigma = new Enigma ("Enigme a la con",potion,player,"1+1=?","2");
+		Consumable potion = new Consumable("potion", "aDescription", 10, true, "rien", 10, 0, false);
+		NPC jean = new NPC("jean le paysant",35,4);
+		myEnigma = new Enigma ("Enigme a la con",potion,jean,"1+1=?","2");
 	}
 	
     /**

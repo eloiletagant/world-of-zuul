@@ -3,32 +3,44 @@ package test;
 import static org.junit.Assert.*;
 import org.junit.*;
 
+import item.Key;
+import item.Lock;
 import room.LockedDoor;
+import room.Room;
 
 public class LockedDoorTest {
 
 	private LockedDoor lockedDoor;
-	private boolean isLocked;
+	private Lock lock;
+	private Room nextRoom;
 	
+	/**
+	 * Default constructor for test class LockTest
+	 */
+	public LockedDoorTest(){
+	}
+	
+	/**
+	 * Sets up the test fixture
+	 * Called before every test method
+	 * Initialize one key and the lock associated
+	 */
+	@Before
+	public void setUp() {
+		nextRoom = new Room("Salle 1", 0);
+		lock = new Lock();
+		lockedDoor = new LockedDoor(nextRoom, lock);
+	}
 	
 	/**
 	 * check if all informations of the constructor are available
 	 */
 	@Test
 	public void testLockedDoor(){
-		assertNotNull(lockedDoor.getNextRoom());
+		assertSame(nextRoom, lockedDoor.getNextRoom());
+		assertSame(lock, lockedDoor.getLock());
 	}
 	
-	/**
-	 * test if the door can be locked
-	 */
-	@Test
-	public void testLockingDoor() {
-		lockedDoor = new LockedDoor(null, null, null, 0, true);
-		isLocked = lockedDoor.isLocked();
-		lockedDoor.lockingDoor();
-		assertNotSame(isLocked, lockedDoor.isLocked());
-	}
 	
 	/**
 	 * check if the lock exist
@@ -38,6 +50,4 @@ public class LockedDoorTest {
 		assertNotNull(lockedDoor.getLock());
 	}
 	
-	
-
 }
