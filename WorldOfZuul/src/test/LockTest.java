@@ -39,6 +39,7 @@ public class LockTest {
 		goodKey = new Key("goodKey", "Test good key", 10, true);
 		badKey = new Key("badKey", "Test bad key", 10, true);
 		myLock = new Lock();
+		myLock.addKey(goodKey);
 	}
 	
 	/**
@@ -47,14 +48,12 @@ public class LockTest {
 	 */
 	@After
 	public void tearDown(){}
-	
 	/**
 	 * Method test key
 	 * Checks if the key given in Lock constructor is correctly set to the attribute
 	 */
 	@Test
 	public void testKey(){
-		myLock.addKey(goodKey);
 		assertSame(goodKey,myLock.getKey());
 	}
 	
