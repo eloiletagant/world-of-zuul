@@ -46,7 +46,6 @@ public class LockTest {
 	}
 	
 	/**
-	 * Method test key
 	 * Checks if the key given in Lock constructor is correctly set to the attribute
 	 */
 	@Test
@@ -56,7 +55,6 @@ public class LockTest {
 	}
 	
 	/**
-	 * Method goodUnlock
 	 * Checks the method unlock with the associated key given in parameter. Checks if the Lock is unlocked too.
 	 */
 	@Test
@@ -68,7 +66,6 @@ public class LockTest {
 	}
 	
 	/**
-	 * Method badUnlock
 	 * Checks the method unlock with a non associated key given in parameter. Checks if the Lock is locked too.
 	 */
 	@Test
