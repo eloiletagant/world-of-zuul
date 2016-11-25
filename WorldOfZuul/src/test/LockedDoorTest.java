@@ -40,14 +40,4 @@ public class LockedDoorTest {
 		assertSame(nextRoom, lockedDoor.getNextRoom());
 		assertSame(lock, lockedDoor.getLock());
 	}
-	
-	
-	/**
-	 * check if the lock exist
-	 */
-	@Test
-	public void testNotEmptyLock() {
-		assertNotNull(lockedDoor.getLock());
-	}
-	
 }
