@@ -67,25 +67,16 @@ public class WeaponTest
 	
 	/**
 	 * Method testEquip
-	 * <p>Checks if the weapon is correctly equiped</p>
+	 * <p>Checks if the weapon is correctly equipped or not</p>
 	 * 
 	 */
 	@Test
 	public void testEquip()
 	{
-		myWeapon.equip();
+		myWeapon.equip(true);
 		assertEquals(true,myWeapon.getEquiped());
-	}
-	
-	/**
-	 * Method testUnequip
-	 * <p>Checks if the weapon is correctly equiped</p>
-	 */
-	@Test
-	public void testUnequip()
-	{
-		myWeapon.equip();
-		myWeapon.unequip();
+		myWeapon.equip(false);
 		assertEquals(false,myWeapon.getEquiped());
 	}
+	
 }
