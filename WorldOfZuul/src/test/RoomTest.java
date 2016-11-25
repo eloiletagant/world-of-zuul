@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import character.Character;
+import item.Item;
 import room.Room;
 import room.Door;
 
@@ -109,5 +111,4 @@ public class RoomTest {
 		myRoom.removeExit("front");
 		assertEquals(myRoom.getDoors(),map);
 	}
-	
 }
