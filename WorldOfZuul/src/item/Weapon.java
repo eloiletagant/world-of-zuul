@@ -73,7 +73,7 @@ public class Weapon extends Item
 	}
 	
 	/**
-	 * This method allows the character to equip a weapon.
+	 * This method allows the character to equip or not a weapon.
 	 * @param eq : boolean true if the weapon is equipped.
 	 */
 	public void equip(boolean eq)
