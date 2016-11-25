@@ -84,9 +84,15 @@ public class Inventory
 	/**
 	 * This method allow to add or remove money (by minus int) from the inventory
 	 */
-	public void manageGold(int money)
+	public boolean manageGold(int money)
 	{
-		gold += money;
+		if(gold + money > 0)
+		{
+			gold += money;
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	/**
@@ -115,6 +121,10 @@ public class Inventory
 		if (items.size()==this.getMaxItems())
 		{
 			System.out.println("This inventory is full.");
+		}
+		else if(items.contains(itemToAdd))
+		{
+			System.out.println("You can't carry two times the same item.");
 		}
 		else
 		{

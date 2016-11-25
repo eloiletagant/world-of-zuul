@@ -65,6 +65,9 @@ public class InventoryTest
 		myInventory2.add(myKey);
 		myInventory.addItem(myKey);
 		assertEquals(myInventory2,myInventory.getItems());
+		myInventory2.add(myKey);
+		myInventory.addItem(myKey);
+		assertNotEquals(myInventory2,myInventory.getItems());
 	}
 	
 	/**
@@ -101,16 +104,9 @@ public class InventoryTest
 	@Test
 	public void testResetItem()
 	{
-		myInventory2.add(myConsumable);
 		myInventory.addItem(myConsumable);
-		assertEquals(myInventory2,myInventory.getItems());
-		myInventory2.add(myWeapon);
 		myInventory.addItem(myWeapon);
-		assertEquals(myInventory2,myInventory.getItems());
-		myInventory2.add(myKey);
 		myInventory.addItem(myKey);
-		assertEquals(myInventory2,myInventory.getItems());
-		myInventory2.clear();
 		myInventory.resetInventory();
 		assertEquals(myInventory2,myInventory.getItems());
 	}
@@ -155,5 +151,19 @@ public class InventoryTest
 		myInventory2.add(Key9);
 		myInventory2.add(Key10);
 		assertEquals(myInventory2,myInventory.getItems());
+	}
+	
+	@Test
+	/**
+	 * 
+	 */
+	public void testManageGolds()
+	{
+		myInventory.manageGold(100);
+		assertEquals(1100, myInventory.getGold());
+		myInventory.manageGold(-1200);
+		assertEquals(1100, myInventory.getGold());
+		myInventory.manageGold(-200);
+		assertEquals(900, myInventory.getGold());
 	}
 }
