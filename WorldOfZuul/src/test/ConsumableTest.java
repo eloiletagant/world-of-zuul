@@ -1,14 +1,9 @@
 package test;
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import item.Consumable;
-import item.Inventory;
-import item.Item;
 
 
 /**
@@ -21,8 +16,6 @@ import item.Item;
 public class ConsumableTest
 {
 	private Consumable myConsumable;
-	private Inventory myInventory;
-	private ArrayList<Item> myInventory2;
 
 	/**
 	 * Sets up the test fixture.
@@ -33,7 +26,6 @@ public class ConsumableTest
 	public void setUp()
 	{
 		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
-		myInventory=new Inventory(10);
 	}
 	
 	/**
