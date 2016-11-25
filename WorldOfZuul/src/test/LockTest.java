@@ -21,14 +21,8 @@ import item.Lock;
 public class LockTest {
 	
 	private Lock myLock;
-	private Key badKey, goodKey;
+	private Key badKey, myKey;
 	
-	/**
-	 * Default constructor for test class LockTest
-	 */
-	public LockTest(){
-	}
-
 	/**
 	 * Sets up the test fixture
 	 * Called before every test method
@@ -36,10 +30,10 @@ public class LockTest {
 	 */
 	@Before
 	public void setUp() {		
-		goodKey = new Key("goodKey", "Test good key", 10, true);
+		myKey = new Key("goodKey", "Test good key", 10, true);
 		badKey = new Key("badKey", "Test bad key", 10, true);
 		myLock = new Lock();
-		myLock.addKey(goodKey);
+		myLock.addKey(myKey);
 	}
 	
 	/**
@@ -47,14 +41,18 @@ public class LockTest {
 	 * Called after every test case method. Nothing to do in this case.
 	 */
 	@After
-	public void tearDown(){}
+	public void tearDown()
+	{		
+	}
+	
 	/**
 	 * Method test key
 	 * Checks if the key given in Lock constructor is correctly set to the attribute
 	 */
 	@Test
-	public void testKey(){
-		assertSame(goodKey,myLock.getKey());
+	public void testKey()
+	{
+		assertSame(myKey,myLock.getKey());
 	}
 	
 	/**
@@ -62,9 +60,10 @@ public class LockTest {
 	 * Checks the method unlock with the associated key given in parameter. Checks if the Lock is unlocked too.
 	 */
 	@Test
-	public void goodUnlock(){
-		myLock.unlock(goodKey);
-		assertSame(goodKey,myLock.getKey());
+	public void goodUnlock()
+	{
+		myLock.unlock(myKey);
+		assertSame(myKey,myLock.getKey());
 		assertEquals(false,myLock.getLock());
 	}
 	

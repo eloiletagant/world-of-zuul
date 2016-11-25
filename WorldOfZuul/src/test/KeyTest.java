@@ -37,7 +37,7 @@ public class KeyTest
 	 * 
 	 */
 	@Test
-	public void testBread()
+	public void testKey1()
 	{
 		assertEquals("Key1",myKey.getName());
 		assertEquals("This key can open something",myKey.getDescription());

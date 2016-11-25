@@ -55,10 +55,13 @@ public class Lock
 	*/
 	public boolean unlock(Key key)
 	{
-		if (key.getKeyToken() == this.key.getKeyToken()) {
+		if (key.getKeyToken() == this.key.getKeyToken())
+		{
 			lock = false; //the lock is open
 			return lock;
-		} else {
+		}
+		else
+		{
 			lock = true; //the lock stray closed
 			return lock;
 		}
