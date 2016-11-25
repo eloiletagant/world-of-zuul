@@ -23,7 +23,7 @@ public class InventoryTest
 	private ArrayList<Item> myInventory2;
 	private Consumable myConsumable;
 	private Weapon myWeapon;
-	private Key myKey;
+	private Key myKey, Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8, Key9, Key10, Key11;
 
 	/**
 	 * Sets up the test fixture.
@@ -112,6 +112,48 @@ public class InventoryTest
 		assertEquals(myInventory2,myInventory.getItems());
 		myInventory2.clear();
 		myInventory.resetInventory();
+		assertEquals(myInventory2,myInventory.getItems());
+	}
+	
+	/**
+	 * Method testLimitInventory
+	 * <p>Checks if items is correctly added in an inventory</p>
+	 */
+	@Test
+	public void testLimitInventory()
+	{
+		Key1=new Key("Key1","This key can open something",0,false);
+		Key2=new Key("Key2","This key can open something",0,false);
+		Key3=new Key("Key3","This key can open something",0,false);
+		Key4=new Key("Key4","This key can open something",0,false);
+		Key5=new Key("Key5","This key can open something",0,false);
+		Key6=new Key("Key6","This key can open something",0,false);
+		Key7=new Key("Key7","This key can open something",0,false);
+		Key8=new Key("Key8","This key can open something",0,false);
+		Key9=new Key("Key9","This key can open something",0,false);
+		Key10=new Key("Key10","This key can open something",0,false);
+		Key11=new Key("Key11","This key can open something",0,false);
+		myInventory.addItem(Key1);
+		myInventory.addItem(Key2);
+		myInventory.addItem(Key3);
+		myInventory.addItem(Key4);
+		myInventory.addItem(Key5);
+		myInventory.addItem(Key6);
+		myInventory.addItem(Key7);
+		myInventory.addItem(Key8);
+		myInventory.addItem(Key9);
+		myInventory.addItem(Key10);
+		myInventory.addItem(Key11);
+		myInventory2.add(Key1);
+		myInventory2.add(Key2);
+		myInventory2.add(Key3);
+		myInventory2.add(Key4);
+		myInventory2.add(Key5);
+		myInventory2.add(Key6);
+		myInventory2.add(Key7);
+		myInventory2.add(Key8);
+		myInventory2.add(Key9);
+		myInventory2.add(Key10);
 		assertEquals(myInventory2,myInventory.getItems());
 	}
 }
