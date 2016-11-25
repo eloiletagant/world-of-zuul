@@ -1,5 +1,4 @@
 package item;
-import java.util.ArrayList;
 
 public class Chest extends Inventory
 {
@@ -18,6 +17,15 @@ public class Chest extends Inventory
 	public Chest(String aName, String aDescription, int maxItems, int golds, Lock aLock)
 	{
 		super(maxItems,golds);
+		if (aDescription.isEmpty())
+		{
+			aDescription="This object seems strange.";
+		}
+		if (aName.isEmpty())
+		{
+			aName="Unidentified object";
+			aDescription="This object seems strange and come from nowhere";
+		}
 		name=aName;
 		description=aDescription;
 		lock = aLock;
@@ -57,8 +65,12 @@ public class Chest extends Inventory
 	 * @return: return true if is the correct key and false if is the false key
 	 * 
 	 */
-	public boolean openInventory(Key key)
+	public void openChest(Key key)
 	{
-		return lock.unlock(key);
+		lock.unlock(key);
+		if (lock.getLock() == true)
+		{
+			System.out.println("Wrong key");
+		}
 	}
 }

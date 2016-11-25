@@ -21,7 +21,7 @@ import item.Lock;
 public class LockTest {
 	
 	private Lock myLock;
-	private Key badKey, myKey;
+	private Key aBadKey, myKey;
 	
 	/**
 	 * Sets up the test fixture
@@ -31,7 +31,7 @@ public class LockTest {
 	@Before
 	public void setUp() {		
 		myKey = new Key("goodKey", "Test good key", 10, true);
-		badKey = new Key("badKey", "Test bad key", 10, true);
+		aBadKey = new Key("badKey", "Test bad key", 10, true);
 		myLock = new Lock();
 		myLock.addKey(myKey);
 	}
@@ -73,8 +73,8 @@ public class LockTest {
 	 */
 	@Test
 	public void badUnlock(){
-		myLock.unlock(badKey);
-		assertNotSame(badKey,myLock.getKey());
+		myLock.unlock(aBadKey);
+		assertNotSame(aBadKey,myLock.getKey());
 		assertEquals(true,myLock.getLock());
 	}
 }

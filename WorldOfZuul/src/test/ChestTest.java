@@ -4,26 +4,29 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import item.Lock;
+import item.Chest;
+import item.Key;
 
 public class ChestTest
 {
+	private Chest myChest;
+	private Lock aLock;
+	private Key myKey, aBadKey;
 
-	private TreasureBox treasureBox;
-	private Lock lock;
 
 	/**
-	 * Default constructor for the test class treasurBox
-	 * 		 
-	 */
-	public TreasureBoxTest() {
-	}
-	
-	/**
-	 * sets up the test fixture.
+	 * Sets up the test fixture
+	 * Called before every test method
+	 * Initialize one key with specific parameters
 	 */
 	@Before
-	public void setUp() {
-		 treasureBox = new TreasureBox ("Box", "Box link to a key, contains items", 10, true, lock);
+	public void setUp()
+	{
+		aLock=new Lock();
+		myChest=new Chest("Treasure Box", "This treasure box can contain some items", 5, 0, aLock);
+		myKey = new Key("goodKey", "Test good key", 10, true);
+		aBadKey = new Key("badKey", "Test bad key", 10, true);
+		aLock.addKey(myKey);
 	}
 	
 	/**
@@ -31,26 +34,53 @@ public class ChestTest
 	 * <p> Called after every test case method. NOthing to do in this case </p>
 	 */
 	@After
-	public void tearDown() { 
-		 
+	public void tearDown()
+	{ 	 
 	}
 	 
 	/**
-	 * Checks if the name given as parameter in the constructor is correctly set to the attribute</p>
+	 * Method testTreasureBox
+	 * Checks if the given parameter in the constructor is correctly set to the attribute.
+	 * 
 	 */
 	@Test
-	public void testNameBox() {
-		 // The parameter "Box1" must be set as the name attribute
-		 assertEquals("Box", treasureBox.getName());
+	public void testTreasureBox()
+	{
+		assertEquals("Treasure Box",myChest.getName());
+		assertEquals("This treasure box can contain some items",myChest.getDescription());
+		assertEquals(5,myChest.getMaxItems());
+		assertEquals(0,myChest.getGold());
+		assertEquals(aLock,myChest.getLock());
 	}
-	 
+	
 	/**
-	 * Checks if the name given as parameter in the constructor is correctly set to the attribute</p>
+	 * Method testDefault
+	 * Checks the default parameters
+	 * 
 	 */
 	@Test
-	public void testDescriptionBox() {
-		// The parameter "keys open the door" must be set as the name attribute
-		assertEquals("Box link to a key, contains items", treasureBox.getDescription());	
+	public void testDefault()
+	{
+		Chest bad = new Chest("", "", -2, -10, aLock);
+		assertEquals("Unidentified object",bad.getName());
+		assertEquals("This object seems strange and come from nowhere",bad.getDescription());
+		assertEquals(10,bad.getMaxItems());
+		assertEquals(0,bad.getGold());
+		assertEquals(aLock,bad.getLock());
+	}
+	
+	/**
+	 * Method testOpenChest
+	 * Checks the default parameters
+	 */
+	@Test
+	public void testOpenChest()
+	{
+		assertEquals(true,myChest.getLock().getLock());
+		myChest.openChest(aBadKey);
+		assertEquals(true,myChest.getLock().getLock());
+		myChest.openChest(myKey);
+		assertEquals(false,myChest.getLock().getLock());
 	}
 	 
 }

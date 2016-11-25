@@ -37,8 +37,22 @@ public class Inventory
 	public Inventory(int nbMaxItems, int golds)
 	{
 		items = new ArrayList<Item>();
-		gold = golds;
-		maxItems=nbMaxItems;
+		if (golds<0)
+		{
+			golds=0;
+		}
+		else
+		{
+			gold = golds;
+		}
+		if (nbMaxItems<0)
+		{
+			maxItems=10;
+		}
+		else
+		{
+			maxItems=nbMaxItems;
+		}
 	}
 	
 
@@ -98,6 +112,13 @@ public class Inventory
 	 */
 	public void addItem(Item itemToAdd)
 	{
-		items.add(itemToAdd);
+		if (items.size()==this.getMaxItems())
+		{
+			System.out.println("This inventory is full.");
+		}
+		else
+		{
+			items.add(itemToAdd);
+		}
 	}
 }
