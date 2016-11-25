@@ -73,9 +73,10 @@ public class WeaponTest
 	@Test
 	public void testEquip()
 	{
-		myWeapon.equip(true);
+		assertEquals(false,myWeapon.getEquiped());
+		myWeapon.equip();
 		assertEquals(true,myWeapon.getEquiped());
-		myWeapon.equip(false);
+		myWeapon.equip();
 		assertEquals(false,myWeapon.getEquiped());
 	}
 	
