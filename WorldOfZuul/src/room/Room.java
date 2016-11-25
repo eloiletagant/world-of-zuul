@@ -98,7 +98,16 @@ public class Room {
      * Add an event to the room. The same event can't be add twice on the same room
      */
     public void addEvent(Event anEvent) {
-        if (events.contains(anEvent) == false)
+    	boolean isOk = true;
+    	for(Event ev : events)
+    	{
+    		if(ev.equals(anEvent))
+    		{
+    			isOk = false;
+    			break;
+    		}
+    	}
+        if (isOk)
             events.add(anEvent);
     }
 
@@ -115,6 +124,4 @@ public class Room {
     public void removeEvent(Event anEvent) {
         events.remove(anEvent);
     }
-    
-   
 }
