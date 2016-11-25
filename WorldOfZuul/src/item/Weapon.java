@@ -73,12 +73,19 @@ public class Weapon extends Item
 	}
 	
 	/**
-	 * This method allows the character to equip or not a weapon.
-	 * @param eq : boolean true if the weapon is equipped.
+	 * This method allows the character to equip or unequip a weapon.
+	 * 
 	 */
-	public void equip(boolean eq)
+	public void equip()
 	{
-		equiped = eq;
+		if (this.getEquiped()==false)
+		{
+			equiped=true;
+		}
+		else
+		{
+			equiped=false;
+		}
 	}
 	
 }
