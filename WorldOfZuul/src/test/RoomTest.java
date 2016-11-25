@@ -63,34 +63,51 @@ public class RoomTest {
 		Door d3 = new Door(room3);
 		Door d4 = new Door(myRoom);
 		
+		//Simple door adding and test
 		myRoom.addExit(d1, "front");
 		HashMap<String, Door> map = new HashMap<String, Door>();
 		map.put("front", d1);
 		assertEquals(myRoom.getDoors(),map);
-
+		
+		//Adding a door already present in the hashmap
 		myRoom.addExit(d1, "front");
 		assertEquals(myRoom.getDoors(),map);
-
+		
+		//Adding a door with a next room already present in the hashmap
 		myRoom.addExit(d2, "right");
 		assertEquals(myRoom.getDoors(),map);
-
+		
+		//Adding a door with a direction already present in the hashmap
 		myRoom.addExit(d3, "front");
 		assertEquals(myRoom.getDoors(),map);
 
+		//Adding a door with specific direction and next room
 		myRoom.addExit(d3, "right");
 		map.put("right", d3);
 		assertEquals(myRoom.getDoors(),map);
 
+		//Adding the own room for next room
 		myRoom.addExit(d4, "left");
 		assertEquals(myRoom.getDoors(),map);
 	}
 		
-	
-/* Test addExit avec salle pas déjà présente, direction pas déjà prise
- * Test addexit avec salle déjà présente et direction déjà prise 
- * Test remove door avec salle présente
- * Avec salle pas présente
- * ......
- * */
+	@Test
+	public void removeExit() 
+	{
+		Room room2 = new Room("Salle 2", 1);
+		Door d1 = new Door(room2);
+		
+		//Remove test with a direction present in the hashmap
+		myRoom.addExit(d1, "front");
+		HashMap<String, Door> map = new HashMap<String, Door>();
+		myRoom.removeExit("front");
+		assertEquals(myRoom.getDoors(),map);
+		
+		//Remove test with a direction not present in the hashmap
+		map.put("right", d1);
+		myRoom.addExit(d1, "right");
+		myRoom.removeExit("front");
+		assertEquals(myRoom.getDoors(),map);
+	}
 	
 }
