@@ -28,20 +28,36 @@ public class RoomTest {
 	public RoomTest(){
 	}
 
+	/**
+	 * Sets up the test fixture
+	 * Called before every test method
+	 * Initialize one room
+	 */
 	@Before
 	public void setUp() {
 		myRoom = new Room("Salle 1", 1);
 	}
 	
+	/**
+	 * Tear down the test fixture
+	 * Called after every test case method. Nothing to do in this case.
+	 */
 	@After
 	public void tearDown(){}
 	
+	
+	/**
+	 * Checks if the description and the level given in the constructor are correctly set to the attributes
+	 */
 	@Test
 	public void testRoom(){
 		assertEquals("Salle 1",myRoom.getDescription());
 		assertEquals(1,myRoom.getLevel());
 	}
 	
+	/**
+	 * Checks if the description default value is correctly set to the attribute when the description is empty
+	 */
 	@Test
 	public void testEmptyDescription()
 	{
@@ -49,12 +65,19 @@ public class RoomTest {
 		assertEquals("UndescribedRoom",myRoom2.getDescription());
 	}
 	
+	/**
+	 * Checks if the level default value is correctly set to the attribute when the level is negative
+	 */
 	@Test
 	public void testNegativeLevel(){
 		Room myRoom2 = new Room("Salle 2", -2);
 		assertEquals(0,myRoom2.getLevel());
 	}
 	
+	/**
+	 * Checks the method addExit to add doors to a room.
+	 * Checks all possibilities like adding a door already present in the room, adding a door with a direction already present... 
+	 */
 	@Test
 	public void testAddExit() 
 	{
@@ -93,6 +116,10 @@ public class RoomTest {
 		assertEquals(myRoom.getDoors(),map);
 	}
 		
+	/**
+	 * Checks the method removeExit to remove a door to a room
+	 * Checks if a door present or not can be removed 
+	 */
 	@Test
 	public void removeExit() 
 	{
