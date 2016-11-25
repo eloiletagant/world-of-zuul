@@ -1,13 +1,11 @@
 package test;
-
 import static org.junit.Assert.*;
 import org.junit.*;
-
 import item.Lock;
-import item.TreasureBox;
+import item.Chest;
 import item.Weapon;
 
-public class TreasureBoxTest {
+public class ChestTest {
 
 	private TreasureBox treasureBox;
 	private Lock lock;
