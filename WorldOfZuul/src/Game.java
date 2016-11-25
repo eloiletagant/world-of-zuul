@@ -143,7 +143,7 @@ public class Game {
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = currentRoom.getDoors()
+        Room nextRoom = currentRoom.getDoors();
 
 
         if (direction.equals("north")) {
@@ -193,7 +193,7 @@ public class Game {
 
 
     /**
-     * method to asociate a key and a lock
+     * method to associate a key and a lock
      * maybe not really useful
      */
     public Lock createLock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
