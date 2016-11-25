@@ -2,8 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import character.Character;
+import org.junit.*;
 
 import character.NPC;
 import event.Enigma;
@@ -11,7 +11,12 @@ import item.Consumable;
 
 public class EnigmaTest {
 	
-	private Enigma myEnigma;
+	private Enigma enigma;
+	private Consumable potion;
+	private Character peter;
+	private NPC john;
+
+
 	/**
 	 * sets up
 	 * <p> Initialize one Enigma for each test </p>
@@ -19,9 +24,11 @@ public class EnigmaTest {
 	@Before
 	public void setUp()
 	{
-		Consumable potion = new Consumable("potion", "aDescription", 10, true, "rien", 10, 0, false);
-		NPC jean = new NPC("jean le paysant",35,4);
-		myEnigma = new Enigma ("Enigme a la con",potion,jean,"1+1=?","2");
+		//potion is the loot get by find the answer.
+	    potion = new Consumable("potion", "description", 10, true, "become invisible", 10, 0, false);
+		john = new NPC("jean le paysant",35,4);
+		peter = new Character("Peter",40, 2);
+		enigma = new Enigma ("Stupid enigma", potion, peter, john,"1 + 1 = ?","2");
 	}
 	
     /**
@@ -31,8 +38,8 @@ public class EnigmaTest {
 	@Test
 	public void testTestAnswer()
 	{
-	     assertTrue(myEnigma.testAnswer("2"));
-	     assertFalse(myEnigma.testAnswer("11"));
+	     assertTrue(enigma.testAnswer("2"));
+	     assertFalse(enigma.testAnswer("11"));
 	}
 	
     /**
@@ -41,7 +48,7 @@ public class EnigmaTest {
      */
 	public void testSetAnswer()
 	{
-		assertEquals("2",myEnigma.setAnswer("2"));
+		assertEquals("2",enigma.setAnswer("2"));
 	}
 	
     /**
@@ -50,6 +57,6 @@ public class EnigmaTest {
      */
 	public void testSetQuestion()
 	{
-		assertEquals("1+1=?",myEnigma.setQuestion("1+1=?"));
+		assertEquals("1 + 1 = ?",enigma.setQuestion("1 + 1 = ?"));
 	}
 }
