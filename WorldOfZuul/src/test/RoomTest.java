@@ -86,7 +86,7 @@ public class RoomTest {
 		map.put("right", d3);
 		assertEquals(myRoom.getDoors(),map);
 
-		//Adding the own room for next room
+		//Adding its own room for next room
 		myRoom.addExit(d4, "left");
 		assertEquals(myRoom.getDoors(),map);
 	}
