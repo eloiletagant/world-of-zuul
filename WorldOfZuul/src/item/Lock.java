@@ -62,7 +62,7 @@ public class Lock
 		}
 		else
 		{
-			lock = true; //the lock stray closed
+			lock = true; //the lock stay closed
 			return lock;
 		}
 	}
