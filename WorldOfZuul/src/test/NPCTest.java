@@ -68,12 +68,12 @@ public class NPCTest
 	@Test
 	public void testAddHealth()
 	{
-		myNPC.deleteHealth(-2);
-		assertEquals(38,myNPC.getHealth());
-		myNPC.deleteHealth(1);
-		assertEquals(38,myNPC.getHealth());
-		myNPC.deleteHealth(-40);
-		assertEquals(0,myNPC.getHealth());
+		myNPC.manageHealth(-2);
+		assertEquals(myNPC.getHealth(),myNPC.getMaxHealth()-2);
+		myNPC.manageHealth(1);
+		assertEquals(myNPC.getHealth(),myNPC.getMaxHealth()-2);
+		myNPC.manageHealth(-myNPC.getMaxHealth());
+		assertEquals(myNPC.getHealth(),0);
 	}
 
 }

@@ -67,7 +67,7 @@ public class NPC extends Character
 	 * This methods delete Health to a NPC (Only negative values are accepted because an NPC can not heal)
 	 * @param hp Negative value : damages taken by the NPC
 	 */
-	public void deleteHealth(int hp)
+	public void manageHealth(int hp)
 	{
 		if(hp < 0)
 		{
