@@ -31,21 +31,24 @@ public class Enigma extends Event {
      * method to get the answer
      * @return
      */
-    public String getAnswer() {
-        return answer;
-    }
+    public String getAnswer() { return answer; }
+
+    /**
+     * method to get the question
+     */
+    public String getQuestion() { return question; }
 
     /**
      * This method will test if the answer is correct.
-     * @param test
+     * @param playerAnswer
      */
-    public boolean testAnswer(String test) {
-        if (test.equals(answer)) {
+    public boolean checkAnswer(String playerAnswer) {
+        if (playerAnswer.equals(answer)) {
             getPlayer().getInventory().addItem(super.getItem());
-            System.out.println("Well play, you got it!");
+            //System.out.println("Well play, you got it!");
             return true;
         } else {
-            System.out.println("You are close...");
+            //System.out.println("You're close... Try again buddy!");
             return false;
         }
     }

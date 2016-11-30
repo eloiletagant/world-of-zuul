@@ -5,7 +5,6 @@ import java.lang.Math;
 import character.Character;
 import character.NPC;
 import item.Item;
-import item.Inventory;
 
 
 /**
@@ -20,14 +19,11 @@ import item.Inventory;
  */
 public class Trade extends Event {
 
-    private Character trader;
-
     /**
      * Constructor of a trade
      */
     public Trade(String description, Item item, Character player, NPC trader) {
-        super(description, item, player);
-        this.trader = trader;
+        super(description, item, player, trader);
     }
 
     /**

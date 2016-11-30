@@ -36,10 +36,11 @@ public class EnigmaTest {
      * <p>This method checks if the method of comparison of answer works well.</p>
      */
 	@Test
-	public void testTestAnswer()
+	public void testCheckAnswer()
 	{
-	     assertTrue(enigma.testAnswer("2"));
-	     assertFalse(enigma.testAnswer("11"));
+	     assertTrue(enigma.checkAnswer("2"));
+	     assertFalse(enigma.checkAnswer("11"));
+
 	}
 	
     /**
@@ -48,7 +49,7 @@ public class EnigmaTest {
      */
 	public void testSetAnswer()
 	{
-		assertEquals("2",enigma.setAnswer("2"));
+		assertEquals("2", enigma.getAnswer());
 	}
 	
     /**
@@ -57,6 +58,6 @@ public class EnigmaTest {
      */
 	public void testSetQuestion()
 	{
-		assertEquals("1 + 1 = ?",enigma.setQuestion("1 + 1 = ?"));
+		assertEquals("1 + 1 = ?", enigma.getQuestion());
 	}
 }

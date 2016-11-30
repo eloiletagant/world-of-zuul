@@ -107,9 +107,9 @@ public class Inventory {
      */
     public void addItem(Item itemToAdd) {
         if (items.size() == this.getMaxItems()) {
-            System.out.println("This inventory is full.");
+            //System.out.println("This inventory is full.");
         } else if (items.contains(itemToAdd)) {
-            System.out.println("You can't carry two times the same item.");
+            //System.out.println("You can't carry two times the same item.");
         } else {
             items.add(itemToAdd);
         }
