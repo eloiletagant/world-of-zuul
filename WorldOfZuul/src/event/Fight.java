@@ -17,13 +17,13 @@ public class Fight extends Event {
      * Constructor of a fight
      *
      * @param description String description of the event
-     * @param item Item which can be get by the player, or trade
-     * @param player Character the player of the game
-     * @param npc NPC which is involved in the event
+     * @param item        Item which can be get by the player, or trade
+     * @param player      Character the player of the game
+     * @param npc         NPC which is involved in the event
      */
     public Fight(String description, Item item, Character player, NPC npc) {
         super(description, item, player, npc);
-		isWin = false;
+        isWin = false;
     }
 
 }
