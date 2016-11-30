@@ -53,16 +53,19 @@ public class Lock
 	/**
 	 * This method is used to open a lock if the key corresponds to the associated key
 	 * @param: A key that will be compared with the associated key
+	 * @return true = the chest opened, false = the chest stayed close
 	*/
-	public void unlock(Key keyTest)
+	public boolean unlock(Key keyTest)
 	{
 		if (keyTest.getKeyToken() == key.getKeyToken())
 		{
 			lock = false; //the lock is open
+			return true;
 		}
 		else
 		{
 			lock = true; //the lock stay closed
+			return false;
 		}
 	}
 }
