@@ -18,6 +18,11 @@ public class Event {
 
     /**
      * Constructor of the class event.
+     *
+     * @param description String description of the event
+     * @param item Item which can be get by the player, or trade
+     * @param player Character the player of the game
+     * @param npc NPC which is involved in the event
      */
     public Event(String description, Item item, Character player, NPC npc) {
         this.description = description;
