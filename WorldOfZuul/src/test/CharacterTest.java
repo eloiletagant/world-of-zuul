@@ -1,13 +1,14 @@
 package test;
-
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import character.Character;
 import room.Room;
 
-public class CharacterTest {
+public class CharacterTest
+{
 
 	private Character c1;
 	private Room firstRoom, secondRoom;
@@ -22,14 +23,23 @@ public class CharacterTest {
 	}
 	
 	/**
+	 * Tears down the test fixture.
+	 * Called after every test case method. Nothing to do in this case.
+	 */
+	@After
+	public void tearDown()
+	{
+	}
+	
+	/**
 	 * Method testCharacterEmptyName
-	 * <p>test the constructor with the default value "Zuul"</p>
+	 * <p>test the constructor with the default value "Kaamelott"</p>
 	 */
 	@Test
 	public void testCharacterEmptyName()
 	{
 		Character c2 = new Character("");
-		assertEquals(c2.getName(), "Zuul");	
+		assertEquals(c2.getName(), "Kaamelott");	
 	}
 	
 	/**
@@ -39,8 +49,7 @@ public class CharacterTest {
 	@Test
 	public void testCharacter()
 	{
-		c1 = new Character("");
-		assertEquals(c1.getName(), "Zuul");
+		assertEquals(c1.getName(), "Pseudo");
 	}
 	
 	/**
@@ -65,15 +74,15 @@ public class CharacterTest {
 	 * <p>It also test if the health is correctly modified</p>
 	 */
 	@Test
-	public void testAddHealth() 
+	public void testManageHealth() 
 	{
-		c1.addHealth(c1.getMaxHealth() + 1);
+		c1.manageHealth(c1.getMaxHealth() + 1);
 		assertEquals(c1.getHealth(),c1.getMaxHealth());
-		c1.addHealth(-(c1.getMaxHealth() + 1));
+		c1.manageHealth(-(c1.getMaxHealth() + 1));
 		assertEquals(c1.getHealth(),0);
-		c1.addHealth(c1.getMaxHealth()/2);
+		c1.manageHealth(c1.getMaxHealth()/2);
 		assertEquals(c1.getHealth(),c1.getMaxHealth()/2);
-		c1.addHealth(-(c1.getMaxHealth()/4));
+		c1.manageHealth(-(c1.getMaxHealth()/4));
 		assertEquals(c1.getHealth(),c1.getMaxHealth()/4);
 	}
 
@@ -100,18 +109,18 @@ public class CharacterTest {
 	}
 	
 	/**
-	 * Method testAddBonusDamages
+	 * Method testManageBonusDamages
 	 * <p>This method test if the bonus damages are well applied and if it don't go out of [-5,5]</p>
 	 */
-	public void testAddBonusDamages()
+	public void testManageBonusDamages()
 	{
-		c1.addBonusDamages(6);
+		c1.manageBonusDamages(6);
 		assertEquals(c1.getBonusDamages(),5);
-		c1.addBonusDamages(-11);
+		c1.manageBonusDamages(-11);
 		assertEquals(c1.getBonusDamages(),-5);
-		c1.addBonusDamages(5);
+		c1.manageBonusDamages(5);
 		assertEquals(c1.getBonusDamages(),0);
-		c1.addBonusDamages(-1);
+		c1.manageBonusDamages(-1);
 		assertEquals(c1.getBonusDamages(),-1);
 	}
 }

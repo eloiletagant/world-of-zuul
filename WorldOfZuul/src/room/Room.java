@@ -79,34 +79,40 @@ public class Room {
 
     /**
      * Add an exit to the room. An exit can't be add if it exist or if the direction is already taken.
+     *
+     * @param newDoor Door we want to add
+     * @param way     String of the direction
      */
     public void addExit(Door newDoor, String way) {
-    	boolean isOk = true;
-    	for(HashMap.Entry<String, Door> entry : doors.entrySet())
-    	{
-    		if(entry.getValue().getNextRoom().equals(newDoor.getNextRoom()))
-    		{
-    			isOk = false;
-    			break;
-    		}
-    	}
+        boolean isOk = true;
+        //test if the room linked to the newDoor (param) is not already linked to the current room
+        for (HashMap.Entry<String, Door> entry : doors.entrySet()) {
+            //Entry is a couple of the HashMap
+            //entrySet() return a set view of the mapping contained in the map
+            if (entry.getValue().getNextRoom().equals(newDoor.getNextRoom())) {
+                isOk = false;
+                break;
+                //if the door is linked to a room already linked to the current room, isOk is set on false
+            }
+        }
+        //test if iOK is true, if the direction is not already in the HM, and if the door is not already in the HM
         if (isOk && doors.containsKey(way) == false && !newDoor.getNextRoom().equals(this))
             doors.put(way, newDoor);
     }
 
     /**
      * Add an event to the room. The same event can't be add twice on the same room
+     *
+     * @param anEvent Event we want to add in the room
      */
     public void addEvent(Event anEvent) {
-    	boolean isOk = true;
-    	for(Event ev : events)
-    	{
-    		if(ev.equals(anEvent))
-    		{
-    			isOk = false;
-    			break;
-    		}
-    	}
+        boolean isOk = true;
+        for (Event ev : events) {
+            if (ev.equals(anEvent)) {
+                isOk = false;
+                break;
+            }
+        }
         if (isOk)
             events.add(anEvent);
     }

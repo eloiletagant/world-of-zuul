@@ -13,6 +13,7 @@ public class LockedDoorTest {
 	private LockedDoor lockedDoor;
 	private Lock lock;
 	private Room nextRoom;
+	private Key myKey;
 	
 	/**
 	 * Default constructor for test class LockTest
@@ -27,13 +28,15 @@ public class LockedDoorTest {
 	 */
 	@Before
 	public void setUp() {
-		nextRoom = new Room("Salle 1", 0);
+		nextRoom = new Room("Room 1", 0);
+		myKey = new Key("Key1","This key can open something", 0, false);
 		lock = new Lock();
+		lock.addKey(myKey);
 		lockedDoor = new LockedDoor(nextRoom, lock);
 	}
 	
 	/**
-	 * check if all informations of the constructor are available
+	 * Check if all informations of the constructor are available
 	 */
 	@Test
 	public void testLockedDoor(){

@@ -15,11 +15,13 @@ public class LockedDoor extends Door{
 	private Lock lock;
 
 	/**
-	 * Constructor which need the informations about the rooms (current and next one)
-	 * and all informations about the key
+	 * Constructor for a locked door
+	 * @param nextRoom: A next room associated to the door
+	 * @param aLock: A lock associated to the door
 	 */
-	public LockedDoor(Room nextRoom, Lock lock){
+	public LockedDoor(Room nextRoom, Lock aLock){
 		super(nextRoom);
+		lock = aLock;
 	}
 	
 	

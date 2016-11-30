@@ -10,7 +10,7 @@ import character.NPC;
  * @author Group 4
  * @version 10/11/2016
  */
-public class Event {
+public abstract class Event {
     private String description;
     private Item item;
     private Character player;
@@ -18,6 +18,11 @@ public class Event {
 
     /**
      * Constructor of the class event.
+     *
+     * @param description String description of the event
+     * @param item        Item which can be get by the player, or trade
+     * @param player      Character the player of the game
+     * @param npc         NPC which is involved in the event
      */
     public Event(String description, Item item, Character player, NPC npc) {
         this.description = description;
@@ -53,8 +58,6 @@ public class Event {
     public NPC getNpc() {
         return npc;
     }
-
-
 
     /**
      * This method will set a new item for the event item.
