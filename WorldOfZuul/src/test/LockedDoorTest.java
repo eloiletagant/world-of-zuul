@@ -11,8 +11,9 @@ import room.Room;
 public class LockedDoorTest {
 
 	private LockedDoor lockedDoor;
-	private Lock lock;
+	private Lock lock, lock2;
 	private Room nextRoom;
+	private Key myKey;
 	
 	/**
 	 * Default constructor for test class LockTest
@@ -27,8 +28,10 @@ public class LockedDoorTest {
 	 */
 	@Before
 	public void setUp() {
-		nextRoom = new Room("Salle 1", 0);
+		nextRoom = new Room("Room 1", 0);
+		myKey = new Key("Key1","This key can open something", 0, false);
 		lock = new Lock();
+		lock.addKey(myKey);
 		lockedDoor = new LockedDoor(nextRoom, lock);
 	}
 	
@@ -37,7 +40,8 @@ public class LockedDoorTest {
 	 */
 	@Test
 	public void testLockedDoor(){
-		assertSame(nextRoom, lockedDoor.getNextRoom());
-		assertSame(lock, lockedDoor.getLock());
+		lock2 = new Lock();
+		lock2.addKey(null);
+		assertEquals(lock2, lockedDoor.getLock());
 	}
 }

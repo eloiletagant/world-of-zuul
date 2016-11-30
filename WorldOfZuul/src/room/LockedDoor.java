@@ -18,8 +18,9 @@ public class LockedDoor extends Door{
 	 * Constructor which need the informations about the rooms (current and next one)
 	 * and all informations about the key
 	 */
-	public LockedDoor(Room nextRoom, Lock lock){
+	public LockedDoor(Room nextRoom, Lock aLock){
 		super(nextRoom);
+		lock = aLock;
 	}
 	
 	
