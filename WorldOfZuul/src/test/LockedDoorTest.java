@@ -11,7 +11,7 @@ import room.Room;
 public class LockedDoorTest {
 
 	private LockedDoor lockedDoor;
-	private Lock lock, lock2;
+	private Lock lock;
 	private Room nextRoom;
 	private Key myKey;
 	
@@ -40,8 +40,7 @@ public class LockedDoorTest {
 	 */
 	@Test
 	public void testLockedDoor(){
-		lock2 = new Lock();
-		lock2.addKey(null);
-		assertEquals(lock2, lockedDoor.getLock());
+		assertSame(nextRoom, lockedDoor.getNextRoom());
+		assertSame(lock, lockedDoor.getLock());
 	}
 }
