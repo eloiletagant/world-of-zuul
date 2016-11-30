@@ -154,6 +154,14 @@ public class Character {
     {
         return maxHands;
     }
+    
+    /**
+     * This method returns the bonus damage of a character.
+     */
+    public int getBonusDamages()
+    {
+        return damagesBonus;
+    }
 
     /**
      * This method modifies HP of the character
@@ -208,14 +216,6 @@ public class Character {
             nbHandsAvailable += nbr;
             return true;
         }
-    }
-
-    /**
-     * This method returns the bonus damage of a character.
-     */
-    public int getBonusDamages()
-    {
-        return damagesBonus;
     }
 
     /**

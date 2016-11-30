@@ -76,14 +76,14 @@ public class CharacterTest
 	@Test
 	public void testManageHealth() 
 	{
-		c1.manageHealth(c1.getMaxHealth() + 1);
-		assertEquals(c1.getHealth(),c1.getMaxHealth());
-		c1.manageHealth(-(c1.getMaxHealth() + 1));
-		assertEquals(c1.getHealth(),0);
-		c1.manageHealth(c1.getMaxHealth()/2);
-		assertEquals(c1.getHealth(),c1.getMaxHealth()/2);
-		c1.manageHealth(-(c1.getMaxHealth()/4));
-		assertEquals(c1.getHealth(),c1.getMaxHealth()/4);
+		c1.manageHealth(21);
+		assertEquals(20,c1.getHealth());
+		c1.manageHealth(-21);
+		assertEquals(0,c1.getHealth());
+		c1.manageHealth(10);
+		assertEquals(10,c1.getHealth());
+		c1.manageHealth(-5);
+		assertEquals(5,c1.getHealth());
 	}
 
 	/**
@@ -115,12 +115,12 @@ public class CharacterTest
 	public void testManageBonusDamages()
 	{
 		c1.manageBonusDamages(6);
-		assertEquals(c1.getBonusDamages(),5);
+		assertEquals(5,c1.getBonusDamages());
 		c1.manageBonusDamages(-11);
-		assertEquals(c1.getBonusDamages(),-5);
+		assertEquals(-5,c1.getBonusDamages());
 		c1.manageBonusDamages(5);
-		assertEquals(c1.getBonusDamages(),0);
+		assertEquals(0,c1.getBonusDamages());
 		c1.manageBonusDamages(-1);
-		assertEquals(c1.getBonusDamages(),-1);
+		assertEquals(-1,c1.getBonusDamages());
 	}
 }
