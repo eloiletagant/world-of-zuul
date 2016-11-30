@@ -33,7 +33,7 @@ public class Trade extends Event {
      * @param item
      * @param price
      */
-    private void buy(Character player, NPC trader, Item item, int price) {
+    public void buy(Character player, NPC trader, Item item, int price) {
         //for the player
         player.getInventory().manageGold(-price);
         player.getInventory().addItem(item);
@@ -48,11 +48,11 @@ public class Trade extends Event {
      * @param item
      * @param price
      */
-    private void sell(Character player, NPC trader, Item item, int price) {
+    public void sell(Character player, NPC trader, Item item, int price) {
         //for the player
         player.getInventory().manageGold(Math.round((price * 8) / 10));
         player.getInventory().deleteItem(item);
-        //for the NPC
+        //for the NPC 
         trader.getInventory().addItem(item);
     }
 }
