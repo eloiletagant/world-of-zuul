@@ -26,4 +26,6 @@ public class Fight extends Event {
         isWin = false;
     }
 
+    //the methods will be created during the implementation of the game
+
 }
