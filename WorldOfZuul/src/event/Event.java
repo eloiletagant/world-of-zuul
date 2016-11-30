@@ -54,8 +54,6 @@ public class Event {
         return npc;
     }
 
-
-
     /**
      * This method will set a new item for the event item.
      */
