@@ -52,7 +52,7 @@ public class Trade extends Event {
         //for the player
         player.getInventory().manageGold(Math.round((price * 8) / 10));
         player.getInventory().deleteItem(item);
-        //for the NPC
+        //for the NPC 
         trader.getInventory().addItem(item);
     }
 }
