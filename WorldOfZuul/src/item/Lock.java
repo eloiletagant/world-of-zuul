@@ -46,7 +46,7 @@ public class Lock
 	{
 		if (key == null)
 		{
-            key = newKey;
+            key = newKey; 
         }
 	}
 
