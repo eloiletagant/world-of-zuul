@@ -33,7 +33,7 @@ public class LockedDoorTest {
 	}
 	
 	/**
-	 * check if all informations of the constructor are available
+	 * Check if all informations of the constructor are available
 	 */
 	@Test
 	public void testLockedDoor(){
