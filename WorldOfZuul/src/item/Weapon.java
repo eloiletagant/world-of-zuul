@@ -46,7 +46,7 @@ public class Weapon extends Item
 	}
 	
 	/**
-	 * This method check if the weapon is an onehand
+	 * This method returns if the weapon is an onehand
 	 * @return true if the weapon is an oneHand, else return false
 	 */
 	public boolean getOneHand()
@@ -55,7 +55,7 @@ public class Weapon extends Item
 	}
 	
 	/**
-	 * This method check if th weapon is already use by a player
+	 * This method returns if the weapon is already use by a player
 	 * @return  a boolean true if the weapon is equipped by a character.
 	 */
 	public boolean getEquiped()
@@ -65,7 +65,7 @@ public class Weapon extends Item
 	
 	/**
 	 * This method returns the number of damages of a weapon.
-	 * @return
+	 * @return integer : number of damages of the weapon
 	 */
 	public int getDamages()
 	{
@@ -85,6 +85,18 @@ public class Weapon extends Item
 		else
 		{
 			equiped=false;
+		}
+	}
+	
+	/**
+	 * This method adds damages to the weapon
+	 * @param bonusDamages damages to add to this weapon
+	 */
+	public void addDamages(int bonusDamages)
+	{
+		if(bonusDamages > 0)
+		{
+			damages += bonusDamages;
 		}
 	}
 	

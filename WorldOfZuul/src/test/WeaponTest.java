@@ -2,7 +2,6 @@ package test;
 import item.Weapon;
 import org.junit.Before;
 import static org.junit.Assert.*;
-import org.junit.After;
 import org.junit.Test;
 
 
@@ -21,14 +20,6 @@ public class WeaponTest
 		myWeapon = new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5, true);
 	}
 	
-	/**
-	 * Tears down the test fixture.
-	 * Called after every test case method. Nothing to do in this case.
-	 */
-	@After
-	public void tearDown()
-	{
-	}
 
 	/**
 	 * Method testSword
@@ -67,7 +58,7 @@ public class WeaponTest
 	
 	/**
 	 * Method testEquip
-	 * <p>Checks if the weapon is correctly equipped or not</p>
+	 * <p>Checks if we can correctly equip or unequip the weapon</p>
 	 * 
 	 */
 	@Test
@@ -78,6 +69,21 @@ public class WeaponTest
 		assertEquals(true,myWeapon.getEquiped());
 		myWeapon.equip();
 		assertEquals(false,myWeapon.getEquiped());
+	}
+	
+	/**
+	 * Method testAddDamages
+	 * <p>Checks if we can correctly add damages to the weapon</p>
+	 * <p>We can't add a negative value to the weapon damages</p>
+	 * 
+	 */
+	@Test
+	public void testAddDamages()
+	{
+		myWeapon.addDamages(2);
+		assertEquals(7,myWeapon.getDamages());
+		myWeapon.addDamages(-2);
+		assertEquals(7,myWeapon.getDamages());
 	}
 	
 }

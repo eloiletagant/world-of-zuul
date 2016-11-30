@@ -9,7 +9,7 @@ package item;
  */
 public class Lock
 {	
-	private Key key = null;
+	private Key key;
 	private boolean lock;
 
 	/**
@@ -18,6 +18,7 @@ public class Lock
 	public Lock()
 	{
 		lock = true;
+		key = null;
 	}
 	
 	/**
@@ -41,11 +42,11 @@ public class Lock
 	/**
 	 * associate a key to the lock
 	 */
-	public void addKey(Key key)
+	public void addKey(Key newKey)
 	{
-		if (this.key == null)
+		if (key == null)
 		{
-            this.key = key;
+            key = newKey;
         }
 	}
 
@@ -53,9 +54,9 @@ public class Lock
 	 * This method is used to open a lock if the key corresponds to the associated key
 	 * @param: A key that will be compared with the associated key
 	*/
-	public boolean unlock(Key key)
+	public boolean unlock(Key keyTest)
 	{
-		if (key.getKeyToken() == this.key.getKeyToken())
+		if (keyTest.getKeyToken() == key.getKeyToken())
 		{
 			lock = false; //the lock is open
 			return lock;

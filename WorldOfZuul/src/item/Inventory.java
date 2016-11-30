@@ -95,23 +95,27 @@ public class Inventory {
      * This method deletes one item in an inventory.
      *
      * @param item: The item deleted to the inventory
+     * @return true if the item is correctly delete
      */
-    public void deleteItem(Item itemToDelete) {
+    public boolean deleteItem(Item itemToDelete) {
         items.remove(itemToDelete);
+        return true;
     }
 
     /**
      * This method adds one item in an inventory.
      *
      * @param item: The item added to the inventory
+     * @return true if the item is correctly add, false if not
      */
-    public void addItem(Item itemToAdd) {
+    public boolean addItem(Item itemToAdd) {
         if (items.size() == this.getMaxItems()) {
-            //System.out.println("This inventory is full.");
+            return false;
         } else if (items.contains(itemToAdd)) {
-            //System.out.println("You can't carry two times the same item.");
+            return false;
         } else {
             items.add(itemToAdd);
+            return true;
         }
     }
 }
