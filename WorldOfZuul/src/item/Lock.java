@@ -54,9 +54,9 @@ public class Lock
 	 * This method is used to open a lock if the key corresponds to the associated key
 	 * @param: A key that will be compared with the associated key
 	*/
-	public void unlock(Key key)
+	public void unlock(Key keyTest)
 	{
-		if (key.getKeyToken() == this.key.getKeyToken())
+		if (keyTest.getKeyToken() == key.getKeyToken())
 		{
 			lock = false; //the lock is open
 		}
