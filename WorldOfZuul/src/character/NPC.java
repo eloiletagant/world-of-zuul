@@ -13,18 +13,28 @@ package character;
  *
  */
 
-public class NPC extends Character{
-
+public class NPC extends Character
+{
 
     private boolean enemy; //indicate if the NPC is friendly or not.
 	
 	/**
-	 * Function NPC create Character.
-	 * @param String name
+     * Constructor for NPC
+     * If the name is a null string, the given name is "Attila".
+     * The NPC has between O and 4 hands and they are available to wear weapons at the beginning of the game.
+     * The minimum number of health points of a NPC is 5 and there is no maximum.
+     * He has an empty inventory with 10 locations.
+     * He starts the game at the Home Room.
+	 * At the beginning, the damage bonus are set to 0 by default. It will be change when using some items like weapons or potions.
+	 * @param String	name
+	 * @param int 		hp : number of health points
+	 * @param int		nbHands : number of hands
+	 * @param boolean	isEnemy : true if enemy, false if not
 	 */
-	public NPC(String name, int hp, int nbHands){
+	public NPC(String name, int hp, int nbHands, boolean isEnemy)
+	{
 		super(name,hp,nbHands);
-		enemy=true;
+		enemy=isEnemy;
 	}
 	
 	/**
@@ -42,17 +52,26 @@ public class NPC extends Character{
 	 */
 	public void swapFriendShip()
 	{
-        enemy = enemy == false;
+		if (enemy==true)
+		{
+			enemy = false;
+		}
+		else
+		{
+			enemy = true;
+		}
     }
 	
 	
 	/**
-	 * This methods add Health to a NPC (Only negative values are accepted because an NPC cant heal)
+	 * This methods delete Health to a NPC (Only negative values are accepted because an NPC can not heal)
 	 * @param hp Negative value : damages taken by the NPC
 	 */
-	public void addHealth(int hp)
+	public void deleteHealth(int hp)
 	{
 		if(hp < 0)
-			super.addHealth(hp);
+		{
+			super.manageHealth(hp);
+		}
 	}
 }
