@@ -25,7 +25,7 @@ public class Inventory {
      */
     public Inventory(int nbMaxItems) {
         items = new ArrayList<Item>();
-        gold = 1000;
+        gold = 100;
         maxItems = nbMaxItems;
     }
 

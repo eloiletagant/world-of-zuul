@@ -142,11 +142,11 @@ public class InventoryTest
 	@Test
 	public void testManageGolds()
 	{
-		myInventory.manageGold(100);
-		assertEquals(1100, myInventory.getGold());
-		myInventory.manageGold(-1200);
-		assertEquals(1100, myInventory.getGold());
-		myInventory.manageGold(-200);
-		assertEquals(900, myInventory.getGold());
+		myInventory.manageGold(10);
+		assertEquals(110, myInventory.getGold());
+		myInventory.manageGold(-120);
+		assertEquals(110, myInventory.getGold());
+		myInventory.manageGold(-20);
+		assertEquals(90, myInventory.getGold());
 	}
 }
