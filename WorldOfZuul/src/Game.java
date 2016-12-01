@@ -45,11 +45,10 @@ public class Game {
      * Create all the rooms and link their exits together.
      */
     private void createRooms() {
-        Room r1, r2;
         // Create the rooms
-        r1 = new Room("First room", 0);
-        r2 = new Room("Second room", 0);
-
+        Room r1 = new Room("First room", 0);
+        Room r2 = new Room("Second room", 0);
+        
         // Initialise room doors
         createDoors(r1, r2, "front");
         currentRoom = r1;  // start game in first room
