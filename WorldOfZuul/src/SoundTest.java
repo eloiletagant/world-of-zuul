@@ -21,7 +21,7 @@ public class SoundTest {
 //		AudioClip clip = Applet.newAudioClip(url);
 //		AudioClip clip2 = Applet.newAudioClip(url);
 //		clip.play();
-//		Thread.sleep(1000);
+//		Thread.sleep(1000); 
 //		clip2.loop();
 //		Thread.sleep(20000);
 //		clip2.stop();
