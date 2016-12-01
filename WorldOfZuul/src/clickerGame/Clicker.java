@@ -20,6 +20,7 @@ public class Clicker {
         screen.getTimer().setWinScore(clicksAsked);
         while(screen.getFightDone() != true)
         {
+            //wait during the battle;
         }
         return screen.getClicks();
     }

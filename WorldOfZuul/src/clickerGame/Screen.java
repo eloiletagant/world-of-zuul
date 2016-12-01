@@ -1,7 +1,5 @@
 package clickerGame;
 
-
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -113,7 +111,8 @@ public class Screen extends JPanel implements ActionListener {
                     timer.setRunning(false);
                     clickButton.setEnabled(true);
                     setFightDone();
-                    JOptionPane.showMessageDialog(Clicker.getFrame(), "Win", "Results", 1);
+                    //player win
+                    System.exit(0);
                 }
             }
             //trigger the timer in the first click

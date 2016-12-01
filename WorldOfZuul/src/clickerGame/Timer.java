@@ -1,4 +1,5 @@
 package clickerGame;
+
 import javax.swing.JOptionPane;
 
 public class Timer implements Runnable {
@@ -29,13 +30,14 @@ public class Timer implements Runnable {
         while (this.running) {
             if (screen.getTime() == 15) {
                 if (screen.getClicks() > winScore) {
-                    fightMessage = "Victoire !";
+                    fightMessage = "Victory !";
                 } else {
-                    fightMessage = "Vous etes mort";
+                    fightMessage = "Too long";
                 }
                 Clicker.getScreen().setFightDone();
-                JOptionPane.showMessageDialog(Clicker.getFrame(), fightMessage, "Results", 1);
-                break;
+                //time is over
+                System.exit(0);
+
             }
             try {
                 Thread.sleep(1000);
