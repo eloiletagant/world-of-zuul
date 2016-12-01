@@ -125,7 +125,7 @@ public class InventoryInterface extends JFrame
         eggplantButton = new JButton(eggplant);
         eggplantButton.setBackground(new Color(70, 63, 55));
         
-        Icon key1 = new ImageIcon("pictures/key1.png");
+        Icon key1 = new ImageIcon("pictures/key1.png"); 
         key1Button = new JButton(key1);
         key1Button.setBackground(new Color(70, 63, 55));
         
