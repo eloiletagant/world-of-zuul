@@ -37,7 +37,7 @@ public class Enigma extends Event {
     public String getAnswer() { return answer; }
 
     /**
-     * method to get the question
+     * method to get the question 
      */
     public String getQuestion() { return question; }
 
