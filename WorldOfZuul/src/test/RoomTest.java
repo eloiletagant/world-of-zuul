@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import character.Character;
+import character.*;
 import item.Item;
 import room.Room;
 import room.Door;
