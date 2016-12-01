@@ -32,13 +32,19 @@ public class Trade extends Event {
      * @param trader
      * @param item
      * @param price
+     * @return True = the trade works, False = the trade didn't works
      */
-    public void buy(Player player, NPC trader, Item item, int price) {
-        //for the player
-        player.getInventory().manageGold(-price);
-        player.getInventory().addItem(item);
-        //for the NPC
-        trader.getInventory().deleteItem(item);
+    public boolean buy(Player player, NPC trader, Item item, int price) {
+    	if(price >= player.getInventory().getGold() && player.getInventory().getItems().size() < player.getInventory().getMaxItems())
+    	{
+            //for the player
+            player.getInventory().manageGold(-price);
+            player.getInventory().addItem(item);
+            //for the NPC
+            trader.getInventory().deleteItem(item);
+            return true;
+    	}
+    	return false;
     }
 
     /**
