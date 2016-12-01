@@ -20,7 +20,6 @@ public class Parser {
      */
     public String getCommand() 
     {
-        Scanner reader = new Scanner(System.in);
         System.out.println("Input: ");
         String str = reader.nextLine();
         
