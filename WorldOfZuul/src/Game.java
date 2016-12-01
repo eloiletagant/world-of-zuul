@@ -17,34 +17,36 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import character.Player;
 import event.Event;
 import room.Door;
 import room.Room;
-import item.Lock;
-import item.Key;
+import item.*;
+
 
 public class Game {
     private Parser parser;
     private Room currentRoom;
     private Player player;
-    private ArrayList<Room> rooms;
+    private ArrayList<Room> rooms; 
 
     /**
      * Create the game and initialise its internal map.
      */
-    public Game() {
+    public Game()
+    {
     	rooms = new ArrayList<Room>();
+    	createItems();
         createAllRooms();
         createAllDoors(rooms);
         parser = new Parser();
         play();
     }
     
-    public static void main (String[] args){
+    public static void main (String[] args)
+    {
         new Game();
-       }
+    }
 
     /**
      * Create all the rooms and link their exits together.
@@ -63,6 +65,49 @@ public class Game {
     private void createAllDoors(ArrayList<Room> rooms){
     	createTwoDoors(rooms.get(0), rooms.get(1) , "front");
     }
+    
+    /**
+     * Create all items
+     */
+    private void createItems()
+    {
+    	Weapon w1 = new Weapon("Axe", "This axe do not only allow cutting trees.", 20, true, 3, false);
+    	Weapon w2 = new Weapon("Bow", "This bow is for a true Robin wood.", 90, true, 5, false);
+        Weapon w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7, true);
+        Weapon w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9, true);
+        Consumable c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vendée !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
+        Consumable c2 = new Consumable("Bread", "This bread was cooked by the baker of the village.", 5, true, "It gets 1 health point to the person who eats it.", 1, 0, false);
+        Consumable c3 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
+        Consumable c4 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
+        Consumable c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
+        Consumable c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
+        Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
+        Key k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
+        Key k3 = new Key("Musse-Clef", "This key opens something.", 20, false);
+        Key k4 = new Key("Tabou-Clef", "This key opens something.", 20, false);
+        Key k5 = new Key("Clef-Bar", "This key opens something.", 20, false);
+        Key k6 = new Key("Nu-Clef-ère", "This key opens something.", 20, false);
+        Key k7 = new Key("Gy-Clef", "This key opens something.", 20, false);
+        Lock l1 = new Lock();
+        l1.addKey(k3);
+        Lock l2 = new Lock();
+        l2.addKey(k2);
+        Lock l3 = new Lock();
+        l3.addKey(k4);
+        Lock l4 = new Lock();
+        l4.addKey(k5);
+        Lock l5 = new Lock();
+        l5.addKey(k6);
+        Lock l6 = new Lock();
+        l6.addKey(k7);
+        Lock l7 = new Lock();
+        l7.addKey(k1);
+        Chest ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
+        Chest ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
+        Chest ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
+        Chest ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
+    }
+    	
 
     /**
      *  Main play routine.  Loops until end of play.
