@@ -13,7 +13,7 @@ import room.Room;
  * @author Groupe4
  * @version 10/11/2016
  */
-public class Character {
+public class Player {
     private String name; //Name of the character. If empty, it will be Zuul by default
     private int health; //Start with 20 HP by default. The character die when his hp felt to 0
     private Inventory inventory; //All items of the character are present on the inventory
@@ -32,7 +32,7 @@ public class Character {
 	 * He starts the game at the Home Room.
 	 * At the beginning, the damage bonus are set to 0 by default. It will be change when using some items like weapons or potions.
      */
-    public Character(String newName)
+    public Player(String newName)
     {
         if (newName.equals(""))
         {
@@ -61,7 +61,7 @@ public class Character {
      * He starts the game at the Home Room.
 	 * At the beginning, the damage bonus are set to 0 by default. It will be change when using some items like weapons or potions.
      */
-    public Character(String newName, int hpMax, int nbHandsMax) 
+    public Player(String newName, int hpMax, int nbHandsMax) 
     {
         if (newName.equals(""))
         {

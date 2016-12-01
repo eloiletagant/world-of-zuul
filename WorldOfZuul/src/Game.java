@@ -17,6 +17,7 @@
 
 import java.util.HashMap;
 
+import character.Player;
 import room.Door;
 import room.Room;
 import item.Lock;
@@ -25,6 +26,7 @@ import item.Key;
 public class Game {
     private Parser parser;
     private Room currentRoom;
+    private Player player;
 
     /**
      * Create the game and initialise its internal map.
@@ -57,7 +59,7 @@ public class Game {
      *  Main play routine.  Loops until end of play.
      */
     public void play() {
-    	parser.getCommand();
+    	player = new Player(parser.getCommand());
         printWelcome();
     }
 
