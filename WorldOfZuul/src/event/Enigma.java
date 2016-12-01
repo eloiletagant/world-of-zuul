@@ -1,7 +1,7 @@
 package event;
 
 import item.Item;
-import character.Character;
+import character.*;
 import character.NPC;
 
 /**
@@ -21,7 +21,7 @@ public class Enigma extends Event {
      * @param q a question
      * @param a an answer
      */
-    public Enigma(String description, Item loot, Character player, NPC npc, String q, String a) {
+    public Enigma(String description, Item loot, Player player, NPC npc, String q, String a) {
         super(description, loot, player, npc);
         question = q;
         answer = a;

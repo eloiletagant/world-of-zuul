@@ -2,7 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
-import character.Character;
+import character.*;
 import org.junit.*;
 
 import character.NPC;
@@ -13,7 +13,7 @@ public class EnigmaTest {
 	
 	private Enigma enigma;
 	private Consumable potion;
-	private Character peter;
+	private Player peter;
 	private NPC john;
 
 
@@ -26,8 +26,8 @@ public class EnigmaTest {
 	{
 		//potion is the loot get by find the answer.
 	    potion = new Consumable("potion", "description", 10, true, "become invisible", 10, 0, false);
-		john = new NPC("jean le paysant",35,4);
-		peter = new Character("Peter",40, 2);
+		john = new NPC("jean le paysant",35,4,true);
+		peter = new Player("Peter",40, 2);
 		enigma = new Enigma ("Stupid enigma", potion, peter, john,"1 + 1 = ?","2");
 	}
 	
