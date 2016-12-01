@@ -36,7 +36,8 @@ public class Game {
      */
     public Game() {
     	rooms = new ArrayList<Room>();
-        createRooms();
+        createAllRooms();
+        createAllDoors(rooms);
         parser = new Parser();
         play();
     }
@@ -48,7 +49,7 @@ public class Game {
     /**
      * Create all the rooms and link their exits together.
      */
-    private void createRooms() {   	
+    private void createAllRooms() {   	
     	int fin=32;
     	for(int i=0; i<=fin; i++){
     		if (i < 14 || i > 29)
@@ -57,6 +58,10 @@ public class Game {
     			rooms.add(new Room("Room " + i, 1));
     	}
     	currentRoom = rooms.get(0);
+    }
+    
+    private void createAllDoors(ArrayList<Room> rooms){
+    	createTwoDoors(rooms.get(0), rooms.get(1) , "front");
     }
 
     /**
@@ -109,7 +114,7 @@ public class Game {
      * method to associate a key and a lock
      * maybe not really useful
      */
-    public Lock createLock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
+    private Lock createLock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
         Lock lock = new Lock();
         lock.addKey(new Key(keyName, keyDescription, keyPrice, keySellAble));
         return lock;
@@ -119,7 +124,7 @@ public class Game {
      * method to associate a key and a lock
      * maybe not really useful
      */
-    public void createDoors(Room room, Room nextRoom, String way) {
+    private void createTwoDoors(Room room, Room nextRoom, String way) {
     	Door door1 = new Door(nextRoom);
     	room.addExit(door1, way);
     	Door door2 = new Door(room);
