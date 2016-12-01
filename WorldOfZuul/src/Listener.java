@@ -1,4 +1,6 @@
 import javax.swing.*;
+import item.Inventory;
+import item.Item;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
@@ -45,7 +47,7 @@ public class Listener extends MouseAdapter
         }
         else if(evt.getSource() == inventory.briocheButton)
         {
-
+        	
         }
         else if(evt.getSource() == inventory.breadButton)
         {
@@ -77,13 +79,11 @@ public class Listener extends MouseAdapter
         }
         else if(evt.getSource() == inventory.key1Button)
         {
-
+        	
         }
         else if(evt.getSource() == inventory.key2Button)
         {
 
-        }
-                
-    }
-    
+        }              
+    }  
 }

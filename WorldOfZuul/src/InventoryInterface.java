@@ -257,18 +257,10 @@ public class InventoryInterface extends JFrame
         myPanel.add(down,BorderLayout.SOUTH);
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("WOZ");    
+        this.setTitle("My inventory");    
         this.add(myPanel);
         this.setSize(500, 500);
         this.pack();
         this.setVisible(true);
     }
-    
-    public void creatInventory()
-    {
-    	
-    	
-
-    }
-
 } 
