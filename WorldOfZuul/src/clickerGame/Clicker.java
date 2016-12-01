@@ -1,9 +1,11 @@
-import java.awt.Component;
+package clickerGame;
+
 import javax.swing.JFrame;
 
 public class Clicker {
     private static Screen screen = new Screen();
     private static JFrame frame;
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
@@ -14,6 +16,7 @@ public class Clicker {
         Clicker.getScreen().addComponents();
         frame.add(Clicker.getScreen());
         frame.setVisible(true);
+        screen.getTimer().setWinScore(10);
     }
 
     public static Screen getScreen() {

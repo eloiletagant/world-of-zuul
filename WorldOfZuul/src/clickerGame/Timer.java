@@ -1,15 +1,25 @@
+package clickerGame;
 import javax.swing.JOptionPane;
 
-public class Timer
-implements Runnable {
+public class Timer implements Runnable {
+
     private boolean running = true;
+    private int winScore = 100;
 
     public void setRunning(boolean running) {
         this.running = running;
     }
 
     public boolean getRunning() {
-        return this.running;
+        return running;
+    }
+
+    public int getWinScore() {
+        return winScore;
+    }
+
+    public void setWinScore(int winScore) {
+        this.winScore = winScore;
     }
 
     @Override
@@ -17,20 +27,18 @@ implements Runnable {
         Screen screen = Clicker.getScreen();
         String fightMessage;
         while (this.running) {
-            if (screen.getTime() == 30) {
-            	if (screen.getClicks() > 140){
-            		fightMessage = "Victoire !";
-            	}
-            	else {
-            		fightMessage = "Vous êtes mort";
-            	}
+            if (screen.getTime() == 15) {
+                if (screen.getClicks() > winScore) {
+                    fightMessage = "Victoire !";
+                } else {
+                    fightMessage = "Vous etes mort";
+                }
                 JOptionPane.showMessageDialog(Clicker.getFrame(), fightMessage, "Results", 1);
                 break;
             }
             try {
                 Thread.sleep(1000);
-            }
-            catch (InterruptedException message) {
+            } catch (InterruptedException message) {
                 // empty catch block
             }
             if (!this.running) continue;
