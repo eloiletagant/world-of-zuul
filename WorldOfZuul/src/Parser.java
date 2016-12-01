@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @version 25/11/2016
  */
 public class Parser {
-
+	
     /**
      * @return The next command from the user.
      */
