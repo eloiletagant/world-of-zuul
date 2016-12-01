@@ -39,6 +39,7 @@ public class InventoryInterface extends JFrame
     protected Listener evt;
     private Inventory inventoryPlayer;
     public Item test;
+    private int counter =0;
 
     /**
      * Constructor for objects of class InventoryInterface
@@ -155,55 +156,71 @@ public class InventoryInterface extends JFrame
         cookiesButton = new JButton(cookies);
         cookiesButton.setBackground(new Color(70, 63, 55));
         
+        
 
         for (Item item : inventoryPlayer.getItems())
     	{
     		if( item.getName() == "Pineapple")
     		{
     			inventory.add(pineappleButton);
+    			counter+=1;
     		}
     		if (item.getName() == "Axe")
 			{
 				inventory.add(axeButton);
+				counter+=1;
 			}
 			if (item.getName() == "Bow")
 			{
 				inventory.add(bowButton);
+				counter+=1;
 			}
 			if (item.getName() == "Butcher knife")
 			{
 				inventory.add(mincingMachineButton);
+				counter+=1;
 			}
 			if (item.getName() == "Eggplant")
 			{
 				inventory.add(eggplantButton);
+				counter+=1;
 			}
 			if (item.getName() == "Bread")
 			{
 				inventory.add(breadButton);
+				counter+=1;
 			}
 			if (item.getName() == "Brioche")
 			{
 				inventory.add(briocheButton);
+				counter+=1;
 			}
 			if (item.getName() == "Cookies")
 			{
 				inventory.add(cookiesButton);
+				counter+=1;
 			}
 						
 			if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
 			{
 				inventory.add(key1Button);
+				counter+=1;
 			}
 			if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
 			{
 				inventory.add(key2Button);
+				counter+=1;
 			}
 			
     	}
-
-        
-        
+        while (counter!=10)
+		{
+			JPanel empty = new JPanel();
+			empty.setBackground(new Color(70, 63, 55));
+			inventory.add(empty);
+			counter+=1;
+		}
+     
         //Listeners for buttons action
         evt= new Listener(this);
         sellButton.addMouseListener(evt);
