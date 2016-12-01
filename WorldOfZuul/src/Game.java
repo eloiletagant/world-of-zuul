@@ -27,7 +27,7 @@ import item.*;
 public class Game {
     private Parser parser;
     private Room currentRoom;
-    private Player player;
+    private Player player, playerTest;
     private ArrayList<Room> rooms; 
     private InventoryInterface atest;
 
@@ -36,15 +36,20 @@ public class Game {
      */
     public Game()
     {
+    	playerTest= new Player ("Kaamelott");    	
     	rooms = new ArrayList<Room>();
     	createItems();
         createAllRooms();
         createAllDoors(rooms);
         parser = new Parser();
-        atest = new InventoryInterface();
+        atest = new InventoryInterface(playerTest.getInventory());
         play();
     }
     
+    public Player getPlayer()
+    {
+    	return playerTest;
+    }
     public static void main (String[] args)
     {
         new Game();

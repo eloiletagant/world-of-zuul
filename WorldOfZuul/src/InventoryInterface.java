@@ -2,32 +2,27 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-
-import java.awt.event.ActionListener; 
-
 import javax.swing.JFrame;
-
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.Image;
-
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.Scanner;
-
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import character.*;
+import item.Inventory;
 
 /**
  * Write a description of class InventoryInterface here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Group4
+ * @version 01/12/2016
  */
 public class InventoryInterface extends JFrame
 {
@@ -36,17 +31,18 @@ public class InventoryInterface extends JFrame
     protected JButton deleteButton= new JButton("DELETE");
     protected JButton sellButton= new JButton("SELL");
     private JFrame myFrame;
-    protected JButton back, axeButton,mincingMachineButton, bowButton, eggplantButton, key1Button, key2Button, breadButton, potionButton, swordButton,pineappleButton, cookiesButton, briocheButton;
-    protected JLabel goldLabel;
-    protected int gold;
-    
+    private JButton back, axeButton,mincingMachineButton, bowButton, eggplantButton, key1Button, key2Button, breadButton, potionButton, swordButton,pineappleButton, cookiesButton, briocheButton;
+    private JLabel goldLabel;
+    //private int gold;
     protected Listener evt;
+    private Inventory inventoryPlayer;
 
     /**
      * Constructor for objects of class InventoryInterface
      */
-    public InventoryInterface()
+    public InventoryInterface(Inventory anInventory)
     {
+    	inventoryPlayer = anInventory;
         JPanel myPanel = new JPanel(new BorderLayout ());
         JPanel up = new JPanel (new GridLayout (1,3));
         JPanel inventory = new JPanel (new GridLayout (2,5,10,10));
@@ -87,7 +83,7 @@ public class InventoryInterface extends JFrame
         back.setFont(police);
 
 
-        goldLabel = new JLabel("GOLD :" + gold);
+        goldLabel = new JLabel("GOLD :" + inventoryPlayer.getGold());
         goldLabel.setBackground(Color.black);
         goldLabel.setOpaque(true);
         goldLabel.setForeground(Color.yellow);
