@@ -33,6 +33,7 @@ public class Timer implements Runnable {
                 } else {
                     fightMessage = "Vous etes mort";
                 }
+                Clicker.getScreen().setFightDone();
                 JOptionPane.showMessageDialog(Clicker.getFrame(), fightMessage, "Results", 1);
                 break;
             }

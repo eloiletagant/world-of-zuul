@@ -19,7 +19,7 @@ public class Screen extends JPanel implements ActionListener {
     private int time = 0;
     private int progression = 0;
     private JPanel progressionBar = new JPanel();
-
+    private boolean fightDone = false;
 
 
     private JButton clickButton = new JButton("Click Here!");
@@ -112,7 +112,7 @@ public class Screen extends JPanel implements ActionListener {
 
                     timer.setRunning(false);
                     clickButton.setEnabled(true);
-
+                    setFightDone();
                     JOptionPane.showMessageDialog(Clicker.getFrame(), "Win", "Results", 1);
                 }
             }
@@ -121,5 +121,14 @@ public class Screen extends JPanel implements ActionListener {
                 new Thread(timer).start();
             }
         }
+    }
+    
+    public void setFightDone() {
+    	fightDone = true;
+    }
+    
+    public boolean getFightDone()
+    {
+    	return fightDone;
     }
 }

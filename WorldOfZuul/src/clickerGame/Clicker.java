@@ -7,7 +7,8 @@ public class Clicker {
     private static JFrame frame;
 
 
-    public static void main(String[] args) {
+
+    public static int clickerLauncher (int clicksAsked) {
         JFrame frame = new JFrame();
         frame.setSize(400, 450);
         frame.setDefaultCloseOperation(3);
@@ -16,7 +17,11 @@ public class Clicker {
         Clicker.getScreen().addComponents();
         frame.add(Clicker.getScreen());
         frame.setVisible(true);
-        screen.getTimer().setWinScore(10);
+        screen.getTimer().setWinScore(clicksAsked);
+        while(screen.getFightDone() != true)
+        {
+        }
+        return screen.getClicks();
     }
 
     public static Screen getScreen() {
@@ -34,4 +39,6 @@ public class Clicker {
     public static void setFrame(JFrame frame) {
         Clicker.frame = frame;
     }
+    
+
 }
