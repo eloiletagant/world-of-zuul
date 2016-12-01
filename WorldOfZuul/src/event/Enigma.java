@@ -30,7 +30,7 @@ public class Enigma extends Event {
     }
 
     
-    /**
+    /** 
      * method to get the answer
      * @return
      */
