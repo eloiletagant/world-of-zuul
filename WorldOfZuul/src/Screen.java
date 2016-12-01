@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ClickerScreen
+public class Screen
 extends JPanel
 implements ActionListener {
     private static final long serialVersionUID = 1;
