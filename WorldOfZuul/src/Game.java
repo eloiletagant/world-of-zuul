@@ -39,34 +39,22 @@ public class Game {
      * Create all the rooms and link their exits together.
      */
     private void createRooms() {
-        Room outside, inside;
+        Room r1, r2;
+        // Create the rooms
+        r1 = new Room("First room", 0);
+        r2 = new Room("Second room", 0);
 
-        // create the rooms
-        outside = new Room("outside the main entrance of the castle", 0);
-        inside = new Room("first room", 0);
-
-        // initialise room doors
-        outside.addExit(new Door(inside), "front");
-        inside.addExit(new Door(outside), "back");
-
-        currentRoom = outside;  // start game outside
+        // Initialise room doors
+        createDoors(r1, r2, "front");
+        currentRoom = r1;  // start game in first room
     }
 
     /**
      *  Main play routine.  Loops until end of play.
      */
     public void play() {
+    	parser.getCommand();
         printWelcome();
-
-        // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
-
-        boolean finished = false;
-        while (!finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-        }
-        System.out.println("Thank you for playing.  Good bye.");
     }
 
     /**
@@ -90,29 +78,6 @@ public class Game {
 
     }
 
-    /**
-     * Given a command, process (that is: execute) the command.
-     * @param command The command to be processed.
-     * @return true If the command ends the game, false otherwise.
-     */
-    private boolean processCommand(Command command) {
-        boolean wantToQuit = false;
-
-        if (command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
-            return false;
-        }
-
-        String commandWord = command.getCommandWord();
-        if (commandWord.equals("help"))
-            printHelp();
-        else if (commandWord.equals("go"))
-            goRoom(command);
-        else if (commandWord.equals("quit"))
-            wantToQuit = quit(command);
-
-        return wantToQuit;
-    }
 
     // implementations of user commands:
 
@@ -129,68 +94,6 @@ public class Game {
         System.out.println("   go quit help");
     }
 
-    /**
-     * Try to go to one direction. If there is an exit, enter
-     * the new room, otherwise print an error message.
-     */
-    private void goRoom(Command command) {
-        if (!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
-            System.out.println("Go where?");
-            return;
-        }
-
-        String direction = command.getSecondWord();
-
-        // Try to leave current room.
-        Room nextRoom = currentRoom.getDoors();
-
-
-        if (direction.equals("north")) {
-            nextRoom = currentRoom.northExit;
-        }
-        if (direction.equals("east")) {
-            nextRoom = currentRoom.eastExit;
-        }
-        if (direction.equals("south")) {
-            nextRoom = currentRoom.southExit;
-        }
-        if (direction.equals("west")) {
-            nextRoom = currentRoom.westExit;
-        }
-
-        if (nextRoom == null) {
-            System.out.println("There is no door!");
-        } else {
-            currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-            if (currentRoom.northExit != null)
-                System.out.print("north ");
-            if (currentRoom.eastExit != null)
-                System.out.print("east ");
-            if (currentRoom.southExit != null)
-                System.out.print("south ");
-            if (currentRoom.westExit != null)
-                System.out.print("west ");
-            System.out.println();
-        }
-    }
-
-    /**
-     * "Quit" was entered. Check the rest of the command to see
-     * whether we really quit the game.
-     * @return true, if this command quits the game, false otherwise.
-     */
-    private boolean quit(Command command) {
-        if (command.hasSecondWord()) {
-            System.out.println("Quit what?");
-            return false;
-        } else {
-            return true;  // signal that we want to quit
-        }
-    }
-
 
     /**
      * method to associate a key and a lock
@@ -200,5 +103,42 @@ public class Game {
         Lock lock = new Lock();
         lock.addKey(new Key(keyName, keyDescription, keyPrice, keySellAble));
         return lock;
+    }
+    
+    /**
+     * method to associate a key and a lock
+     * maybe not really useful
+     */
+    public void createDoors(Room room, Room nextRoom, String way) {
+    	Door door1 = new Door(nextRoom);
+    	room.addExit(door1, way);
+    	Door door2 = new Door(room);
+    	String oppositeWay;
+    	
+    	switch (way)
+    	{
+    	  case "front":
+    	    oppositeWay = "behind";
+    	    break;  
+    	  case "behind":
+      	    oppositeWay = "front";
+      	    break;
+    	  case "right":
+      	    oppositeWay = "left";
+      	    break;
+    	  case "left":
+        	oppositeWay = "right";
+        	break;
+    	  case "upstair":
+        	oppositeWay = "downstair";
+        	break;
+    	  case "downstair":
+          	oppositeWay = "upstair";
+          	break; 
+    	  default:
+    		oppositeWay="";
+    	    break;             
+    	}
+    	nextRoom.addExit(door2, oppositeWay);
     }
 }

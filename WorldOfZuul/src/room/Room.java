@@ -8,7 +8,7 @@ import event.Event;
 /**
  * This class describes the structure of a room. A room is defined by a name and a map level (0 or 1).
  * One room could have several doors associated to directions and it can contain some events like fight or trade.
- * A room can't have two exits on the same room or with the same way. The ways can be front, behind, right, left, stair and hole.
+ * A room can't have two exits on the same room or with the same way. The ways can be front, behind, right, left, upstair, downstair and hole.
  *
  * @author Groupe4
  * @version 10/11/2016

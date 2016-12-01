@@ -8,14 +8,22 @@ import java.util.Scanner;
  */
 public class Parser {
 
+    private Scanner reader;         // source of command input
+    
+    public Parser() 
+    {
+        reader = new Scanner(System.in);
+    }
+    
     /**
      * @return The next command from the user.
      */
-    public static void scanWords(String[] args) {
-        Scanner reader = new Scanner(System.in);
+    public String getCommand() 
+    {
         System.out.println("Input: ");
         String str = reader.nextLine();
-        System.out.println("Your input is: " + str);
-        reader.nextLine(); //empty line
+        
+        return str;
     }
+
 }
