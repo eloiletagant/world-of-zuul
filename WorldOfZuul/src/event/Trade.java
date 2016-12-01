@@ -2,7 +2,7 @@ package event;
 
 import java.lang.Math;
 
-import character.Character;
+import character.*;
 import character.NPC;
 import item.Item;
 
@@ -22,7 +22,7 @@ public class Trade extends Event {
     /**
      * Constructor of a trade
      */
-    public Trade(String description, Item item, Character player, NPC trader) {
+    public Trade(String description, Item item, Player player, NPC trader) {
         super(description, item, player, trader);
     }
 
@@ -33,7 +33,7 @@ public class Trade extends Event {
      * @param item
      * @param price
      */
-    public void buy(Character player, NPC trader, Item item, int price) {
+    public void buy(Player player, NPC trader, Item item, int price) {
         //for the player
         player.getInventory().manageGold(-price);
         player.getInventory().addItem(item);
@@ -48,7 +48,7 @@ public class Trade extends Event {
      * @param item
      * @param price
      */
-    public void sell(Character player, NPC trader, Item item, int price) {
+    public void sell(Player player, NPC trader, Item item, int price) {
         //for the player
         player.getInventory().manageGold(Math.round((price * 8) / 10));
         player.getInventory().deleteItem(item);
