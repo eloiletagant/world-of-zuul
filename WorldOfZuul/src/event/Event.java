@@ -1,7 +1,7 @@
 package event;
 
 import item.Item;
-import character.Character;
+import character.*;
 import character.NPC;
 
 /**
@@ -13,7 +13,7 @@ import character.NPC;
 public abstract class Event {
     private String description;
     private Item item;
-    private Character player;
+    private Player player;
     private NPC npc;
 
     /**
@@ -24,11 +24,16 @@ public abstract class Event {
      * @param player      Character the player of the game
      * @param npc         NPC which is involved in the event
      */
-    public Event(String description, Item item, Character player, NPC npc) {
-        this.description = description;
-        this.item = item;
-        this.player = player;
-        this.npc = npc;
+    public Event(String aDescription, Item anItem, Player aPlayer, NPC aNpc) 
+    {
+    	if(aDescription.isEmpty())
+    	{
+    		aDescription = "You have no idea about what's happening";
+    	}
+        description = aDescription;
+        item = anItem;
+        player = aPlayer;
+        npc = aNpc;
     }
 
     /**
@@ -48,7 +53,7 @@ public abstract class Event {
     /**
      * This method will give the player involved in the event.
      */
-    public Character getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 
@@ -62,8 +67,8 @@ public abstract class Event {
     /**
      * This method will set a new item for the event item.
      */
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItem(Item newItem) {
+        item = newItem;
     }
 
 
