@@ -77,7 +77,7 @@ public class Game {
 
 
         for (HashMap.Entry<String, Door> entry : currentRoom.getDoors().entrySet()) {
-            System.out.println(entry.getKey() + "/" + entry.getValue());
+            System.out.println(entry.getKey().getNextRoom().getDescription() + "/" + entry.getValue().getNextRoom().getDescription());
         }
 
         System.out.println();
