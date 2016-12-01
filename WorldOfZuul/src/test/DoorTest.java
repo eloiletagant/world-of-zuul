@@ -5,13 +5,13 @@ import org.junit.*;
 
 import room.Door;
 import room.Room;
-import character.Character;
+import character.*;
 
 
 public class DoorTest {
 
 	private Door door;
-	private Character character;
+	private Player character;
 	private Room room;
 	
 	public DoorTest() {
@@ -20,7 +20,7 @@ public class DoorTest {
 	@Before
 	public void setUp() {
 		door = new Door(new Room("Garden", 0));
-		character = new Character("Jason");
+		character = new Player("Jason");
 	}
 
 	/**
