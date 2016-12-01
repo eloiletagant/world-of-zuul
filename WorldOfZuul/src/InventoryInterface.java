@@ -81,7 +81,7 @@ public class InventoryInterface extends JFrame
         sellButton.setFont(police);
         
 		
-        Icon backIcon = new ImageIcon("./back.png");
+        Icon backIcon = new ImageIcon("pictures/back.png");
 		back = new JButton ("BACK", backIcon);
         back.setBackground(Color.black);
         back.setOpaque(true);
@@ -133,7 +133,7 @@ public class InventoryInterface extends JFrame
         key2Button = new JButton(key2);
         key2Button.setBackground(new Color(70, 63, 55));
         
-        Icon bread= new ImageIcon("pictures/bread.png");
+        Icon bread= new ImageIcon("./pictures/bread.png");
         breadButton = new JButton(bread);
         breadButton.setBackground(new Color(70, 63, 55));
         
