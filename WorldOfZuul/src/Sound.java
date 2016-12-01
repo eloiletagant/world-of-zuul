@@ -7,7 +7,7 @@ import javax.sound.sampled.*;
  */
 
 public class Sound {
-	public static synchronized void playSound(String url) {
+	public synchronized void playSound(String url) {
 		  File f = new File(url);
 		  new Thread(new Runnable() {
 		  // The wrapper thread is unnecessary, unless it blocks on the
@@ -17,6 +17,7 @@ public class Sound {
 		        Clip clip = AudioSystem.getClip();
 		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(f);
 		        clip.open(inputStream);
+		        clip.loop(Clip.LOOP_CONTINUOUSLY);
 		        clip.start(); 
 		      } catch (Exception e) {
 		        System.err.println(e.getMessage());
