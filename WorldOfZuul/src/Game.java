@@ -53,7 +53,6 @@ public class Game {
      *  Main play routine.  Loops until end of play.
      */
     public void play() {
-    	parser.getCommand();
         printWelcome();
     }
 
