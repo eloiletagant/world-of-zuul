@@ -18,7 +18,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import character.Player;
-import event.Event;
 import room.Door;
 import room.Room;
 import item.*;
@@ -30,9 +29,10 @@ public class Game {
     private Player player, playerTest;
     private ArrayList<Room> rooms; 
     private InventoryInterface atest;
+    public  Sound s;
 
     /**
-     * Create the game and initialise its internal map.
+     * Create the game and initialize its internal map.
      */
     public Game()
     {
@@ -44,6 +44,8 @@ public class Game {
         parser = new Parser();
         atest = new InventoryInterface(playerTest.getInventory());
         play();
+        s = new Sound();
+        s.playSound("music/SoundCave.wav");
     }
     
     public Player getPlayer()

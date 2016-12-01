@@ -3,12 +3,10 @@ import javax.sound.sampled.*;
 /*
  * 
  * Group 4
+ * 01/12/2016
  */
 
-//public sound s;
-//s = new sound();
-//s.playSound(music/SoundCave.wav);
-public class SoundTest {
+public class Sound {
 	public static synchronized void playSound(String url) {
 		  File f = new File(url);
 		  new Thread(new Runnable() {
