@@ -36,12 +36,12 @@ public class Game {
      */
     public Game()
     {
-    	playerTest= new Player ("Kaamelott");    	
     	rooms = new ArrayList<Room>();
     	createItems();
         createAllRooms();
         createAllDoors(rooms);
-        parser = new Parser();
+    	playerTest= new Player ("Kaamelott");
+    	parser = new Parser();
         atest = new InventoryInterface(playerTest.getInventory());
         play();
         s = new Sound();
@@ -115,6 +115,7 @@ public class Game {
         Chest ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
         Chest ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
         Chest ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
+        playerTest.getInventory().addItem(c4);
     }
     	
 
