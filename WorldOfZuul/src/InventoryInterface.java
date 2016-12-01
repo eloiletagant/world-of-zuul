@@ -67,8 +67,6 @@ public class InventoryInterface extends JFrame
         
         myPanel.setBackground(Color.black);
         
-       
-        
         
         useButton.setBackground(Color.black);
         useButton.setForeground(Color.white);
@@ -94,7 +92,7 @@ public class InventoryInterface extends JFrame
         goldLabel.setOpaque(true);
         goldLabel.setForeground(Color.yellow);
         goldLabel.setFont(police);
-        Icon goldIcon = new ImageIcon("./gold.png");
+        Icon goldIcon = new ImageIcon("pictures/gold.png");
         JLabel goldIconLabel = new JLabel(goldIcon);
         goldIconLabel.setBackground(Color.black);
         goldIconLabel.setOpaque(true);
@@ -109,7 +107,7 @@ public class InventoryInterface extends JFrame
         up.add(title);
         up.add(gold);
         
-        Icon axe = new ImageIcon("./axe.png");
+        Icon axe = new ImageIcon("pictures/axe.png");
         axeButton = new JButton(axe);
         axeButton.setBackground(new Color(70, 63, 55));
         
@@ -133,7 +131,7 @@ public class InventoryInterface extends JFrame
         key2Button = new JButton(key2);
         key2Button.setBackground(new Color(70, 63, 55));
         
-        Icon bread= new ImageIcon("./pictures/bread.png");
+        Icon bread= new ImageIcon("pictures/bread.png");
         breadButton = new JButton(bread);
         breadButton.setBackground(new Color(70, 63, 55));
         
