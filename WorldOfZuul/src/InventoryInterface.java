@@ -11,12 +11,15 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import character.*;
 import item.Inventory;
+import item.Item;
 
 /**
  * Write a description of class InventoryInterface here.
@@ -35,6 +38,7 @@ public class InventoryInterface extends JFrame
     private JLabel goldLabel;
     protected Listener evt;
     private Inventory inventoryPlayer;
+    public Item test;
 
     /**
      * Constructor for objects of class InventoryInterface
@@ -101,6 +105,8 @@ public class InventoryInterface extends JFrame
         up.add(title);
         up.add(gold);
         
+        
+        
         Icon axe = new ImageIcon("pictures/axe.png");
         axeButton = new JButton(axe);
         axeButton.setBackground(new Color(70, 63, 55));
@@ -149,18 +155,54 @@ public class InventoryInterface extends JFrame
         cookiesButton = new JButton(cookies);
         cookiesButton.setBackground(new Color(70, 63, 55));
         
+
+        for (Item item : inventoryPlayer.getItems())
+    	{
+    		if( item.getName() == "Pineapple")
+    		{
+    			inventory.add(pineappleButton);
+    		}
+    		if (item.getName() == "Axe")
+			{
+				inventory.add(axeButton);
+			}
+			if (item.getName() == "Bow")
+			{
+				inventory.add(bowButton);
+			}
+			if (item.getName() == "Butcher knife")
+			{
+				inventory.add(mincingMachineButton);
+			}
+			if (item.getName() == "Eggplant")
+			{
+				inventory.add(eggplantButton);
+			}
+			if (item.getName() == "Bread")
+			{
+				inventory.add(breadButton);
+			}
+			if (item.getName() == "Brioche")
+			{
+				inventory.add(briocheButton);
+			}
+			if (item.getName() == "Cookies")
+			{
+				inventory.add(cookiesButton);
+			}
+						
+			if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
+			{
+				inventory.add(key1Button);
+			}
+			if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
+			{
+				inventory.add(key2Button);
+			}
+			
+    	}
+
         
-        
-        inventory.add(axeButton);
-        inventory.add(mincingMachineButton);
-        inventory.add(bowButton);
-        inventory.add(eggplantButton);
-        inventory.add(key1Button);
-        inventory.add(key2Button);
-        inventory.add(breadButton);
-        inventory.add(briocheButton);
-        inventory.add(cookiesButton);
-        inventory.add(pineappleButton);
         
         //Listeners for buttons action
         evt= new Listener(this);
@@ -180,6 +222,13 @@ public class InventoryInterface extends JFrame
         this.setSize(500, 500);
         this.pack();
         this.setVisible(true);
+    }
+    
+    public void creatInventory()
+    {
+    	
+    	
+
     }
 
 } 
