@@ -11,8 +11,8 @@
  * rooms, creates the parser and starts the game.  It also evaluates and
  * executes the commands that the parser returns.
  *
- * @author Michael Kolling and David J. Barnes
- * @version 2006.03.30
+ * @author Group 4
+ * @version November 2016
  */
 
 import java.util.ArrayList;
@@ -29,6 +29,7 @@ public class Game {
     private Room currentRoom;
     private Player player;
     private ArrayList<Room> rooms; 
+    private InventoryInterface atest;
 
     /**
      * Create the game and initialise its internal map.
@@ -40,6 +41,7 @@ public class Game {
         createAllRooms();
         createAllDoors(rooms);
         parser = new Parser();
+        atest = new InventoryInterface();
         play();
     }
     

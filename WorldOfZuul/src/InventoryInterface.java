@@ -113,7 +113,7 @@ public class InventoryInterface extends JFrame
         axeButton = new JButton(axe);
         axeButton.setBackground(new Color(70, 63, 55));
         
-        Icon mincingMachine = new ImageIcon("./mincing_machine.png");
+        Icon mincingMachine = new ImageIcon("mincing_machine.png");
         mincingMachineButton = new JButton(mincingMachine);
         mincingMachineButton.setBackground(new Color(70, 63, 55));
         
@@ -121,7 +121,7 @@ public class InventoryInterface extends JFrame
         bowButton = new JButton(bow);
         bowButton.setBackground(new Color(70, 63, 55));
         
-        Icon eggplant= new ImageIcon("./eggplant.png");
+        Icon eggplant= new ImageIcon("eggplant.png");
         eggplantButton = new JButton(eggplant);
         eggplantButton.setBackground(new Color(70, 63, 55));
         
