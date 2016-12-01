@@ -113,47 +113,47 @@ public class InventoryInterface extends JFrame
         axeButton = new JButton(axe);
         axeButton.setBackground(new Color(70, 63, 55));
         
-        Icon mincingMachine = new ImageIcon("mincing_machine.png");
+        Icon mincingMachine = new ImageIcon("pictures/mincing_machine.png");
         mincingMachineButton = new JButton(mincingMachine);
         mincingMachineButton.setBackground(new Color(70, 63, 55));
         
-        Icon bow= new ImageIcon("./Bow.png");
+        Icon bow= new ImageIcon("pictures/Bow.png");
         bowButton = new JButton(bow);
         bowButton.setBackground(new Color(70, 63, 55));
         
-        Icon eggplant= new ImageIcon("eggplant.png");
+        Icon eggplant= new ImageIcon("pictures/eggplant.png");
         eggplantButton = new JButton(eggplant);
         eggplantButton.setBackground(new Color(70, 63, 55));
         
-        Icon key1 = new ImageIcon("./key1.png");
+        Icon key1 = new ImageIcon("pictures/key1.png");
         key1Button = new JButton(key1);
         key1Button.setBackground(new Color(70, 63, 55));
         
-        Icon key2= new ImageIcon("./key2.png");
+        Icon key2= new ImageIcon("pictures/key2.png");
         key2Button = new JButton(key2);
         key2Button.setBackground(new Color(70, 63, 55));
         
-        Icon bread= new ImageIcon("./bread.png");
+        Icon bread= new ImageIcon("pictures/bread.png");
         breadButton = new JButton(bread);
         breadButton.setBackground(new Color(70, 63, 55));
         
-        Icon potion= new ImageIcon("./potion.png");
+        Icon potion= new ImageIcon("pictures/potion.png");
         potionButton = new JButton(potion);
         potionButton.setBackground(new Color(70, 63, 55));
         
-        Icon sword= new ImageIcon("./sword.png");
+        Icon sword= new ImageIcon("pictures/sword.png");
         swordButton = new JButton(sword);
         swordButton.setBackground(new Color(70, 63, 55));
         
-        Icon pineapple= new ImageIcon("./pineapple.png");
+        Icon pineapple= new ImageIcon("pictures/pineapple.png");
         pineappleButton = new JButton(pineapple);
         pineappleButton.setBackground(new Color(70, 63, 55));
         
-        Icon brioche= new ImageIcon("./brioche.png");
+        Icon brioche= new ImageIcon("pictures/brioche.png");
         briocheButton = new JButton(brioche);
         briocheButton.setBackground(new Color(70, 63, 55));
         
-        Icon cookies= new ImageIcon("./cookies.png");
+        Icon cookies= new ImageIcon("pictures/cookies.png");
         cookiesButton = new JButton(cookies);
         cookiesButton.setBackground(new Color(70, 63, 55));
         
