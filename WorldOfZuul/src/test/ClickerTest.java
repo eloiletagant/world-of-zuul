@@ -7,7 +7,7 @@ import item.Weapon;
 
 public class ClickerTest
 {
-private Fight f1;
+	private Fight f1;
 	
 	public void main()
 	{
