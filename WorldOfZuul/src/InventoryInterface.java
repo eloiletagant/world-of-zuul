@@ -34,7 +34,7 @@ public class InventoryInterface extends JFrame
     protected JButton deleteButton= new JButton("DELETE");
     protected JButton sellButton= new JButton("SELL");
     private JFrame myFrame;
-    private JButton back, axeButton, mincingMachineButton, bowButton, eggplantButton, key1Button, key2Button, breadButton, potionButton, swordButton,pineappleButton, cookiesButton, briocheButton;
+    public JButton back, axeButton, mincingMachineButton, bowButton, eggplantButton, key1Button, key2Button, breadButton, potionButton, swordButton,pineappleButton, cookiesButton, briocheButton;
     private JLabel goldLabel;
     protected Listener evt;
     private Inventory inventoryPlayer;
