@@ -37,10 +37,10 @@ public class Game {
     public Game()
     {
     	rooms = new ArrayList<Room>();
-    	createItems();
         createAllRooms();
         createAllDoors(rooms);
     	playerTest= new Player ("Kaamelott");
+    	createItems();
     	parser = new Parser();
         atest = new InventoryInterface(playerTest.getInventory());
         play();
@@ -115,7 +115,7 @@ public class Game {
         Chest ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
         Chest ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
         Chest ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
-        playerTest.getInventory().addItem(c4);
+        boolean ok = playerTest.getInventory().addItem(k6);
     }
     	
 
