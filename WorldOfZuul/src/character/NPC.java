@@ -13,7 +13,7 @@ package character;
  *
  */
 
-public class NPC extends Character
+public class NPC extends Player
 {
 
     private boolean enemy; //indicate if the NPC is friendly or not.
