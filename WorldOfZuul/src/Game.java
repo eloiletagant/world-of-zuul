@@ -34,6 +34,10 @@ public class Game {
         parser = new Parser();
         play();
     }
+    
+    public static void main (String[] args){
+        new Game();
+       }
 
     /**
      * Create all the rooms and link their exits together.
