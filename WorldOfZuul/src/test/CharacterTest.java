@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import character.Character;
+import character.*;
 import room.Room;
 
 public class CharacterTest
 {
 
-	private Character c1;
+	private Player c1;
 	private Room firstRoom, secondRoom;
 	
 	/**
@@ -19,7 +19,7 @@ public class CharacterTest
 	@Before
 	public void setUp()
 	{
-		c1 = new Character("Pseudo");
+		c1 = new Player("Pseudo");
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class CharacterTest
 	@Test
 	public void testCharacterEmptyName()
 	{
-		Character c2 = new Character("");
+		Player c2 = new Player("");
 		assertEquals(c2.getName(), "Kaamelott");	
 	}
 	
