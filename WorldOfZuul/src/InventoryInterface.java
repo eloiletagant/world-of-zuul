@@ -7,7 +7,8 @@ import item.Inventory;
 import item.Item;
 
 /**
- * Write a description of class InventoryInterface here.
+ * This method creates the frame with the design of the inventory.
+ * It allows displaying items of the inventory of the player.
  * 
  * @author Group4
  * @version 01/12/2016
@@ -15,12 +16,14 @@ import item.Item;
 public class InventoryInterface extends JFrame
 {
     //button building
-    public JButton back, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell;
-    private JLabel title, goldLabel, goldIconLabel;
-    private JPanel myPanel, up, inventory, down, gold, action;
+    public JButton back, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
+    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price;
+    private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
+    private JFrame itemFrame;
     private Inventory inventoryPlayer;
-    private Icon backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
+    private Icon anIcon, backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
     private int counter =0;
+    private Item myItem;
     protected Listener evt, c1, c2, c3, c4, c5, c6, w1, w2, w3, w4, k1, k2;
 
     /**
@@ -50,7 +53,7 @@ public class InventoryInterface extends JFrame
         
         use= new JButton("USE");
         use.setBackground(Color.black);
-        use.setForeground(Color.white);
+        use.setForeground(Color.yellow);
         use.setFont(police);
         sell= new JButton("SELL");
         sell.setBackground(Color.black);
@@ -140,67 +143,8 @@ public class InventoryInterface extends JFrame
 
         for (Item item : inventoryPlayer.getItems())
     	{
-    		if(item.getName() == "Pineapple")
-    		{
-    			inventory.add(pineapple);
-    			counter+=1;
-    		}
-    		if (item.getName() == "Axe")
-			{
-				inventory.add(axe);
-				counter+=1;
-			}
-			if (item.getName() == "Bow")
-			{
-				inventory.add(bow);
-				counter+=1;
-			}
-			if (item.getName() == "Butcher knife")
-			{
-				inventory.add(mincingMachine);
-				counter+=1;
-			}
-			if (item.getName() == "Sword")
-			{
-				inventory.add(sword);
-				counter+=1;
-			}
-			if (item.getName() == "Eggplant")
-			{
-				inventory.add(eggplant);
-				counter+=1;
-			}
-			if (item.getName() == "Bread")
-			{
-				inventory.add(bread);
-				counter+=1;
-			}
-			if (item.getName() == "Brioche")
-			{
-				inventory.add(brioche);
-				counter+=1;
-			}
-			if (item.getName() == "Cookies")
-			{
-				inventory.add(cookies);
-				counter+=1;
-			}
-			if (item.getName() == "Potion")
-			{
-				inventory.add(potion);
-				counter+=1;
-			}
-						
-			if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
-			{
-				inventory.add(key1);
-				counter+=1;
-			}
-			if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
-			{
-				inventory.add(key2);
-				counter+=1;
-			}			
+        	inventory.add(getJButton(item));
+        	counter+=1;
     	}
         while (counter!=10)
 		{
@@ -215,31 +159,19 @@ public class InventoryInterface extends JFrame
         sell.addMouseListener(evt);
         back.addMouseListener(evt);
         use.addMouseListener(evt);
-        
-        c1= new Listener(this);
-        brioche.addMouseListener(c1);
-        c2= new Listener(this);
-        bread.addMouseListener(c2);
-        c3= new Listener(this);
-        cookies.addMouseListener(c3);
-        c4= new Listener(this);
-        pineapple.addMouseListener(c4);
-        c5= new Listener(this);
-        eggplant.addMouseListener(c5);
-        c6= new Listener(this);
-        potion.addMouseListener(c6);
-        w1= new Listener(this);
-        axe.addMouseListener(w1);
-        w2= new Listener(this);
-        bow.addMouseListener(w2);
-        w3= new Listener(this);
-        mincingMachine.addMouseListener(w3);
-        w4= new Listener(this);
-        sword.addMouseListener(w4);
-        k1= new Listener(this);
-        key1.addMouseListener(k1);
-        k2= new Listener(this);
-        key2.addMouseListener(k2);
+
+        brioche.addMouseListener(evt);
+        bread.addMouseListener(evt);
+        cookies.addMouseListener(evt);
+        pineapple.addMouseListener(evt);
+        eggplant.addMouseListener(evt);
+        potion.addMouseListener(evt);
+        axe.addMouseListener(evt);
+        bow.addMouseListener(evt);
+        mincingMachine.addMouseListener(evt);
+        sword.addMouseListener(evt);
+        key1.addMouseListener(evt);
+        key2.addMouseListener(evt);
         
         
         
@@ -254,25 +186,224 @@ public class InventoryInterface extends JFrame
         this.pack();
         this.setVisible(true);
     }
-    
-    public void displayItem(Item anItem)
-    {
-    	
-    }
-    
+
+    /**
+     * This method returns an item from the inventory of the player according to its name.
+     * @param name of the item to return
+     * @return an item
+     */
     public Item searchItem(String name)
     {
     	for (Item item : inventoryPlayer.getItems())
     	{
     		if (item.getName() == name)
     		{
-    			return item;
+    			myItem=item;
     		}
-    	} 	
+    	}
+    	return myItem;
     }
     
+    /**
+     * This method create a new window and display all information of the given item.
+     * @param anItem to display
+     */
+    public void displayItem(Item anItem)
+    {
+    	exitInventory();
+    	Font police = new Font ("Kristen ITC", Font.BOLD, 14);
+    	Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
+    	
+    	backIcon = new ImageIcon("pictures/back.png");
+		back = new JButton ("BACK", backIcon);
+        back.setBackground(Color.black);
+        back.setOpaque(true);
+        back.setForeground(Color.yellow);
+        back.setFont(police);
+        
+        title = new JLabel ("INVENTORY : " + anItem.getName(), JLabel.CENTER);
+        title.setBackground(Color.black);
+        title.setOpaque(true);
+        title.setForeground(Color.yellow);
+        title.setFont(police);
+        
+        up = new JPanel (new GridLayout (1,2));
+        up.add(back);
+        up.add(title);
+    	
+    	itemFrame = new JFrame(anItem.getName());
+    	itemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+    	itemFrame.setSize(500, 500);
+    	
+    	actions= new JPanel(new GridLayout(1,2));
+    	actions.add(use);
+    	if (anItem.getSellAble()==false)
+    	{
+    		sell.setEnabled(false);
+    	}
+    	actions.add(sell);
+    	
+    	iconLabel=new JLabel(getIcon(anItem));
+    	iconLabel.setBackground(new Color(70, 63, 55));
+        iconLabel.setOpaque(true);
+        
+        nom=new JLabel("Name : "+anItem.getName());
+        nom.setForeground(Color.white);
+        nom.setFont(police2);
+        description=new JLabel("Description : "+anItem.getDescription());
+        description.setForeground(Color.white);
+        description.setFont(police2);
+        price=new JLabel("Price : "+anItem.getPrice());
+        price.setForeground(Color.white);
+        price.setFont(police2);
+        completeDescription=new JPanel(new GridLayout(0,1));
+        completeDescription.setBackground(new Color(70, 63, 55));
+        completeDescription.setOpaque(true);
+        completeDescription.add(nom);
+        completeDescription.add(description);
+        completeDescription.add(price);
+        
+    	view=new JPanel(new BorderLayout());
+    	view.add(up,BorderLayout.NORTH);
+    	view.add(iconLabel,BorderLayout.CENTER);
+    	view.add(completeDescription,BorderLayout.EAST);
+    	view.add(actions,BorderLayout.SOUTH);
+    	
+    	itemFrame.add(view);
+    	itemFrame.pack();
+    	itemFrame.setVisible(true);
+    }
+    
+    /**
+     * This method returns the inventory of the player.
+     * @return Inventory
+     */
     public Inventory getInventory()
     {
     	return inventoryPlayer;
+    }
+    
+    /**
+     * This method returns the JButton according to the given item.
+     * @param item
+     * @return JButton
+     */
+    public JButton getJButton(Item item)
+    {
+    	if(item.getName() == "Pineapple")
+		{
+			aButton=pineapple;
+		}
+    	else if (item.getName() == "Axe")
+		{
+    		aButton=axe;
+		}
+    	else if (item.getName() == "Bow")
+		{
+    		aButton=bow;
+		}
+    	else if (item.getName() == "Butcher knife")
+		{
+    		aButton=mincingMachine;
+		}
+    	else if (item.getName() == "Sword")
+		{
+    		aButton=sword;
+		}
+    	else if (item.getName() == "Eggplant")
+		{
+    		aButton=eggplant;
+		}
+    	else if (item.getName() == "Bread")
+		{
+    		aButton=bread;
+		}
+		else if (item.getName() == "Brioche")
+		{
+			aButton=brioche;
+		}
+		else if (item.getName() == "Cookies")
+		{
+			aButton=cookies;
+		}
+		else if (item.getName() == "Potion")
+		{
+			aButton=potion;
+		}					
+		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
+		{
+			aButton=key1;
+		}
+		else if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
+		{
+			aButton=key2;
+		}
+    	return aButton;
+    } 
+    
+    /**
+     * This method returns the JButton according to the given item.
+     * @param item
+     * @return JButton
+     */
+    public Icon getIcon(Item item)
+    {
+    	if(item.getName() == "Pineapple")
+		{
+			anIcon=new ImageIcon("pictures/axe.png");
+		}
+    	else if (item.getName() == "Axe")
+		{
+    		aButton=axe;
+		}
+    	else if (item.getName() == "Bow")
+		{
+    		aButton=bow;
+		}
+    	else if (item.getName() == "Butcher knife")
+		{
+    		aButton=mincingMachine;
+		}
+    	else if (item.getName() == "Sword")
+		{
+    		aButton=sword;
+		}
+    	else if (item.getName() == "Eggplant")
+		{
+    		aButton=eggplant;
+		}
+    	else if (item.getName() == "Bread")
+		{
+    		aButton=bread;
+		}
+		else if (item.getName() == "Brioche")
+		{
+			aButton=brioche;
+		}
+		else if (item.getName() == "Cookies")
+		{
+			aButton=cookies;
+		}
+		else if (item.getName() == "Potion")
+		{
+			aButton=potion;
+		}					
+		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
+		{
+			anIcon=new ImageIcon("pictures/key1.png");;
+		}
+		else if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
+		{
+			anIcon=new ImageIcon("pictures/key2.png");
+		}
+    	return anIcon;
+    }
+    
+    /**
+     * 
+     */
+    public void exitInventory()
+    {
+    	this.setVisible(false);
     }
 } 
