@@ -15,9 +15,11 @@
  * @version 2006.03.30
  */
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import character.Player;
+import event.Event;
 import room.Door;
 import room.Room;
 import item.Lock;
@@ -27,11 +29,13 @@ public class Game {
     private Parser parser;
     private Room currentRoom;
     private Player player;
+    private ArrayList<Room> rooms;
 
     /**
      * Create the game and initialise its internal map.
      */
     public Game() {
+    	rooms = new ArrayList<Room>();
         createRooms();
         parser = new Parser();
         play();
@@ -44,14 +48,15 @@ public class Game {
     /**
      * Create all the rooms and link their exits together.
      */
-    private void createRooms() {
-        // Create the rooms
-        Room r1 = new Room("First room", 0);
-        Room r2 = new Room("Second room", 0);
-        
-        // Initialise room doors
-        createDoors(r1, r2, "front");
-        currentRoom = r1;  // start game in first room
+    private void createRooms() {   	
+    	int fin=32;
+    	for(int i=0; i<=fin; i++){
+    		if (i < 14 || i > 29)
+    			rooms.add(new Room("Room " + i, 0));
+    		else
+    			rooms.add(new Room("Room " + i, 1));
+    	}
+    	currentRoom = rooms.get(0);
     }
 
     /**
@@ -71,12 +76,12 @@ public class Game {
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
+        System.out.println("You are " + currentRoom.getDescription() + " Level : " + currentRoom.getLevel());
         System.out.print("Exits: ");
 
 
         for (HashMap.Entry<String, Door> entry : currentRoom.getDoors().entrySet()) {
-            System.out.println(entry.getKey() + "/" + entry.getValue().getNextRoom().getDescription());
+            System.out.println(entry.getKey() + " / " + entry.getValue().getNextRoom().getDescription() + " / " + entry.getValue().getNextRoom().getLevel());
         }
 
         System.out.println();
