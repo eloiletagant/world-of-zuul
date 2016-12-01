@@ -8,44 +8,82 @@ import java.util.Scanner;
  * @author 
  * @version 
  */
-public class Listener extends MouseAdapter  implements ActionListener
+public class Listener extends MouseAdapter 
 {
     //attributes
-    private InventoryInterface i;
+    private InventoryInterface inventory;
     
     /**
      * The Constructor for the listener
      */
     public Listener(InventoryInterface c)
     {
-        i = c;
+    	inventory = c;
     }
-    
     /**
-     * Action from buttons
+     * This class allow 
      */
-    public void actionPerformed(ActionEvent e)
-    {
-
-    }
+     public void mouseEntered(MouseEvent evt) {
+    	 
+     }
 
      /**
      * This class allow 
      */
      public void mousePressed(MouseEvent evt) {
-         if(evt.getSource() == i.back)
+         if(evt.getSource() == inventory.back)
         {
 
         }
-        else if(evt.getSource() == i.sellButton)
+        else if(evt.getSource() == inventory.pineappleButton)
+        {
+        	
+        }
+        else if(evt.getSource() == inventory.eggplantButton)
         {
 
         }
-        else if(evt.getSource() == i.useButton)
+        else if(evt.getSource() == inventory.briocheButton)
         {
 
         }
-        
+        else if(evt.getSource() == inventory.breadButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.cookiesButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.potionButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.axeButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.bowButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.mincingMachineButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.swordButton)
+        {
+
+        }
+        else if(evt.getSource() == inventory.key1Button)
+        {
+
+        }
+        else if(evt.getSource() == inventory.key2Button)
+        {
+
+        }
+                
     }
     
 }

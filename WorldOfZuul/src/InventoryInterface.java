@@ -180,6 +180,11 @@ public class InventoryInterface extends JFrame
 				inventory.add(mincingMachineButton);
 				counter+=1;
 			}
+			if (item.getName() == "Sword")
+			{
+				inventory.add(swordButton);
+				counter+=1;
+			}
 			if (item.getName() == "Eggplant")
 			{
 				inventory.add(eggplantButton);
@@ -198,6 +203,11 @@ public class InventoryInterface extends JFrame
 			if (item.getName() == "Cookies")
 			{
 				inventory.add(cookiesButton);
+				counter+=1;
+			}
+			if (item.getName() == "Potion")
+			{
+				inventory.add(potionButton);
 				counter+=1;
 			}
 						
@@ -227,6 +237,19 @@ public class InventoryInterface extends JFrame
         deleteButton.addMouseListener(evt);
         back.addMouseListener(evt);
         useButton.addMouseListener(evt);
+        
+        pineappleButton.addMouseListener(evt);
+        eggplantButton.addMouseListener(evt);
+        briocheButton.addMouseListener(evt);
+        breadButton.addMouseListener(evt);
+        cookiesButton.addMouseListener(evt);
+        axeButton.addMouseListener(evt);
+        bowButton.addMouseListener(evt);
+        mincingMachineButton.addMouseListener(evt);
+        swordButton.addMouseListener(evt);
+        key1Button.addMouseListener(evt);
+        key2Button.addMouseListener(evt);
+        potionButton.addMouseListener(evt);
         
         
         myPanel.add(up,BorderLayout.NORTH);
