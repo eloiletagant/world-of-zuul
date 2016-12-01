@@ -36,16 +36,16 @@ public class Game {
      */
     public Game()
     {
+    	s = new Sound();
     	rooms = new ArrayList<Room>();
         createAllRooms();
         createAllDoors(rooms);
     	playerTest= new Player ("Kaamelott");
     	createItems();
     	parser = new Parser();
-        atest = new InventoryInterface(playerTest.getInventory());
-        play();
-        s = new Sound();
         s.playSound("music/SoundCave.wav");
+        atest = new InventoryInterface(playerTest.getInventory());
+        play();       
     }
     
     public Player getPlayer()
