@@ -31,9 +31,8 @@ public class InventoryInterface extends JFrame
     protected JButton deleteButton= new JButton("DELETE");
     protected JButton sellButton= new JButton("SELL");
     private JFrame myFrame;
-    private JButton back, axeButton,mincingMachineButton, bowButton, eggplantButton, key1Button, key2Button, breadButton, potionButton, swordButton,pineappleButton, cookiesButton, briocheButton;
+    private JButton back, axeButton, mincingMachineButton, bowButton, eggplantButton, key1Button, key2Button, breadButton, potionButton, swordButton,pineappleButton, cookiesButton, briocheButton;
     private JLabel goldLabel;
-    //private int gold;
     protected Listener evt;
     private Inventory inventoryPlayer;
 
@@ -48,7 +47,6 @@ public class InventoryInterface extends JFrame
         JPanel inventory = new JPanel (new GridLayout (2,5,10,10));
         inventory.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
         inventory.setBackground(Color.black);
-        JPanel littleInventory = new JPanel (new GridLayout (2,2));
         JPanel down = new JPanel (new GridLayout (1,1));
         
         Font police = new Font ("Kristen ITC", Font.BOLD, 14);
