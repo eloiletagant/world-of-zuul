@@ -16,7 +16,7 @@ import item.Item;
 public class InventoryInterface extends JFrame {
 	
     //button building
-    public JButton back, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
+    public JButton back, back2, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
     private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
     private JFrame inventoryFrame, itemFrame;
@@ -25,7 +25,7 @@ public class InventoryInterface extends JFrame {
     private int counter =0;
     private Item myItem;
     private boolean found = false;
-    protected InventoryInterfaceListener evt;
+    protected InventoryInterfaceListener evt, evt2;
 
     /**
      * Constructor for objects of class InventoryInterface
@@ -218,11 +218,13 @@ public class InventoryInterface extends JFrame {
     	Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
     	
     	backIcon = new ImageIcon("pictures/back.png");
-		back = new JButton ("BACK", backIcon);
-        back.setBackground(Color.black);
-        back.setOpaque(true);
-        back.setForeground(Color.yellow);
-        back.setFont(police);
+		back2 = new JButton ("BACK", backIcon);
+        back2.setBackground(Color.black);
+        back2.setOpaque(true);
+        back2.setForeground(Color.yellow);
+        back2.setFont(police);
+        
+        back2.addMouseListener(evt);
         
         title = new JLabel ("INVENTORY : " + anItem.getName(), JLabel.CENTER);
         title.setBackground(Color.black);

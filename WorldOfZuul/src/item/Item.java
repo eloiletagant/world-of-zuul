@@ -3,7 +3,7 @@ package item;
  * This class manage the game items.
  * An item must have a name and a description.
  * It can be sold by the player.
- * All information of the item can be vizualizing thanks to all get methods.
+ * All information of the item can be visualizing thanks to all get methods.
  * @author Group4
  * @version 22/11/2016
  * 

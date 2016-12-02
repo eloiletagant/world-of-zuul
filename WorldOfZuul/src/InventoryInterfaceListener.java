@@ -40,8 +40,11 @@ public class InventoryInterfaceListener extends MouseAdapter
     	 items = inventory.getInventory().getItems();
     	 if(evt.getSource() == inventory.back)
         {
-    		 inventory.exitInventory();
-    		 //game mettre à true mais je sais pas comment faire now
+    		inventory.exitInventory();
+        }
+    	else if(evt.getSource() == inventory.back2)
+        {
+    		inventory.exitInventory2();
         }
         else if(evt.getSource() == inventory.pineapple)
         {
