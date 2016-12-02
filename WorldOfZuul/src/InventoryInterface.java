@@ -25,7 +25,7 @@ public class InventoryInterface extends JFrame {
     private int counter =0;
     private Item myItem;
     private boolean found = false;
-    protected Listener evt;
+    protected InventoryInterfaceListener evt;
 
     /**
      * Constructor for objects of class InventoryInterface
@@ -156,7 +156,7 @@ public class InventoryInterface extends JFrame {
 		}
      
         //Listeners for buttons action
-        evt= new Listener(this);
+        evt= new InventoryInterfaceListener(this);
         sell.addMouseListener(evt);
         back.addMouseListener(evt);
         use.addMouseListener(evt);
@@ -435,6 +435,6 @@ public class InventoryInterface extends JFrame {
     public void exitInventory2()
     {
     	itemFrame.setVisible(false);
-    	 InventoryInterface(InventoryPlayer);
+    	inventoryFrame = new InventoryInterface(inventoryPlayer);
     }
 } 
