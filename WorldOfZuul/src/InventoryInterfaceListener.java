@@ -11,7 +11,7 @@ import item.Item;
  * @author 
  * @version 
  */
-public class Listener extends MouseAdapter 
+public class InventoryInterfaceListener extends MouseAdapter 
 {
     //attributes
     private InventoryInterface inventory;
@@ -21,7 +21,7 @@ public class Listener extends MouseAdapter
     /**
      * The Constructor for the listener
      */
-    public Listener(InventoryInterface c)
+    public InventoryInterfaceListener(InventoryInterface c)
     {
     	inventory = c;
     }

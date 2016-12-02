@@ -19,7 +19,7 @@ public class InventoryInterface extends JFrame
     public JButton back, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
     private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
-    private JFrame itemFrame;
+    private JFrame inventoryFrame, itemFrame;
     private Inventory inventoryPlayer;
     private Icon anIcon, backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
     private int counter =0;
@@ -180,12 +180,13 @@ public class InventoryInterface extends JFrame
         myPanel.add(inventory,BorderLayout.CENTER);
         myPanel.add(down,BorderLayout.SOUTH);
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("My inventory");    
-        this.add(myPanel);
-        this.setSize(500, 500);
-        this.pack();
-        this.setVisible(true);
+        inventoryFrame= new JFrame("My inventory");
+        inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setTitle(    
+        inventoryFrame.add(myPanel);
+        inventoryFrame.setSize(500, 500);
+        inventoryFrame.pack();
+        inventoryFrame.setVisible(true);
     }
 
     /**
@@ -425,7 +426,7 @@ public class InventoryInterface extends JFrame
      */
     public void exitInventory()
     {
-    	this.setVisible(false);
+    	inventoryFrame.setVisible(false);
     }
     
     /**
@@ -434,6 +435,6 @@ public class InventoryInterface extends JFrame
     public void exitInventory2()
     {
     	itemFrame.setVisible(false);
-    	this.setVisible(true);
+    	InventoryInterface(inventoryPlayer);
     }
 } 
