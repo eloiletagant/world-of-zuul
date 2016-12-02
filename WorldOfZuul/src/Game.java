@@ -191,9 +191,9 @@ public class Game extends JFrame {
     	int fin=32;
     	for(int i=0; i<=fin; i++){
     		if (i < 14 || i > 29)
-    			rooms.add(new Room("Room " + i, 0));
+    			rooms.add(new Room("Room" + i, 0));
     		else
-    			rooms.add(new Room("Room " + i, 1));
+    			rooms.add(new Room("Room" + i, 1));
     	}
     	currentRoom = rooms.get(0);
     }
@@ -412,7 +412,6 @@ public class Game extends JFrame {
     public void move(String way)
     {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
-        System.out.print(currentRoom.getDescription());
         text.setText("You are in the " + currentRoom.getDescription());
         changePicture();
         manageDirectionButton ();
