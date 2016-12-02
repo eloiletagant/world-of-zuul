@@ -15,47 +15,174 @@
  * @version November 2016
  */
 
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import character.Player;
 import room.Door;
 import room.Room;
 import item.*;
 
 
-public class Game {
+public class Game extends JFrame {
     private Parser parser;
     private Room currentRoom;
     private Player player, playerTest;
     private ArrayList<Room> rooms; 
     private InventoryInterface atest;
     public  Sound s;
+    
+    protected JButton left = new JButton();
+    protected JButton behind = new JButton ();
+    protected JButton front = new JButton();
+    protected JButton right = new JButton ();
+    protected JButton bag;
+    
+    protected JLabel title;
+    private JLabel text;
+    protected Icon room;
+    public JLabel pictureRoom;
+    protected JPanel myPanel;
 
     /**
      * Create the game and initialize its internal map.
      */
     public Game()
     {
+    	/*****************************
+         ****** Pictures instantiation
+         *****************************/
+        ImageIcon room = new ImageIcon ("pictures/Room0.png");
+        Icon arrowRight = new ImageIcon("pictures/Fdroite.jpg");
+        Icon arrowFront = new ImageIcon("pictures/Fhaut.jpg");
+        Icon arrowBehind = new ImageIcon ("pictures/Fbas.jpg");
+        Icon arrowLeft = new ImageIcon("pictures/Fgauche.jpg");
+        Icon inventory = new ImageIcon("pictures/bag.jpg");
+        Icon HealthBar = new ImageIcon("pictures/barredeVie.jpg");
+         
+        /**********************
+         ******* Window content
+         **********************/
+        text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
+        pictureRoom = new JLabel(room);
+        
+        //Listener creation
+        GameListener l = new GameListener(this);
+         
+        //Creation of a panel which will contain the room picture at the top and the buttons at the below
+        JPanel myPanel = new JPanel(new BorderLayout ());
+         
+        //Creation of a panel which will contain all buttons(direction, inventory ..)
+        JPanel panelButton = new JPanel (new  BorderLayout ());
+        panelButton.setBackground(Color.black);     
+         
+        /******************
+         * Health bar / bag
+         ******************/
+        //Panel which contains bag + bar life
+        JPanel HealthBag = new JPanel (new GridLayout (2,1));
+        HealthBag.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        HealthBag.setBackground(Color.black);
+        
+        //Label which contains the player's bar life
+        JLabel Health = new JLabel (HealthBar); 
+        Health.setBackground(Color.BLACK);
+         
+        bag = new JButton(inventory);
+        bag.setBackground(Color.black);
+        bag.addActionListener(l);
+                   
+        HealthBag.add(Health);
+        HealthBag.add(bag);
+            
+        /*******************************************
+         ****** Declaration of all direction buttons 
+         *******************************************/
+          
+        right= new JButton(arrowRight);
+        right.setBackground(Color.black);
+        right.addActionListener(l);
+        right.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+         
+        front = new JButton(arrowFront);
+        front.setBackground(Color.black);
+        front.addActionListener(l);
+        front.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+         
+        left = new JButton(arrowLeft);
+        left.setBackground(Color.black);
+        left.addActionListener(l);
+        left.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+         
+        behind = new JButton(arrowBehind);
+        behind.setBackground(Color.black);
+        behind.addActionListener(l);
+        behind.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+         
+        //Panel which contains front and behind buttons
+        JPanel panelFB = new JPanel (new BorderLayout());
+        panelFB.add(front,BorderLayout.NORTH);
+        panelFB.add(behind,BorderLayout.SOUTH);
+          
+        //Panel which contains each direction buttons         
+        JPanel buttonDirection = new JPanel(new GridLayout(1,3));
+
+        //Adding buttons on the direction panel
+        buttonDirection.add(left);
+        buttonDirection.add(panelFB);
+        buttonDirection.add(right); 
+             
+
+        //Adding buttons in the panelButton
+        panelButton.add(HealthBag, BorderLayout.WEST);
+        panelButton.add(text, BorderLayout.CENTER);
+        panelButton.add(buttonDirection, BorderLayout.EAST);
+             
+             
+        //Final panel creation
+        myPanel.add(pictureRoom,BorderLayout.CENTER);
+        myPanel.add(panelButton, BorderLayout.SOUTH);
+       
+             
+        /*********************
+         **** Frame parameters
+         *********************/
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("WOZ");    
+        this.add(myPanel);
+        this.setSize(500, 500);
+        this.pack();
+        this.setVisible(true);
+    	
     	s = new Sound();
     	rooms = new ArrayList<Room>();
         createAllRooms();
         createAllDoors(rooms);
+        manageDirectionButton();
     	playerTest= new Player ("Kaamelott");
     	createItems();
     	parser = new Parser();
         s.playSound("music/SoundCave.wav");
-        atest = new InventoryInterface(playerTest.getInventory());
-        play();       
+        atest = new InventoryInterface(playerTest.getInventory());    
     }
     
     public Player getPlayer()
     {
     	return playerTest;
     }
-    public static void main (String[] args)
-    {
-        new Game();
-    }
+
 
     /**
      * Create all the rooms and link their exits together.
@@ -72,8 +199,44 @@ public class Game {
     }
     
     private void createAllDoors(ArrayList<Room> rooms){
-    	createTwoDoors(rooms.get(0), rooms.get(1) , "front");
-    }
+        createDoor(rooms.get(0), rooms.get(1) , "front");
+        createDoor(rooms.get(1), rooms.get(2) , "left");
+        createDoor(rooms.get(1), rooms.get(4) , "front");
+        createDoor(rooms.get(1), rooms.get(9) , "right");
+        createDoor(rooms.get(1), rooms.get(9) , "right");
+        createDoor(rooms.get(2), rooms.get(3) , "front");
+        createDoor(rooms.get(3), rooms.get(4) , "right");
+        createDoor(rooms.get(3), rooms.get(5) , "left");
+        createDoor(rooms.get(5), rooms.get(8) , "front");
+        createDoor(rooms.get(5), rooms.get(6) , "left");
+        createDoor(rooms.get(6), rooms.get(7) , "left");
+        createDoor(rooms.get(6), rooms.get(26) , "front");
+        createDoor(rooms.get(9), rooms.get(10) , "right");
+        createDoor(rooms.get(10), rooms.get(11) , "front");
+        createDoor(rooms.get(11), rooms.get(12) , "right");
+        createDoor(rooms.get(11), rooms.get(13) , "front");
+        createDoor(rooms.get(26), rooms.get(25) , "front");
+        createDoor(rooms.get(25), rooms.get(27) , "right");
+        createDoor(rooms.get(25), rooms.get(24) , "front");
+        createDoor(rooms.get(24), rooms.get(23) , "left");
+        createDoor(rooms.get(27), rooms.get(28) , "front");
+        createDoor(rooms.get(28), rooms.get(29) , "front");
+        createDoor(rooms.get(23), rooms.get(22) , "front");
+        createDoor(rooms.get(23), rooms.get(20) , "left");
+        createDoor(rooms.get(20), rooms.get(19) , "left");
+        createDoor(rooms.get(20), rooms.get(21) , "front");
+        createDoor(rooms.get(19), rooms.get(18) , "front");
+        createDoor(rooms.get(18), rooms.get(16) , "front");
+        createDoor(rooms.get(18), rooms.get(21) , "right");
+        createDoor(rooms.get(16), rooms.get(17) , "left");
+        createDoor(rooms.get(16), rooms.get(15) , "right");
+        createDoor(rooms.get(15), rooms.get(14) , "front");
+        createDoor(rooms.get(15), rooms.get(21) , "right");
+        createDoor(rooms.get(14), rooms.get(22) , "front");   
+        createDoor(rooms.get(17), rooms.get(30) , "front");   
+        createDoor(rooms.get(30), rooms.get(31) , "front"); 
+        createDoor(rooms.get(31), rooms.get(32) , "front");   
+     }
     
     /**
      * Create all items
@@ -179,7 +342,7 @@ public class Game {
      * method to associate a key and a lock
      * maybe not really useful
      */
-    private void createTwoDoors(Room room, Room nextRoom, String way) {
+    private void createDoor(Room room, Room nextRoom, String way) {
     	Door door1 = new Door(nextRoom);
     	room.addExit(door1, way);
     	Door door2 = new Door(room);
@@ -210,5 +373,48 @@ public class Game {
     	    break;             
     	}
     	nextRoom.addExit(door2, oppositeWay);
+    }
+    
+    /**
+     * The method allows to check were are the exit of each room. In fonction of the exit, the arrow of direction are activated or disactivated.
+     */
+    private void manageDirectionButton ()
+    {
+            HashMap<String, Door> doors;
+            doors = currentRoom.getDoors();
+           
+            front.setEnabled(false);
+            behind.setEnabled(false);
+            left.setEnabled(false);
+            right.setEnabled(false);
+            
+            if (doors.containsKey("front"))
+                front.setEnabled(true);
+            if (doors.containsKey("behind"))
+                behind.setEnabled(true);
+            if (doors.containsKey("left"))
+                left.setEnabled(true);
+            if (doors.containsKey("right"))
+                right.setEnabled(true);
+    }
+    
+    /**
+     * This methode allows to change the picture in fonction of the room where is the player
+     */
+    private void changePicture()
+    {
+        room = new ImageIcon("pictures/"+ currentRoom.getDescription()+".png");
+        pictureRoom.setIcon(room); 
+    }
+    /**
+     * this method allows to go in the nextRoom;
+     */
+    public void move(String way)
+    {
+        currentRoom = currentRoom.getDoors().get(way).getNextRoom();
+        System.out.print(currentRoom.getDescription());
+        text.setText("You are in the " + currentRoom.getDescription());
+        changePicture();
+        manageDirectionButton ();
     }
 }
