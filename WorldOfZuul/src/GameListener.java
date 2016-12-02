@@ -13,13 +13,15 @@ public class GameListener implements ActionListener {
 	private Game game;
 	private InventoryInterface inventoryInterface;
 	private Player player;
+	private boolean isOpen;
 
     /**
      * GameListener constructor
     */   
-    public GameListener(Game g, Player p) {
+    public GameListener(Game g, Player p, boolean open) {
         game = g;
         player = p;
+        isOpen = open;
     }
 
     /**
@@ -29,16 +31,22 @@ public class GameListener implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
      
-        if (e.getSource() == game.front)
+        if (e.getSource() == game.getFrontB())
             game.move("front");
-        if (e.getSource() == game.behind)
+        if (e.getSource() == game.getBehindB())
             game.move("behind");
-        if (e.getSource() == game.right)
+        if (e.getSource() == game.getRightB())
             game.move("right");
-        if (e.getSource() == game.left)
+        if (e.getSource() == game.getLeftB())
             game.move("left");
-        if (e.getSource() == game.bag)
-        	inventoryInterface = new InventoryInterface(player.getInventory()); 
+        if (e.getSource() == game.getBagB()) {
+        	if (isOpen) {
+        		
+        	} else {
+        		inventoryInterface = new InventoryInterface(player.getInventory()); 
+        	}
+        }
+        	
     }
     
    }

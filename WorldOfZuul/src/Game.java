@@ -43,13 +43,14 @@ public class Game extends JFrame {
     private Player player;
     private ArrayList<Room> rooms; 
     private InventoryInterface inventoryInterface;
+    private boolean inventoryIsOpen = false;
     public  Sound s;
     
-    protected JButton left = new JButton();
-    protected JButton behind = new JButton ();
-    protected JButton front = new JButton();
-    protected JButton right = new JButton ();
-    protected JButton bag;
+    private JButton left;
+    private JButton behind;
+    private JButton front;
+    private JButton right;
+    private JButton bag;
     
     protected JLabel title;
     private JLabel text;
@@ -60,16 +61,15 @@ public class Game extends JFrame {
     /**
      * Create the game and initialize its internal map.
      */
-    public Game()
-    {
+    public Game() {
     	/*****************************
          ****** Pictures instantiation
          *****************************/
         ImageIcon room = new ImageIcon ("pictures/Room0.png");
-        Icon arrowRight = new ImageIcon("pictures/Fdroite.jpg");
-        Icon arrowFront = new ImageIcon("pictures/Fhaut.jpg");
-        Icon arrowBehind = new ImageIcon ("pictures/Fbas.jpg");
-        Icon arrowLeft = new ImageIcon("pictures/Fgauche.jpg");
+        Icon arrowRight = new ImageIcon("pictures/arrowRight.png");
+        Icon arrowFront = new ImageIcon("pictures/arrowFront.png");
+        Icon arrowBehind = new ImageIcon ("pictures/arrowBehind.png");
+        Icon arrowLeft = new ImageIcon("pictures/arrowLeft.png");
         Icon inventory = new ImageIcon("pictures/bag.jpg");
         Icon HealthBar = new ImageIcon("pictures/barredeVie.jpg");
          
@@ -79,15 +79,15 @@ public class Game extends JFrame {
         text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
         pictureRoom = new JLabel(room);
         
-        //Listener creation
-        GameListener l = new GameListener(this, player);
+        //Game Listener creation
+        GameListener l = new GameListener(this, player, inventoryIsOpen);
          
         //Creation of a panel which will contain the room picture at the top and the buttons at the below
         JPanel myPanel = new JPanel(new BorderLayout ());
          
         //Creation of a panel which will contain all buttons(direction, inventory ..)
         JPanel panelButton = new JPanel (new  BorderLayout ());
-        panelButton.setBackground(Color.black);     
+        panelButton.setBackground(Color.black);    
          
         /******************
          * Health bar / bag
@@ -99,7 +99,7 @@ public class Game extends JFrame {
         
         //Label which contains the player's bar life
         JLabel Health = new JLabel (HealthBar); 
-        Health.setBackground(Color.BLACK);
+        Health.setBackground(Color.black);
          
         bag = new JButton(inventory);
         bag.setBackground(Color.black);
@@ -136,9 +136,11 @@ public class Game extends JFrame {
         JPanel panelFB = new JPanel (new BorderLayout());
         panelFB.add(front,BorderLayout.NORTH);
         panelFB.add(behind,BorderLayout.SOUTH);
+        panelFB.setBackground(Color.black);
           
         //Panel which contains each direction buttons         
         JPanel buttonDirection = new JPanel(new GridLayout(1,3));
+        buttonDirection.setBackground(Color.black);
 
         //Adding buttons on the direction panel
         buttonDirection.add(left);
@@ -176,14 +178,33 @@ public class Game extends JFrame {
     	createItems();
     	parser = new Parser();
         s.playSound("music/SoundCave.wav");
-        inventoryInterface = new InventoryInterface(player.getInventory());    
+        //inventory ?
+           
     }
     
     public Player getPlayer() {
     	return player;
     }
 
+    public JButton getFrontB() {
+    	return front;
+    }
 
+    public JButton getBehindB() {
+    	return behind;
+    }
+
+    public JButton getRightB() {
+    	return right;
+    }
+
+    public JButton getLeftB() {
+    	return left;
+    }
+    
+    public JButton getBagB() {
+    	return bag;
+    }
     /**
      * Create all the rooms and link their exits together.
      */
