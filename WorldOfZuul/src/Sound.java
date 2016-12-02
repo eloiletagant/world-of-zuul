@@ -1,17 +1,20 @@
 import java.io.File;
 import javax.sound.sampled.*;
 /*
- * 
+ * This class manages the song of the game.
  * Group 4
  * 01/12/2016
  */
 
 public class Sound {
+	
+	/**
+	 * This method launch the song. 
+	 * @param url way of the song
+	 */
 	public synchronized void playSound(String url) {
 		  File f = new File(url);
 		  new Thread(new Runnable() {
-		  // The wrapper thread is unnecessary, unless it blocks on the
-		  // Clip finishing; see comments.
 		    public void run() {
 		      try {
 		        Clip clip = AudioSystem.getClip();
