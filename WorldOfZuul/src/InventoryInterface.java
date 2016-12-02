@@ -24,6 +24,7 @@ public class InventoryInterface extends JFrame {
     private Icon anIcon, backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
     private int counter =0;
     private Item myItem;
+    private boolean viewInventory = true;
     private boolean found = false;
     protected InventoryInterfaceListener evt, evt2;
 
@@ -428,15 +429,17 @@ public class InventoryInterface extends JFrame {
      */
     public void exitInventory()
     {
-    	inventoryFrame.setVisible(false);
-    }
-    
-    /**
-     * 
-     */
-    public void exitInventory2()
-    {
-    	itemFrame.setVisible(false);
-    	inventoryFrame = new InventoryInterface(inventoryPlayer);
+    	if (viewInventory == true)
+    	{
+    		inventoryFrame.setVisible(false);
+    		viewInventory=false;
+    	}
+    	else
+    	{
+    		itemFrame.setVisible(false);
+        	System.out.println("yo");
+        	inventoryFrame = new InventoryInterface(inventoryPlayer);
+    		viewInventory=true;
+    	}    	
     }
 } 

@@ -42,10 +42,6 @@ public class InventoryInterfaceListener extends MouseAdapter
         {
     		inventory.exitInventory();
         }
-    	else if(evt.getSource() == inventory.back2)
-        {
-    		inventory.exitInventory2();
-        }
         else if(evt.getSource() == inventory.pineapple)
         {
         	inventory.displayItem(inventory.searchItem("Pineapple"));
@@ -88,7 +84,7 @@ public class InventoryInterfaceListener extends MouseAdapter
         }
         else if(evt.getSource() == inventory.key1)
         {
-        	inventory.displayItem(inventory.searchItem("Nu-Clef-ère"));     	
+        	inventory.displayItem(inventory.searchItem("Nu-Clef-ï¿½re"));     	
         }
         else if(evt.getSource() == inventory.key2)
         {
