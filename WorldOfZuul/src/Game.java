@@ -46,17 +46,15 @@ public class Game extends JFrame {
     private boolean inventoryIsOpen = false;
     public  Sound s;
     
-    private JButton left;
-    private JButton behind;
-    private JButton front;
-    private JButton right;
-    private JButton bag;
+    private JButton left, behind, front, right; //direction arrows
+    private JButton bag; //inventory
     
     protected JLabel title;
     private JLabel text;
     protected Icon room;
     public JLabel pictureRoom;
-    protected JPanel myPanel;
+    protected JPanel myPanel, HealthBag;
+    private JLabel Health;
 
     /**
      * Create the game and initialize its internal map.
@@ -93,12 +91,12 @@ public class Game extends JFrame {
          * Health bar / bag
          ******************/
         //Panel which contains bag + bar life
-        JPanel HealthBag = new JPanel (new GridLayout (2,1));
+        HealthBag = new JPanel (new GridLayout (2,1));
         HealthBag.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         HealthBag.setBackground(Color.black);
         
         //Label which contains the player's bar life
-        JLabel Health = new JLabel (HealthBar); 
+        Health = new JLabel (HealthBar); 
         Health.setBackground(Color.black);
          
         bag = new JButton(inventory);
@@ -205,6 +203,15 @@ public class Game extends JFrame {
     public JButton getBagB() {
     	return bag;
     }
+    
+    public void setOpenningInventory(boolean state) {
+    	inventoryIsOpen = state;
+    }
+    
+    public void openInventory() {
+    	inventoryInterface = new InventoryInterface(player.getInventory());
+    }
+    
     /**
      * Create all the rooms and link their exits together.
      */
