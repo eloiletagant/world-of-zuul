@@ -25,7 +25,7 @@ public class InventoryInterface extends JFrame
     private int counter =0;
     private Item myItem;
     private boolean found = false;
-    protected Listener evt, c1, c2, c3, c4, c5, c6, w1, w2, w3, w4, k1, k2;
+    protected Listener evt;
 
     /**
      * Constructor for objects of class InventoryInterface
