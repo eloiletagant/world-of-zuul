@@ -16,6 +16,7 @@ public class Listener extends MouseAdapter
     //attributes
     private InventoryInterface inventory;
     private ArrayList<Item> items;
+    private Item myItem;
     
     /**
      * The Constructor for the listener
@@ -92,11 +93,15 @@ public class Listener extends MouseAdapter
         }
         else if(evt.getSource()==inventory.use)
         {
-        	
+        	//penser à appliquer les effets avant de supprimer
+        	myItem=inventory.searchItemDisplayed();
+        	inventory.getInventory().deleteItem(myItem);
+        	inventory.exitInventory2();
+        	//le delete marche pas mais je sais pas pourquoi
         }
         else if(evt.getSource()==inventory.sell)
         {
-        	
+        	//ouvrir la boîte d'échange (package trade)
         }
     }  
 }

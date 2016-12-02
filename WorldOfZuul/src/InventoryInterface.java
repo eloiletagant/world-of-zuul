@@ -24,6 +24,7 @@ public class InventoryInterface extends JFrame
     private Icon anIcon, backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
     private int counter =0;
     private Item myItem;
+    private boolean found = false;
     protected Listener evt, c1, c2, c3, c4, c5, c6, w1, w2, w3, w4, k1, k2;
 
     /**
@@ -210,6 +211,7 @@ public class InventoryInterface extends JFrame
      */
     public void displayItem(Item anItem)
     {
+    	anItem.setManaged();
     	exitInventory();
     	Font police = new Font ("Kristen ITC", Font.BOLD, 14);
     	Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
@@ -253,9 +255,11 @@ public class InventoryInterface extends JFrame
         description=new JLabel("Description : "+anItem.getDescription());
         description.setForeground(Color.white);
         description.setFont(police2);
-        price=new JLabel("Price : "+anItem.getPrice());
+        price=new JLabel("Price : "+anItem.getPrice() + " golds");
         price.setForeground(Color.white);
         price.setFont(police2);
+        //rajouter les autres attributs selon le type d'objet
+        
         completeDescription=new JPanel(new GridLayout(0,1));
         completeDescription.setBackground(new Color(70, 63, 55));
         completeDescription.setOpaque(true);
@@ -272,6 +276,23 @@ public class InventoryInterface extends JFrame
     	itemFrame.add(view);
     	itemFrame.pack();
     	itemFrame.setVisible(true);
+    }
+    
+    /**
+     * This method returns the item which is managed in the inventory of the player.
+     * @return an item
+     */
+    public Item searchItemDisplayed()
+    {
+    	for (Item item : inventoryPlayer.getItems())
+    	{
+    		if ((item.getDisplay() == true))
+    		{
+    			myItem=item;
+    			item.setManaged();
+    		}
+    	}
+    	return myItem;
     }
     
     /**
@@ -342,7 +363,7 @@ public class InventoryInterface extends JFrame
     } 
     
     /**
-     * This method returns the JButton according to the given item.
+     * This method returns the icon according to the given item.
      * @param item
      * @return JButton
      */
@@ -405,5 +426,14 @@ public class InventoryInterface extends JFrame
     public void exitInventory()
     {
     	this.setVisible(false);
+    }
+    
+    /**
+     * 
+     */
+    public void exitInventory2()
+    {
+    	itemFrame.setVisible(false);
+    	this.setVisible(true);
     }
 } 

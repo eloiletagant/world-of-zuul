@@ -18,6 +18,8 @@ public abstract class Item
 	private int price; 
 	// true if a player can sell this item. It can not be changed after its assignment.
 	private boolean sellAble; 
+	// this boolean helps during the management of items in the inventory. True if the item is displayed, false if it is not.
+	private boolean display;
 	
 	/**
 	 * Constructor of the Item class
@@ -50,6 +52,7 @@ public abstract class Item
 		description = aDescription;
 		price = aPrice;		
 		sellAble = sell;
+		display=false;
 	}
 	
 	/**
@@ -86,5 +89,30 @@ public abstract class Item
 	public boolean getSellAble()
 	{
 		return sellAble;
+	}
+	
+	/**
+	 * This method returns if the item is managed.
+	 * @return Boolean : true if this item is displayed.
+	 */
+	public boolean getDisplay()
+	{
+		return display;
+	}
+	
+	/**
+	 * This method returns if the item is managed.
+	 * @return Boolean : true if this item is displayed.
+	 */
+	public void setManaged()
+	{
+		if (this.getDisplay()==true)
+		{
+			this.display=false;
+		}
+		else
+		{
+			this.display=true;
+		}
 	}
 }
