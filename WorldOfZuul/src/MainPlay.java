@@ -14,8 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
-public class MainPlay extends JFrame implements ActionListener{
-      //button building
+public class MainPlay extends JFrame implements ActionListener {
+    //button building
     
 	protected JButton start= new JButton("PLAY");
     protected JButton setting= new JButton("SETTING");
@@ -25,8 +25,9 @@ public class MainPlay extends JFrame implements ActionListener{
     public ImageIcon flecheRight; 
     protected JPanel myPanel, textHaut; 
     protected int nbrRoom = 0;
-    
-    
+    private Game game;
+
+
     public MainPlay() {
     	
     	pictureRoom = new JLabel();
@@ -80,14 +81,15 @@ public class MainPlay extends JFrame implements ActionListener{
         
     }    
      
-        public static void main(String[] args){
-        	new MainPlay();
-        }
-        
-        public void actionPerformed(ActionEvent e) {
-            	new Game();
-                this.dispose();
-        }
+    public static void main(String[] args) {
+        MainPlay main = new MainPlay();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        game = new Game();
+        this.dispose();
+    }
+
 }    
             
       

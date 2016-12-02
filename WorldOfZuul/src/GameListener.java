@@ -1,4 +1,6 @@
 import java.awt.event.*;
+
+import character.Player;
 /**
  * This class allows to listen the game interface and to perform actions
  * 
@@ -9,12 +11,15 @@ import java.awt.event.*;
 public class GameListener implements ActionListener {
     
 	private Game game;
+	private InventoryInterface inventoryInterface;
+	private Player player;
 
     /**
      * GameListener constructor
     */   
-    public GameListener(Game g) {
+    public GameListener(Game g, Player p) {
         game = g;
+        player = p;
     }
 
     /**
@@ -32,6 +37,8 @@ public class GameListener implements ActionListener {
             game.move("right");
         if (e.getSource() == game.left)
             game.move("left");
+        if (e.getSource() == game.bag)
+        	inventoryInterface = new InventoryInterface(player.getInventory()); 
     }
     
    }
