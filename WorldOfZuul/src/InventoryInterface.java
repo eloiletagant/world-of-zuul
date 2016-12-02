@@ -13,8 +13,8 @@ import item.Item;
  * @author Group4
  * @version 01/12/2016
  */
-public class InventoryInterface extends JFrame
-{
+public class InventoryInterface extends JFrame {
+	
     //button building
     public JButton back, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
     private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price;
@@ -352,11 +352,11 @@ public class InventoryInterface extends JFrame
 		{
 			aButton=potion;
 		}					
-		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
+		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ï¿½re" || item.getName() == "Gy-Clef")
 		{
 			aButton=key1;
 		}
-		else if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
+		else if (item.getName() == "Sï¿½same" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
 		{
 			aButton=key2;
 		}
@@ -410,11 +410,11 @@ public class InventoryInterface extends JFrame
 		{
 			aButton=potion;
 		}					
-		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ère" || item.getName() == "Gy-Clef")
+		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-ï¿½re" || item.getName() == "Gy-Clef")
 		{
 			anIcon=new ImageIcon("pictures/key1.png");;
 		}
-		else if (item.getName() == "Sésame" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
+		else if (item.getName() == "Sï¿½same" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
 		{
 			anIcon=new ImageIcon("pictures/key2.png");
 		}
