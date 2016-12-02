@@ -435,6 +435,6 @@ public class InventoryInterface extends JFrame
     public void exitInventory2()
     {
     	itemFrame.setVisible(false);
-    	InventoryInterface(inventoryPlayer);
+    	 InventoryInterface(InventoryPlayer);
     }
 } 
