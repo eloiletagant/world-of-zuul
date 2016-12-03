@@ -26,15 +26,65 @@ public class InventoryInterfaceListener extends MouseAdapter
     	inventory = c;
     }
     /**
-     * This class allow 
+     * action to do when the mouse flies on buttons
+     * This method displays the name of the item in the inventory
      */
-     public void mouseEntered(MouseEvent evt) {
-    	 
+     public void mouseEntered(MouseEvent evt)
+     {
+    	if(evt.getSource() == inventory.pineapple)
+        {
+        	inventory.pineapple.setToolTipText("Pineapple");
+        }
+        else if(evt.getSource() == inventory.eggplant)
+        {
+        	inventory.eggplant.setToolTipText("Eggplant");  
+        }
+        else if(evt.getSource() == inventory.brioche)
+        {
+        	inventory.brioche.setToolTipText("Brioche");
+        }
+        else if(evt.getSource() == inventory.bread)
+        {
+        	inventory.bread.setToolTipText("Bread");
+        }
+        else if(evt.getSource() == inventory.cookies)
+        {
+        	inventory.cookies.setToolTipText("Cookies");
+        }
+        else if(evt.getSource() == inventory.potion)
+        {
+        	inventory.potion.setToolTipText("Potion");
+        }
+        else if(evt.getSource() == inventory.axe)
+        {
+        	inventory.axe.setToolTipText("Axe");
+        }
+        else if(evt.getSource() == inventory.bow)
+        {
+        	inventory.bow.setToolTipText("Bow");
+        }
+        else if(evt.getSource() == inventory.mincingMachine)
+        {
+        	inventory.mincingMachine.setToolTipText("Butcher knife");
+        }
+        else if(evt.getSource() == inventory.sword)
+        {
+        	inventory.sword.setToolTipText("Sword");
+        }
+        else if(evt.getSource() == inventory.key1)
+        {
+        	inventory.key1.setToolTipText("Nu-Clef-ère");   	
+        }
+        else if(evt.getSource() == inventory.key2)
+        {
+        	inventory.key2.setToolTipText("Sésame");
+        }
      }
 
      /**
-     * This class allow 
-     */
+      * action to do when the mouse clicks on buttons
+      * 
+      */
      public void mousePressed(MouseEvent evt)
      {
     	 items = inventory.getInventory().getItems();
@@ -96,7 +146,6 @@ public class InventoryInterfaceListener extends MouseAdapter
         	myItem=inventory.searchItemDisplayed();
         	inventory.getInventory().deleteItem(myItem);
         	inventory.exitInventory();
-        	//le delete marche pas mais je sais pas pourquoi
         }
         else if(evt.getSource()==inventory.sell)
         {
