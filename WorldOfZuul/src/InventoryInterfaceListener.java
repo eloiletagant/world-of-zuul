@@ -70,6 +70,7 @@ public class InventoryInterfaceListener extends MouseAdapter
         		 if (evt.getSource() == inventory.getJButton(item))
         		 {
         			 inventory.displayItem(inventory.searchItem(item.getName()));
+        			 System.out.println(item.getName());
         		 }
         	 }
          }

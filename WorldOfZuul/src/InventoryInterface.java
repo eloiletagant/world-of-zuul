@@ -38,7 +38,7 @@ public class InventoryInterface extends JFrame {
     	inventoryPlayer = anInventory;
         myPanel = new JPanel(new BorderLayout ());
         up = new JPanel (new GridLayout (1,3));
-        inventory = new JPanel (new GridLayout (2,5,10,10));
+        inventory = new JPanel (new GridLayout (0,5,10,10));
         inventory.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
         inventory.setBackground(Color.black);
         down = new JPanel (new GridLayout (1,1));
@@ -150,7 +150,7 @@ public class InventoryInterface extends JFrame {
         	inventory.add(getJButton(item));
         	counter+=1;
     	}
-        while (counter!=10)
+        while (counter!=inventoryPlayer.getMaxItems())
 		{
 			JPanel empty = new JPanel();
 			empty.setBackground(new Color(70, 63, 55));
@@ -202,6 +202,23 @@ public class InventoryInterface extends JFrame {
     		if (item.getName() == name)
     		{
     			myItem=item;
+    		}
+    	}
+    	return myItem;
+    }
+    
+    /**
+     * This method returns the item which is managed in the inventory of the player.
+     * @return an item
+     */
+    public Item searchItemDisplayed()
+    {
+    	for (Item item : inventoryPlayer.getItems())
+    	{
+    		if ((item.getDisplay() == true))
+    		{
+    			myItem=item;
+    			item.setManaged();
     		}
     	}
     	return myItem;
@@ -317,7 +334,6 @@ public class InventoryInterface extends JFrame {
             	damages.setFont(police2);
             	completeDescription.add(damages);
         	}
-        	
         }      
         
         
@@ -330,23 +346,6 @@ public class InventoryInterface extends JFrame {
     	itemFrame.add(view);
     	itemFrame.pack();
     	itemFrame.setVisible(true);
-    }
-    
-    /**
-     * This method returns the item which is managed in the inventory of the player.
-     * @return an item
-     */
-    public Item searchItemDisplayed()
-    {
-    	for (Item item : inventoryPlayer.getItems())
-    	{
-    		if ((item.getDisplay() == true))
-    		{
-    			myItem=item;
-    			item.setManaged();
-    		}
-    	}
-    	return myItem;
     }
     
     /**
@@ -425,51 +424,51 @@ public class InventoryInterface extends JFrame {
     {
     	if(item.getName() == "Pineapple")
 		{
-			anIcon=new ImageIcon("pictures/axe.png");
+			anIcon=pineappleIcon;
 		}
     	else if (item.getName() == "Axe")
 		{
-    		aButton=axe;
+    		anIcon=axeIcon;
 		}
     	else if (item.getName() == "Bow")
 		{
-    		aButton=bow;
+    		anIcon=bowIcon;
 		}
     	else if (item.getName() == "Butcher knife")
 		{
-    		aButton=mincingMachine;
+    		anIcon=mincingMachineIcon;
 		}
     	else if (item.getName() == "Sword")
 		{
-    		aButton=sword;
+    		anIcon=swordIcon;
 		}
     	else if (item.getName() == "Eggplant")
 		{
-    		aButton=eggplant;
+    		anIcon=eggplantIcon;
 		}
     	else if (item.getName() == "Bread")
 		{
-    		aButton=bread;
+    		anIcon=breadIcon;
 		}
 		else if (item.getName() == "Brioche")
 		{
-			aButton=brioche;
+			anIcon=briocheIcon;
 		}
 		else if (item.getName() == "Cookies")
 		{
-			aButton=cookies;
+			anIcon=cookiesIcon;
 		}
 		else if (item.getName() == "Potion")
 		{
-			aButton=potion;
+			anIcon=potionIcon;
 		}					
 		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-�re" || item.getName() == "Gy-Clef")
 		{
-			anIcon=new ImageIcon("pictures/key1.png");;
+			anIcon=key1Icon;
 		}
 		else if (item.getName() == "S�same" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
 		{
-			anIcon=new ImageIcon("pictures/key2.png");
+			anIcon=key2Icon;
 		}
     	return anIcon;
     }
