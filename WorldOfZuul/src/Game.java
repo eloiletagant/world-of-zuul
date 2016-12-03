@@ -43,6 +43,11 @@ public class Game extends JFrame {
     private Parser parser;
     private Room currentRoom;
     private Player player;
+    private Weapon w1, w2, w3, w4;
+    private Consumable c1, c2, c3, c4, c5, c6, c7;
+    private Key k1, k2, k3, k4, k5, k6, k7;
+    private Lock l1, l2, l3, l4, l5, l6, l7;
+    private Chest ch1, ch2, ch3, ch4;
     private ArrayList<Room> rooms; 
     private boolean inventoryIsOpen = false;
     public  Sound sound;
@@ -183,16 +188,18 @@ public class Game extends JFrame {
         this.pack();
         this.setVisible(true);
     	
-        
-    	sound = new Sound();
+    	player = new Player ("Kaamelott");
+    	parser = new Parser("");
     	rooms = new ArrayList<Room>();
-        createAllRooms();
+    	
+    	createItems();
+    	createAllRooms();
         createAllDoors(rooms);
         manageDirectionButton();
-    	player = new Player ("Kaamelott");
-    	createItems();
-    	parser = new Parser("");
-        sound.playSound("music/SoundCave.wav");
+        testAddItemsToInventory();
+        
+    	sound = new Sound();
+    	sound.playSound("music/SoundCave.wav");
     }
     
     public Player getPlayer() {
@@ -290,9 +297,6 @@ public class Game extends JFrame {
         //Room 8
         createDoor(rooms.get(8), rooms.get(5) , "behind");
         //Room 9
-        Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
-        Lock l7 = new Lock();
-        l7.addKey(k1);
         createLockedDoor(rooms.get(9),  rooms.get(10), "right", l7);
         createDoor(rooms.get(9), rooms.get(1) , "left");
         //Room 10
@@ -316,8 +320,8 @@ public class Game extends JFrame {
         createDoor(rooms.get(15), rooms.get(16) , "right");
         createDoor(rooms.get(15), rooms.get(14) , "left");
         //Room 16
+        createLockedDoor(rooms.get(16),  rooms.get(17), "right", l5);
         createDoor(rooms.get(16), rooms.get(15) , "left");
-        createDoor(rooms.get(16), rooms.get(17) , "right");
         createDoor(rooms.get(16), rooms.get(18) , "front");
         //Room 17
         createDoor(rooms.get(17), rooms.get(30) , "front");
@@ -374,47 +378,52 @@ public class Game extends JFrame {
      */
     private void createItems()
     {
-    	Weapon w1 = new Weapon("Axe", "This axe do not only allow cutting trees.", 20, true, 3);
-    	Weapon w2 = new Weapon("Bow", "This bow is for a true Robin wood.", 90, true, 5);
-        Weapon w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7);
-        Weapon w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9);
-        Consumable c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vendï¿½e !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
-        Consumable c2 = new Consumable("Bread", "This bread was cooked by the baker of the village.", 5, true, "It gets 1 health point to the person who eats it.", 1, 0, false);
-        Consumable c3 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
-        Consumable c4 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
-        Consumable c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
-        Consumable c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
-        Consumable c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
-        Key k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
-        Key k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
-        Key k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
-        Key k5 = new Key("Clef-Bar", "This key opens a chest.", 20, false);
-        Key k6 = new Key("Nu-Clef-ère", "This key opens a door.", 20, false);
-        Key k7 = new Key("Gy-Clef", "This key opens a door.", 20, false);
-        Lock l1 = new Lock();
+    	w1 = new Weapon("Axe", "This axe do not only allow cutting trees.", 20, true, 3);
+    	w2 = new Weapon("Bow", "This bow is for a true Robin wood.", 90, true, 5);
+        w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7);
+        w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9);
+        c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vendï¿½e !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
+        c2 = new Consumable("Bread", "This bread was cooked by the baker of the village.", 5, true, "It gets 1 health point to the person who eats it.", 1, 0, false);
+        c3 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
+        c4 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
+        c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
+        c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
+        c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
+        k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
+        k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
+        k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
+        k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
+        k5 = new Key("Clef-Bar", "This key opens a chest.", 20, false);
+        k6 = new Key("Nu-Clef-ère", "This key opens a door.", 20, false);
+        k7 = new Key("Gy-Clef", "This key opens a door.", 20, false);
+        l1 = new Lock();
         l1.addKey(k3);
-        Lock l2 = new Lock();
+        l2 = new Lock();
         l2.addKey(k2);
-        Lock l3 = new Lock();
+        l3 = new Lock();
         l3.addKey(k4);
-        Lock l4 = new Lock();
+        l4 = new Lock();
         l4.addKey(k5);
-        Lock l5 = new Lock();
+        l5 = new Lock();
         l5.addKey(k6);
-        Lock l6 = new Lock();
+        l6 = new Lock();
         l6.addKey(k7);
-        Chest ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
-        Chest ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
-        Chest ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
-        Chest ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
-        player.getInventory().addItem(k6);
-        player.getInventory().addItem(w1);
-        player.getInventory().addItem(c4);
-        player.getInventory().addItem(w3);
-        player.getInventory().addItem(k2);
-        player.getInventory().addItem(c7);
+        l7 = new Lock();
+        l7.addKey(k1);
+        ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
+        ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
+        ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
+        ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
     }
-    	
+    
+   private void testAddItemsToInventory(){
+	   player.getInventory().addItem(k6);
+	   player.getInventory().addItem(w1);
+	   player.getInventory().addItem(c4);
+	   player.getInventory().addItem(w3);
+	   player.getInventory().addItem(k2);
+	   player.getInventory().addItem(c7);
+   }	
 
     /**
      * method to associate a key and a lock
