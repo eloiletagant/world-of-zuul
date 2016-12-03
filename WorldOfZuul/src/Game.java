@@ -33,6 +33,7 @@ import java.util.HashMap;
 
 import character.Player;
 import room.Door;
+import room.LockedDoor;
 import room.Room;
 import item.*;
 
@@ -464,6 +465,10 @@ public class Game extends JFrame {
     	*/
     }
     
+    private void createLockedDoor(Room room, Room nextRoom, String way, Key aKey, Lock aLock) {
+    	LockedDoor door1 = new LockedDoor(nextRoom, aLock);
+    	room.addExit(door1, way);
+    }
     /**
      * The method allows to check were are the exit of each room. In fonction of the exit, the arrow of direction are activated or disactivated.
      */
