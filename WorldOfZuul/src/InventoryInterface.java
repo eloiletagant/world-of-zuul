@@ -16,13 +16,16 @@ public class InventoryInterface extends JFrame {
 	
     //button building
     public JButton back, back2, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
-    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, damages, hands;
+    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, hands, effects;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
     private JFrame inventoryFrame, itemFrame;
     private Inventory inventoryPlayer;
     private Icon anIcon, backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
-    private int counter =0;
+    private int counter = 0;
+    private int nbHands;
     private Item myItem;
+    private Weapon myWeapon;
+    private Consumable myConsumable;
     private boolean viewInventory = true;
     private boolean found = false;
     protected InventoryInterfaceListener evt, evt2;
@@ -267,10 +270,55 @@ public class InventoryInterface extends JFrame {
         completeDescription.add(price);
         if (anItem instanceof Weapon)
         {
-        	//damages=new JLabel("Damages : "+anItem.get)
+        	myWeapon = new Weapon(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Weapon) anItem).getDamages(), ((Weapon) anItem).getOneHand());
+        	damages=new JLabel("Damages : "+myWeapon.getDamages());
+        	damages.setForeground(Color.white);
+        	damages.setFont(police2);
+        	completeDescription.add(damages);
+        	if (myWeapon.getOneHand() == true)
+        	{
+        		nbHands=1;
+        	}
+        	else
+        	{
+        		nbHands=2;
+        	}
+        	hands=new JLabel("Number of hands required : "+nbHands);
+        	hands.setForeground(Color.white);
+        	hands.setFont(police2);
+        	completeDescription.add(hands);
         }
-        //rajouter les autres attributs selon le type d'objet
-        
+        else if(anItem instanceof Consumable)
+        {
+        	myConsumable = new Consumable(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Consumable) anItem).getEffect(), ((Consumable) anItem).getCare(), ((Consumable) anItem).getDamage(), ((Consumable) anItem).getWeapon());
+        	effects=new JLabel("Effect : "+myConsumable.getEffect());
+        	effects.setForeground(Color.white);
+        	effects.setFont(police2);
+        	completeDescription.add(effects);
+        	if (myConsumable.getCare()!=0)
+        	{
+        		care=new JLabel("Care : "+myConsumable.getCare()+" HP");
+            	care.setForeground(Color.white);
+            	care.setFont(police2);
+            	completeDescription.add(care);
+        	}
+        	else
+        	{
+        		if (myConsumable.getWeapon()==true)
+        		{
+        			damages=new JLabel("Damages added to your weapon : "+myConsumable.getDamage()+" HP");
+        		}
+        		else
+        		{
+        			damages=new JLabel("Damages added : "+myConsumable.getDamage()+" HP");
+
+        		}
+            	damages.setForeground(Color.white);
+            	damages.setFont(police2);
+            	completeDescription.add(damages);
+        	}
+        	
+        }      
         
         
     	view=new JPanel(new BorderLayout());

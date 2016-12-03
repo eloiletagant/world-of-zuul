@@ -58,12 +58,10 @@ public class Consumable extends Item
 		if ((newName.isEmpty() || (anEffect.isEmpty())) || (care==0 && increaseDamage==0))
 		{
 			effect = "This consumable has no effect";
-			//weapon=false;
 		}
 		else
 		{
 			effect = anEffect;
-			//weapon=inWeapon;
 		}
 	}
 	
