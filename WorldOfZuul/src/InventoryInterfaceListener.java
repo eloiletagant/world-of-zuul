@@ -95,6 +95,7 @@ public class InventoryInterfaceListener extends MouseAdapter
         	//penser à appliquer les effets avant de supprimer
         	myItem=inventory.searchItemDisplayed();
         	inventory.getInventory().deleteItem(myItem);
+        	inventory.exitInventory();
         	//le delete marche pas mais je sais pas pourquoi
         }
         else if(evt.getSource()==inventory.sell)

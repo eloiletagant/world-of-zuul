@@ -425,7 +425,7 @@ public class InventoryInterface extends JFrame {
     }
     
     /**
-     * 
+     * This method changes the view of the inventory : general view or focus on an item.
      */
     public void exitInventory()
     {
@@ -437,7 +437,6 @@ public class InventoryInterface extends JFrame {
     	else
     	{
     		itemFrame.setVisible(false);
-        	System.out.println("yo");
         	inventoryFrame = new InventoryInterface(inventoryPlayer);
     		viewInventory=true;
     	}    	
