@@ -259,43 +259,110 @@ public class Game extends JFrame {
     }
     
     private void createAllDoors(ArrayList<Room> rooms){
+    	//Room 0
         createDoor(rooms.get(0), rooms.get(1) , "front");
+        //Room 1
+        createDoor(rooms.get(1), rooms.get(0) , "behind");
         createDoor(rooms.get(1), rooms.get(2) , "left");
         createDoor(rooms.get(1), rooms.get(4) , "front");
         createDoor(rooms.get(1), rooms.get(9) , "right");
-        createDoor(rooms.get(1), rooms.get(9) , "right");
+        //Room 2
         createDoor(rooms.get(2), rooms.get(3) , "front");
-        createDoor(rooms.get(3), rooms.get(4) , "right");
-        createDoor(rooms.get(3), rooms.get(5) , "left");
+        createDoor(rooms.get(2), rooms.get(1) , "right");
+        //Room 3
+        createDoor(rooms.get(3), rooms.get(4) , "left");
+        createDoor(rooms.get(3), rooms.get(5) , "right");
+        createDoor(rooms.get(3), rooms.get(2) , "front");
+        //Room 4
+        createDoor(rooms.get(4), rooms.get(1) , "left");
+        createDoor(rooms.get(4), rooms.get(3) , "right");
+        //Room 5
         createDoor(rooms.get(5), rooms.get(8) , "front");
         createDoor(rooms.get(5), rooms.get(6) , "left");
+        createDoor(rooms.get(5), rooms.get(3) , "right");
+        //Room 6
         createDoor(rooms.get(6), rooms.get(7) , "left");
         createDoor(rooms.get(6), rooms.get(26) , "front");
-        createDoor(rooms.get(9), rooms.get(10) , "right");
+        createDoor(rooms.get(6), rooms.get(5) , "behind");
+        //Room 7
+        createDoor(rooms.get(7), rooms.get(6) , "behind");
+        //Room 8
+        createDoor(rooms.get(8), rooms.get(5) , "behind");
+        //Room 9
+        createDoor(rooms.get(9), rooms.get(10) , "left");
+        createDoor(rooms.get(9), rooms.get(1) , "right");
+        //Room 10
         createDoor(rooms.get(10), rooms.get(11) , "front");
-        createDoor(rooms.get(11), rooms.get(12) , "right");
-        createDoor(rooms.get(11), rooms.get(13) , "front");
-        createDoor(rooms.get(26), rooms.get(25) , "front");
-        createDoor(rooms.get(25), rooms.get(27) , "right");
-        createDoor(rooms.get(25), rooms.get(24) , "front");
-        createDoor(rooms.get(24), rooms.get(23) , "left");
-        createDoor(rooms.get(27), rooms.get(28) , "front");
-        createDoor(rooms.get(28), rooms.get(29) , "front");
-        createDoor(rooms.get(23), rooms.get(22) , "front");
-        createDoor(rooms.get(23), rooms.get(20) , "left");
+        createDoor(rooms.get(10), rooms.get(9) , "left");
+        //Room 11
+        createDoor(rooms.get(11), rooms.get(10) , "right");
+        createDoor(rooms.get(11), rooms.get(12) , "front");
+        createDoor(rooms.get(11), rooms.get(13) , "left");
+        //Room 12
+        createDoor(rooms.get(12), rooms.get(11) , "behind");
+        //Room 13
+        createDoor(rooms.get(13), rooms.get(11) , "left");
+        createDoor(rooms.get(13), rooms.get(14) , "front");
+        //Room 14
+        createDoor(rooms.get(14), rooms.get(22) , "left");
+        createDoor(rooms.get(14), rooms.get(13) , "right");
+        createDoor(rooms.get(14), rooms.get(15) , "front");
+        //Room 15
+        createDoor(rooms.get(15), rooms.get(21) , "front");
+        createDoor(rooms.get(15), rooms.get(16) , "right");
+        createDoor(rooms.get(15), rooms.get(14) , "left");
+        //Room 16
+        createDoor(rooms.get(16), rooms.get(15) , "left");
+        createDoor(rooms.get(16), rooms.get(17) , "right");
+        createDoor(rooms.get(16), rooms.get(18) , "front");
+        //Room 17
+        createDoor(rooms.get(17), rooms.get(30) , "front");
+        createDoor(rooms.get(17), rooms.get(16) , "behind");
+        //Room 18
+        createDoor(rooms.get(18), rooms.get(17) , "left");
+        createDoor(rooms.get(18), rooms.get(19) , "right");
+        //Room 19
+        createDoor(rooms.get(19), rooms.get(18) , "front");
+        createDoor(rooms.get(19), rooms.get(20) , "right");
+        //Room 20
         createDoor(rooms.get(20), rooms.get(19) , "left");
         createDoor(rooms.get(20), rooms.get(21) , "front");
-        createDoor(rooms.get(19), rooms.get(18) , "front");
-        createDoor(rooms.get(18), rooms.get(16) , "front");
-        createDoor(rooms.get(18), rooms.get(21) , "right");
-        createDoor(rooms.get(16), rooms.get(17) , "left");
-        createDoor(rooms.get(16), rooms.get(15) , "right");
-        createDoor(rooms.get(15), rooms.get(14) , "front");
-        createDoor(rooms.get(15), rooms.get(21) , "right");
-        createDoor(rooms.get(14), rooms.get(22) , "front");   
-        createDoor(rooms.get(17), rooms.get(30) , "front");   
-        createDoor(rooms.get(30), rooms.get(31) , "front"); 
-        createDoor(rooms.get(31), rooms.get(32) , "front");   
+        createDoor(rooms.get(20), rooms.get(23) , "right");
+        //Room 21
+        createDoor(rooms.get(21), rooms.get(1) , "front");
+        //Room 22
+        createDoor(rooms.get(22), rooms.get(23) , "right");
+        createDoor(rooms.get(22), rooms.get(14) , "left");
+        //Room 23
+        createDoor(rooms.get(23), rooms.get(22) , "front");
+        createDoor(rooms.get(23), rooms.get(20) , "left");
+        createDoor(rooms.get(23), rooms.get(24) , "right");
+        //Room 24
+        createDoor(rooms.get(24), rooms.get(25) , "left");
+        createDoor(rooms.get(24), rooms.get(23) , "right");
+        //Room 25
+        createDoor(rooms.get(25), rooms.get(26) , "right");
+        createDoor(rooms.get(25), rooms.get(27) , "front");
+        createDoor(rooms.get(25), rooms.get(24) , "left");
+        //Room 26
+        createDoor(rooms.get(26), rooms.get(25) , "front");
+        createDoor(rooms.get(26), rooms.get(6) , "behind");        
+        //Room 27
+        createDoor(rooms.get(27), rooms.get(28) , "front");
+        createDoor(rooms.get(27), rooms.get(25) , "left");
+        //Room 28
+        createDoor(rooms.get(28), rooms.get(29) , "front");
+        createDoor(rooms.get(28), rooms.get(27) , "behind");
+        //Room 29
+        createDoor(rooms.get(29), rooms.get(28) , "behind");
+        //Room 30
+        createDoor(rooms.get(30), rooms.get(17) , "front");
+        createDoor(rooms.get(30), rooms.get(31) , "behind");
+        //Room 31
+        createDoor(rooms.get(31), rooms.get(32) , "front");
+        createDoor(rooms.get(31), rooms.get(30) , "behind"); 
+        //Room 32
+        createDoor(rooms.get(32), rooms.get(31) , "behind"); 
      }
     
     /**
@@ -366,6 +433,7 @@ public class Game extends JFrame {
     private void createDoor(Room room, Room nextRoom, String way) {
     	Door door1 = new Door(nextRoom);
     	room.addExit(door1, way);
+    	/*
     	Door door2 = new Door(room);
     	String oppositeWay;
     	
@@ -394,6 +462,7 @@ public class Game extends JFrame {
     	    break;             
     	}
     	nextRoom.addExit(door2, oppositeWay);
+    	*/
     }
     
     /**
