@@ -59,6 +59,13 @@ public class InventoryInterfaceListener extends MouseAdapter
     				 inventory.getSell().setToolTipText("You can not sell this item.");
     			 }
     		 }
+    		 else if(evt.getSource() == inventory.getUse())
+    		 {
+    			 if (inventory.getUse().isEnabled()==false)
+    			 {
+    				 inventory.getUse().setToolTipText("You have to equip a weapon before using this item.");
+    			 }
+    		 }
     		 else
     		 {
     			 for (Item item : items)
@@ -87,18 +94,57 @@ public class InventoryInterfaceListener extends MouseAdapter
          }
     	 else if(evt.getSource()==inventory.getUse())
          {
-         	//penser à appliquer les effets avant de supprimer
-         	myItem=inventory.searchItemDisplayed();
-         	inventory.getInventory().deleteItem(myItem);
-         	inventory.exitInventory();
+    		 myItem=inventory.searchItemDisplayed();
+    		 if (inventory.getUse().isEnabled()==true)
+        	 {
+    			 if (myItem instanceof Consumable)
+    			 {
+    				 if (((Consumable) myItem).getCare()>0)
+    				 {
+    					 inventory.getPlayer().manageHealth(((Consumable) myItem).getCare());
+    				 }
+    				 else if (((Consumable) myItem).getDamage()>0)
+    				 {
+    					 if (((Consumable) myItem).getWeapon()==false)
+    					 {
+    						 inventory.getPlayer().manageBonusDamages(((Consumable) myItem).getDamage());
+    					 }
+    					 else
+    					 {
+    						 for (Item item : items)
+    						 {
+    							 if (item instanceof Weapon)
+    							 {
+    								 if (((Weapon) item).getEquiped()==true)
+    								 {
+    									 ((Weapon) item).addDamages(((Consumable) myItem).getDamage());
+    								 }
+    							 }
+    						 }
+    					 }
+    				 }
+    			 }
+    			 inventory.getInventory().deleteItem(myItem);
+    			 inventory.exitInventory();
+        	 }
+    		 else if (myItem instanceof Key)
+         	{
+         		//reste cette partie à faire
+         		inventory.getInventory().deleteItem(myItem);
+             	inventory.exitInventory();
+         	}
+         	
          }
     	 else if(evt.getSource()==inventory.getEquip())
          {
+    		 myItem=inventory.searchItemDisplayed();
+    		 System.out.println("ok");
     		 if (inventory.getEquip().isEnabled()==true)
         	 {
-    			 myItem=inventory.searchItemDisplayed();
+    			 System.out.println("hey");
         		 if (myItem instanceof Weapon)
         		 {
+        			 System.out.println("youpi");
         			 ((Weapon) myItem).equip();
         			 inventory.exitInventory();
         		 }

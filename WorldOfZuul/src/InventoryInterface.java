@@ -272,6 +272,18 @@ public class InventoryInterface extends JFrame {
         
         actions= new JPanel(new GridLayout(1,2));
         
+        aWeapon=false;
+    	for (Item item : inventoryPlayer.getItems())
+    	 {
+    		 if (item instanceof Weapon)
+    		 {
+    			 if (((Weapon) item).getEquiped()==true)
+    			 {
+    				 aWeapon=true;
+    			 }
+    		 }
+    	 }
+        
         if (anItem instanceof Weapon)
         {
         	myWeapon = new Weapon(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Weapon) anItem).getDamages());
@@ -279,17 +291,6 @@ public class InventoryInterface extends JFrame {
         	damages.setForeground(Color.white);
         	damages.setFont(police2);
         	completeDescription.add(damages);
-        	aWeapon=false;
-        	for (Item item : inventoryPlayer.getItems())
-        	 {
-        		 if (item instanceof Weapon)
-        		 {
-        			 if (((Weapon) item).getEquiped()==true)
-        			 {
-        				 aWeapon=true;
-        			 }
-        		 }
-        	 }
         	if (((Weapon) anItem).getEquiped()==false)
         	{
         		equip= new JButton("EQUIP");
@@ -324,6 +325,16 @@ public class InventoryInterface extends JFrame {
             use.setFont(police);
             actions.add(use);
     		use.addMouseListener(evt);
+    		if (aWeapon==false)
+    		{
+    			if (anItem instanceof Consumable)
+    			{
+    				if (((Consumable) anItem).getWeapon()==true)
+    				{
+    					use.setEnabled(false);
+    				}
+    			}
+    		}
     		actions.add(sell);
     		sell.addMouseListener(evt);
             if (anItem.getSellAble()==false)
