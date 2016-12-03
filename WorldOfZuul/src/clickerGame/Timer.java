@@ -8,7 +8,7 @@ public class Timer implements Runnable {
     private int winScore = 100;
 
     public void setRunning(boolean running) {
-        this.running = running;
+        this.running = running; 
     }
 
     public boolean getRunning() {
