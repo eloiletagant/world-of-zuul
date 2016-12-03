@@ -50,7 +50,7 @@ public class Game extends JFrame {
     private JPanel globalPanel, buttonsPanel, healthBag;
     
     private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar;
-
+    private InventoryInterface showInventory;
     private GameListener l;
     
     
@@ -211,9 +211,20 @@ public class Game extends JFrame {
      */
     public void openInventory(boolean open) {
     	if (open) {
-    		InventoryInterface inventoryInterface;
-    		inventoryInterface = new InventoryInterface(player.getInventory());
+    		showInventory = new InventoryInterface(player.getInventory());
     	}
+    	else
+    	{
+    		if (showInventory.getVisibility()==true)
+    		{
+    			showInventory.exitInventory();
+    		}
+    	}
+    }
+    
+    public boolean getInventoryIsOpen()
+    {
+    	return inventoryIsOpen;
     }
     
     /**
