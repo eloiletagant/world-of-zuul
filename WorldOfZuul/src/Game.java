@@ -432,4 +432,5 @@ public class Game extends JFrame {
         changePicture();
         manageDirectionButton ();
     }
+    
 }
