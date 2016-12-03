@@ -531,6 +531,7 @@ public class Game extends JFrame {
     }
     /**
      * Method used to move in a next room linked to the current room
+     * @param way: The direction of the next room
      */
     public void move(String way)
     {
