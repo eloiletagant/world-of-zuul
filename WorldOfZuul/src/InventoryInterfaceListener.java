@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import item.*;
+import room.*;
 
 /**
  * This class allows creating a functional counter using the external listeners.
@@ -17,6 +18,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     private ArrayList<Item> items;
     private Item myItem;
     private int i;
+    private HashMap<String,Door> doors;
     
     /**
      * The Constructor for the listener
@@ -123,17 +125,47 @@ public class InventoryInterfaceListener extends MouseAdapter
     						 }
     					 }
     				 }
+    				 inventory.getInventory().deleteItem(myItem);
+        			 inventory.exitInventory();
     			 }
-    			 inventory.getInventory().deleteItem(myItem);
-    			 inventory.exitInventory();
+    			 else if (myItem instanceof Key)
+    	         {
+    				 //utilisé uniquement quand y a un chest ou une doorlocked dans la pièce où l'on est
+    	    		 doors=inventory.getPlayer().getLocation().getDoors();
+    	    		 for (Map.Entry<String,Door> door : doors.entrySet())
+    	    		 {
+    	    			 if (door.getValue().isLocked()==true)
+    	    			 {
+    	    				 if (door instanceof LockedDoor)
+    	    				 {
+    	    					 if (((LockedDoor) door).getLock().unlock((Key) myItem)==false)
+    	    					 {
+    	    						 System.out.println("t'esnaze.");
+    	    					 }
+    	    					 else
+    	    					 {
+    	    						 System.out.println("t'es trop bonne.");
+    	    					 }
+    	    				 }
+    	    			 }
+    	    		 }
+//    	    		 if ((doors.containsKey("front") && doors.get("front").isLocked() == true) || (doors.containsKey("behind") && doors.get("behind").isLocked() == true) || (doors.containsKey("left") && doors.get("left").isLocked() == true) || (doors.containsKey("right") && doors.get("right").isLocked() == true))
+//    	    		 {
+//    	    			 if (doors.get("front").isLocked()==true)
+//    	    			 {
+//    	    				 if (doors instanceof LockedDoor)
+//    	    				 {
+//    	    					 
+//    	    				 }
+//    	    			 }
+//    	    				 
+//    	    			 System.out.println("youhouuuuuu");
+//    	    			 
+//    	    		 }
+    	         	inventory.getInventory().deleteItem(myItem);
+    	            inventory.exitInventory();
+    	         }
         	 }
-    		 else if (myItem instanceof Key)
-         	{
-         		//reste cette partie à faire
-         		inventory.getInventory().deleteItem(myItem);
-             	inventory.exitInventory();
-         	}
-         	
          }
     	 else if(evt.getSource()==inventory.getEquip())
          {
