@@ -489,7 +489,7 @@ public class Game extends JFrame {
             if (doors.containsKey("left"))
                 left.setEnabled(true);
             if (doors.containsKey("right"))
-                right.setEnabled(true);
+                right.setEnabled(true);     	
     }
     
     /**

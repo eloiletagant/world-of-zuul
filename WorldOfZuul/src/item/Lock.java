@@ -23,7 +23,7 @@ public class Lock
 	
 	/**
 	 * Simple accessor
-	 * @return A boolean true if the lock is open false if is not
+	 * @return A boolean true if the lock is closed false if it is not
 	*/
 	public boolean getLock()
 	{

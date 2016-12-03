@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import event.Event;
+import item.Lock;
 
 /**
  * This class describes the structure of a room. A room is defined by a name and a map level (0 or 1).
@@ -130,4 +131,12 @@ public class Room {
     public void removeEvent(Event anEvent) {
         events.remove(anEvent);
     }
+    
+	/**
+	 * This method return if the door is locked or not.
+	 * @return true if the door is locked
+	 */
+	public boolean isLocked(){
+			return false;
+	}
 }

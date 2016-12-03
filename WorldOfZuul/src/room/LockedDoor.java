@@ -33,4 +33,14 @@ public class LockedDoor extends Door{
 		return lock;
 	}
 
+	/**
+	 * This method return if the door is locked or not.
+	 * @return true if the door is locked
+	 */
+	public boolean isLocked(){
+		if (lock.getLock() == true)
+			return true;
+		else
+			return false;
+	}
 }
