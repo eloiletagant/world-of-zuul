@@ -274,12 +274,12 @@ public class Game extends JFrame {
         createDoor(rooms.get(3), rooms.get(5) , "right");
         createDoor(rooms.get(3), rooms.get(2) , "front");
         //Room 4
-        createDoor(rooms.get(4), rooms.get(1) , "left");
+        createDoor(rooms.get(4), rooms.get(1) , "front");
         createDoor(rooms.get(4), rooms.get(3) , "right");
         //Room 5
         createDoor(rooms.get(5), rooms.get(8) , "front");
-        createDoor(rooms.get(5), rooms.get(6) , "left");
-        createDoor(rooms.get(5), rooms.get(3) , "right");
+        createDoor(rooms.get(5), rooms.get(6) , "right");
+        createDoor(rooms.get(5), rooms.get(3) , "left");
         //Room 6
         createDoor(rooms.get(6), rooms.get(7) , "left");
         createDoor(rooms.get(6), rooms.get(26) , "front");
@@ -414,7 +414,6 @@ public class Game extends JFrame {
         player.getInventory().addItem(c7);
     }
     	
-
 
     /**
      * method to associate a key and a lock
