@@ -131,12 +131,4 @@ public class Room {
     public void removeEvent(Event anEvent) {
         events.remove(anEvent);
     }
-    
-	/**
-	 * This method return if the door is locked or not.
-	 * @return true if the door is locked
-	 */
-	public boolean isLocked(){
-			return false;
-	}
 }

@@ -482,7 +482,7 @@ public class Game extends JFrame {
             left.setEnabled(false);
             right.setEnabled(false);
             
-            if (doors.containsKey("front"))
+            if (doors.containsKey("front") && doors.get("front").get)
                 front.setEnabled(true);
             if (doors.containsKey("behind"))
                 behind.setEnabled(true);
