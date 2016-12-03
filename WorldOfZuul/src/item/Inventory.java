@@ -57,6 +57,13 @@ public class Inventory {
     public ArrayList<Item> getItems() {
         return items;
     }
+    
+    /**
+     * This method returns the number of items in the inventory - simple accessor
+     */
+    public int getNbItems() {
+        return this.getItems().size();
+    }
 
     /**
      * This method returns gold from the inventory of a character - simple accessor

@@ -17,6 +17,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     private InventoryInterface inventory;
     private ArrayList<Item> items;
     private Item myItem;
+    private int i;
     
     /**
      * The Constructor for the listener
@@ -32,11 +33,16 @@ public class InventoryInterfaceListener extends MouseAdapter
      public void mouseEntered(MouseEvent evt)
      {
     	 items = inventory.getInventory().getItems();
-    	 for (Item item : items)
-    	 {
-    		 if (evt.getSource() == inventory.getJButton(item))
+    	 i=0;
+    	 if (evt.getSource() != inventory.getBack() || evt.getSource() != inventory.getUse() || evt.getSource() != inventory.getSell())
+		 {
+    		 for (Item item : items)
     		 {
-    			 inventory.getJButton(item).setToolTipText(item.getName());
+    			 if (evt.getSource() == inventory.getItemToDisplay(i))
+    			 {
+    				 inventory.getItemToDisplay(i).setToolTipText(item.getName());
+    			 }
+    			 i+=1;
     		 }
     	 }
      }
@@ -48,29 +54,31 @@ public class InventoryInterfaceListener extends MouseAdapter
      public void mousePressed(MouseEvent evt)
      {
     	 items = inventory.getInventory().getItems();
-    	 if(evt.getSource() == inventory.back)
+    	 i=0;
+    	 if(evt.getSource() == inventory.getBack())
          {
     		 inventory.exitInventory();
          }
-    	 else if(evt.getSource()==inventory.use)
+    	 else if(evt.getSource()==inventory.getUse())
          {
          	//penser à appliquer les effets avant de supprimer
          	myItem=inventory.searchItemDisplayed();
          	inventory.getInventory().deleteItem(myItem);
          	inventory.exitInventory();
          }
-         else if(evt.getSource()==inventory.sell)
+         else if(evt.getSource()==inventory.getSell())
          {
          	//ouvrir la boîte d'échange (package trade)
          }
-         else
+    	 else
          {
-        	 for (Item item : items)
+    		 for (Item item : items)
         	 {
-        		 if (evt.getSource() == inventory.getJButton(item))
+        		 if (evt.getSource() == inventory.getItemToDisplay(i))
         		 {
-        			 inventory.displayItem(inventory.searchItem(item.getName()));
+        			 inventory.displayItem(inventory.searchItem(item.getName()));        			 
         		 }
+        		 i+=1;
         	 }
          }
     }  

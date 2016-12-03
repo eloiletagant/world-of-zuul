@@ -15,20 +15,22 @@ import item.*;
 public class InventoryInterface extends JFrame {
 	
     //button building
-    public JButton back, back2, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
+    private JButton back, back2, use, sell, aButton;
     private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, hands, effects;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
     private JFrame inventoryFrame, itemFrame;
     private Inventory inventoryPlayer;
-    private Icon anIcon, backIcon, goldIcon, axeIcon, bowIcon, mincingMachineIcon, swordIcon, breadIcon, briocheIcon, cookiesIcon, eggplantIcon, pineappleIcon, potionIcon, key1Icon, key2Icon;
+    private Icon anIcon, backIcon, goldIcon;
     private int counter = 0;
     private int nbHands;
     private Item myItem;
     private Weapon myWeapon;
     private Consumable myConsumable;
     private boolean viewInventory = true;
-    private boolean found = false;
-    protected InventoryInterfaceListener evt, evt2;
+    private InventoryInterfaceListener evt;
+    private String name;
+    private JButton[] buttonItems;
+    
 
     /**
      * Constructor for objects of class InventoryInterface
@@ -94,89 +96,29 @@ public class InventoryInterface extends JFrame {
         up.add(gold);
         
         
+      //Listeners for buttons action
+        evt= new InventoryInterfaceListener(this);
+        use.addMouseListener(evt);
+        sell.addMouseListener(evt);
+        back.addMouseListener(evt);
         
-        axeIcon = new ImageIcon("pictures/axe.png");
-        axe = new JButton(axeIcon);
-        axe.setBackground(new Color(70, 63, 55));
-        
-        mincingMachineIcon = new ImageIcon("pictures/mincing_machine.png");
-        mincingMachine = new JButton(mincingMachineIcon);
-        mincingMachine.setBackground(new Color(70, 63, 55));
-        
-        bowIcon= new ImageIcon("pictures/Bow.png");
-        bow = new JButton(bowIcon);
-        bow.setBackground(new Color(70, 63, 55));
-        
-        eggplantIcon= new ImageIcon("pictures/eggplant.png");
-        eggplant = new JButton(eggplantIcon);
-        eggplant.setBackground(new Color(70, 63, 55));
-        
-        key1Icon = new ImageIcon("pictures/key1.png"); 
-        key1 = new JButton(key1Icon);
-        key1.setBackground(new Color(70, 63, 55));
-        
-        key2Icon= new ImageIcon("pictures/key2.png");
-        key2 = new JButton(key2Icon);
-        key2.setBackground(new Color(70, 63, 55));
-        
-        breadIcon= new ImageIcon("pictures/bread.png");
-        bread = new JButton(breadIcon);
-        bread.setBackground(new Color(70, 63, 55));
-        
-        potionIcon= new ImageIcon("pictures/potion.png");
-        potion = new JButton(potionIcon);
-        potion.setBackground(new Color(70, 63, 55));
-        
-        swordIcon= new ImageIcon("pictures/sword.png");
-        sword = new JButton(swordIcon);
-        sword.setBackground(new Color(70, 63, 55));
-        
-        pineappleIcon= new ImageIcon("pictures/pineapple.png");
-        pineapple= new JButton(pineappleIcon);
-        pineapple.setBackground(new Color(70, 63, 55));
-        
-        briocheIcon= new ImageIcon("pictures/brioche.png");
-        brioche = new JButton(briocheIcon);
-        brioche.setBackground(new Color(70, 63, 55));
-        
-        cookiesIcon= new ImageIcon("pictures/cookies.png");
-        cookies = new JButton(cookiesIcon);
-        cookies.setBackground(new Color(70, 63, 55));
-        
-        
-
+        buttonItems = new JButton[inventoryPlayer.getNbItems()];
         for (Item item : inventoryPlayer.getItems())
-    	{
-        	inventory.add(getJButton(item));
-        	counter+=1;
-    	}
+        {
+        	aButton=getJButton(item);
+        	buttonItems[counter] = aButton;
+        	buttonItems[counter].addMouseListener(evt);
+           	inventory.add(buttonItems[counter]);
+           	counter+=1;
+        }
+    	
         while (counter!=inventoryPlayer.getMaxItems())
 		{
 			JPanel empty = new JPanel();
 			empty.setBackground(new Color(70, 63, 55));
 			inventory.add(empty);
 			counter+=1;
-		}
-     
-        //Listeners for buttons action
-        evt= new InventoryInterfaceListener(this);
-        sell.addMouseListener(evt);
-        back.addMouseListener(evt);
-        use.addMouseListener(evt);
-
-        brioche.addMouseListener(evt);
-        bread.addMouseListener(evt);
-        cookies.addMouseListener(evt);
-        pineapple.addMouseListener(evt);
-        eggplant.addMouseListener(evt);
-        potion.addMouseListener(evt);
-        axe.addMouseListener(evt);
-        bow.addMouseListener(evt);
-        mincingMachine.addMouseListener(evt);
-        sword.addMouseListener(evt);
-        key1.addMouseListener(evt);
-        key2.addMouseListener(evt);
-        
+		}    
         
         
         myPanel.add(up,BorderLayout.NORTH);
@@ -222,6 +164,43 @@ public class InventoryInterface extends JFrame {
     		}
     	}
     	return myItem;
+    }
+    
+    /**
+     * This method returns the back button
+     * @return JButton back
+     */
+    public JButton getBack()
+    {
+    	return back;
+    }
+    
+    /**
+     * This method returns the use button
+     * @return JButton use
+     */
+    public JButton getUse()
+    {
+    	return use;
+    }
+    
+    /**
+     * This method returns the sell button
+     * @return JButton sell
+     */
+    public JButton getSell()
+    {
+    	return sell;
+    }
+    
+    /**
+     * This method returns an item button
+     * @param i : index of button Items
+     * @return JButton
+     */
+    public JButton getItemToDisplay(int i)
+    {
+    	return buttonItems[i];
     }
     
     /**
@@ -362,114 +341,42 @@ public class InventoryInterface extends JFrame {
      * @param item
      * @return JButton
      */
-    public JButton getJButton(Item item)
+    public JButton getJButton(Item anItem)
     {
-    	if(item.getName() == "Pineapple")
-		{
-			aButton=pineapple;
-		}
-    	else if (item.getName() == "Axe")
-		{
-    		aButton=axe;
-		}
-    	else if (item.getName() == "Bow")
-		{
-    		aButton=bow;
-		}
-    	else if (item.getName() == "Butcher knife")
-		{
-    		aButton=mincingMachine;
-		}
-    	else if (item.getName() == "Sword")
-		{
-    		aButton=sword;
-		}
-    	else if (item.getName() == "Eggplant")
-		{
-    		aButton=eggplant;
-		}
-    	else if (item.getName() == "Bread")
-		{
-    		aButton=bread;
-		}
-		else if (item.getName() == "Brioche")
-		{
-			aButton=brioche;
-		}
-		else if (item.getName() == "Cookies")
-		{
-			aButton=cookies;
-		}
-		else if (item.getName() == "Potion")
-		{
-			aButton=potion;
-		}					
-		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-�re" || item.getName() == "Gy-Clef")
-		{
-			aButton=key1;
-		}
-		else if (item.getName() == "S�same" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
-		{
-			aButton=key2;
-		}
+    	anIcon=getIcon(anItem);
+		aButton= new JButton(anIcon);
+		aButton.setBackground(new Color(70, 63, 55));
     	return aButton;
-    } 
+    }
+    
     
     /**
      * This method returns the icon according to the given item.
      * @param item
      * @return JButton
      */
-    public Icon getIcon(Item item)
+    public Icon getIcon(Item anItem)
     {
-    	if(item.getName() == "Pineapple")
-		{
-			anIcon=pineappleIcon;
-		}
-    	else if (item.getName() == "Axe")
-		{
-    		anIcon=axeIcon;
-		}
-    	else if (item.getName() == "Bow")
-		{
-    		anIcon=bowIcon;
-		}
-    	else if (item.getName() == "Butcher knife")
-		{
-    		anIcon=mincingMachineIcon;
-		}
-    	else if (item.getName() == "Sword")
-		{
-    		anIcon=swordIcon;
-		}
-    	else if (item.getName() == "Eggplant")
-		{
-    		anIcon=eggplantIcon;
-		}
-    	else if (item.getName() == "Bread")
-		{
-    		anIcon=breadIcon;
-		}
-		else if (item.getName() == "Brioche")
-		{
-			anIcon=briocheIcon;
-		}
-		else if (item.getName() == "Cookies")
-		{
-			anIcon=cookiesIcon;
-		}
-		else if (item.getName() == "Potion")
-		{
-			anIcon=potionIcon;
-		}					
-		else if (item.getName() == "Hodor" || item.getName() == "Nu-Clef-�re" || item.getName() == "Gy-Clef")
-		{
-			anIcon=key1Icon;
-		}
-		else if (item.getName() == "S�same" || item.getName() == "Musse-Clef" || item.getName() == "Tabou-Clef" || item.getName() == "Clef-Bar")
-		{
-			anIcon=key2Icon;
-		}
+    	for (Item item : inventoryPlayer.getItems())
+    	{
+    		name=item.getName();
+    		if (anItem instanceof Key)
+    		{
+    			if (anItem.getDescription().contains("door"))
+    			{
+    				anIcon=new ImageIcon("pictures/key1.png");
+    			}
+    			else if (anItem.getDescription().contains("chest") || anItem.getDescription().contains("treasure"))
+    			{
+    				anIcon=new ImageIcon("pictures/key2.png");
+    			}
+    		}
+    		else if (anItem.getName()==name)
+    		{
+    			name=name.toLowerCase();
+    			anIcon=new ImageIcon("pictures/"+name+".png");
+    		}
+    	}
     	return anIcon;
     }
     
