@@ -16,7 +16,6 @@ package item;
 public class Weapon extends Item
 {
 	private int damages;
-	private boolean oneHand;
 	private boolean equiped;
 	
 	/**
@@ -31,9 +30,8 @@ public class Weapon extends Item
 	 * @param aPrice Int			price of the item
 	 * @param sell Boolean			true if the item can be sell
 	 * @param nbDamage Int			damages induced by the weapon
-	 * @param hand					true if the weapon needs just one hand to be equipped. 
 	 */
-	public Weapon(String newName, String aDescription, int aPrice, boolean sell, int nbDamage, boolean hand)
+	public Weapon(String newName, String aDescription, int aPrice, boolean sell, int nbDamage)
 	{
 		super(newName,aDescription,aPrice,sell);
 		if (nbDamage<0)
@@ -41,17 +39,7 @@ public class Weapon extends Item
 			nbDamage=2;
 		}
 		damages = nbDamage;
-		oneHand = hand;
 		equiped = false;
-	}
-	
-	/**
-	 * This method returns if the weapon is an onehand
-	 * @return true if the weapon is an oneHand, else return false
-	 */
-	public boolean getOneHand()
-	{
-		return oneHand;
 	}
 	
 	/**

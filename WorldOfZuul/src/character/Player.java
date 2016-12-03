@@ -195,30 +195,6 @@ public class Player {
     }
 
     /**
-     * Calculate the new number of hands available to wear weapons
-     *
-     * @param nbr number of hand of the new weapon (positive : unequip, negative to equip weapon)
-     * @return true : the weapon can be equiped / unequiped; false : it can not
-     */
-    public boolean swapWeapon(int nbr)
-    {
-        if (nbHandsAvailable + nbr > maxHands)
-        {
-            nbHandsAvailable = maxHands;
-            return true;
-        }
-        else if (nbHandsAvailable + nbr < 0)
-        {
-            return false;
-        }
-        else
-        {
-            nbHandsAvailable += nbr;
-            return true;
-        }
-    }
-
-    /**
      * Add or remove some damages to the character
      *
      * @param bonus negative ==> diminution of damages. Can not be over 5 and under -5

@@ -370,10 +370,10 @@ public class Game extends JFrame {
      */
     private void createItems()
     {
-    	Weapon w1 = new Weapon("Axe", "This axe do not only allow cutting trees.", 20, true, 3, false);
-    	Weapon w2 = new Weapon("Bow", "This bow is for a true Robin wood.", 90, true, 5, false);
-        Weapon w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7, true);
-        Weapon w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9, true);
+    	Weapon w1 = new Weapon("Axe", "This axe do not only allow cutting trees.", 20, true, 3);
+    	Weapon w2 = new Weapon("Bow", "This bow is for a true Robin wood.", 90, true, 5);
+        Weapon w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7);
+        Weapon w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9);
         Consumable c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vend�e !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
         Consumable c2 = new Consumable("Bread", "This bread was cooked by the baker of the village.", 5, true, "It gets 1 health point to the person who eats it.", 1, 0, false);
         Consumable c3 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);

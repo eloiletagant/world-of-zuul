@@ -17,7 +17,7 @@ public class WeaponTest
 	@Before
 	public void setUp()
 	{
-		myWeapon = new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5, true);
+		myWeapon = new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5);
 	}
 	
 
@@ -34,7 +34,6 @@ public class WeaponTest
 		assertEquals(150,myWeapon.getPrice());
 		assertEquals(true,myWeapon.getSellAble());
 		assertEquals(5,myWeapon.getDamages());
-		assertEquals(true,myWeapon.getOneHand());
 		assertEquals(false,myWeapon.getEquiped());
 	}
 	
@@ -46,13 +45,12 @@ public class WeaponTest
 	@Test
 	public void testDefault()
 	{
-		Weapon bad = new Weapon("", "", -10, true,-1,false);
+		Weapon bad = new Weapon("", "", -10, true,-1);
 		assertEquals("Unidentified object",bad.getName());
 		assertEquals("This object seems strange and come from nowhere",bad.getDescription());
 		assertEquals(0,bad.getPrice());
 		assertEquals(false,bad.getSellAble());
 		assertEquals(2,bad.getDamages());
-		assertEquals(false,bad.getOneHand());
 		assertEquals(false,bad.getEquiped());
 	}
 	
