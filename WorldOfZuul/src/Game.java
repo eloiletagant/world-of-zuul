@@ -85,10 +85,7 @@ public class Game extends JFrame {
          **********************/
         //display of the first room of the game
         pictureRoom = new JLabel(room);
-        
-         
-        
-         
+
         //Creation of a panel which will contain all buttons(direction, inventory ..)
         buttonsPanel = new JPanel (new  BorderLayout ());
         buttonsPanel.setBackground(Color.black);    
@@ -112,9 +109,7 @@ public class Game extends JFrame {
         healthBag.add(health);
         healthBag.add(bag);
         
-        
         //TEXT DISPLAY --> EN COURS (ANATOLE)
-        
         textDisplay = new JPanel();
         text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
         JButton button = new JButton("Clear");
@@ -124,7 +119,6 @@ public class Game extends JFrame {
         typingArea = new JTextField(20);
         //typingArea.addKeyListener(this);
         
-            
         /*******************************************
          ****** Declaration of all direction buttons 
          *******************************************/
@@ -149,7 +143,6 @@ public class Game extends JFrame {
         behind.addActionListener(l);
         behind.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
          
-        
         //Panel which contains front and behind buttons
         panelFB = new JPanel (new BorderLayout());
         panelFB.add(front,BorderLayout.NORTH);
@@ -163,21 +156,17 @@ public class Game extends JFrame {
         buttonDirection.add(panelFB);
         buttonDirection.add(right); 
              
-        
-
         //Adding buttons in the buttonsPanel
         buttonsPanel.add(healthBag, BorderLayout.WEST);
         buttonsPanel.add(text, BorderLayout.CENTER);
         buttonsPanel.add(buttonDirection, BorderLayout.EAST);
              
-        
         //Creation of a panel which will contain the room picture at the top and the buttons at the below
         globalPanel = new JPanel(new BorderLayout ());
         //Final panel creation
         globalPanel.add(pictureRoom, BorderLayout.CENTER);
         globalPanel.add(buttonsPanel, BorderLayout.SOUTH);
        
-             
         /*********************
          **** Frame parameters
          *********************/
@@ -195,33 +184,57 @@ public class Game extends JFrame {
     	createItems();
     	createAllRooms();
         createAllDoors(rooms);
-        manageDirectionButton();
+        manageDirectionButtons();
         testAddItemsToInventory();
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
     }
     
+    /**
+     * Accessor for the "player" attribute
+     * @return player: The player which plays the game
+     */
     public Player getPlayer() {
     	return player;
     }
 
+    /**
+     * Accessor for the "front" attribute
+     * @return front: The button used to go in the "front" direction into the game
+     */
     public JButton getFrontB() {
     	return front;
     }
 
+    /**
+     * Accessor for the "behind" attribute
+     * @return behind: The button used to go in the "behind" direction into the game
+     */
     public JButton getBehindB() {
     	return behind;
     }
 
+    /**
+     * Accessor for the "right" attribute
+     * @return right: The button used to go in the "right" direction into the game
+     */
     public JButton getRightB() {
     	return right;
     }
 
+    /**
+     * Accessor for the "left" attribute
+     * @return left: The button used to go in the "left" direction into the game
+     */
     public JButton getLeftB() {
     	return left;
     }
     
+    /**
+     * Accessor for the bag attribute
+     * @return bag: The button used to open the player inventory into the game
+     */
     public JButton getBagB() {
     	return bag;
     }
@@ -253,7 +266,7 @@ public class Game extends JFrame {
     }
     
     /**
-     * Create all the rooms and link their exits together.
+     * Creation of the 33 rooms present in the game
      */
     private void createAllRooms() {   	
     	int fin=32;
@@ -266,6 +279,11 @@ public class Game extends JFrame {
     	currentRoom = rooms.get(0);
     }
     
+    /**
+     * Creation of the doors (locked or not) linked to the rooms
+     * Rooms 9, 16 and 27 have a locked door
+     * @param rooms: The array which contains all rooms of the game
+     */ 
     private void createAllDoors(ArrayList<Room> rooms){
     	//Room 0
         createDoor(rooms.get(0), rooms.get(1) , "front");
@@ -356,7 +374,7 @@ public class Game extends JFrame {
         createDoor(rooms.get(26), rooms.get(25) , "front");
         createDoor(rooms.get(26), rooms.get(6) , "behind");        
         //Room 27
-        createDoor(rooms.get(27), rooms.get(28) , "front");
+        createLockedDoor(rooms.get(27),  rooms.get(28), "front", l6);
         createDoor(rooms.get(27), rooms.get(25) , "left");
         //Room 28
         createDoor(rooms.get(28), rooms.get(29) , "front");
@@ -424,17 +442,7 @@ public class Game extends JFrame {
 	   player.getInventory().addItem(k2);
 	   player.getInventory().addItem(c7);
    }	
-
-    /**
-     * method to associate a key and a lock
-     * maybe not really useful
-     */
-    private Lock createLock(String keyName, String keyDescription, int keyPrice, boolean keySellAble) {
-        Lock lock = new Lock();
-        lock.addKey(new Key(keyName, keyDescription, keyPrice, keySellAble));
-        return lock;
-    }
-    
+ 
     /**
      * method to associate a key and a lock
      * maybe not really useful
@@ -481,7 +489,7 @@ public class Game extends JFrame {
     /**
      * The method allows to check were are the exit of each room. In fonction of the exit, the arrow of direction are activated or disactivated.
      */
-    private void manageDirectionButton ()
+    private void manageDirectionButtons()
     {
             HashMap<String, Door> doors;
             doors = currentRoom.getDoors();
@@ -518,7 +526,7 @@ public class Game extends JFrame {
         text.setText("You are in the " + currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
-        manageDirectionButton ();
+        manageDirectionButtons();
     }
     
 }
