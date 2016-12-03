@@ -313,6 +313,7 @@ public class Game extends JFrame {
         Consumable c4 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         Consumable c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
         Consumable c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
+        Consumable c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
         Key k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
         Key k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
@@ -343,7 +344,7 @@ public class Game extends JFrame {
         player.getInventory().addItem(c4);
         player.getInventory().addItem(w3);
         player.getInventory().addItem(k2);
-        player.getInventory().addItem(c4);
+        player.getInventory().addItem(c7);
     }
     	
 
