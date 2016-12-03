@@ -29,4 +29,12 @@ public class Door {
     public Room getNextRoom() {
         return nextRoom;
     }
+    
+	/**
+	 * This method return if the door is locked or not.
+	 * @return true if the door is locked
+	 */
+	public boolean isLocked(){
+			return false;
+	}
 }
