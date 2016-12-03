@@ -6,7 +6,7 @@ import item.Inventory;
 import item.Item;
 
 /**
- * This class allows creating a functionnal counter using the external listeners.
+ * This class allows creating a functional counter using the external listeners.
  * 
  * @author 
  * @version 

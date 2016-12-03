@@ -16,7 +16,7 @@ public class InventoryInterface extends JFrame {
 	
     //button building
     public JButton back, back2, axe, mincingMachine, bow, eggplant, key1, key2, bread, potion, sword, pineapple, cookies, brioche, use, sell, aButton;
-    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price;
+    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, damages, hands;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
     private JFrame inventoryFrame, itemFrame;
     private Inventory inventoryPlayer;
@@ -249,24 +249,29 @@ public class InventoryInterface extends JFrame {
     	iconLabel.setBackground(new Color(70, 63, 55));
         iconLabel.setOpaque(true);
         
-        nom=new JLabel("Name : "+anItem.getName());
-        nom.setForeground(Color.white);
-        nom.setFont(police2);
-        description=new JLabel("Description : "+anItem.getDescription());
-        description.setForeground(Color.white);
-        description.setFont(police2);
-        price=new JLabel("Price : "+anItem.getPrice() + " golds");
-        price.setForeground(Color.white);
-        price.setFont(police2);
-
-        //rajouter les autres attributs selon le type d'objet
-        
         completeDescription=new JPanel(new GridLayout(0,1));
         completeDescription.setBackground(new Color(70, 63, 55));
         completeDescription.setOpaque(true);
+        
+        nom=new JLabel("Name : "+anItem.getName());
+        nom.setForeground(Color.white);
+        nom.setFont(police2);
         completeDescription.add(nom);
+        description=new JLabel("Description : "+anItem.getDescription());
+        description.setForeground(Color.white);
+        description.setFont(police2);
         completeDescription.add(description);
+        price=new JLabel("Price : "+anItem.getPrice() + " golds");
+        price.setForeground(Color.white);
+        price.setFont(police2);
         completeDescription.add(price);
+        if (anItem instanceof Weapon)
+        {
+        	//damages=new JLabel("Damages : "+anItem.get)
+        }
+        //rajouter les autres attributs selon le type d'objet
+        
+        
         
     	view=new JPanel(new BorderLayout());
     	view.add(up,BorderLayout.NORTH);

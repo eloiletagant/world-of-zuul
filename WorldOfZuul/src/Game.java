@@ -310,7 +310,9 @@ public class Game extends JFrame {
         Chest ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
         Chest ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
         Chest ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
-        boolean ok = player.getInventory().addItem(k6);
+        player.getInventory().addItem(k6);
+        player.getInventory().addItem(w1);
+        player.getInventory().addItem(c4);
     }
     	
 
