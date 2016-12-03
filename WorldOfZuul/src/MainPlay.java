@@ -17,66 +17,77 @@ import javax.swing.JButton;
 public class MainPlay extends JFrame implements ActionListener {
     //button building
     
-	protected JButton start= new JButton("PLAY");
-    protected JButton setting= new JButton("SETTING");
-    protected JLabel text, title;
-    protected Icon myIcon, room, room2;
-    public JLabel pictureRoom;
-    public ImageIcon flecheRight; 
-    protected JPanel myPanel, textHaut; 
-    protected int nbrRoom = 0;
+	private JButton start, settings;
+    private JLabel text, title, pictureLabel;
+    private JPanel globalPanel, buttonsPanel, topPanel; 
+    
+    private ImageIcon backPicture, room, room2;
+    
+    private int nbrRoom = 0;
     private Game game;
+    
+    private Font font, titleFont, playFont;
 
 
     public MainPlay() {
     	
-    	pictureRoom = new JLabel();
-    	JPanel myPanel = new JPanel(new BorderLayout ());
-    	JPanel panelButton = new JPanel (new  BorderLayout ());
-        panelButton.setBackground(Color.black);
-        start.addActionListener(this);
-         
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(500, 500);
+        this.setTitle("World Of Zuul"); 
+    	
+        font = new Font("Kristen ITC", Font.BOLD, 14);
+        titleFont = new Font("Kristen ITC", Font.ITALIC, 28);
+        playFont = new Font("Kristen ITC", Font.BOLD, 40);
+    
+        
+        title = new JLabel ("Dungeon Clicker", JLabel.CENTER );
+        title.setFont(titleFont);
+        title.setBackground(Color.BLACK);
+        title.setForeground(Color.WHITE);
+        
+        topPanel = new JPanel();
+        topPanel.setBackground(Color.BLACK);
+        topPanel.add(title);
+    	
+    	
         //Image on the background
-        myIcon= new ImageIcon("pictures/chateau.jpg");
-        pictureRoom.setIcon(myIcon);
-            
-        textHaut = new JPanel();
-        textHaut.setBackground(Color.BLACK);
-            
-        Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-        Font police2 = new Font ("Kristen ITC", Font.ITALIC, 28);
-       
+        backPicture = new ImageIcon("pictures/chateau.jpg");
+        pictureLabel = new JLabel();
+        pictureLabel.setIcon(backPicture);
+        
+        
+    	buttonsPanel = new JPanel (new BorderLayout ());
+        buttonsPanel.setBackground(Color.black);
+        
+    	start = new JButton("PLAY");
+    	start.addActionListener(this);
         start.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         start.setBackground(Color.black);
         start.setForeground(Color.white);
-        start.setFont(police);
+        start.setFont(playFont);
         
-        setting.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        setting.setForeground(Color.yellow);
-        setting.setFont(police);
-        
-        title = new JLabel ("Dungeon Clicker", JLabel.CENTER );
-        title.setFont(police2);
-        title.setBackground(Color.BLACK);
-        title.setForeground(Color.WHITE);
-            
-        textHaut.add(title);
+        settings = new JButton("SETTINGS");
+        settings.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        settings.setForeground(Color.yellow);
+        settings.setFont(font);
             
         //Add buttons on the panel
-        panelButton.add(start,BorderLayout.NORTH);
-        panelButton.add(setting,BorderLayout.SOUTH);
+        buttonsPanel.add(start,BorderLayout.NORTH);
+        buttonsPanel.add(settings,BorderLayout.SOUTH);
        
+        
+        
         //Creation final panel
-        myPanel.add(textHaut, BorderLayout.NORTH);
-        myPanel.add(pictureRoom ,BorderLayout.CENTER);
-        myPanel.add(panelButton, BorderLayout.SOUTH);
+        globalPanel = new JPanel(new BorderLayout ());
+        globalPanel.add(topPanel, BorderLayout.NORTH);
+        globalPanel.add(pictureLabel ,BorderLayout.CENTER);
+        globalPanel.add(buttonsPanel, BorderLayout.SOUTH);
     
-        //Disstart the final panel with specifics parameters 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("WOZ");    
-        this.add(myPanel);
-        this.setSize(500, 500);
+        
+        //Display the final panel with specifics parameters 
+        this.add(globalPanel);
         this.pack();
+        this.setLocationRelativeTo(null);//place in the middle
         this.setVisible(true);
         
     }    

@@ -42,20 +42,18 @@ public class Game extends JFrame {
     private Room currentRoom;
     private Player player;
     private ArrayList<Room> rooms; 
-    private InventoryInterface inventoryInterface;
     private boolean inventoryIsOpen = false;
-    public  Sound s;
+    public  Sound sound;
     
-    private JButton left, behind, front, right; //direction arrows
-    private JButton bag; //inventory
+    private JButton left, behind, front, right, bag; //direction arrows and bag (inventory)
+    private JLabel title, text, pictureRoom, health;
+    private JPanel globalPanel, buttonsPanel, healthBag;
     
-    protected JLabel title;
-    private JLabel text;
-    protected Icon room;
-    public JLabel pictureRoom;
-    protected JPanel myPanel, HealthBag;
-    private JLabel Health;
+    private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar;
 
+    private GameListener l;
+    
+    
     /**
      * Create the game and initialize its internal map.
      */
@@ -63,13 +61,13 @@ public class Game extends JFrame {
     	/*****************************
          ****** Pictures instantiation
          *****************************/
-        ImageIcon room = new ImageIcon ("pictures/Room0.png");
-        Icon arrowRight = new ImageIcon("pictures/arrowRight.png");
-        Icon arrowFront = new ImageIcon("pictures/arrowFront.png");
-        Icon arrowBehind = new ImageIcon ("pictures/arrowBehind.png");
-        Icon arrowLeft = new ImageIcon("pictures/arrowLeft.png");
-        Icon inventory = new ImageIcon("pictures/bag.jpg");
-        Icon HealthBar = new ImageIcon("pictures/barredeVie.jpg");
+        room = new ImageIcon ("pictures/Room0.png");
+        arrowRight = new ImageIcon("pictures/arrowRight.png");
+        arrowFront = new ImageIcon("pictures/arrowFront.png");
+        arrowBehind = new ImageIcon ("pictures/arrowBehind.png");
+        arrowLeft = new ImageIcon("pictures/arrowLeft.png");
+        inventory = new ImageIcon("pictures/bag.jpg");
+        healthBar = new ImageIcon("pictures/barredeVie.jpg");
          
         /**********************
          ******* Window content
@@ -78,33 +76,33 @@ public class Game extends JFrame {
         pictureRoom = new JLabel(room);
         
         //Game Listener creation
-        GameListener l = new GameListener(this, player, inventoryIsOpen);
+        l = new GameListener(this, player, inventoryIsOpen);
          
         //Creation of a panel which will contain the room picture at the top and the buttons at the below
-        JPanel myPanel = new JPanel(new BorderLayout ());
+        globalPanel = new JPanel(new BorderLayout ());
          
         //Creation of a panel which will contain all buttons(direction, inventory ..)
-        JPanel panelButton = new JPanel (new  BorderLayout ());
-        panelButton.setBackground(Color.black);    
+        buttonsPanel = new JPanel (new  BorderLayout ());
+        buttonsPanel.setBackground(Color.black);    
          
         /******************
-         * Health bar / bag
+         * health bar / bag
          ******************/
         //Panel which contains bag + bar life
-        HealthBag = new JPanel (new GridLayout (2,1));
-        HealthBag.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        HealthBag.setBackground(Color.black);
+        healthBag = new JPanel (new GridLayout (2,1));
+        healthBag.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        healthBag.setBackground(Color.black);
         
         //Label which contains the player's bar life
-        Health = new JLabel (HealthBar); 
-        Health.setBackground(Color.black);
+        health = new JLabel (healthBar); 
+        health.setBackground(Color.black);
          
         bag = new JButton(inventory);
         bag.setBackground(Color.black);
         bag.addActionListener(l);
                    
-        HealthBag.add(Health);
-        HealthBag.add(bag);
+        healthBag.add(health);
+        healthBag.add(bag);
             
         /*******************************************
          ****** Declaration of all direction buttons 
@@ -146,15 +144,15 @@ public class Game extends JFrame {
         buttonDirection.add(right); 
              
 
-        //Adding buttons in the panelButton
-        panelButton.add(HealthBag, BorderLayout.WEST);
-        panelButton.add(text, BorderLayout.CENTER);
-        panelButton.add(buttonDirection, BorderLayout.EAST);
+        //Adding buttons in the buttonsPanel
+        buttonsPanel.add(healthBag, BorderLayout.WEST);
+        buttonsPanel.add(text, BorderLayout.CENTER);
+        buttonsPanel.add(buttonDirection, BorderLayout.EAST);
              
              
         //Final panel creation
-        myPanel.add(pictureRoom,BorderLayout.CENTER);
-        myPanel.add(panelButton, BorderLayout.SOUTH);
+        globalPanel.add(pictureRoom, BorderLayout.CENTER);
+        globalPanel.add(buttonsPanel, BorderLayout.SOUTH);
        
              
         /*********************
@@ -162,21 +160,20 @@ public class Game extends JFrame {
          *********************/
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("WOZ");    
-        this.add(myPanel);
+        this.add(globalPanel);
         this.setSize(500, 500);
         this.pack();
         this.setVisible(true);
     	
-    	s = new Sound();
+    	sound = new Sound();
     	rooms = new ArrayList<Room>();
         createAllRooms();
         createAllDoors(rooms);
         manageDirectionButton();
-    	player= new Player ("Kaamelott");
+    	player = new Player ("Kaamelott");
     	createItems();
     	parser = new Parser();
-        s.playSound("music/SoundCave.wav");
-        //inventory ?
+        sound.playSound("music/SoundCave.wav");
            
     }
     
@@ -208,8 +205,15 @@ public class Game extends JFrame {
     	inventoryIsOpen = state;
     }
     
-    public void openInventory() {
-    	inventoryInterface = new InventoryInterface(player.getInventory());
+    /**
+     * method to open the inventory from the listener
+     * @param open
+     */
+    public void openInventory(boolean open) {
+    	if (open) {
+    		InventoryInterface inventoryInterface;
+    		inventoryInterface = new InventoryInterface(player.getInventory());
+    	}
     }
     
     /**
@@ -309,51 +313,6 @@ public class Game extends JFrame {
         boolean ok = player.getInventory().addItem(k6);
     }
     	
-
-    /**
-     *  Main play routine.  Loops until end of play.
-     */
-    public void play() {
-    	player = new Player(parser.getCommand());
-        printWelcome();
-    }
-
-    /**
-     * Print out the opening message for the player.
-     */
-    private void printWelcome() {
-        System.out.println();
-        System.out.println("Welcome to the World of Zuul " + player.getName() + " !!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
-        System.out.println();
-        System.out.println("You are " + currentRoom.getDescription() + " Level : " + currentRoom.getLevel());
-        System.out.print("Exits: ");
-
-
-        for (HashMap.Entry<String, Door> entry : currentRoom.getDoors().entrySet()) {
-            System.out.println(entry.getKey() + " / " + entry.getValue().getNextRoom().getDescription() + " / " + entry.getValue().getNextRoom().getLevel());
-        }
-
-        System.out.println();
-
-    }
-
-
-    // implementations of user commands:
-
-    /**
-     * Print out some help information.
-     * Here we print some stupid, cryptic message and a list of the 
-     * command words.
-     */
-    private void printHelp() {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        System.out.println("   go quit help");
-    }
 
 
     /**

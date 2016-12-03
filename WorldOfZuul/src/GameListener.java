@@ -41,11 +41,11 @@ public class GameListener implements ActionListener {
             game.move("left");
         if (e.getSource() == game.getBagB()) {
         	if (isOpen) {
-        		//close the inventory
+        		game.openInventory(false);
         		game.setOpenningInventory(false);
         	} else {
         		//the inventory is close, so we open it
-        		game.openInventory();
+        		game.openInventory(true);
         		game.setOpenningInventory(true);
         	}
         }
