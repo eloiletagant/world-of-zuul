@@ -3,8 +3,7 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
 import character.*;
-import item.Inventory;
-import item.Item;
+import item.*;
 
 /**
  * This method creates the frame with the design of the inventory.
@@ -181,9 +180,7 @@ public class InventoryInterface extends JFrame {
         myPanel.add(inventory,BorderLayout.CENTER);
         myPanel.add(down,BorderLayout.SOUTH);
         
-        inventoryFrame= new JFrame("My inventory");
-        inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.setTitle(    
+        inventoryFrame= new JFrame("My inventory");  
         inventoryFrame.add(myPanel);
         inventoryFrame.setSize(500, 500);
         inventoryFrame.pack();
@@ -238,7 +235,6 @@ public class InventoryInterface extends JFrame {
         up.add(title);
     	
     	itemFrame = new JFrame(anItem.getName());
-    	itemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     	itemFrame.setSize(500, 500);
     	
     	actions= new JPanel(new GridLayout(1,2));
@@ -262,6 +258,7 @@ public class InventoryInterface extends JFrame {
         price=new JLabel("Price : "+anItem.getPrice() + " golds");
         price.setForeground(Color.white);
         price.setFont(police2);
+
         //rajouter les autres attributs selon le type d'objet
         
         completeDescription=new JPanel(new GridLayout(0,1));
