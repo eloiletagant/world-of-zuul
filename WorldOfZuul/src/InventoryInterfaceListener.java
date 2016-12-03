@@ -17,7 +17,6 @@ public class InventoryInterfaceListener extends MouseAdapter
     private ArrayList<Item> items;
     private Item myItem;
     private int i;
-    private boolean error;
     
     /**
      * The Constructor for the listener
@@ -36,13 +35,40 @@ public class InventoryInterfaceListener extends MouseAdapter
     	 i=0;
     	 if (evt.getSource() != inventory.getBack())
 		 {
-    		 for (Item item : items)
+    		 if (evt.getSource() == inventory.getEquip())
     		 {
-    			 if (evt.getSource() == inventory.getItemToDisplay(i))
+    			 if (inventory.getEquip().isEnabled()==false)
     			 {
-    				 inventory.getItemToDisplay(i).setToolTipText(item.getName());
+    				 for (Item item : items)
+    				 {
+    					 if (item instanceof Weapon)
+    	        		 {
+    	        			 if (((Weapon) item).getEquiped()==true)
+    	        			 {
+    	        				 myItem=item;
+    	        				 inventory.getEquip().setToolTipText("You can not equip this weapon. You have to unequip your current weapon ("+myItem.getName()+").");
+    	        			 }
+    	        		 }
+    				 }
     			 }
-    			 i+=1;
+    		 }
+    		 else if(evt.getSource() == inventory.getSell())
+    		 {
+    			 if (inventory.getSell().isEnabled()==false)
+    			 {
+    				 inventory.getSell().setToolTipText("You can not sell this item.");
+    			 }
+    		 }
+    		 else
+    		 {
+    			 for (Item item : items)
+        		 {
+        			 if (evt.getSource() == inventory.getItemToDisplay(i))
+        			 {
+        				 inventory.getItemToDisplay(i).setToolTipText(item.getName());
+        			 }
+        			 i+=1;
+        		 }
     		 }
     	 }
      }
@@ -53,7 +79,6 @@ public class InventoryInterfaceListener extends MouseAdapter
       */
      public void mousePressed(MouseEvent evt)
      {
-    	 error=false;
     	 items = inventory.getInventory().getItems();
     	 i=0;
     	 if(evt.getSource() == inventory.getBack())
@@ -69,79 +94,34 @@ public class InventoryInterfaceListener extends MouseAdapter
          }
     	 else if(evt.getSource()==inventory.getEquip())
          {
-    		 myItem=inventory.searchItemDisplayed();
-    		 if (myItem instanceof Weapon)
-    		 {
-    			 if (((Weapon) myItem).getOneHand()==true)
-				 {
-    				 if (inventory.getPlayer().swapWeapon(-1) == true)
-    				 {
-    					 ((Weapon) myItem).equip();
-    				 }
-    				 else
-    				 {
-    					 error =true;
-    				 }
-				 }
-    			 else
-    			 {
-    				 if (inventory.getPlayer().swapWeapon(-2) == true)
-        			 {
-        				 ((Weapon) myItem).equip();
-        			 }
-        			 else
-        			 {
-        				 error=true;
-       				 }
-    			 }	 
-    		 }
-    		 if (error==true)
-    		 {
-    			 for (Item item : items)
-            	 {
-            		 if (item instanceof Weapon)
-            		 {
-            			 if (((Weapon) item).getEquiped()==true)
-            			 {
-            				 myItem=item;
-            			 }
-            		 }
-            	 }
-    			 System.out.println("You can not equip this weapon. You have to unequip your current weapon ("+myItem.getName()+").");
-    		 }
-    		 else
-    		 {
-    			 inventory.exitInventory();
-    		 } 
+    		 if (inventory.getEquip().isEnabled()==true)
+        	 {
+    			 myItem=inventory.searchItemDisplayed();
+        		 if (myItem instanceof Weapon)
+        		 {
+        			 ((Weapon) myItem).equip();
+        			 inventory.exitInventory();
+        		 }
+        	 }
          }
     	 else if(evt.getSource()==inventory.getUnequip())
          {
     		 myItem=inventory.searchItemDisplayed();
     		 if (myItem instanceof Weapon)
     		 {
-    			 if (((Weapon) myItem).getOneHand()==true)
-				 {
-    				 if (inventory.getPlayer().swapWeapon(1) == true)
-    				 {
-    					 ((Weapon) myItem).equip();
-    				 }
-				 }
-    			 else
-    			 {
-    				 if (inventory.getPlayer().swapWeapon(2) == true)
-        			 {
-        				 ((Weapon) myItem).equip();
-        			 }
-    			 }	 
+    			 ((Weapon) myItem).equip();
     		 }
     		 inventory.exitInventory();
          }
          else if(evt.getSource()==inventory.getSell())
          {
-        	 myItem=inventory.searchItemDisplayed();
-        	 inventory.getInventory().manageGold(myItem.getPrice());
-          	 inventory.getInventory().deleteItem(myItem);
-          	 inventory.exitInventory();
+        	 if (inventory.getSell().isEnabled()==true)
+        	 {
+        		 myItem=inventory.searchItemDisplayed();
+            	 inventory.getInventory().manageGold(myItem.getPrice());
+              	 inventory.getInventory().deleteItem(myItem);
+              	 inventory.exitInventory();
+        	 }
          }
     	 else
          {

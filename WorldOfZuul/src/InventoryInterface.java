@@ -16,18 +16,18 @@ public class InventoryInterface extends JFrame {
 	
     //button building
     private JButton back, back2, use, sell, equip, unequip, aButton;
-    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, hands, effects;
+    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, effects;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
     private JFrame inventoryFrame, itemFrame;
     private Inventory inventoryPlayer;
     private Player player;
     private Icon anIcon, backIcon, goldIcon;
     private int counter = 0;
-    private int nbHands;
     private Item myItem;
     private Weapon myWeapon;
     private Consumable myConsumable;
     private boolean viewInventory = true;
+    private boolean aWeapon;
     private InventoryInterfaceListener evt;
     private String name;
     private JButton[] buttonItems;
@@ -274,23 +274,22 @@ public class InventoryInterface extends JFrame {
         
         if (anItem instanceof Weapon)
         {
-        	myWeapon = new Weapon(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Weapon) anItem).getDamages(), ((Weapon) anItem).getOneHand());
+        	myWeapon = new Weapon(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Weapon) anItem).getDamages());
         	damages=new JLabel("Damages : "+myWeapon.getDamages());
         	damages.setForeground(Color.white);
         	damages.setFont(police2);
         	completeDescription.add(damages);
-        	if (myWeapon.getOneHand() == true)
-        	{
-        		nbHands=1;
-        	}
-        	else
-        	{
-        		nbHands=2;
-        	}
-        	hands=new JLabel("Number of hands required : "+nbHands);
-        	hands.setForeground(Color.white);
-        	hands.setFont(police2);
-        	completeDescription.add(hands);
+        	aWeapon=false;
+        	for (Item item : inventoryPlayer.getItems())
+        	 {
+        		 if (item instanceof Weapon)
+        		 {
+        			 if (((Weapon) item).getEquiped()==true)
+        			 {
+        				 aWeapon=true;
+        			 }
+        		 }
+        	 }
         	if (((Weapon) anItem).getEquiped()==false)
         	{
         		equip= new JButton("EQUIP");
@@ -299,6 +298,10 @@ public class InventoryInterface extends JFrame {
         		equip.setFont(police);
         		actions.add(equip);
         		equip.addMouseListener(evt);
+        		if (aWeapon==true)
+        		{
+        			equip.setEnabled(false);
+        		}
         	}
         	else
         	{
