@@ -140,11 +140,9 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 {
     	    					 if (((LockedDoor) door).getLock().unlock((Key) myItem)==false)
     	    					 {
-    	    						 System.out.println("t'esnaze.");
     	    					 }
     	    					 else
     	    					 {
-    	    						 System.out.println("t'es trop bonne.");
     	    					 }
     	    				 }
     	    			 }
