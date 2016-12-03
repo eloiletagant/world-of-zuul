@@ -13,7 +13,6 @@ public class GameListener implements ActionListener {
 	private Game game;
 	private InventoryInterface inventoryInterface;
 	private Player player;
-	private boolean isOpen;
 
     /**
      * GameListener constructor
@@ -21,7 +20,6 @@ public class GameListener implements ActionListener {
     public GameListener(Game g, Player p, boolean open) {
         game = g;
         player = p;
-        isOpen = open;
     }
 
     /**
@@ -40,10 +38,11 @@ public class GameListener implements ActionListener {
         if (e.getSource() == game.getLeftB())
             game.move("left");
         if (e.getSource() == game.getBagB()) {
-        	if (isOpen) {
+        	if (game.getInventoryIsOpen()) {
+        		game.openInventory(false);
         		game.setOpenningInventory(false);
         	} else {
-        		//the inventory is close, so we open it
+        		//the inventory is close, so we can open it
         		game.openInventory(true);
         		game.setOpenningInventory(true);
         	}

@@ -473,6 +473,18 @@ public class InventoryInterface extends JFrame {
     	return anIcon;
     }
     
+    public boolean getVisibility()
+    {
+    	if (inventoryFrame.isVisible()==true)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
+    
     /**
      * This method changes the view of the inventory : general view or focus on an item.
      */
