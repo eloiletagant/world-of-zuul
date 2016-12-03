@@ -228,7 +228,7 @@ public class Game extends JFrame {
      */
     public void openInventory(boolean open) {
     	if (open) {
-    		showInventory = new InventoryInterface(player.getInventory());
+    		showInventory = new InventoryInterface(player.getInventory(), player);
     	}
     	else
     	{

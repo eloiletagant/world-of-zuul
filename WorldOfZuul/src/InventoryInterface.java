@@ -15,11 +15,12 @@ import item.*;
 public class InventoryInterface extends JFrame {
 	
     //button building
-    private JButton back, back2, use, sell, aButton;
+    private JButton back, back2, use, sell, equip, unequip, aButton;
     private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, hands, effects;
     private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
     private JFrame inventoryFrame, itemFrame;
     private Inventory inventoryPlayer;
+    private Player player;
     private Icon anIcon, backIcon, goldIcon;
     private int counter = 0;
     private int nbHands;
@@ -35,9 +36,10 @@ public class InventoryInterface extends JFrame {
     /**
      * Constructor for objects of class InventoryInterface
      */
-    public InventoryInterface(Inventory anInventory)
+    public InventoryInterface(Inventory anInventory, Player aPlayer)
     {
     	inventoryPlayer = anInventory;
+    	player = aPlayer;
         myPanel = new JPanel(new BorderLayout ());
         up = new JPanel (new GridLayout (1,3));
         inventory = new JPanel (new GridLayout (0,5,10,10));
@@ -56,15 +58,6 @@ public class InventoryInterface extends JFrame {
         
         
         myPanel.setBackground(Color.black);
-        
-        use= new JButton("USE");
-        use.setBackground(Color.black);
-        use.setForeground(Color.yellow);
-        use.setFont(police);
-        sell= new JButton("SELL");
-        sell.setBackground(Color.black);
-        sell.setForeground(Color.yellow);
-        sell.setFont(police);
         
 		
         backIcon = new ImageIcon("pictures/back.png");
@@ -98,8 +91,6 @@ public class InventoryInterface extends JFrame {
         
       //Listeners for buttons action
         evt= new InventoryInterfaceListener(this);
-        use.addMouseListener(evt);
-        sell.addMouseListener(evt);
         back.addMouseListener(evt);
         
         buttonItems = new JButton[inventoryPlayer.getNbItems()];
@@ -185,6 +176,23 @@ public class InventoryInterface extends JFrame {
     }
     
     /**
+     * This method returns the equip button
+     * @return JButton use
+     */
+    public JButton getEquip()
+    {
+    	return equip;
+    }
+    
+    /**
+     * This method returns the unequip button
+     * @return JButton use
+     */
+    public JButton getUnequip()
+    {
+    	return unequip;
+    }
+    /**
      * This method returns the sell button
      * @return JButton sell
      */
@@ -236,14 +244,6 @@ public class InventoryInterface extends JFrame {
     	itemFrame = new JFrame(anItem.getName());
     	itemFrame.setSize(500, 500);
     	
-    	actions= new JPanel(new GridLayout(1,2));
-    	actions.add(use);
-    	if (anItem.getSellAble()==false)
-    	{
-    		sell.setEnabled(false);
-    	}
-    	actions.add(sell);
-    	
     	iconLabel=new JLabel(getIcon(anItem));
     	iconLabel.setBackground(new Color(70, 63, 55));
         iconLabel.setOpaque(true);
@@ -264,6 +264,14 @@ public class InventoryInterface extends JFrame {
         price.setForeground(Color.white);
         price.setFont(police2);
         completeDescription.add(price);
+        
+        sell= new JButton("SELL");
+        sell.setBackground(Color.black);
+        sell.setForeground(Color.yellow);
+        sell.setFont(police);
+        
+        actions= new JPanel(new GridLayout(1,2));
+        
         if (anItem instanceof Weapon)
         {
         	myWeapon = new Weapon(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Weapon) anItem).getDamages(), ((Weapon) anItem).getOneHand());
@@ -283,37 +291,74 @@ public class InventoryInterface extends JFrame {
         	hands.setForeground(Color.white);
         	hands.setFont(police2);
         	completeDescription.add(hands);
-        }
-        else if(anItem instanceof Consumable)
-        {
-        	myConsumable = new Consumable(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Consumable) anItem).getEffect(), ((Consumable) anItem).getCare(), ((Consumable) anItem).getDamage(), ((Consumable) anItem).getWeapon());
-        	effects=new JLabel("Effect : "+myConsumable.getEffect());
-        	effects.setForeground(Color.white);
-        	effects.setFont(police2);
-        	completeDescription.add(effects);
-        	if (myConsumable.getCare()!=0)
+        	if (((Weapon) anItem).getEquiped()==false)
         	{
-        		care=new JLabel("Care : "+myConsumable.getCare()+" HP");
-            	care.setForeground(Color.white);
-            	care.setFont(police2);
-            	completeDescription.add(care);
+        		equip= new JButton("EQUIP");
+        		equip.setBackground(Color.black);
+        		equip.setForeground(Color.yellow);
+        		equip.setFont(police);
+        		actions.add(equip);
+        		equip.addMouseListener(evt);
         	}
         	else
         	{
-        		if (myConsumable.getWeapon()==true)
-        		{
-        			damages=new JLabel("Damages added to your weapon : "+myConsumable.getDamage()+" HP");
-        		}
-        		else
-        		{
-        			damages=new JLabel("Damages added : "+myConsumable.getDamage()+" HP");
-
-        		}
-            	damages.setForeground(Color.white);
-            	damages.setFont(police2);
-            	completeDescription.add(damages);
+        		unequip= new JButton("UNEQUIP");
+        		unequip.setBackground(Color.black);
+        		unequip.setForeground(Color.yellow);
+        		unequip.setFont(police);
+        		actions.add(unequip);
+        		unequip.addMouseListener(evt);
         	}
-        }      
+        	actions.add(sell);
+            sell.addMouseListener(evt);
+            
+        }
+        else
+        {
+        	use= new JButton("USE");
+        	use.setBackground(Color.black);
+            use.setForeground(Color.yellow);
+            use.setFont(police);
+            actions.add(use);
+    		use.addMouseListener(evt);
+    		actions.add(sell);
+    		sell.addMouseListener(evt);
+            if (anItem.getSellAble()==false)
+        	{
+        		sell.setEnabled(false);
+        	}
+            if(anItem instanceof Consumable)
+            {
+            	myConsumable = new Consumable(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Consumable) anItem).getEffect(), ((Consumable) anItem).getCare(), ((Consumable) anItem).getDamage(), ((Consumable) anItem).getWeapon());
+            	effects=new JLabel("Effect : "+myConsumable.getEffect());
+            	effects.setForeground(Color.white);
+            	effects.setFont(police2);
+            	completeDescription.add(effects);
+            	if (myConsumable.getCare()!=0)
+            	{
+            		care=new JLabel("Care : "+myConsumable.getCare()+" HP");
+                	care.setForeground(Color.white);
+                	care.setFont(police2);
+                	completeDescription.add(care);
+            	}
+            	else
+            	{
+            		if (myConsumable.getWeapon()==true)
+            		{
+            			damages=new JLabel("Damages added to your weapon : "+myConsumable.getDamage()+" HP");
+            		}
+            		else
+            		{
+            			damages=new JLabel("Damages added : "+myConsumable.getDamage()+" HP");
+
+            		}
+                	damages.setForeground(Color.white);
+                	damages.setFont(police2);
+                	completeDescription.add(damages);
+            	}
+            }
+        }
+        
         
         
     	view=new JPanel(new BorderLayout());
@@ -334,6 +379,15 @@ public class InventoryInterface extends JFrame {
     public Inventory getInventory()
     {
     	return inventoryPlayer;
+    }
+    
+    /**
+     * This method returns the player according to the inventory.
+     * @return Player
+     */
+    public Player getPlayer()
+    {
+    	return player;
     }
     
     /**
@@ -405,7 +459,7 @@ public class InventoryInterface extends JFrame {
     	else
     	{
     		itemFrame.setVisible(false);
-        	inventoryFrame = new InventoryInterface(inventoryPlayer);
+        	inventoryFrame = new InventoryInterface(inventoryPlayer, player);
     		viewInventory=true;
     	}    	
     }

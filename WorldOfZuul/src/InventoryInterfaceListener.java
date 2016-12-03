@@ -2,8 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import item.Inventory;
-import item.Item;
+import item.*;
 
 /**
  * This class allows creating a functional counter using the external listeners.
@@ -18,6 +17,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     private ArrayList<Item> items;
     private Item myItem;
     private int i;
+    private boolean error;
     
     /**
      * The Constructor for the listener
@@ -34,7 +34,7 @@ public class InventoryInterfaceListener extends MouseAdapter
      {
     	 items = inventory.getInventory().getItems();
     	 i=0;
-    	 if (evt.getSource() != inventory.getBack() || evt.getSource() != inventory.getUse() || evt.getSource() != inventory.getSell())
+    	 if (evt.getSource() != inventory.getBack())
 		 {
     		 for (Item item : items)
     		 {
@@ -53,6 +53,7 @@ public class InventoryInterfaceListener extends MouseAdapter
       */
      public void mousePressed(MouseEvent evt)
      {
+    	 error=false;
     	 items = inventory.getInventory().getItems();
     	 i=0;
     	 if(evt.getSource() == inventory.getBack())
@@ -66,9 +67,81 @@ public class InventoryInterfaceListener extends MouseAdapter
          	inventory.getInventory().deleteItem(myItem);
          	inventory.exitInventory();
          }
+    	 else if(evt.getSource()==inventory.getEquip())
+         {
+    		 myItem=inventory.searchItemDisplayed();
+    		 if (myItem instanceof Weapon)
+    		 {
+    			 if (((Weapon) myItem).getOneHand()==true)
+				 {
+    				 if (inventory.getPlayer().swapWeapon(-1) == true)
+    				 {
+    					 ((Weapon) myItem).equip();
+    				 }
+    				 else
+    				 {
+    					 error =true;
+    				 }
+				 }
+    			 else
+    			 {
+    				 if (inventory.getPlayer().swapWeapon(-2) == true)
+        			 {
+        				 ((Weapon) myItem).equip();
+        			 }
+        			 else
+        			 {
+        				 error=true;
+       				 }
+    			 }	 
+    		 }
+    		 if (error==true)
+    		 {
+    			 for (Item item : items)
+            	 {
+            		 if (item instanceof Weapon)
+            		 {
+            			 if (((Weapon) item).getEquiped()==true)
+            			 {
+            				 myItem=item;
+            			 }
+            		 }
+            	 }
+    			 System.out.println("You can not equip this weapon. You have to unequip your current weapon ("+myItem.getName()+").");
+    		 }
+    		 else
+    		 {
+    			 inventory.exitInventory();
+    		 } 
+         }
+    	 else if(evt.getSource()==inventory.getUnequip())
+         {
+    		 myItem=inventory.searchItemDisplayed();
+    		 if (myItem instanceof Weapon)
+    		 {
+    			 if (((Weapon) myItem).getOneHand()==true)
+				 {
+    				 if (inventory.getPlayer().swapWeapon(1) == true)
+    				 {
+    					 ((Weapon) myItem).equip();
+    				 }
+				 }
+    			 else
+    			 {
+    				 if (inventory.getPlayer().swapWeapon(2) == true)
+        			 {
+        				 ((Weapon) myItem).equip();
+        			 }
+    			 }	 
+    		 }
+    		 inventory.exitInventory();
+         }
          else if(evt.getSource()==inventory.getSell())
          {
-         	//ouvrir la boîte d'échange (package trade)
+        	 myItem=inventory.searchItemDisplayed();
+        	 inventory.getInventory().manageGold(myItem.getPrice());
+          	 inventory.getInventory().deleteItem(myItem);
+          	 inventory.exitInventory();
          }
     	 else
          {
