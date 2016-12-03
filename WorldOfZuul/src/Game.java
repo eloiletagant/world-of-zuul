@@ -60,6 +60,9 @@ public class Game extends JFrame {
      */
     public Game() {
     	
+    	//Game Listener creation
+        l = new GameListener(this, player, inventoryIsOpen);
+        
     	/*****************************
          ****** Pictures instantiation
          *****************************/
@@ -105,16 +108,16 @@ public class Game extends JFrame {
         
         
         //TEXT DISPLAY --> EN COURS (ANATOLE)
-        /*
+        
         textDisplay = new JPanel();
-        //text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
+        text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
         JButton button = new JButton("Clear");
-        button.addActionListener(this);
+        //button.addActionListener(this);
          
         JTextField typingArea;
         typingArea = new JTextField(20);
-        typingArea.addKeyListener(this);
-        */
+        //typingArea.addKeyListener(this);
+        
             
         /*******************************************
          ****** Declaration of all direction buttons 
@@ -179,8 +182,7 @@ public class Game extends JFrame {
         this.pack();
         this.setVisible(true);
     	
-        //Game Listener creation
-        l = new GameListener(this, player, inventoryIsOpen);
+        
     	sound = new Sound();
     	rooms = new ArrayList<Room>();
         createAllRooms();
@@ -188,9 +190,8 @@ public class Game extends JFrame {
         manageDirectionButton();
     	player = new Player ("Kaamelott");
     	createItems();
-    	parser = new Parser();
+    	parser = new Parser("");
         sound.playSound("music/SoundCave.wav");
-           
     }
     
     public Player getPlayer() {
