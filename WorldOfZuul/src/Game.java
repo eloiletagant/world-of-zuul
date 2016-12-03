@@ -443,10 +443,12 @@ public class Game extends JFrame {
 	   player.getInventory().addItem(c7);
    }	
  
-    /**
-     * method to associate a key and a lock
-     * maybe not really useful
-     */
+   /**
+    * Method used to create a door
+    * @param room: The room which contains the door 
+    * @param nextRoom: The next room linked to the first room
+    * @param way: The direction to access to the next room
+    */ 
     private void createDoor(Room room, Room nextRoom, String way) {
     	Door door1 = new Door(nextRoom);
     	room.addExit(door1, way);
