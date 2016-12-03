@@ -41,7 +41,6 @@ public class GameListener implements ActionListener {
             game.move("left");
         if (e.getSource() == game.getBagB()) {
         	if (isOpen) {
-        		game.openInventory(false);
         		game.setOpenningInventory(false);
         	} else {
         		//the inventory is close, so we open it

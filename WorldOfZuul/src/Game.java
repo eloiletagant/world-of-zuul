@@ -22,6 +22,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -47,7 +48,7 @@ public class Game extends JFrame {
     
     private JButton left, behind, front, right, bag; //direction arrows and bag (inventory)
     private JLabel title, text, pictureRoom, health;
-    private JPanel globalPanel, buttonsPanel, healthBag;
+    private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
     
     private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar;
 
@@ -58,6 +59,7 @@ public class Game extends JFrame {
      * Create the game and initialize its internal map.
      */
     public Game() {
+    	
     	/*****************************
          ****** Pictures instantiation
          *****************************/
@@ -72,14 +74,11 @@ public class Game extends JFrame {
         /**********************
          ******* Window content
          **********************/
-        text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
+        //display of the first room of the game
         pictureRoom = new JLabel(room);
         
-        //Game Listener creation
-        l = new GameListener(this, player, inventoryIsOpen);
          
-        //Creation of a panel which will contain the room picture at the top and the buttons at the below
-        globalPanel = new JPanel(new BorderLayout ());
+        
          
         //Creation of a panel which will contain all buttons(direction, inventory ..)
         buttonsPanel = new JPanel (new  BorderLayout ());
@@ -103,6 +102,19 @@ public class Game extends JFrame {
                    
         healthBag.add(health);
         healthBag.add(bag);
+        
+        
+        //TEXT DISPLAY --> EN COURS (ANATOLE)
+        /*
+        textDisplay = new JPanel();
+        //text = new JLabel ("Welcome to Dungeon Clicker. You are in the Room 0");
+        JButton button = new JButton("Clear");
+        button.addActionListener(this);
+         
+        JTextField typingArea;
+        typingArea = new JTextField(20);
+        typingArea.addKeyListener(this);
+        */
             
         /*******************************************
          ****** Declaration of all direction buttons 
@@ -128,28 +140,30 @@ public class Game extends JFrame {
         behind.addActionListener(l);
         behind.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
          
+        
         //Panel which contains front and behind buttons
-        JPanel panelFB = new JPanel (new BorderLayout());
+        panelFB = new JPanel (new BorderLayout());
         panelFB.add(front,BorderLayout.NORTH);
         panelFB.add(behind,BorderLayout.SOUTH);
         panelFB.setBackground(Color.black);
-          
-        //Panel which contains each direction buttons         
-        JPanel buttonDirection = new JPanel(new GridLayout(1,3));
-        buttonDirection.setBackground(Color.black);
 
-        //Adding buttons on the direction panel
+        //Panel which contains each direction buttons         
+        buttonDirection = new JPanel(new GridLayout(1,3));
+        buttonDirection.setBackground(Color.black);
         buttonDirection.add(left);
         buttonDirection.add(panelFB);
         buttonDirection.add(right); 
              
+        
 
         //Adding buttons in the buttonsPanel
         buttonsPanel.add(healthBag, BorderLayout.WEST);
         buttonsPanel.add(text, BorderLayout.CENTER);
         buttonsPanel.add(buttonDirection, BorderLayout.EAST);
              
-             
+        
+        //Creation of a panel which will contain the room picture at the top and the buttons at the below
+        globalPanel = new JPanel(new BorderLayout ());
         //Final panel creation
         globalPanel.add(pictureRoom, BorderLayout.CENTER);
         globalPanel.add(buttonsPanel, BorderLayout.SOUTH);
@@ -165,6 +179,8 @@ public class Game extends JFrame {
         this.pack();
         this.setVisible(true);
     	
+        //Game Listener creation
+        l = new GameListener(this, player, inventoryIsOpen);
     	sound = new Sound();
     	rooms = new ArrayList<Room>();
         createAllRooms();
@@ -211,8 +227,7 @@ public class Game extends JFrame {
      */
     public void openInventory(boolean open) {
     	if (open) {
-    		InventoryInterface inventoryInterface;
-    		inventoryInterface = new InventoryInterface(player.getInventory());
+    		new InventoryInterface(player.getInventory());
     	}
     }
     
