@@ -244,7 +244,7 @@ public class Game extends JFrame {
     }
     
     /**
-     * method to open the inventory from the listener
+     * Method used to open the inventory from the GameListener
      * @param open
      */
     public void openInventory(boolean open) {
@@ -266,7 +266,7 @@ public class Game extends JFrame {
     }
     
     /**
-     * Creation of the 33 rooms present in the game
+     * Method used to create all the 33 rooms present in the game
      */
     private void createAllRooms() {   	
     	int fin=32;
@@ -280,7 +280,7 @@ public class Game extends JFrame {
     }
     
     /**
-     * Creation of the doors (locked or not) linked to the rooms
+     * Method used to create all the doors (locked or not) linked to the rooms
      * Rooms 9, 16 and 27 have a locked door
      * @param rooms: The array which contains all rooms of the game
      */ 
@@ -446,7 +446,7 @@ public class Game extends JFrame {
    /**
     * Method used to create a door
     * @param room: The room which contains the door 
-    * @param nextRoom: The next room linked to the first room
+    * @param nextRoom: The next room linked to the previous room
     * @param way: The direction to access to the next room
     */ 
     private void createDoor(Room room, Room nextRoom, String way) {
@@ -484,12 +484,22 @@ public class Game extends JFrame {
     	*/
     }
     
+    /**
+     * Method used to create a locked door
+     * @param room: The room which contains the locked door 
+     * @param nextRoom: The next room linked to the previous room
+     * @param way: The direction to access to the next room
+     * @param aLock: The lock linked to the locked door
+     */ 
     private void createLockedDoor(Room room, Room nextRoom, String way, Lock aLock) {
     	LockedDoor door1 = new LockedDoor(nextRoom, aLock);
     	room.addExit(door1, way);
     }
+    
     /**
-     * The method allows to check were are the exit of each room. In fonction of the exit, the arrow of direction are activated or disactivated.
+     * Method used to manage the state of the direction buttons (enabled or not)
+     * This method checks the presence of doors for the current room. 
+     * A direction button is activated if the door associated to the direction is present and unlocked
      */
     private void manageDirectionButtons()
     {
@@ -512,7 +522,7 @@ public class Game extends JFrame {
     }
     
     /**
-     * This methode allows to change the picture in fonction of the room where is the player
+     * Method used to upgrade the picture of the room with the current room picture
      */
     private void changePicture()
     {
@@ -520,7 +530,7 @@ public class Game extends JFrame {
         pictureRoom.setIcon(room); 
     }
     /**
-     * this method allows to go in the nextRoom;
+     * Method used to move in a next room linked to the current room
      */
     public void move(String way)
     {
