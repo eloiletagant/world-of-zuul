@@ -290,10 +290,7 @@ public class Game extends JFrame {
         //Room 8
         createDoor(rooms.get(8), rooms.get(5) , "behind");
         //Room 9
-        Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
-        Lock l1 = new Lock();
-        l1.addKey(k1);
-        createLockedDoor(rooms.get(9), rooms.get(10), "right", k1, l1);
+        createDoor(rooms.get(9), rooms.get(10) , "right");
         createDoor(rooms.get(9), rooms.get(1) , "left");
         //Room 10
         createDoor(rooms.get(10), rooms.get(11) , "front");
@@ -385,7 +382,7 @@ public class Game extends JFrame {
         Consumable c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
         Consumable c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         Consumable c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
-        //Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
+        Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
         Key k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
         Key k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
         Key k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
@@ -404,8 +401,8 @@ public class Game extends JFrame {
         l5.addKey(k6);
         Lock l6 = new Lock();
         l6.addKey(k7);
-        //Lock l7 = new Lock();
-        //l7.addKey(k1);
+        Lock l7 = new Lock();
+        l7.addKey(k1);
         Chest ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
         Chest ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
         Chest ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
