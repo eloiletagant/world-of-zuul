@@ -61,7 +61,7 @@ public class Game extends JFrame {
     public Game() {
     	
     	//Game Listener creation
-        l = new GameListener(this, player, inventoryIsOpen);
+        l = new GameListener(this);
         
     	/*****************************
          ****** Pictures instantiation

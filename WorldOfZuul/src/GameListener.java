@@ -11,15 +11,13 @@ import character.Player;
 public class GameListener implements ActionListener {
     
 	private Game game;
-	private InventoryInterface inventoryInterface;
-	private Player player;
+
 
     /**
      * GameListener constructor
     */   
-    public GameListener(Game g, Player p, boolean open) {
+    public GameListener(Game g) {
         game = g;
-        player = p;
     }
 
     /**
