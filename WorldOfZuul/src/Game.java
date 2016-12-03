@@ -314,12 +314,12 @@ public class Game extends JFrame {
         Consumable c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
         Consumable c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         Key k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
-        Key k2 = new Key("Sï¿½same", "This key has magic power and will help you to find a treasure.", 20, false);
-        Key k3 = new Key("Musse-Clef", "This key opens something.", 20, false);
-        Key k4 = new Key("Tabou-Clef", "This key opens something.", 20, false);
-        Key k5 = new Key("Clef-Bar", "This key opens something.", 20, false);
-        Key k6 = new Key("Nu-Clef-ï¿½re", "This key opens something.", 20, false);
-        Key k7 = new Key("Gy-Clef", "This key opens something.", 20, false);
+        Key k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
+        Key k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
+        Key k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
+        Key k5 = new Key("Clef-Bar", "This key opens a chest.", 20, false);
+        Key k6 = new Key("Nu-Clef-ère", "This key opens a door.", 20, false);
+        Key k7 = new Key("Gy-Clef", "This key opens a door.", 20, false);
         Lock l1 = new Lock();
         l1.addKey(k3);
         Lock l2 = new Lock();
