@@ -502,6 +502,7 @@ public class Game extends JFrame {
     {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         text.setText("You are in the " + currentRoom.getDescription());
+        player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButton ();
     }
