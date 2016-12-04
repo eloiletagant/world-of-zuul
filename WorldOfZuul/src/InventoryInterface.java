@@ -31,15 +31,17 @@ public class InventoryInterface extends JFrame {
     private InventoryInterfaceListener evt;
     private String name;
     private JButton[] buttonItems;
+    private Game game;
     
 
     /**
      * Constructor for objects of class InventoryInterface
      */
-    public InventoryInterface(Inventory anInventory, Player aPlayer)
+    public InventoryInterface(Inventory anInventory, Player aPlayer, Game aGame)
     {
     	inventoryPlayer = anInventory;
     	player = aPlayer;
+    	game = aGame;
         myPanel = new JPanel(new BorderLayout ());
         up = new JPanel (new GridLayout (1,3));
         inventory = new JPanel (new GridLayout (0,5,10,10));
@@ -405,6 +407,15 @@ public class InventoryInterface extends JFrame {
     }
     
     /**
+     * This method returns the game according to the inventory.
+     * @return game
+     */
+    public Game getGame()
+    {
+    	return game;
+    }
+    
+    /**
      * This method returns the JButton according to the given item.
      * @param item
      * @return JButton
@@ -473,8 +484,10 @@ public class InventoryInterface extends JFrame {
     	else
     	{
     		itemFrame.setVisible(false);
-        	inventoryFrame = new InventoryInterface(inventoryPlayer, player);
+        	inventoryFrame = new InventoryInterface(inventoryPlayer, player,game);
     		viewInventory=true;
     	}    	
     }
+    
+    
 } 

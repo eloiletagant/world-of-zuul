@@ -136,15 +136,10 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    		 {
     	    			 if (door.getValue().isLocked()==true)
     	    			 {
-    	    				 if (door instanceof LockedDoor)
-    	    				 {
-    	    					 if (((LockedDoor) door).getLock().unlock((Key) myItem)==false)
-    	    					 {
-    	    					 }
-    	    					 else
-    	    					 {
-    	    					 }
-    	    				 }
+    	    				 if (door.getValue().getLock().unlock((Key) myItem)==true)
+    	    					 System.out.println("good key");
+    	    				 	 inventory.getGame().manageDirectionButtons();
+    	    					 break;
     	    			 }
     	    		 }
 //    	    		 if ((doors.containsKey("front") && doors.get("front").isLocked() == true) || (doors.containsKey("behind") && doors.get("behind").isLocked() == true) || (doors.containsKey("left") && doors.get("left").isLocked() == true) || (doors.containsKey("right") && doors.get("right").isLocked() == true))

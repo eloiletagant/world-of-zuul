@@ -249,7 +249,7 @@ public class Game extends JFrame {
      */
     public void openInventory(boolean open) {
     	if (open) {
-    		showInventory = new InventoryInterface(player.getInventory(), player);
+    		showInventory = new InventoryInterface(player.getInventory(), player,this);
     	}
     	else
     	{
@@ -435,7 +435,7 @@ public class Game extends JFrame {
     }
     
    private void testAddItemsToInventory(){
-	   player.getInventory().addItem(k6);
+	   player.getInventory().addItem(k1);
 	   player.getInventory().addItem(w1);
 	   player.getInventory().addItem(c4);
 	   player.getInventory().addItem(w3);
@@ -501,7 +501,7 @@ public class Game extends JFrame {
      * This method checks the presence of doors for the current room. 
      * A direction button is activated if the door associated to the direction is present and unlocked
      */
-    private void manageDirectionButtons()
+    public void manageDirectionButtons()
     {
             HashMap<String, Door> doors;
             doors = currentRoom.getDoors();

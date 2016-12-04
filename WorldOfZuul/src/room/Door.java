@@ -1,5 +1,7 @@
 package room;
 
+import item.Lock;
+
 /**
  * This class manages the door of the room in order to allow a character to move.
  * It can be blocked by a lock and so need a key to open it : subclass LockedDoor
@@ -36,5 +38,13 @@ public class Door {
 	 */
 	public boolean isLocked(){
 			return false;
+	}
+	
+	/**
+	 * This method return the lock of a Door
+	 * @return null
+	 */
+	public Lock getLock(){
+		return null;
 	}
 }
