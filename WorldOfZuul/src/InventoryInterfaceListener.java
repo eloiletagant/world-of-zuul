@@ -34,6 +34,7 @@ public class InventoryInterfaceListener extends MouseAdapter
      public void mouseEntered(MouseEvent evt)
      {
     	 items = inventory.getInventory().getItems();
+    	 Item anItem=inventory.searchItemDisplayed();
     	 i=0;
     	 if (evt.getSource() != inventory.getBack())
 		 {
@@ -65,7 +66,15 @@ public class InventoryInterfaceListener extends MouseAdapter
     		 {
     			 if (inventory.getUse().isEnabled()==false)
     			 {
-    				 inventory.getUse().setToolTipText("You have to equip a weapon before using this item.");
+    				 if (anItem instanceof Consumable)
+    				 {
+        				 inventory.getUse().setToolTipText("You have to equip a weapon before using this item.");
+
+    				 }
+    				 else if (anItem instanceof Key)
+    				 {
+        				 inventory.getUse().setToolTipText("You can not use a key at the moment.");
+    				 }
     			 }
     		 }
     		 else
@@ -124,11 +133,11 @@ public class InventoryInterfaceListener extends MouseAdapter
     							 }
     						 }
     					 }
+    					 inventory.getInventory().deleteItem(myItem);
+            			 inventory.exitInventory();
     				 }
-    				 inventory.getInventory().deleteItem(myItem);
-        			 inventory.exitInventory();
     			 }
-    			 else if (myItem instanceof Key)
+    			 else if (myItem instanceof Key) 
     	         {
     				 //utilisé uniquement quand y a un chest ou une doorlocked dans la pièce où l'on est
     	    		 doors=inventory.getPlayer().getLocation().getDoors();
@@ -143,6 +152,10 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 	 inventory.getInventory().deleteItem(myItem);
     	        	             inventory.exitInventory();
     	    					 break; 
+    	    				 }
+    	    				 else
+    	    				 {
+    	    					 inventory.getGame().setText("This key does not work, please try another key.");
     	    				 }
     	    			 }
     	    		 }
