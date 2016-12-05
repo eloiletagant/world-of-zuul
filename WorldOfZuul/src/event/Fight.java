@@ -38,7 +38,7 @@ public class Fight extends Event {
      * @return return the result of the fight : true = win, false = loose
      */
     public boolean runFight(int clicks, int clicksRequireds)
-    {
+    { 
     	int playerDamages = 1;
     	int npcDamages = 1;
     	for(Item test : this.getPlayer().getInventory().getItems())
