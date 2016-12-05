@@ -38,11 +38,9 @@ public class NPCTest
 	{
 		assertEquals("Lion Knight",myNPC.getName());
 		assertEquals(false,myNPC.getEnemy());
-		assertEquals(3,myNPC.getNbHandsAvailable());
 		assertEquals(40,myNPC.getHealth());
 		NPC anEnemy = new NPC ("",150,5,true);
 		assertEquals("Attila",anEnemy.getName());
-		assertEquals(4,anEnemy.getNbHandsAvailable());
 		assertEquals(150,anEnemy.getHealth());
 		assertEquals(true,anEnemy.getEnemy());
 	}
