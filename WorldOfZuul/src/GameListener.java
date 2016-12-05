@@ -110,7 +110,7 @@ public class GameListener implements ActionListener {
     public void createFrame()
     {
     	Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-    	myLabel= new JLabel("This door is locked.", JLabel.CENTER);
+    	myLabel= new JLabel("This door is locked. You need a key to open this door.", JLabel.CENTER);
     	myLabel.setBackground(Color.black);
         myLabel.setOpaque(true);
         myLabel.setForeground(Color.yellow);

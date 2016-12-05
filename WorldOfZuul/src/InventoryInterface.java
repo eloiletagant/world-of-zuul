@@ -4,6 +4,7 @@ import java.util.*;
 import java.awt.event.*;
 import character.*;
 import item.*;
+import room.*;
 
 /**
  * This method creates the frame with the design of the inventory.
@@ -27,11 +28,12 @@ public class InventoryInterface extends JFrame {
     private Weapon myWeapon;
     private Consumable myConsumable;
     private boolean viewInventory = true;
-    private boolean aWeapon;
+    private boolean aWeapon,lock;
     private InventoryInterfaceListener evt;
     private String name;
     private JButton[] buttonItems;
     private Game game;
+    private HashMap<String,Door> doors;
     
 
     /**
@@ -316,8 +318,7 @@ public class InventoryInterface extends JFrame {
         		unequip.addMouseListener(evt);
         	}
         	actions.add(sell);
-            sell.addMouseListener(evt);
-            
+            sell.addMouseListener(evt);           
         }
         else
         {
@@ -327,6 +328,22 @@ public class InventoryInterface extends JFrame {
             use.setFont(police);
             actions.add(use);
     		use.addMouseListener(evt);
+    		if (anItem instanceof Key)
+            {
+            	doors=player.getLocation().getDoors();
+            	lock=false;
+            	for (Map.Entry<String,Door> door : doors.entrySet())
+       		 	{
+            		if (door.getValue().isLocked()==true)
+            		{
+            			lock=true;
+            		}
+       		 	}
+            	if (lock==false)
+            	{
+            		use.setEnabled(false);
+            	}
+            }
     		if (aWeapon==false)
     		{
     			if (anItem instanceof Consumable)
