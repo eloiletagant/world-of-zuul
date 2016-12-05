@@ -133,9 +133,9 @@ public class InventoryInterfaceListener extends MouseAdapter
     							 }
     						 }
     					 }
+    					 inventory.getInventory().deleteItem(myItem);
+            			 inventory.exitInventory();
     				 }
-    				 inventory.getInventory().deleteItem(myItem);
-        			 inventory.exitInventory();
     			 }
     			 else if (myItem instanceof Key)
     	         {
@@ -152,6 +152,10 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 	 inventory.getInventory().deleteItem(myItem);
     	        	             inventory.exitInventory();
     	    					 break; 
+    	    				 }
+    	    				 else
+    	    				 {
+    	    					 inventory.getGame().setText("This key does not work, please try another key.");
     	    				 }
     	    			 }
     	    		 }
