@@ -23,7 +23,9 @@ public class Clicker implements ActionListener, Runnable  {
     public int clickerLauncher (int clicksAsked) {
         
     	game.getClickerFrame().setVisible(true);
+    	
     	winScore = clicksAsked;
+    	
     	
     	game.getLeftB().setEnabled(false);
     	game.getRightB().setEnabled(false);
@@ -31,10 +33,8 @@ public class Clicker implements ActionListener, Runnable  {
     	game.getFrontB().setEnabled(false);  
     	
 
-        while (!done) {	
-        	game.getClickerFrame().getContentPane().repaint();
-        }
-        
+
+        /*
         if (done) {
         	game.getLeftB().setEnabled(true);
         	game.getRightB().setEnabled(true);
@@ -42,7 +42,12 @@ public class Clicker implements ActionListener, Runnable  {
         	game.getFrontB().setEnabled(true);  
         }
         
-        //System.out.println(clicks);
+        
+        /*
+        while (!done) {	
+        	game.getClickerFrame().getContentPane().repaint();
+        }*/
+    	System.out.println(clicks);
         return clicks;
         
     }
@@ -69,7 +74,7 @@ public class Clicker implements ActionListener, Runnable  {
     @Override
     public void actionPerformed(ActionEvent e) {
         
-    	if (e.getSource() == this.game.getClickButton()) {
+    	if (e.getSource() == game.getClickButton()) {
 
         	//behavior
             if (time != MAX) {
@@ -84,12 +89,10 @@ public class Clicker implements ActionListener, Runnable  {
                     win = true;
                     done = true;
                     game.getClickerFrame().setVisible(false);
-   
                 }
             }
             //trigger the timer in the first click
             if (clicks == 1) {
-            	
             	//start to run the fight
             	running = true;
                 new Thread(this).start();

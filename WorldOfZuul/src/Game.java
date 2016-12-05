@@ -43,7 +43,7 @@ import room.Door;
 import room.LockedDoor;
 import room.Room;
 import item.*;
-import javax.swing.JProgressBar;
+
 
 
 public class Game extends JFrame {
@@ -71,16 +71,17 @@ public class Game extends JFrame {
     private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
-    private Clicker clicker = new Clicker(this);
+    
     
     
     //for the clicker game
+    private Clicker clicker;
     private JFrame clickerFrame;
     private JButton clickButton;
     private JLabel clickLabel;
     private JProgressBar bar;
     
-    private Container globalPanel;
+    private Container clickerGlobalPanel;
     
     
     /**
@@ -261,6 +262,8 @@ public class Game extends JFrame {
     
     public void createClickerFrame() {
         
+    	clicker = new Clicker(this);
+    	
     	clickerFrame = new JFrame();
     	clickerFrame.setSize(400, 450);
     	clickerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -279,15 +282,14 @@ public class Game extends JFrame {
         clickLabel = new JLabel("Clicks: " + clicker.getClicks(), JLabel.CENTER);
         clickLabel.setFont(new Font("Arial", 0, 20));
         
-        globalPanel = new JPanel(new GridLayout(3,1));
-        globalPanel.add(bar, BorderLayout.NORTH);
-        globalPanel.add(clickButton, BorderLayout.CENTER);
-        globalPanel.add(clickLabel, BorderLayout.SOUTH);
+        clickerGlobalPanel = new JPanel(new GridLayout(3,1));
+        clickerGlobalPanel.add(bar, BorderLayout.NORTH);
+        clickerGlobalPanel.add(clickButton, BorderLayout.CENTER);
+        clickerGlobalPanel.add(clickLabel, BorderLayout.SOUTH);
         
-        clickerFrame.add(globalPanel);
+        clickerFrame.add(clickerGlobalPanel);
         clickerFrame.pack();
         clickerFrame.setVisible(false);
-        
 
     }
     
@@ -799,9 +801,8 @@ public class Game extends JFrame {
         	{
         		
         		int nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
-        		clicker = new Clicker(this);
         		
-        		int result = clicker.clickerLauncher((nbr * 10));
+        		int result = clicker.clickerLauncher((10));
         		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
         		if(win)
         		{
