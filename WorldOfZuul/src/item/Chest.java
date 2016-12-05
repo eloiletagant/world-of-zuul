@@ -110,21 +110,4 @@ public class Chest extends Inventory
         	return false;
         }
     }
-    
-    /**
-     * This method adds one item in a chest.
-     *
-     * @param item: The item added to the inventory
-     * @return true if it works, false if it don't
-     */
-    public boolean addItem(Item itemToAdd) {
-    	if(lock.getLock() == false)
-        {
-        	return super.addItem(itemToAdd);
-        }
-        else
-        {
-        	return false;
-        }
-    }
 }

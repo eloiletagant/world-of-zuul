@@ -515,17 +515,17 @@ public class Game extends JFrame {
         l6.addKey(k7);
         l7 = new Lock();
         l7.addKey(k1);
-        ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
+        ch1 = new Chest("Ali baba box", "This box contains something for you.", 2, 5, l1);
         ch1.addItem(c2);
         ch1.addItem(w1);
-        ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
+        ch2 = new Chest("Little box","This box contains something for you.", 3, 15, l2);
         ch2.addItem(c1);
         ch2.addItem(c6);
         ch2.addItem(w2);
-        ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
+        ch3 = new Chest("Gift Box", "This box contains something for you.", 2, 30, l3);
         ch3.addItem(c5);
         ch3.addItem(w3);
-        ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
+        ch4 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l4);
         ch4.addItem(c8);
         ch4.addItem(c4);
         ch4.addItem(c3);
@@ -575,8 +575,7 @@ public class Game extends JFrame {
     	  
     	  for (Item item: chestInv){
     	  	  if (player.getInventory().addItem(item)){
-    	  		  text.setText("You win " + item.getName());
-    	  		  player.getInventory().addItem(item);
+    	  		  text.setText("You won " + item.getName());
     	  	  	  aChest.deleteItem(item);
     	  	  } else {
     	  		  text.setText("Your bag is full. You need to sell some items. Come back later");
@@ -584,7 +583,7 @@ public class Game extends JFrame {
     	  }
     	  if (aChest.getGold() > 0){
     		  player.getInventory().manageGold(aChest.getGold());
-    		  text.setText("You win " + aChest.getGold() + " gold");
+    		  text.setText("You won " + aChest.getGold() + " gold");
     		  int gold = aChest.getGold();
     		  aChest.manageGold(- gold);
     	  }
