@@ -159,7 +159,7 @@ public class Game extends JFrame {
         //create the panel which contains all the text
         textDisplay = new JPanel();
         textDisplay.setBackground(Color.black);
-        textDisplay.add(text);
+        textDisplay.add(text); 
         //textDisplay.add(typingArea); 
         //textDisplay.add(answer);
         
