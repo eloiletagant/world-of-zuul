@@ -52,11 +52,11 @@ public class Game extends JFrame {
     private boolean inventoryIsOpen = false;
     public  Sound sound;
     
-    private JButton left, behind, front, right, bag; //direction arrows and bag (inventory)
+    private JButton left, behind, front, right, bag, search, speak; //direction arrows and bag (inventory)
     private JLabel title, text, pictureRoom, health;
     private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
     
-    private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar;
+    private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
     
@@ -77,8 +77,11 @@ public class Game extends JFrame {
         arrowFront = new ImageIcon("pictures/arrowFront.png");
         arrowBehind = new ImageIcon ("pictures/arrowBehind.png");
         arrowLeft = new ImageIcon("pictures/arrowLeft.png");
-        inventory = new ImageIcon("pictures/bag.jpg");
+        inventory = new ImageIcon("pictures/bag.png");
         healthBar = new ImageIcon("pictures/barredeVie.jpg");
+        wen = new ImageIcon("pictures/loupe_5.png");
+        bubble = new ImageIcon("pictures/Dialogue.png");
+        
          
         /**********************
          ******* Window content
@@ -94,7 +97,7 @@ public class Game extends JFrame {
          * health bar / bag
          ******************/
         //Panel which contains bag + bar life
-        healthBag = new JPanel (new GridLayout (2,1));
+        healthBag = new JPanel (new GridLayout (2,2));
         healthBag.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         healthBag.setBackground(Color.black);
         
@@ -105,9 +108,19 @@ public class Game extends JFrame {
         bag = new JButton(inventory);
         bag.setBackground(Color.black);
         bag.addActionListener(l);
-                   
+        
+        search = new JButton(wen);
+        search.setBackground(Color.black);
+        search.addActionListener(l);
+        
+        speak = new JButton(bubble);
+        speak.setBackground(Color.black);
+        speak.addActionListener(l);
+        
         healthBag.add(health);
+        healthBag.add(speak);
         healthBag.add(bag);
+        healthBag.add(search);
         
         //TEXT DISPLAY --> EN COURS (ANATOLE)
         textDisplay = new JPanel();
