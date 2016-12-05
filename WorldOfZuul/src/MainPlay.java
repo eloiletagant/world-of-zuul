@@ -17,7 +17,7 @@ import javax.swing.JButton;
 public class MainPlay extends JFrame implements ActionListener {
     //button building
     
-	private JButton start, settings;
+	private JButton start;
     private JLabel text, title, pictureLabel;
     private JPanel globalPanel, buttonsPanel, topPanel; 
     
@@ -63,17 +63,13 @@ public class MainPlay extends JFrame implements ActionListener {
     	start.addActionListener(this);
         start.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         start.setBackground(Color.black);
-        start.setForeground(Color.white);
+        start.setForeground(Color.yellow);
         start.setFont(playFont);
         
-        settings = new JButton("SETTINGS");
-        settings.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        settings.setForeground(Color.yellow);
-        settings.setFont(font);
-            
+                  
         //Add buttons on the panel
-        buttonsPanel.add(start,BorderLayout.NORTH);
-        buttonsPanel.add(settings,BorderLayout.SOUTH);
+        buttonsPanel.add(start);
+       
        
         
         
