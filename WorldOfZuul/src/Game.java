@@ -50,7 +50,7 @@ public class Game extends JFrame {
     private Room currentRoom;
     private Player player;
     private Weapon w1, w2, w3, w4;
-    private Consumable c1, c2, c3, c4, c5, c6, c7;
+    private Consumable c1, c2, c3, c4, c5, c6, c7,c8;
     private Key k1, k2, k3, k4, k5, k6, k7;
     private Lock l1, l2, l3, l4, l5, l6, l7;
     private Chest ch1, ch2, ch3, ch4;
@@ -484,6 +484,7 @@ public class Game extends JFrame {
         c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
         c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
+        c8 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
         k2 = new Key("Sesame", "This key has magic power and will help you to find a treasure.", 20, false);
         k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
@@ -509,9 +510,19 @@ public class Game extends JFrame {
         ch1.addItem(c2);
         ch1.addItem(w1);
         ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
+        ch2.addItem(c1);
+        ch2.addItem(c6);
+        ch2.addItem(w2);
         ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
+        ch3.addItem(c5);
+        ch3.addItem(w3);
         ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
+        ch4.addItem(c8);
+        ch4.addItem(c4);
+        ch4.addItem(c3);
+        ch4.addItem(w4);
     }
+    
     
    private void testAddItemsToInventory(){
 	   player.getInventory().addItem(k1);
