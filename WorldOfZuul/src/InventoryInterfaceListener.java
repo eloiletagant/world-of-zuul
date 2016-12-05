@@ -139,9 +139,10 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 if (door.getValue().getLock().unlock((Key) myItem)==true)
     	    				 {
     	    				 	 inventory.getGame().manageDirectionButtons();
+    	    				 	 inventory.getGame().setText("You have unlocked the door.");
     	    				 	 inventory.getInventory().deleteItem(myItem);
     	        	             inventory.exitInventory();
-    	    					 break;
+    	    					 break; 
     	    				 }
     	    			 }
     	    		 }
@@ -151,13 +152,10 @@ public class InventoryInterfaceListener extends MouseAdapter
     	 else if(evt.getSource()==inventory.getEquip())
          {
     		 myItem=inventory.searchItemDisplayed();
-    		 System.out.println("ok");
     		 if (inventory.getEquip().isEnabled()==true)
         	 {
-    			 System.out.println("hey");
         		 if (myItem instanceof Weapon)
         		 {
-        			 System.out.println("youpi");
         			 ((Weapon) myItem).equip();
         			 inventory.exitInventory();
         		 }
