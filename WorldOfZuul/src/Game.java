@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import character.Player;
+import clickerGame.Clicker;
 import room.Door;
 import room.LockedDoor;
 import room.Room;
@@ -467,36 +468,6 @@ public class Game extends JFrame {
     private void createDoor(Room room, Room nextRoom, String way) {
     	Door door1 = new Door(nextRoom);
     	room.addExit(door1, way);
-    	/*
-    	Door door2 = new Door(room);
-    	String oppositeWay;
-    	
-    	switch (way)
-    	{
-    	  case "front":
-    	    oppositeWay = "behind";
-    	    break;  
-    	  case "behind":
-      	    oppositeWay = "front";
-      	    break;
-    	  case "right":
-      	    oppositeWay = "left";
-      	    break;
-    	  case "left":
-        	oppositeWay = "right";
-        	break;
-    	  case "upstair":
-        	oppositeWay = "downstair";
-        	break;
-    	  case "downstair":
-          	oppositeWay = "upstair";
-          	break; 
-    	  default:
-    		oppositeWay="";
-    	    break;             
-    	}
-    	nextRoom.addExit(door2, oppositeWay);
-    	*/
     }
     
     /**
@@ -555,6 +526,16 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
+        if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
+        {
+        	Integer nbr = Integer.valueOf(player.getLocation().getDescription().split(" ")[1]);
+        	Integer result = Clicker.clickerLauncher((nbr * 10));
+        	boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
+        	if(win)
+        	{
+        		player.getLocation().getEvents().remove(0);
+        	}
+        }
     }
     
 }
