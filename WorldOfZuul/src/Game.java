@@ -35,7 +35,6 @@ import java.util.HashMap;
 
 import character.NPC;
 import character.Player;
-import clickerGame.Clicker;
 import event.Event;
 import event.Fight;
 import room.Door;
