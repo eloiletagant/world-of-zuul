@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=url
-comment0.target=void\ playSound(java.lang.String)
-comment0.text=\n\ This\ method\ launch\ the\ song.\ \n\ @param\ url\ way\ of\ the\ song\n
-comment1.params=
-comment1.target=void\ run()
-numComments=2
