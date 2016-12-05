@@ -38,7 +38,7 @@ public class Fight extends Event {
      * @return return the result of the fight : true = win, false = loose
      */
     public boolean runFight(int clicks, int clicksRequireds)
-    {
+    { 
     	int playerDamages = 1;
     	int npcDamages = 1;
     	for(Item test : this.getPlayer().getInventory().getItems())
@@ -67,11 +67,11 @@ public class Fight extends Event {
     	while(this.getPlayer().getHealth() > 0 && this.getNpc().getHealth() > 0)
     	{
     		this.getPlayer().manageHealth(-npcDamages);
-    		System.out.println("You lost " + npcDamages + " hp");
-    		System.out.println(this.getPlayer().getHealth());
+    		//System.out.println("You lost " + npcDamages + " hp");
+    		//System.out.println(this.getPlayer().getHealth());
     		this.getNpc().manageHealth(-playerDamages);
-    		System.out.println("The enemy lost " + playerDamages + " hp");
-    		System.out.println(this.getNpc().getHealth());
+    		//System.out.println("The enemy lost " + playerDamages + " hp");
+    		//System.out.println(this.getNpc().getHealth());
     	}
     	if(this.getPlayer().getHealth() == 0)
     	{
