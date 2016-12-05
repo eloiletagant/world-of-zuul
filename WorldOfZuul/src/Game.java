@@ -654,7 +654,7 @@ public class Game extends JFrame {
     public void manageEgnimButton ()
     {
         if (player.getLocation() == rooms.get(4) || player.getLocation() == rooms.get(9) || player.getLocation() == rooms.get(27))
-        {
+        { 
         	//System.out.print("noimom"); 
             speak.setEnabled(true);
         }               
