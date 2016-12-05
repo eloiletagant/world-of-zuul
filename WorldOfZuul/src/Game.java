@@ -575,7 +575,6 @@ public class Game extends JFrame {
     	  for (Item item: chestInv){
     	  	  if (player.getInventory().addItem(item)){
     	  		  text.setText("You win " + item.getName());
-    	  		  player.getInventory().addItem(item);
     	  	  	  aChest.deleteItem(item);
     	  	  } else {
     	  		  text.setText("Your bag is full. You need to sell some items. Come back later");
