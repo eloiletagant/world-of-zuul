@@ -28,6 +28,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.Border;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +59,7 @@ public class Game extends JFrame {
     public  Sound sound;
     
     private JButton left, behind, front, right, bag, search, speak; //direction arrows and bag (inventory)
-    private JLabel title, text, pictureRoom, health;
+    private JLabel title, text, pictureRoom, health, answer;
     private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
     private JTextField typingArea;
     
@@ -75,7 +76,9 @@ public class Game extends JFrame {
     	
     	//Game Listener creation
         l = new GameListener(this);
-        parser = new Parser(this);
+        parser = new Parser(this, typingArea);
+        
+        Font font = new Font ("Kristen ITC", Font.BOLD, 14);
         
     	/*****************************
          ****** Pictures instantiation
@@ -130,26 +133,35 @@ public class Game extends JFrame {
         healthBag.add(bag);
         healthBag.add(search);
         
+        
         //TEXT DISPLAY --> EN COURS (ANATOLE)
-        textDisplay = new JPanel();
-        textDisplay.setBackground(Color.black);
-        text = new JLabel ("Welcome to Dungeon Clicker",JLabel.CENTER);
-        text.setForeground(Color.YELLOW);
-        Font police = new Font ("Kristen ITC", Font.BOLD, 14);
+        
+        
+        text = new JLabel("Welcome to Dungeon Clicker", JLabel.CENTER);
         text.setForeground(Color.yellow);
-        text.setFont(police);
+        text.setFont(font);
 
-        JButton button = new JButton("Clear");
+        //button = new JButton("Clear");
         //button.addActionListener(this);
          
+        answer = new JLabel("test", JLabel.CENTER);
+        answer.setForeground(Color.yellow);
+        answer.setFont(font);
         
         typingArea = new JTextField(20);
         typingArea.setBackground(Color.black);
         typingArea.setForeground(Color.WHITE);
         typingArea.addKeyListener(parser);
+        //Create new custom border for JTextField
+        Border border = BorderFactory.createLineBorder(Color.red);
+        typingArea.setBorder(border);
         
+        //create the panel which contains all the text
+        textDisplay = new JPanel();
+        textDisplay.setBackground(Color.black);
         textDisplay.add(text);
         textDisplay.add(typingArea);
+        textDisplay.add(answer);
         
         /*******************************************
          ****** Declaration of all direction buttons 
@@ -210,7 +222,6 @@ public class Game extends JFrame {
         this.setVisible(true);
     	
     	player = new Player ("Kaamelott");
-    	parser = new Parser("");
     	rooms = new ArrayList<Room>();
     	
     	createItems();
@@ -223,6 +234,10 @@ public class Game extends JFrame {
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
+    }
+    
+    public void setAnswer(String s) {
+    	answer.setText(s);
     }
     
     /**
@@ -548,12 +563,6 @@ public class Game extends JFrame {
         pictureRoom.setIcon(room); 
     }
     
-    /**
-     * method to set the text display on the screen
-     */
-    public void setText(String text) {
-    	this.text.setText("You are in the " + text);
-    }
     /**
      * Method used to move in a next room linked to the current room
      * @param way: The direction of the next room

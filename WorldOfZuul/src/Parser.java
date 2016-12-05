@@ -40,7 +40,7 @@ public class Parser extends JFrame implements KeyListener, ActionListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ENTER){
         	output = game.getTypingArea().getText();
-            game.setText(output);
+            game.setAnswer(output);
             
         }   
     }
