@@ -16,6 +16,7 @@
  */
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
@@ -31,8 +32,11 @@ import javax.swing.JButton;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import character.NPC;
 import character.Player;
 import clickerGame.Clicker;
+import event.Event;
+import event.Fight;
 import room.Door;
 import room.LockedDoor;
 import room.Room;
@@ -126,7 +130,11 @@ public class Game extends JFrame {
         //TEXT DISPLAY --> EN COURS (ANATOLE)
         textDisplay = new JPanel();
         text = new JLabel ("Welcome to Dungeon Clicker",JLabel.CENTER);
-        text.setForeground(Color.WHITE);
+        text.setForeground(Color.YELLOW);
+        Font police = new Font ("Kristen ITC", Font.BOLD, 14);
+        text.setForeground(Color.yellow);
+        text.setFont(police);
+
         JButton button = new JButton("Clear");
         //button.addActionListener(this);
          
@@ -293,6 +301,16 @@ public class Game extends JFrame {
     			rooms.add(new Room("Room" + i, 1));
     	}
     	currentRoom = rooms.get(0);
+    }
+    
+    /**
+     * method to implement all events and NPC on rooms
+     */
+    private void setEvents()
+    {
+    	NPC jeanEude = new NPC("Jean Eude",4, 2, true);
+    	Fight e1 = new Fight("test",w1,player,jeanEude);
+    	rooms.get(1).addEvent(e1);
     }
     
     /**
@@ -526,16 +544,29 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
-        if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
+        if(!player.getLocation().getEvents().isEmpty())
         {
-        	Integer nbr = Integer.valueOf(player.getLocation().getDescription().split(" ")[1]);
-        	Integer result = Clicker.clickerLauncher((nbr * 10));
-        	boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
-        	if(win)
+        	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
         	{
-        		player.getLocation().getEvents().remove(0);
+        		Integer nbr = Integer.valueOf(player.getLocation().getDescription().split(" ")[1]);
+        		Integer result = Clicker.clickerLauncher((nbr * 10));
+        		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
+        		if(win)
+        		{
+        			player.getLocation().getEvents().remove(0);
+        		}
         	}
         }
+        
+    }
+    
+    /**
+     * This method modifies the text which is displays in the game
+     * @param aText the text to display in the game
+     */
+    public void setText(String aText)
+    {
+    	text.setText("<html>You are in the "+ currentRoom.getDescription()+"<br>"+aText+"</html>");    	 
     }
     
 }
