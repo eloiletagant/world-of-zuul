@@ -571,7 +571,20 @@ public class Game extends JFrame {
       * @param aChest: The chest adding to the room
       */ 
       public void getItemsFromChest(Chest aChest) {
-    	  player.getInventory().manageGold(aChest.getGold());
+    	  ArrayList<Item> chestInv = aChest.getItems();
+    	  for (Item item: chestInv){
+    	  	  if (player.getInventory().addItem(item)){
+    	  		  text.setText("You win " + item.getName());
+    	  	  	  aChest.deleteItem(item);
+    	  	  } else {
+    	  		  text.setText("Your bag is full. You need to sell some items. Come back later");
+    	  	  }
+    	  }
+    	  if (aChest.getGold() > 0){
+    		  player.getInventory().manageGold(aChest.getGold());
+    		  text.setText("You win " + aChest.getGold() + " gold");
+    		  aChest.manageGold(- aChest.getGold());
+    	  }
       }
      
     /**
