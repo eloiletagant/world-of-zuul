@@ -20,12 +20,15 @@ public class Clicker {
         screen.getTimer().setWinScore(clicksAsked);
         //while(true)
         {
-        	//if(screen.getFightDone() == true)
+        	System.out.println(screen.getFightDone());
+        	if(screen.getFightDone() == true)
+        	
         	{
-        		frame.dispose();
+        		//frame.dispose();
         		return screen.getClicks();
         	}
         }
+        return screen.getClicks();
         
     }
 

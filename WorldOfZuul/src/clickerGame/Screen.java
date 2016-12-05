@@ -105,12 +105,14 @@ public class Screen extends JPanel implements ActionListener {
                 progression = (clicks * 100) / timer.getWinScore();
                 progressionBar();
                 if (clicks == timer.getWinScore()) {
+                    
                     timer.setRunning(false);
                     clickButton.setEnabled(false);
 
                     timer.setRunning(false);
                     clickButton.setEnabled(true);
                     setFightDone();
+                    
                     //player win
                     return;
                     
