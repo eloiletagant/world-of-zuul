@@ -133,9 +133,9 @@ public class InventoryInterfaceListener extends MouseAdapter
     							 }
     						 }
     					 }
-    					 inventory.getInventory().deleteItem(myItem);
-            			 inventory.exitInventory();
     				 }
+    				 inventory.getInventory().deleteItem(myItem);
+        			 inventory.exitInventory();
     			 }
     			 else if (myItem instanceof Key) 
     	         {
@@ -149,7 +149,9 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 {
     	    				 	 inventory.getGame().setText("You have unlocked the door.");
     	    				 	 inventory.getInventory().deleteItem(myItem);
-    	        	             inventory.exitInventory();
+    	    				 	 inventory.getGame().openInventory(false);
+    	    				 	 inventory.getGame().setOpenningInventory(false);
+    	    				 	 //inventory.exitInventory();
     	    					 break; 
     	    				 }
     	    				 else
