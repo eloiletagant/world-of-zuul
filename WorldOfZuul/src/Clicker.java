@@ -41,12 +41,12 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
     
     public int clickerLauncher (int clicksAsked) {
         
-    	/*
+    	
     	game.getLeftB().setEnabled(false);
     	game.getRightB().setEnabled(false);
     	game.getBehindB().setEnabled(false);
     	game.getFrontB().setEnabled(false);  
-    	*/
+    	
     	
     	frame = new JFrame();
         frame.setSize(400, 450);
@@ -84,14 +84,14 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         
         frame.setVisible(true);
 
-        /*
+        
         if (done) {
         	game.getLeftB().setEnabled(true);
         	game.getRightB().setEnabled(true);
         	game.getBehindB().setEnabled(true);
         	game.getFrontB().setEnabled(true);  
         }
-        */
+        
         
         while (!done) {	
         	frame.getContentPane().repaint();
