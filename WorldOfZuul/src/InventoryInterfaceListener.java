@@ -137,7 +137,7 @@ public class InventoryInterfaceListener extends MouseAdapter
             			 inventory.exitInventory();
     				 }
     			 }
-    			 else if (myItem instanceof Key)
+    			 else if (myItem instanceof Key) 
     	         {
     				 //utilisé uniquement quand y a un chest ou une doorlocked dans la pièce où l'on est
     	    		 doors=inventory.getPlayer().getLocation().getDoors();
