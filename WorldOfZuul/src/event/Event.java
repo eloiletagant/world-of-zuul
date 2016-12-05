@@ -71,5 +71,9 @@ public abstract class Event {
         item = newItem;
     }
 
+    public boolean runFight(int clicks, int clicksRequireds)
+    {
+    	return false;
+    }
 
 }
