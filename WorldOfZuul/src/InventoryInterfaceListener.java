@@ -142,7 +142,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 	 inventory.getGame().setText("You have unlocked the door.");
     	    				 	 inventory.getInventory().deleteItem(myItem);
     	        	             inventory.exitInventory();
-    	    					 break;
+    	    					 break; 
     	    				 }
     	    			 }
     	    		 }

@@ -98,7 +98,7 @@ public class GameListener implements ActionListener {
         	if (game.getInventoryIsOpen()) {
         		game.openInventory(false);
         		game.setOpenningInventory(false);
-        	} else { 
+        	} else {  
         		//the inventory is close, so we can open it
         		game.openInventory(true);
         		game.setOpenningInventory(true);
