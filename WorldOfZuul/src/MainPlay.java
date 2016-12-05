@@ -26,6 +26,7 @@ public class MainPlay extends JFrame implements ActionListener {
     private int nbrRoom = 0;
     private Game game;
     
+    
     private Font font, titleFont, playFont;
 
 
