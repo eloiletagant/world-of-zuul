@@ -48,7 +48,7 @@ public class GameListener implements ActionListener {
     			}
     			else
     	    	{
-    	    		createFrame();
+    				game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
     	}
@@ -62,7 +62,7 @@ public class GameListener implements ActionListener {
     			}
     			else
     	    	{
-    	    		createFrame();
+    				game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
         }
@@ -76,7 +76,7 @@ public class GameListener implements ActionListener {
     			}
     			else
     	    	{
-    	    		createFrame();
+    	    		game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
         }
@@ -90,7 +90,7 @@ public class GameListener implements ActionListener {
     			}
     			else
     	    	{
-    	    		createFrame();
+    				game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
         }
@@ -106,29 +106,6 @@ public class GameListener implements ActionListener {
         }
         	
     }
-    
-    public void createFrame()
-    {
-    	Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-    	myLabel= new JLabel("This door is locked. You need a key to open this door.", JLabel.CENTER);
-    	myLabel.setBackground(Color.black);
-        myLabel.setOpaque(true);
-        myLabel.setForeground(Color.yellow);
-        myLabel.setFont(police);
-		myButton= new JButton("Try to open !");
-		myButton.setBackground(Color.black);
-        myButton.setOpaque(true);
-        myButton.setForeground(Color.yellow);
-        myButton.setFont(police);
-		myPanel= new JPanel(new GridLayout (0,1));
-		myPanel.add(myLabel);
-		myPanel.add(myButton);
-		myFrame= new JFrame("Locked Door");  
-        myFrame.add(myPanel);
-        myFrame.setSize(500, 500);
-        myFrame.pack();
-        myFrame.setVisible(true);
-    }
-    
+
    }
      
