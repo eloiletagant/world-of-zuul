@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=g
-comment0.target=GameListener(Game)
-comment0.text=\n\ GameListener\ constructor\n
-comment1.params=e
-comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
-comment1.text=\n\ Actions\ performed\ when\ actions\ in\ game\ class\ are\ listen\n\ @param\ e\:\ The\ source\ of\ the\ action\ in\ the\ game\ class\n
-numComments=2
