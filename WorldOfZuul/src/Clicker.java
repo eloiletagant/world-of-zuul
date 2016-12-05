@@ -1,6 +1,9 @@
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,7 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+
 
 public class Clicker extends JPanel implements ActionListener, Runnable  {
 	
@@ -17,20 +21,33 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
     private int time = 0;
     private int progression = 0;
     private int winScore;
+    
+    private static int MIN = 0;
+    private static int MAX = 15;
     private boolean win = false;
     private boolean running = false;
     private boolean done = false;
+    private Game game;
     
     
     private JFrame frame;
     private JPanel progressionBar = new JPanel();
-    private JButton clickButton = new JButton("Click Here!");
-    private JLabel clickLabel = new JLabel("Clicks: " + this.clicks);
-    private JLabel timeLabel = new JLabel("Time: " + this.time);
+    private Container  globalPanel, bottomPanel;
+    private JButton clickButton;
+    private JLabel clickLabel;
+    private JProgressBar bar = new JProgressBar();
         
+   
     
     public int clickerLauncher (int clicksAsked) {
         
+    	/*
+    	game.getLeftB().setEnabled(false);
+    	game.getRightB().setEnabled(false);
+    	game.getBehindB().setEnabled(false);
+    	game.getFrontB().setEnabled(false);  
+    	*/
+    	
     	frame = new JFrame();
         frame.setSize(400, 450);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -38,22 +55,54 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         frame.setLocationRelativeTo(null);
         
         winScore = clicksAsked;
-        
+        globalPanel = new JPanel(new GridLayout(3,1));
         //add comp
-        frame.add(progressionBar());
-        frame.add(clickButton());
-        frame.add(clickLabel());
-        frame.add(timeLabel());
+
+
+        
+        //bottomPanel = new JPanel(new GridLayout(1,2));
+        //bottomPanel.add(clickLabel(), BorderLayout.EAST);
+        //bottomPanel.add(timeLabel(), BorderLayout.WEST);
+        
+        //bar.setStringPainted(true);
+        bar.setMinimum(MIN);
+        bar.setMaximum(MAX);
+        
+        clickButton = new JButton("Click Here!");
+        clickButton.addActionListener(this);
+        clickButton.setFont(new Font("Arial", 1, 40));
+        
+        clickLabel = new JLabel("Clicks: " + this.clicks, JLabel.CENTER);
+        clickLabel.setFont(new Font("Arial", 0, 20));
+
+        
+        globalPanel.add(bar, BorderLayout.NORTH);
+        globalPanel.add(clickButton, BorderLayout.CENTER);
+        globalPanel.add(clickLabel, BorderLayout.SOUTH);
+        
+        frame.add(globalPanel);
         
         frame.setVisible(true);
 
-        while (!done) {
-        	
+        /*
+        if (done) {
+        	game.getLeftB().setEnabled(true);
+        	game.getRightB().setEnabled(true);
+        	game.getBehindB().setEnabled(true);
+        	game.getFrontB().setEnabled(true);  
         }
+        */
+        
+        while (!done) {	
+        	frame.getContentPane().repaint();
+        }
+        
+        System.out.println(clicks);
         return clicks;
         
     }
-
+    
+    
     public JFrame getFrame() {
         return frame;
     }
@@ -76,109 +125,37 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
 
 
     
-    
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-      
-    public void setClicks(int clicks) {
-        this.clicks = clicks;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
- 
-    public void setTimeLabel(String label) {
-        this.timeLabel.setText(label);
-    }
-    
-    public void setWinScore(int winScore) {
-        this.winScore = winScore;
-    }
-    
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-    
-    
-    
-    
-    public void dispose() {
-    	frame.dispose();
-    }
-    
-    
-    
-    //set the screen items
-    private JPanel progressionBar() {
-
-        int xProgression = (progression * 340) / 100;
-        if (xProgression <= 340) {
-            progressionBar.setBounds(30 + xProgression, 20, 340 - xProgression, 50);
-        } else {
-            progressionBar = new JPanel();
-            clickButton.setText("Win");
-        }
-
-        progressionBar.setBackground(Color.red);
-        return progressionBar;
-    }
-
-    private JButton clickButton() {
-        clickButton.setBounds(20, 100, 360, 200);
-        clickButton.addActionListener(this);
-        clickButton.setFont(new Font("Arial", 1, 40));
-        return clickButton;
-    }
-
-    private JLabel clickLabel() {
-        clickLabel.setBounds(50, 325, 100, 50);
-        clickLabel.setFont(new Font("Arial", 0, 20));
-        return clickLabel;
-    }
-
-    private JLabel timeLabel() {
-        timeLabel.setBounds(275, 325, 100, 50);
-        timeLabel.setFont(new Font("Arial", 0, 20));
-        return timeLabel;
-    }
-
-
-    
-    
-    
-    
+   
     
     //buttons listener
     @Override
     public void actionPerformed(ActionEvent e) {
         
     	if (e.getSource() == this.clickButton) {
-            
-        	//start to run the fight
-        	running = true;
-            
+
         	//behavior
-            if (time != 15) {
+            if (time != MAX) {
                 clicks++;
                 clickLabel.setText("Clicks: " + clicks);
                 //percentage of victory
-                progression = (clicks * 100) / winScore;
-                progressionBar();
-                if (clicks == winScore) {
+                //progression = (clicks * 100) / winScore;
+                //progressionBar();
+                if (clicks >= winScore) {
                 	//player win
                     running = false;
                     win = true;
                     done = true;
-                    dispose();
-
-                    
+                    frame.dispose();
+   
                 }
             }
             //trigger the timer in the first click
             if (clicks == 1) {
+            	
+            	//start to run the fight
+            	running = true;
                 new Thread(this).start();
+      
             }
         }
     }
@@ -191,7 +168,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
     public void run() {
         while (running) {
         	//time is over
-            if (time == 15) {
+            if (time == MAX) {
                 if (clicks >= winScore) {
                 	win = true;
                 } else {
@@ -199,7 +176,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
                 }
                 running = false;
                 done = true;
-                dispose();
+                frame.dispose();
             }
             
             try {
@@ -209,7 +186,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
             }
             if (!running) continue;
             time++;
-            setTimeLabel("Time: " + time);
+            bar.setValue(time);
         }
     }
     
