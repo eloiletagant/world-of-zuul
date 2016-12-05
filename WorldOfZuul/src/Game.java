@@ -125,6 +125,7 @@ public class Game extends JFrame {
         
         speak = new JButton(bubble);
         speak.setBackground(Color.black);
+        speak.setEnabled(false);
         speak.addActionListener(l);
         
         healthBag.add(health);
@@ -231,6 +232,7 @@ public class Game extends JFrame {
         testAddItemsToInventory();
         player.moveRoom(rooms.get(0));
         addChestsToRooms();
+        
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
@@ -569,7 +571,20 @@ public class Game extends JFrame {
       * @param aChest: The chest adding to the room
       */ 
       public void getItemsFromChest(Chest aChest) {
-    	  player.getInventory().manageGold(aChest.getGold());
+    	  ArrayList<Item> chestInv = aChest.getItems();
+    	  for (Item item: chestInv){
+    	  	  if (player.getInventory().addItem(item)){
+    	  		  text.setText("You win " + item.getName());
+    	  	  	  aChest.deleteItem(item);
+    	  	  } else {
+    	  		  text.setText("Your bag is full. You need to sell some items. Come back later");
+    	  	  }
+    	  }
+    	  if (aChest.getGold() > 0){
+    		  player.getInventory().manageGold(aChest.getGold());
+    		  text.setText("You win " + aChest.getGold() + " gold");
+    		  aChest.manageGold(- aChest.getGold());
+    	  }
       }
      
     /**
@@ -629,6 +644,7 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
+        manageEgnimButton();
         if(!player.getLocation().getEvents().isEmpty()) 
         {
         	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
@@ -644,6 +660,21 @@ public class Game extends JFrame {
         	}
         }
         
+    }
+    /**
+     * This method allows to active and disactive the speak button in fonction of the room. 
+     */
+    public void manageEgnimButton ()
+    {
+        if (player.getLocation() == rooms.get(4) || player.getLocation() == rooms.get(9) || player.getLocation() == rooms.get(27))
+        { 
+        	//System.out.print("noimom"); 
+            speak.setEnabled(true);
+        }                
+        else 
+        {
+        	speak.setEnabled(false);
+        }
     }
     
     /**

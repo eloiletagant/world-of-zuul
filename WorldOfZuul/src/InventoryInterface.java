@@ -216,7 +216,7 @@ public class InventoryInterface extends JFrame {
     }
     
     /**
-     * This method create a new window and display all information of the given item.
+     * This method creates a new window and display all information of the given item.
      * @param anItem to display
      */
     public void displayItem(Item anItem)
@@ -339,6 +339,10 @@ public class InventoryInterface extends JFrame {
             			lock=true;
             		}
        		 	}
+            	if (player.getLocation().hasChest()==true)
+            	{
+            		lock=true;
+            	}
             	if (lock==false)
             	{
             		use.setEnabled(false);
