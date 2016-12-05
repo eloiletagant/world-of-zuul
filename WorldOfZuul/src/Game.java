@@ -16,6 +16,7 @@
  */
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
@@ -31,7 +32,11 @@ import javax.swing.JButton;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import character.NPC;
 import character.Player;
+import clickerGame.Clicker;
+import event.Event;
+import event.Fight;
 import room.Door;
 import room.LockedDoor;
 import room.Room;
@@ -125,7 +130,11 @@ public class Game extends JFrame {
         //TEXT DISPLAY --> EN COURS (ANATOLE)
         textDisplay = new JPanel();
         text = new JLabel ("Welcome to Dungeon Clicker",JLabel.CENTER);
-        text.setForeground(Color.WHITE);
+        text.setForeground(Color.YELLOW);
+        Font police = new Font ("Kristen ITC", Font.BOLD, 14);
+        text.setForeground(Color.yellow);
+        text.setFont(police);
+
         JButton button = new JButton("Clear");
         //button.addActionListener(this);
          
@@ -197,6 +206,7 @@ public class Game extends JFrame {
     	
     	createItems();
     	createAllRooms();
+    	setEvents();
         createAllDoors(rooms);
         manageDirectionButtons();
         testAddItemsToInventory();
@@ -287,11 +297,21 @@ public class Game extends JFrame {
     	int fin=32;
     	for(int i=0; i<=fin; i++){
     		if (i < 14 || i > 29)
-    			rooms.add(new Room("Room" + i, 0));
+    			rooms.add(new Room("Room " + i, 0));
     		else
-    			rooms.add(new Room("Room" + i, 1));
+    			rooms.add(new Room("Room " + i, 1));
     	}
     	currentRoom = rooms.get(0);
+    }
+    
+    /**
+     * method to implement all events and NPC on rooms
+     */
+    private void setEvents()
+    {
+    	NPC jeanEude = new NPC("Jean Eude",4, 2, true);
+    	Fight e1 = new Fight("test",w1,player,jeanEude);
+    	rooms.get(1).addEvent(e1);
     }
     
     /**
@@ -423,11 +443,11 @@ public class Game extends JFrame {
         c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
-        k2 = new Key("Sésame", "This key has magic power and will help you to find a treasure.", 20, false);
+        k2 = new Key("Sï¿½same", "This key has magic power and will help you to find a treasure.", 20, false);
         k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
         k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
         k5 = new Key("Clef-Bar", "This key opens a chest.", 20, false);
-        k6 = new Key("Nu-Clef-ère", "This key opens a door.", 20, false);
+        k6 = new Key("Nu-Clef-ï¿½re", "This key opens a door.", 20, false);
         k7 = new Key("Gy-Clef", "This key opens a door.", 20, false);
         l1 = new Lock();
         l1.addKey(k3);
@@ -467,36 +487,6 @@ public class Game extends JFrame {
     private void createDoor(Room room, Room nextRoom, String way) {
     	Door door1 = new Door(nextRoom);
     	room.addExit(door1, way);
-    	/*
-    	Door door2 = new Door(room);
-    	String oppositeWay;
-    	
-    	switch (way)
-    	{
-    	  case "front":
-    	    oppositeWay = "behind";
-    	    break;  
-    	  case "behind":
-      	    oppositeWay = "front";
-      	    break;
-    	  case "right":
-      	    oppositeWay = "left";
-      	    break;
-    	  case "left":
-        	oppositeWay = "right";
-        	break;
-    	  case "upstair":
-        	oppositeWay = "downstair";
-        	break;
-    	  case "downstair":
-          	oppositeWay = "upstair";
-          	break; 
-    	  default:
-    		oppositeWay="";
-    	    break;             
-    	}
-    	nextRoom.addExit(door2, oppositeWay);
-    	*/
     }
     
     /**
@@ -555,6 +545,29 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
+        if(!player.getLocation().getEvents().isEmpty()) 
+        {
+        	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
+        	{
+        		Integer nbr = Integer.valueOf(player.getLocation().getDescription().split(" ")[1]);
+        		Integer result = Clicker.clickerLauncher((nbr * 10));
+        		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
+        		if(win)
+        		{
+        			player.getLocation().getEvents().remove(0);
+        		}
+        	}
+        }
+        
+    }
+    
+    /**
+     * This method modifies the text which is displays in the game
+     * @param aText the text to display in the game
+     */
+    public void setText(String aText)
+    {
+    	text.setText("<html>You are in the "+ currentRoom.getDescription()+"<br>"+aText+"</html>");    	 
     }
     
 }
