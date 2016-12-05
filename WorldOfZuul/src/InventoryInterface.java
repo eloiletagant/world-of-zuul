@@ -216,7 +216,7 @@ public class InventoryInterface extends JFrame {
     }
     
     /**
-     * This method create a new window and display all information of the given item.
+     * This method creates a new window and display all information of the given item.
      * @param anItem to display
      */
     public void displayItem(Item anItem)

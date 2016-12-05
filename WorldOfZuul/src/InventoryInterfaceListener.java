@@ -147,7 +147,6 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    			 {
     	    				 if (door.getValue().getLock().unlock((Key) myItem)==true)
     	    				 {
-    	    				 	 inventory.getGame().manageDirectionButtons();
     	    				 	 inventory.getGame().setText("You have unlocked the door.");
     	    				 	 inventory.getInventory().deleteItem(myItem);
     	        	             inventory.exitInventory();
@@ -158,6 +157,22 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    					 inventory.getGame().setText("This key does not work, please try another key.");
     	    				 }
     	    			 }
+    	    		 }
+    	    		 if (inventory.getPlayer().getLocation().hasChest()==true)
+    	    		 {
+    	    			 Chest aChest=inventory.getPlayer().getLocation().getChest();
+    	    			 if (aChest.getLock().unlock((Key) myItem)==true)
+    	    			 {
+    	    				 
+    	    				 inventory.getGame().setText("You have unlocked the chest.");
+	    				 	 inventory.getInventory().deleteItem(myItem);
+	        	             inventory.exitInventory();
+    	    			 }
+    	    			 else
+	    				 {
+	    					 inventory.getGame().setText("This key does not work, please try another key.");
+	    				 }
+    	    				 
     	    		 }
     	         }
         	 }
