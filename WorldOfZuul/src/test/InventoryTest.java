@@ -35,7 +35,7 @@ public class InventoryTest
 		myInventory = new Inventory(4);
 		myConsumable=new Consumable("Bread", "This bread was cooked by the baker of the village", 20, true, "This bread get 2 health points to the person who eats it", 0, 3, true);
 		myKey=new Key("Key1","This key can open something",0,false);
-		myWeapon=new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5, true);
+		myWeapon=new Weapon("Sword","This sword is very helpfull during a fight", 150, true, 5);
 		myInventory2= new ArrayList<Item>();
 	}
 	
