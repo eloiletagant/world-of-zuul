@@ -14,7 +14,7 @@ public class Clicker {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        Clicker.getScreen().addComponents();
+        Clicker.getScreen().addComponents(); 
         frame.add(Clicker.getScreen());
         frame.setVisible(true);
         screen.getTimer().setWinScore(clicksAsked);
