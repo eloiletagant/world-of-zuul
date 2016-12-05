@@ -76,7 +76,7 @@ public class Game extends JFrame {
     	
     	//Game Listener creation
         l = new GameListener(this);
-        parser = new Parser(this, typingArea);
+        parser = new Parser(this);
         
         Font font = new Font ("Kristen ITC", Font.BOLD, 14);
         
