@@ -84,7 +84,7 @@ public class Inventory {
      * This method allow to add or remove money (by minus int) from the inventory
      */
     public boolean manageGold(int money) {
-        if (gold + money > 0) {
+        if (gold + money >= 0) {
             gold += money;
             return true;
         } else
