@@ -52,7 +52,7 @@ public class GameListener implements ActionListener {
     	    	}
     		}
     	}
-        if (e.getSource() == game.getBehindB())
+    	else if (e.getSource() == game.getBehindB())
         {
         	if (doors.containsKey("behind"))
     		{
@@ -66,7 +66,7 @@ public class GameListener implements ActionListener {
     	    	}
     		}
         }
-        if (e.getSource() == game.getRightB())
+    	else if (e.getSource() == game.getRightB())
         {
         	if (doors.containsKey("right"))
     		{
@@ -80,7 +80,7 @@ public class GameListener implements ActionListener {
     	    	}
     		}
         } 
-        if (e.getSource() == game.getLeftB())
+    	else if (e.getSource() == game.getLeftB())
         {
         	if (doors.containsKey("left"))
     		{
@@ -94,7 +94,7 @@ public class GameListener implements ActionListener {
     	    	}
     		}
         }
-        if (e.getSource() == game.getBagB()) {
+    	else if (e.getSource() == game.getBagB()) {
         	if (game.getInventoryIsOpen()) {
         		game.openInventory(false);
         		game.setOpenningInventory(false);
@@ -104,9 +104,16 @@ public class GameListener implements ActionListener {
         		game.setOpenningInventory(true);
         	}
         }
-        if (e.getSource() == game.getSpeak())
+    	else if (e.getSource() == game.getSpeak())
         {
             game.displayEnigma();
+        }
+    	else if (e.getSource() == game.getSearch())
+        {
+    		if (game.getPlayer().getLocation().hasChest())
+            	game.getItemsFromChest(game.getPlayer().getLocation().getChest());
+    		else
+    			game.setText("There is no chest in this room !");
         }
         	
     }
