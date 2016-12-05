@@ -288,6 +288,10 @@ public class Game extends JFrame {
     	return bag;
     }
     
+    /**
+     * get the typing area
+     * @return
+     */
     public JTextField getTypingArea() {
     	return typingArea;
     }
