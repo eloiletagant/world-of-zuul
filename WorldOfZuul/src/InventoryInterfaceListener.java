@@ -35,7 +35,6 @@ public class InventoryInterfaceListener extends MouseAdapter
      {
     	 items = inventory.getInventory().getItems();
     	 Item anItem=inventory.searchItemDisplayed();
-    	 System.out.println(anItem);
     	 i=0;
     	 if (evt.getSource() != inventory.getBack())
 		 {
