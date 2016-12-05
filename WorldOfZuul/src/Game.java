@@ -148,14 +148,20 @@ public class Game extends JFrame {
         answer.setForeground(Color.yellow);
         answer.setFont(font);
         
-        
+        //typingArea = new JTextField(20);
+        //typingArea.setBackground(Color.black);
+        //typingArea.setForeground(Color.WHITE);
+        //typingArea.addKeyListener(parser);
+        //Create new custom border for JTextField
+        //Border border = BorderFactory.createLineBorder(Color.red);
+        //:typingArea.setBorder(border);
         
         //create the panel which contains all the text
         textDisplay = new JPanel();
         textDisplay.setBackground(Color.black);
         textDisplay.add(text);
-        textDisplay.add(typingArea);
-        textDisplay.add(answer);
+        //textDisplay.add(typingArea);
+        //textDisplay.add(answer);
         
         /*******************************************
          ****** Declaration of all direction buttons 
