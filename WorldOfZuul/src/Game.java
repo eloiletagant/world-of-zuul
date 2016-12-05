@@ -125,6 +125,7 @@ public class Game extends JFrame {
         
         speak = new JButton(bubble);
         speak.setBackground(Color.black);
+        speak.setEnabled(false);
         speak.addActionListener(l);
         
         healthBag.add(health);
@@ -231,6 +232,7 @@ public class Game extends JFrame {
         testAddItemsToInventory();
         player.moveRoom(rooms.get(0));
         addChestsToRooms();
+        
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
@@ -629,6 +631,7 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
+        manageEgnimButton();
         if(!player.getLocation().getEvents().isEmpty()) 
         {
         	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
@@ -644,6 +647,21 @@ public class Game extends JFrame {
         	}
         }
         
+    }
+    /**
+     * This method allows to active and disactive the speak button in fonction of the room. 
+     */
+    public void manageEgnimButton ()
+    {
+        if (player.getLocation() == rooms.get(4) || player.getLocation() == rooms.get(9) || player.getLocation() == rooms.get(27))
+        {
+        	//System.out.print("noimom");
+            speak.setEnabled(true);
+        }               
+        else 
+        {
+        	speak.setEnabled(false);
+        }
     }
     
     /**
