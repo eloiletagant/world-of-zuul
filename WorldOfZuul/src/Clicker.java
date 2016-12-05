@@ -1,4 +1,3 @@
-package clickerGame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -28,12 +27,8 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
     private JLabel clickLabel = new JLabel("Clicks: " + this.clicks);
     private JLabel timeLabel = new JLabel("Time: " + this.time);
         
-    public static void main(String[] args) {
-    	Clicker clicker = new Clicker();
-    	clicker.clickerLauncher(15);
-    }
     
-    public boolean clickerLauncher (int clicksAsked) {
+    public int clickerLauncher (int clicksAsked) {
         
     	frame = new JFrame();
         frame.setSize(400, 450);
@@ -51,8 +46,12 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         frame.add(timeLabel());
         
         frame.setVisible(true);
-        
-        return win;
+        while(running == true)
+        {
+        	
+        }
+
+        return clicks;
         
     }
 
@@ -172,6 +171,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
                 	//player win
                     running = false;
                     win = true;
+                    dispose();
                     clickButton.setEnabled(false);
                     
                 }
@@ -197,7 +197,8 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
                 } else {
                 	win = false;
                 }
-                running = false;                
+                running = false;
+                dispose();
             }
             
             try {
