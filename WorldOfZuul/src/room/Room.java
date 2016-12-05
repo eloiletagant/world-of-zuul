@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import event.Event;
-import item.Lock;
+import item.Chest;
 
 /**
  * This class describes the structure of a room. A room is defined by a name and a map level (0 or 1).
@@ -21,6 +21,7 @@ public class Room {
     private String description; // initiate to "UndescribedRoom" is empty
     private HashMap<String, Door> doors; //String = front, behind, right, left, stair and hole. Doors are uniques on this hashmap
     private ArrayList<Event> events; // an event can appear once on a room
+    private Chest chest; // 
     private int level; // initiate to 0 if the level declaration is < 0
 
     /**
@@ -77,6 +78,15 @@ public class Room {
     public int getLevel() {
         return level;
     }
+    
+    /**
+     * Simple accessor
+     *
+     * @return chest: A chest presents in a room
+     */
+    public Chest getChest() {
+        return chest;
+    }
 
     /**
      * Add an exit to the room. An exit can't be add if it exist or if the direction is already taken.
@@ -130,5 +140,12 @@ public class Room {
      */
     public void removeEvent(Event anEvent) {
         events.remove(anEvent);
+    }
+    
+    /**
+     * Remove an event to the room.
+     */
+    public void addChest(Chest aChest) {
+        chest = aChest;
     }
 }
