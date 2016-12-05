@@ -40,7 +40,6 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         winScore = clicksAsked;
         
         //add comp
-        frame.setLayout(null);
         frame.add(progressionBar());
         frame.add(clickButton());
         frame.add(clickLabel());
@@ -48,9 +47,10 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         
         frame.setVisible(true);
 
-
-
-        return 10;
+        while (!done) {
+        	
+        }
+        return clicks;
         
     }
 
