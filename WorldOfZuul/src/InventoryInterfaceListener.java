@@ -34,6 +34,8 @@ public class InventoryInterfaceListener extends MouseAdapter
      public void mouseEntered(MouseEvent evt)
      {
     	 items = inventory.getInventory().getItems();
+    	 Item anItem=inventory.searchItemDisplayed();
+    	 System.out.println(anItem);
     	 i=0;
     	 if (evt.getSource() != inventory.getBack())
 		 {
@@ -65,7 +67,15 @@ public class InventoryInterfaceListener extends MouseAdapter
     		 {
     			 if (inventory.getUse().isEnabled()==false)
     			 {
-    				 inventory.getUse().setToolTipText("You have to equip a weapon before using this item.");
+    				 if (anItem instanceof Consumable)
+    				 {
+        				 inventory.getUse().setToolTipText("You have to equip a weapon before using this item.");
+
+    				 }
+    				 else if (anItem instanceof Key)
+    				 {
+        				 inventory.getUse().setToolTipText("You can not use a key at the moment.");
+    				 }
     			 }
     		 }
     		 else
