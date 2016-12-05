@@ -541,6 +541,10 @@ public class Game extends JFrame {
 	   player.getInventory().addItem(k4);
 	   player.getInventory().addItem(k5);
 	   player.getInventory().addItem(k7);
+	   player.getInventory().addItem(c1);
+	   player.getInventory().addItem(c4);
+	   player.getInventory().addItem(c3);
+	   player.getInventory().addItem(c5);
    }	
  
    /**
@@ -570,23 +574,47 @@ public class Game extends JFrame {
       * Method used to add a chest in a room
       * @param aChest: The chest adding to the room
       */ 
-      public void getItemsFromChest(Chest aChest) {
+      public void getItemsFromChest(Chest aChest)
+      {
     	  ArrayList<Item> chestInv = aChest.getItems();
+    	  int i = 0;
+    	  String textToAdd="";
+    	  String itemAdded="You won ";
+    	  if (aChest.getNbItems()==0)
+		  {
+	  		  text.setText("This chest is empty.");
+	  		 
+		  }
+    	  else
+    	  {
+    		  int gold=0;
+    		  if (aChest.getGold() > 0)
+        	  {
+        		  player.getInventory().manageGold(aChest.getGold());
+        		  gold = aChest.getGold();
+        		  aChest.manageGold(- gold);
+        	  }
+    		  for (Item item: chestInv)
+    		  {
+    			  if (player.getInventory().addItem(item))
+    			  {
+    				  i+=1;
+    				  itemAdded=itemAdded+item.getName()+", ";
+    			  }
+    			  else
+    			  {
+    				  textToAdd="Your bag is full. You need to sell some items. Come back later";
+    			  }
+    		  }
+    		  itemAdded=itemAdded+" and "+gold+" gold."+textToAdd;
+    		  text.setText(itemAdded); 
+    		  while (i!=0)
+    		  {
+    			  aChest.deleteItem(chestInv.get(0));
+    			  i-=1;
+    		  }
+    	  }
     	  
-    	  for (Item item: chestInv){
-    	  	  if (player.getInventory().addItem(item)){
-    	  		  text.setText("You won " + item.getName());
-    	  	  	  aChest.deleteItem(item);
-    	  	  } else {
-    	  		  text.setText("Your bag is full. You need to sell some items. Come back later");
-    	  	  }
-    	  }
-    	  if (aChest.getGold() > 0){
-    		  player.getInventory().manageGold(aChest.getGold());
-    		  text.setText("You won " + aChest.getGold() + " gold");
-    		  int gold = aChest.getGold();
-    		  aChest.manageGold(- gold);
-    	  }
       }
      
     /**
