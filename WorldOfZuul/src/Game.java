@@ -230,7 +230,8 @@ public class Game extends JFrame {
         createAllDoors(rooms);
         manageDirectionButtons();
         testAddItemsToInventory();
-        player.moveRoom(rooms.get(0)); 
+        player.moveRoom(rooms.get(0));
+        addChestsToRooms();
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
@@ -533,6 +534,15 @@ public class Game extends JFrame {
     	room.addExit(door1, way);
     }
     
+    
+    /**
+     * Method used to add a chest in a room
+     * @param aChest: The chest adding to the room
+     */ 
+     private void addChestsToRooms() {
+    	 rooms.get(8).addChest(ch1);
+     }
+     
     /**
      * Method used to create a locked door
      * @param room: The room which contains the locked door 
