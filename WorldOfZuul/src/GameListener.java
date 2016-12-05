@@ -104,6 +104,10 @@ public class GameListener implements ActionListener {
         		game.setOpenningInventory(true);
         	}
         }
+        if (e.getSource() == game.getSpeak())
+        {
+            game.displayEnigma();
+        }
         	
     }
 
