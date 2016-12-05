@@ -49,7 +49,8 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         frame.setVisible(true);
 
 
-        return clicks;
+
+        return 10;
         
     }
 
