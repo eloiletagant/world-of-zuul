@@ -36,7 +36,7 @@ public class Timer implements Runnable {
                 }
                 Clicker.getScreen().setFightDone();
                 //time is over
-                System.exit(0);
+                return;
 
             }
             try {

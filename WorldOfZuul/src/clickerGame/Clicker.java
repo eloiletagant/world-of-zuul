@@ -11,18 +11,22 @@ public class Clicker {
     public static int clickerLauncher (int clicksAsked) {
         JFrame frame = new JFrame();
         frame.setSize(400, 450);
-        frame.setDefaultCloseOperation(3);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         Clicker.getScreen().addComponents();
         frame.add(Clicker.getScreen());
         frame.setVisible(true);
         screen.getTimer().setWinScore(clicksAsked);
-        while(screen.getFightDone() != true)
+        while(true)
         {
-            //wait during the battle;
+        	if(screen.getFightDone() == true)
+        	{
+        		frame.dispose();
+        		return screen.getClicks();
+        	}
         }
-        return screen.getClicks();
+        
     }
 
     public static Screen getScreen() {
@@ -39,6 +43,11 @@ public class Clicker {
 
     public static void setFrame(JFrame frame) {
         Clicker.frame = frame;
+    }
+    
+    public void dispose()
+    {
+    	frame.dispose();
     }
     
 

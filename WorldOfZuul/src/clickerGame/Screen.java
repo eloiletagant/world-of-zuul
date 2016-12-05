@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class Screen extends JPanel implements ActionListener {
 
@@ -18,10 +19,9 @@ public class Screen extends JPanel implements ActionListener {
     private int progression = 0;
     private JPanel progressionBar = new JPanel();
     private boolean fightDone = false;
-
+    private Clicker c;
 
     private JButton clickButton = new JButton("Click Here!");
-    private JButton restartButton = new JButton("Restart");
     private JLabel clickLabel = new JLabel("Clicks: " + this.clicks);
     private JLabel timeLabel = new JLabel("Time: " + this.time);
 
@@ -112,7 +112,8 @@ public class Screen extends JPanel implements ActionListener {
                     clickButton.setEnabled(true);
                     setFightDone();
                     //player win
-                    System.exit(0);
+                    return;
+                    
                 }
             }
             //trigger the timer in the first click
