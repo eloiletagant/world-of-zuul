@@ -100,14 +100,6 @@ public class Player {
     }
 
     /**
-     * This method returns the number of hands which is available for a character.
-     */
-    public int getNbHandsAvailable()
-    {
-        return nbHandsAvailable;
-    }
-
-    /**
      * This method returns the name of the character.
      */
     public String getName()
