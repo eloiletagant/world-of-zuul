@@ -59,7 +59,7 @@ public class Fight extends Event {
     			if(((Weapon) test).getEquiped())
     			{
     				npcDamages +=((Weapon) test).getDamages() + this.getNpc().getBonusDamages();
-    			}
+    			} 
     		}
     	}
     	
