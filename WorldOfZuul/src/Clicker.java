@@ -19,6 +19,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
     private int winScore;
     private boolean win = false;
     private boolean running = false;
+    private boolean done = false;
     
     
     private JFrame frame;
@@ -46,10 +47,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         frame.add(timeLabel());
         
         frame.setVisible(true);
-        while(running == true)
-        {
-        	
-        }
+
 
         return clicks;
         
@@ -171,8 +169,9 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
                 	//player win
                     running = false;
                     win = true;
+                    done = true;
                     dispose();
-                    clickButton.setEnabled(false);
+
                     
                 }
             }
@@ -198,6 +197,7 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
                 	win = false;
                 }
                 running = false;
+                done = true;
                 dispose();
             }
             
@@ -212,5 +212,4 @@ public class Clicker extends JPanel implements ActionListener, Runnable  {
         }
     }
     
-
 }
