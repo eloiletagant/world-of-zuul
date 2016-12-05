@@ -18,9 +18,9 @@ public class Clicker {
         frame.add(Clicker.getScreen());
         frame.setVisible(true);
         screen.getTimer().setWinScore(clicksAsked);
-        while(true)
+        //while(true)
         {
-        	if(screen.getFightDone() == true)
+        	//if(screen.getFightDone() == true)
         	{
         		frame.dispose();
         		return screen.getClicks();
