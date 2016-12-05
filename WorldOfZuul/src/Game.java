@@ -544,7 +544,7 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
-        if(!player.getLocation().getEvents().isEmpty())
+        if(!player.getLocation().getEvents().isEmpty()) 
         {
         	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
         	{
