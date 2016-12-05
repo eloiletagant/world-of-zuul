@@ -582,7 +582,7 @@ public class Game extends JFrame {
         {
         	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
         	{
-        		Integer nbr = Integer.valueOf(player.getLocation().getDescription().split(" ")[1]);
+        		Integer nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
         		Integer result = Clicker.clickerLauncher((nbr * 10));
         		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
         		if(win)
