@@ -339,6 +339,10 @@ public class InventoryInterface extends JFrame {
             			lock=true;
             		}
        		 	}
+            	if (player.getLocation().hasChest()==true)
+            	{
+            		lock=true;
+            	}
             	if (lock==false)
             	{
             		use.setEnabled(false);
