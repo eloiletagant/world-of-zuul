@@ -594,8 +594,8 @@ public class Game extends JFrame {
 	   player.getInventory().addItem(k5);
 	   player.getInventory().addItem(k7);
 	   player.getInventory().addItem(c1);
-	   player.getInventory().addItem(c4);
-	   player.getInventory().addItem(c3);
+	   player.getInventory().addItem(w1);
+	   player.getInventory().addItem(w2);
 	   player.getInventory().addItem(c5);
    }	
  
