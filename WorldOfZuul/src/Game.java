@@ -329,9 +329,9 @@ public class Game extends JFrame {
     	int fin=32;
     	for(int i=0; i<=fin; i++){
     		if (i < 14 || i > 29)
-    			rooms.add(new Room("Room " + i, 0));
+    			rooms.add(new Room("Room" + i, 0));
     		else
-    			rooms.add(new Room("Room " + i, 1));
+    			rooms.add(new Room("Room" + i, 1));
     	}
     	currentRoom = rooms.get(0);
     }
