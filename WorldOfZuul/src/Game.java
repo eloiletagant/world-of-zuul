@@ -360,9 +360,61 @@ public class Game extends JFrame {
      */
     private void setEvents()
     {
-    	NPC jeanEude = new NPC("Jean Eude",4, 2, true);
-    	Fight e1 = new Fight("test",w1,player,jeanEude);
-    	rooms.get(1).addEvent(e1);
+		//NPC FRIENDLY
+			//Roi Arthur
+			//NPC roiArthur = new NPC("Roi Arthur",10, 2, true);
+			//Fight fight = new Fight("Hello",w1,player,roiArthur);
+			//rooms.get(1).addEvent(fight);
+			
+			//TRADER
+			//BOHORT
+			NPC bohort = new NPC("Borhort",10, 2, true);
+			//Trade trade1 = new Fight("trade1",w1,player,bohort);
+			//rooms.get(24).addEvent(trade1);
+			//LANCELOT
+			NPC lancelot = new NPC("Lancelot",10, 2, true);
+			//Trade trade2 = new Fight("trade2",w1,player,lancelot);
+			//rooms.get(31).addEvent(trade2);
+			
+			//NPC ENIGMA
+			//MERLIN
+			NPC merlin = new NPC("Merlin",15, 2, false);
+			//Enigma enigma1 = new Enigma("Enigma1",k1,player,merlin);
+			//rooms.get(9).addEvent(enigma1);
+			//KARADOC
+			NPC karadoc = new NPC("Karadoc",15, 2, false);
+			//Enigma enigma2 = new Enigma("Enigma2",k2,player,karadoc);
+			//rooms.get(4).addEvent(enigma2);
+			//PERCEVAL
+			NPC perceval = new NPC("Perceval",20, 2, false);
+			//Enigma enigma3 = new Enigma("Enigma3",k5,player,perceval);
+			//rooms.get(27).addEvent(enigma3);
+			
+		//NPC Enemy
+			//MINOTAUR
+			NPC minotaur = new NPC("Minotaur",5, 2, true);
+			Fight fight1 = new Fight("fight1",w3,player,minotaur);
+			rooms.get(3).addEvent(fight1);
+			//SPIDER
+			NPC spider = new NPC("Spider",5, 2, true);
+			Fight fight2 = new Fight("fight2",k3,player,spider);
+			rooms.get(11).addEvent(fight2);
+			//ZOMBIE
+			NPC zombie = new NPC("Zombie",10, 2, true);
+			Fight fight3 = new Fight("fight3",k4,player,zombie);
+			rooms.get(25).addEvent(fight3);
+			//SKELETON
+			NPC skeleton = new NPC("Skeleton",10, 2, true);
+			Fight fight4 = new Fight("fight4",k6,player,skeleton);
+			rooms.get(20).addEvent(fight4);
+			//CREEPER
+			NPC creeper = new NPC("Creeper",30, 2, true);
+			Fight fight5 = new Fight("fight5",w1,player,creeper);
+			rooms.get(16).addEvent(fight5);
+			//MONKEY KING
+			NPC monkey = new NPC("Monkey King",100, 2, true);
+			Fight fight6 = new Fight("fight boss !",w2,player,monkey);
+			rooms.get(32).addEvent(fight6);
     }
     
     /**
@@ -515,17 +567,17 @@ public class Game extends JFrame {
         l6.addKey(k7);
         l7 = new Lock();
         l7.addKey(k1);
-        ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
+        ch1 = new Chest("Ali baba box", "This box contains something for you.", 2, 5, l1);
         ch1.addItem(c2);
         ch1.addItem(w1);
-        ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
+        ch2 = new Chest("Little box","This box contains something for you.", 3, 15, l2);
         ch2.addItem(c1);
         ch2.addItem(c6);
         ch2.addItem(w2);
-        ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
+        ch3 = new Chest("Gift Box", "This box contains something for you.", 2, 30, l3);
         ch3.addItem(c5);
         ch3.addItem(w3);
-        ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
+        ch4 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l4);
         ch4.addItem(c8);
         ch4.addItem(c4);
         ch4.addItem(c3);
@@ -541,6 +593,10 @@ public class Game extends JFrame {
 	   player.getInventory().addItem(k4);
 	   player.getInventory().addItem(k5);
 	   player.getInventory().addItem(k7);
+	   player.getInventory().addItem(c1);
+	   player.getInventory().addItem(w1);
+	   player.getInventory().addItem(w2);
+	   player.getInventory().addItem(c5);
    }	
  
    /**
@@ -570,24 +626,47 @@ public class Game extends JFrame {
       * Method used to add a chest in a room
       * @param aChest: The chest adding to the room
       */ 
-      public void getItemsFromChest(Chest aChest) {
+      public void getItemsFromChest(Chest aChest)
+      {
     	  ArrayList<Item> chestInv = aChest.getItems();
+    	  int i = 0;
+    	  String textToAdd="";
+    	  String itemAdded="You won ";
+    	  if (aChest.getNbItems()==0)
+		  {
+	  		  text.setText("This chest is empty.");
+	  		 
+		  }
+    	  else
+    	  {
+    		  int gold=0;
+    		  if (aChest.getGold() > 0)
+        	  {
+        		  player.getInventory().manageGold(aChest.getGold());
+        		  gold = aChest.getGold();
+        		  aChest.manageGold(- gold);
+        	  }
+    		  for (Item item: chestInv)
+    		  {
+    			  if (player.getInventory().addItem(item))
+    			  {
+    				  i+=1;
+    				  itemAdded=itemAdded+item.getName()+", ";
+    			  }
+    			  else
+    			  {
+    				  textToAdd="Your bag is full. You need to sell some items. Come back later";
+    			  }
+    		  }
+    		  itemAdded=itemAdded+" and "+gold+" gold."+textToAdd;
+    		  text.setText(itemAdded); 
+    		  while (i!=0)
+    		  {
+    			  aChest.deleteItem(chestInv.get(0));
+    			  i-=1;
+    		  }
+    	  }
     	  
-    	  for (Item item: chestInv){
-    	  	  if (player.getInventory().addItem(item)){
-    	  		  text.setText("You win " + item.getName());
-    	  		  player.getInventory().addItem(item);
-    	  	  	  aChest.deleteItem(item);
-    	  	  } else {
-    	  		  text.setText("Your bag is full. You need to sell some items. Come back later");
-    	  	  }
-    	  }
-    	  if (aChest.getGold() > 0){
-    		  player.getInventory().manageGold(aChest.getGold());
-    		  text.setText("You win " + aChest.getGold() + " gold");
-    		  int gold = aChest.getGold();
-    		  aChest.manageGold(- gold);
-    	  }
       }
      
     /**
