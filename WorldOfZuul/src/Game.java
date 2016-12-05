@@ -505,6 +505,9 @@ public class Game extends JFrame {
         l7 = new Lock();
         l7.addKey(k1);
         ch1 = new Chest("Ali baba box", "This box contains something for you.", 1, 5, l1);
+        ch1.addItem(c2);
+        ch1.addItem(c2);
+        
         ch2 = new Chest("Little box","This box contains something for you.", 2, 15, l2);
         ch3 = new Chest("Gift Box", "This box contains something for you.", 3, 30, l3);
         ch4 = new Chest("Treasure box", "This box contains something for you.", 2, 60, l4);
@@ -512,11 +515,12 @@ public class Game extends JFrame {
     
    private void testAddItemsToInventory(){
 	   player.getInventory().addItem(k1);
-	   player.getInventory().addItem(w1);
-	   player.getInventory().addItem(c4);
-	   player.getInventory().addItem(w3);
 	   player.getInventory().addItem(k2);
-	   player.getInventory().addItem(c7);
+	   player.getInventory().addItem(k3);
+	   player.getInventory().addItem(k4);
+	   player.getInventory().addItem(k5);
+	   player.getInventory().addItem(k6);
+	   player.getInventory().addItem(k7);
    }	
  
    /**
