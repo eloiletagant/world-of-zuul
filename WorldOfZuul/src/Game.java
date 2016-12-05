@@ -657,7 +657,7 @@ public class Game extends JFrame {
         { 
         	//System.out.print("noimom"); 
             speak.setEnabled(true);
-        }               
+        }                
         else 
         {
         	speak.setEnabled(false);
