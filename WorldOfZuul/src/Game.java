@@ -572,9 +572,10 @@ public class Game extends JFrame {
       */ 
       public void getItemsFromChest(Chest aChest) {
     	  ArrayList<Item> chestInv = aChest.getItems();
+    	  
     	  for (Item item: chestInv){
     	  	  if (player.getInventory().addItem(item)){
-    	  		  text.setText("You win " + item.getName());
+    	  		  text.setText(text + "You win " + item.getName());
     	  		  player.getInventory().addItem(item);
     	  	  	  aChest.deleteItem(item);
     	  	  } else {
@@ -583,8 +584,8 @@ public class Game extends JFrame {
     	  }
     	  if (aChest.getGold() > 0){
     		  player.getInventory().manageGold(aChest.getGold());
-    		  text.setText("You win " + aChest.getGold() + " gold");
-    		  aChest.manageGold(- aChest.getGold());
+    		  text.setText(text + "You win " + aChest.getGold() + " gold");
+    		  aChest.manageGold(- (aChest.getGold()));
     	  }
       }
      
