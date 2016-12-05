@@ -360,9 +360,61 @@ public class Game extends JFrame {
      */
     private void setEvents()
     {
-    	NPC jeanEude = new NPC("Jean Eude",4, 2, true);
-    	Fight e1 = new Fight("test",w1,player,jeanEude);
-    	rooms.get(1).addEvent(e1);
+		//NPC FRIENDLY
+			//Roi Arthur
+			//NPC roiArthur = new NPC("Roi Arthur",10, 2, true);
+			//Fight fight = new Fight("Hello",w1,player,roiArthur);
+			//rooms.get(1).addEvent(fight);
+			
+			//TRADER
+			//BOHORT
+			NPC bohort = new NPC("Borhort",10, 2, true);
+			//Trade trade1 = new Fight("trade1",w1,player,bohort);
+			//rooms.get(24).addEvent(trade1);
+			//LANCELOT
+			NPC lancelot = new NPC("Lancelot",10, 2, true);
+			//Trade trade2 = new Fight("trade2",w1,player,lancelot);
+			//rooms.get(31).addEvent(trade2);
+			
+			//NPC ENIGMA
+			//MERLIN
+			NPC merlin = new NPC("Merlin",15, 2, false);
+			//Enigma enigma1 = new Enigma("Enigma1",k1,player,merlin);
+			//rooms.get(9).addEvent(enigma1);
+			//KARADOC
+			NPC karadoc = new NPC("Karadoc",15, 2, false);
+			//Enigma enigma2 = new Enigma("Enigma2",k2,player,karadoc);
+			//rooms.get(4).addEvent(enigma2);
+			//PERCEVAL
+			NPC perceval = new NPC("Perceval",20, 2, false);
+			//Enigma enigma3 = new Enigma("Enigma3",k5,player,perceval);
+			//rooms.get(27).addEvent(enigma3);
+			
+		//NPC Enemy
+			//MINOTAUR
+			NPC minotaur = new NPC("Minotaur",5, 2, true);
+			Fight fight1 = new Fight("fight1",w3,player,minotaur);
+			rooms.get(3).addEvent(fight1);
+			//SPIDER
+			NPC spider = new NPC("Spider",5, 2, true);
+			Fight fight2 = new Fight("fight2",k3,player,spider);
+			rooms.get(11).addEvent(fight2);
+			//ZOMBIE
+			NPC zombie = new NPC("Zombie",10, 2, true);
+			Fight fight3 = new Fight("fight3",k4,player,zombie);
+			rooms.get(25).addEvent(fight3);
+			//SKELETON
+			NPC skeleton = new NPC("Skeleton",10, 2, true);
+			Fight fight4 = new Fight("fight4",k6,player,skeleton);
+			rooms.get(20).addEvent(fight4);
+			//CREEPER
+			NPC creeper = new NPC("Creeper",30, 2, true);
+			Fight fight5 = new Fight("fight5",w1,player,creeper);
+			rooms.get(16).addEvent(fight5);
+			//MONKEY KING
+			NPC monkey = new NPC("Monkey King",100, 2, true);
+			Fight fight6 = new Fight("fight boss !",w2,player,monkey);
+			rooms.get(32).addEvent(fight6);
     }
     
     /**
