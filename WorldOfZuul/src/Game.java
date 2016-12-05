@@ -187,7 +187,7 @@ public class Game extends JFrame {
         createAllDoors(rooms);
         manageDirectionButtons();
         testAddItemsToInventory();
-        player.moveRoom(rooms.get(0));
+        player.moveRoom(rooms.get(0)); 
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
