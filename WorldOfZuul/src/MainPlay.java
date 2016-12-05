@@ -23,7 +23,7 @@ public class MainPlay extends JFrame implements ActionListener {
     
     private ImageIcon backPicture, room, room2;
     
-    private int nbrRoom = 0;
+    private int nbrRoom = 0; 
     private Game game;
     
     
