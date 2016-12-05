@@ -41,6 +41,7 @@ public class Room {
             level = lvl;
         doors = new HashMap<String, Door>();
         events = new ArrayList<Event>();
+        chest = null;
     }
 
     /**
