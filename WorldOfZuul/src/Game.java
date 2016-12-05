@@ -352,8 +352,8 @@ public class Game extends JFrame {
         createDoor(rooms.get(18), rooms.get(16) , "right");
         createDoor(rooms.get(18), rooms.get(19) , "left");
         //Room 19
-        createDoor(rooms.get(19), rooms.get(18) , "behind");
-        createDoor(rooms.get(19), rooms.get(20) , "left");
+        createDoor(rooms.get(19), rooms.get(18) , "left");
+        createDoor(rooms.get(19), rooms.get(20) , "right");
         //Room 20
         createDoor(rooms.get(20), rooms.get(19) , "behind");
         createDoor(rooms.get(20), rooms.get(21) , "left");
