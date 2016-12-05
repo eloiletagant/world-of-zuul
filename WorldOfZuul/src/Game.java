@@ -475,11 +475,11 @@ public class Game extends JFrame {
         c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
-        k2 = new Key("S�same", "This key has magic power and will help you to find a treasure.", 20, false);
+        k2 = new Key("Sesame", "This key has magic power and will help you to find a treasure.", 20, false);
         k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
         k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
         k5 = new Key("Clef-Bar", "This key opens a chest.", 20, false);
-        k6 = new Key("Nu-Clef-�re", "This key opens a door.", 20, false);
+        k6 = new Key("Nu-Clef-ere", "This key opens a door.", 20, false);
         k7 = new Key("Gy-Clef", "This key opens a door.", 20, false);
         l1 = new Lock();
         l1.addKey(k3);
