@@ -281,6 +281,15 @@ public class Game extends JFrame {
     }
     
     /**
+     * Accessor for the "speak" attribute
+     * @return left: 
+     */
+    public JButton getSpeak() {
+    	return speak;
+    }
+    
+    
+    /**
      * Accessor for the bag attribute
      * @return bag: The button used to open the player inventory into the game
      */
@@ -601,6 +610,62 @@ public class Game extends JFrame {
     public void setText(String aText)
     {
     	text.setText("<html>You are in the "+ currentRoom.getDescription()+"<br>"+aText+"</html>");    	 
+    }
+    void displayEnigma()
+    {
+        JFrame enigmaFrame = new JFrame();
+        JPanel globalFram = new JPanel (new GridLayout (1,2));
+        JPanel egnima = new JPanel (new GridLayout (2,1));
+        JLabel logo = new JLabel();
+         
+        
+       JPanel image = new JPanel();   
+       image.setBackground(Color.BLACK);
+        Icon interogationPoint = new ImageIcon("./pictures/Question.png");
+        logo = new JLabel (interogationPoint);
+        // logo.setBackground(Color.BLACK);
+         
+         JLabel textEgnima = new JLabel ("EGnimeeeee", JLabel.CENTER);
+         textEgnima.setBackground(Color.BLACK);
+         textEgnima.setForeground(Color.YELLOW);
+         textEgnima.setOpaque(true);
+         Font police = new Font ("Kristen ITC", Font.BOLD, 14);
+         textEgnima.setFont(police);
+         
+         JTextField typingArea = new JTextField(20);
+       
+        
+        
+        //typingArea.addKeyListener(parser);
+        
+        //Create new custom border for JTextField
+     //   Border border = BorderFactory.createLineBorder(Color.red);
+      //  typingArea.setBorder(border);
+         
+       
+        
+       
+        
+        typingArea = new JTextField(20);
+        typingArea.setBackground(Color.black);
+        typingArea.setForeground(Color.WHITE);
+       // typingArea.addKeyListener(parser);
+        
+        image.add(logo);
+        
+        egnima.add(textEgnima);
+        egnima.add(typingArea);
+        
+        globalFram.add(image);
+        globalFram.add(egnima);
+        
+        enigmaFrame.setSize(500,500);
+        
+        
+        enigmaFrame.add(globalFram);
+        enigmaFrame.pack();
+        enigmaFrame.setVisible(true);
+        
     }
     
 }

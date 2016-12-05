@@ -79,7 +79,7 @@ public class GameListener implements ActionListener {
     	    		game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
-        }
+        } 
         if (e.getSource() == game.getLeftB())
         {
         	if (doors.containsKey("left"))
