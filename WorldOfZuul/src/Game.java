@@ -16,6 +16,7 @@
  */
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -23,6 +24,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -41,6 +43,7 @@ import room.Door;
 import room.LockedDoor;
 import room.Room;
 import item.*;
+import javax.swing.JProgressBar;
 
 
 public class Game extends JFrame {
@@ -57,6 +60,9 @@ public class Game extends JFrame {
     private boolean inventoryIsOpen = false;
     public  Sound sound;
     
+    private static int MIN = 0;
+    private static int MAX = 15;
+    
     private JButton left, behind, front, right, bag, search, speak; //direction arrows and bag (inventory)
     private JLabel title, text, pictureRoom, health, answer;
     private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
@@ -65,7 +71,16 @@ public class Game extends JFrame {
     private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
+    private Clicker clicker = new Clicker(this);
     
+    
+    //for the clicker game
+    private JFrame clickerFrame;
+    private JButton clickButton;
+    private JLabel clickLabel;
+    private JProgressBar bar;
+    
+    private Container globalPanel;
     
     
     /**
@@ -224,6 +239,8 @@ public class Game extends JFrame {
     	player = new Player ("Kaamelott");
     	rooms = new ArrayList<Room>();
     	
+    	//create the frame of the clicker
+    	createClickerFrame();
     	createItems();
     	createAllRooms();
     	setEvents();
@@ -242,12 +259,61 @@ public class Game extends JFrame {
     	answer.setText(s);
     }
     
+    public void createClickerFrame() {
+        
+    	clickerFrame = new JFrame();
+    	clickerFrame.setSize(400, 450);
+    	clickerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    	clickerFrame.setResizable(false);
+    	clickerFrame.setLocationRelativeTo(null);
+    	
+        //bar.setStringPainted(true);
+    	bar = new JProgressBar();
+        bar.setMinimum(MIN);
+        bar.setMaximum(MAX);
+        
+        clickButton = new JButton("Click Here!");
+        clickButton.addActionListener(clicker);
+        clickButton.setFont(new Font("Arial", 1, 40));
+        
+        clickLabel = new JLabel("Clicks: " + clicker.getClicks(), JLabel.CENTER);
+        clickLabel.setFont(new Font("Arial", 0, 20));
+        
+        globalPanel = new JPanel(new GridLayout(3,1));
+        globalPanel.add(bar, BorderLayout.NORTH);
+        globalPanel.add(clickButton, BorderLayout.CENTER);
+        globalPanel.add(clickLabel, BorderLayout.SOUTH);
+        
+        clickerFrame.add(globalPanel);
+        clickerFrame.pack();
+        clickerFrame.setVisible(false);
+        
+
+    }
+    
+    public JLabel getClickLabel() {
+    	return clickLabel;
+    }
+    
+    public JButton getClickButton() {
+    	return clickButton;
+    }
+    
+    public JProgressBar getBar() {
+    	return bar;
+    }
+    
+    
     /**
      * Accessor for the "player" attribute
      * @return player: The player which plays the game
      */
     public Player getPlayer() {
     	return player;
+    }
+    
+    public JFrame getClickerFrame() {
+    	return clickerFrame;
     }
 
     /**
@@ -394,7 +460,7 @@ public class Game extends JFrame {
 			//MINOTAUR
 			NPC minotaur = new NPC("Minotaur",5, 2, true);
 			Fight fight1 = new Fight("fight1",w3,player,minotaur);
-			rooms.get(3).addEvent(fight1);
+			rooms.get(1).addEvent(fight1);
 			//SPIDER
 			NPC spider = new NPC("Spider",5, 2, true);
 			Fight fight2 = new Fight("fight2",k3,player,spider);
@@ -731,9 +797,11 @@ public class Game extends JFrame {
         {
         	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
         	{
-        		Clicker cli = new Clicker();
+        		
         		int nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
-        		int result = cli.clickerLauncher((nbr * 10));
+        		clicker = new Clicker(this);
+        		
+        		int result = clicker.clickerLauncher((nbr * 10));
         		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
         		if(win)
         		{
@@ -775,8 +843,8 @@ public class Game extends JFrame {
         JLabel logo = new JLabel();
          
         
-       JPanel image = new JPanel();   
-       image.setBackground(Color.BLACK);
+        JPanel image = new JPanel();   
+        image.setBackground(Color.BLACK);
         Icon interogationPoint = new ImageIcon("./pictures/Question.png");
         logo = new JLabel (interogationPoint);
         // logo.setBackground(Color.BLACK);
