@@ -56,10 +56,12 @@ public class Game extends JFrame {
     private JButton left, behind, front, right, bag, search, speak; //direction arrows and bag (inventory)
     private JLabel title, text, pictureRoom, health;
     private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
+    private JTextField typingArea;
     
     private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
+    
     
     
     /**
@@ -69,6 +71,7 @@ public class Game extends JFrame {
     	
     	//Game Listener creation
         l = new GameListener(this);
+        parser = new Parser(this);
         
     	/*****************************
          ****** Pictures instantiation
@@ -125,14 +128,20 @@ public class Game extends JFrame {
         
         //TEXT DISPLAY --> EN COURS (ANATOLE)
         textDisplay = new JPanel();
+        textDisplay.setBackground(Color.black);
         text = new JLabel ("Welcome to Dungeon Clicker",JLabel.CENTER);
         text.setForeground(Color.WHITE);
-        JButton button = new JButton("Clear");
+        //JButton button = new JButton("Clear");
         //button.addActionListener(this);
          
-        JTextField typingArea;
+        
         typingArea = new JTextField(20);
-        //typingArea.addKeyListener(this);
+        typingArea.setBackground(Color.black);
+        typingArea.setForeground(Color.WHITE);
+        typingArea.addKeyListener(parser);
+        
+        textDisplay.add(text);
+        textDisplay.add(typingArea);
         
         /*******************************************
          ****** Declaration of all direction buttons 
@@ -173,7 +182,7 @@ public class Game extends JFrame {
              
         //Adding buttons in the buttonsPanel
         buttonsPanel.add(healthBag, BorderLayout.WEST);
-        buttonsPanel.add(text, BorderLayout.CENTER);
+        buttonsPanel.add(textDisplay, BorderLayout.CENTER);
         buttonsPanel.add(buttonDirection, BorderLayout.EAST);
              
         //Creation of a panel which will contain the room picture at the top and the buttons at the below
@@ -253,6 +262,10 @@ public class Game extends JFrame {
      */
     public JButton getBagB() {
     	return bag;
+    }
+    
+    public JTextField getTypingArea() {
+    	return typingArea;
     }
     
     public void setOpenningInventory(boolean state) {
@@ -515,6 +528,13 @@ public class Game extends JFrame {
         room = new ImageIcon("pictures/"+ currentRoom.getDescription()+".png");
         pictureRoom.setIcon(room); 
     }
+    
+    /**
+     * method to set the text display on the screen
+     */
+    public void setText(String text) {
+    	this.text.setText("You are in the " + text);
+    }
     /**
      * Method used to move in a next room linked to the current room
      * @param way: The direction of the next room
@@ -522,7 +542,7 @@ public class Game extends JFrame {
     public void move(String way)
     {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
-        text.setText("You are in the " + currentRoom.getDescription());
+        setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();

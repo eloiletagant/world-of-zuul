@@ -23,9 +23,12 @@ public class Parser extends JFrame implements KeyListener, ActionListener {
     //getContentPane().add(typingArea, BorderLayout.PAGE_START);
     //getContentPane().add(button, BorderLayout.PAGE_END);
  
+	private String output;
+	private Game game;
+	
      
-    public Parser(String name) {
-        super(name);
+    public Parser(Game g) {
+        g = game;
     }
      
      
@@ -35,6 +38,11 @@ public class Parser extends JFrame implements KeyListener, ActionListener {
      
     /** Handle the key pressed event from the text field. */
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+        	output = game.getTypingArea().getText();
+            game.setText(output);
+            
+        }   
     }
      
     /** Handle the key released event from the text field. */
