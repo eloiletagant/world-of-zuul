@@ -299,6 +299,14 @@ public class Game extends JFrame {
     }
     
     /**
+     * Accessor for the search attribute
+     * @return search: The button used to search for a chest in a room
+     */
+    public JButton getSearch() {
+    	return search;
+    }
+    
+    /**
      * get the typing area
      * @return
      */
@@ -520,7 +528,8 @@ public class Game extends JFrame {
         ch4.addItem(c8);
         ch4.addItem(c4);
         ch4.addItem(c3);
-        ch4.addItem(w4);
+        ch4.addItem(k6);
+
     }
     
     
@@ -530,7 +539,6 @@ public class Game extends JFrame {
 	   player.getInventory().addItem(k3);
 	   player.getInventory().addItem(k4);
 	   player.getInventory().addItem(k5);
-	   player.getInventory().addItem(k6);
 	   player.getInventory().addItem(k7);
    }	
  
@@ -552,7 +560,18 @@ public class Game extends JFrame {
      */ 
      private void addChestsToRooms() {
     	 rooms.get(8).addChest(ch1);
+    	 rooms.get(29).addChest(ch4);
+    	 rooms.get(15).addChest(ch3);
+    	 rooms.get(12).addChest(ch2);
      }
+     
+     /**
+      * Method used to add a chest in a room
+      * @param aChest: The chest adding to the room
+      */ 
+      public void getItemsFromChest(Chest aChest) {
+    	  player.getInventory().manageGold(aChest.getGold());
+      }
      
     /**
      * Method used to create a locked door
@@ -615,8 +634,9 @@ public class Game extends JFrame {
         {
         	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
         	{
-        		Integer nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
-        		Integer result = Clicker.clickerLauncher((nbr * 10));
+        		Clicker cli = new Clicker();
+        		int nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
+        		int result = cli.clickerLauncher((nbr * 10));
         		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
         		if(win)
         		{

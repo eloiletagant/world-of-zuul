@@ -90,6 +90,17 @@ public class Room {
     }
 
     /**
+     * Simple accessor
+     * @return true: If the room has a chest
+     */
+    public boolean hasChest() {
+        if (this.chest != null)
+        	return true;
+        else
+        	return false;
+    }
+    
+    /**
      * Add an exit to the room. An exit can't be add if it exist or if the direction is already taken.
      *
      * @param newDoor Door we want to add
