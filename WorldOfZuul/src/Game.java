@@ -304,7 +304,6 @@ public class Game extends JFrame {
         //Room 4
         createDoor(rooms.get(4), rooms.get(1) , "front");
         createDoor(rooms.get(4), rooms.get(3) , "right");
-        
         //Room 5
         createDoor(rooms.get(5), rooms.get(8) , "front");
         createDoor(rooms.get(5), rooms.get(6) , "right");
@@ -334,10 +333,9 @@ public class Game extends JFrame {
         createDoor(rooms.get(13), rooms.get(14) , "front");
         //Room 14
         createDoor(rooms.get(14), rooms.get(22) , "left");
-        createDoor(rooms.get(14), rooms.get(13) , "right");
+        createDoor(rooms.get(14), rooms.get(13) , "behind");
         createDoor(rooms.get(14), rooms.get(15) , "front");
         //Room 15
-        
         createDoor(rooms.get(15), rooms.get(21) , "front");
         createDoor(rooms.get(15), rooms.get(16) , "right");
         createDoor(rooms.get(15), rooms.get(14) , "left");
@@ -349,15 +347,15 @@ public class Game extends JFrame {
         createDoor(rooms.get(17), rooms.get(30) , "front");
         createDoor(rooms.get(17), rooms.get(16) , "behind");
         //Room 18
-        createDoor(rooms.get(18), rooms.get(16) , "right");
-        createDoor(rooms.get(18), rooms.get(19) , "left");
+        createDoor(rooms.get(18), rooms.get(16) , "left");
+        createDoor(rooms.get(18), rooms.get(19) , "right");
         //Room 19
         createDoor(rooms.get(19), rooms.get(18) , "left");
         createDoor(rooms.get(19), rooms.get(20) , "right");
         //Room 20
-        createDoor(rooms.get(20), rooms.get(19) , "behind");
-        createDoor(rooms.get(20), rooms.get(21) , "left");
-        createDoor(rooms.get(20), rooms.get(23) , "front");
+        createDoor(rooms.get(20), rooms.get(19) , "left");
+        createDoor(rooms.get(20), rooms.get(21) , "front");
+        createDoor(rooms.get(20), rooms.get(23) , "right");
         //Room 21 
         createDoor(rooms.get(21), rooms.get(1) , "front");
         //Room 22
