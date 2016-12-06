@@ -257,7 +257,6 @@ public class Game extends JFrame {
     	setEvents();
         createAllDoors(rooms);
         manageButtons();
-        testAddItemsToInventory();
         player.moveRoom(rooms.get(0));
         addChestsToRooms();
         
@@ -689,19 +688,6 @@ public class Game extends JFrame {
 
     }
     
-    
-   private void testAddItemsToInventory(){
-	   player.getInventory().addItem(k1);
-	   player.getInventory().addItem(k2);
-	   player.getInventory().addItem(k3);
-	   player.getInventory().addItem(k4);
-	   player.getInventory().addItem(k5);
-	   player.getInventory().addItem(k7);
-	   player.getInventory().addItem(c1);
-	   player.getInventory().addItem(w1);
-	   player.getInventory().addItem(w2);
-	   player.getInventory().addItem(c5);
-   }	
  
    /**
     * Method used to create a door
