@@ -844,8 +844,6 @@ public class Game extends JFrame {
      */
     public void updateFightScore() {
     	
-    	System.out.println(clicker.getClicks());
-    	
     	//erase the frame
     	clickerFrame.setVisible(false);
     	manageButtons();
