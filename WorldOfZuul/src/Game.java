@@ -867,7 +867,7 @@ public class Game extends JFrame {
 		
 		if(win){
 			currentRoom.getEvents().remove(0);
-			setTextEvent("You won the fight ! for this time ...");
+			setTextEvent("You won the fight ! congrats");
 		}
 		
 		healthBar.setValue(player.getHealth()); 
@@ -917,7 +917,6 @@ public class Game extends JFrame {
         for (Event event : currentRoom.getEvents()) {
         	if (event instanceof Enigma) {
         		question = ((Enigma) event).getQuestion();
-                System.out.println(((Enigma) event).getAnswer());
         	}
         }
         
