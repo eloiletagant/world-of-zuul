@@ -72,7 +72,7 @@ public class Game extends JFrame {
     private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthIcons, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
-    
+    private JFrame enigmaFrame;
     private boolean isEnemy;
     private String question;
     
@@ -892,7 +892,7 @@ public class Game extends JFrame {
      */
     void displayEnigma()
     {
-        JFrame enigmaFrame = new JFrame();
+        enigmaFrame = new JFrame();
         JPanel globalFrame = new JPanel (new GridLayout (1,2));
         JPanel image = new JPanel(); 
         JPanel enigma = new JPanel (new GridLayout (3,1));
@@ -956,6 +956,10 @@ public class Game extends JFrame {
     
     public JLabel getEnigmaLabel() {
     	return textEnigma;
+    }
+    
+    public JFrame getEnigmaFrame() {
+    	return enigmaFrame;
     }
     
 }

@@ -107,6 +107,7 @@ public class GameListener implements ActionListener {
             }
         	if (enigma.checkAnswer(game.getTypingArea().getText())) {
         		game.setTextEvent("Well done, you get it!");
+        		game.getEnigmaFrame().dispose();
         	} else {
         		game.setTextEvent("Sorry, try again!");
         	}
