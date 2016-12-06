@@ -474,18 +474,18 @@ public class Game extends JFrame {
 			//MERLIN
 			NPC merlin = new NPC("Merlin", 15, 2, false);
 			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
-			String a1 = "The socks";
+			String a1 = "socks";
 			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
 			rooms.get(1).addEvent(enigma1); //1 instead of 9
 			
 			//KARADOC
 			NPC karadoc = new NPC("Karadoc", 15, 2, false);
-			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with T, ends with T and has T in it?", "Teapot");
+			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with T, ends with T and has T in it?", "teapot");
 			rooms.get(4).addEvent(enigma2);
 			
 			//PERCEVAL
 			NPC perceval = new NPC("Perceval", 20, 2, false);
-			String a3 = "The letter e";
+			String a3 = "letter e";
 			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>I am the beginning of everything, the end of time and space, the beginning of every end, and the end of every place. What am I?</html>", a3);
 			rooms.get(27).addEvent(enigma3);
 			
@@ -793,17 +793,16 @@ public class Game extends JFrame {
         if (doors.containsKey("right"))
             right.setEnabled(true);    
             
-        
-        //enigmas
+      //enigmas
         //This method allows to active and disabled the speak button in fonction of the room.
+        boolean hasEvent = false;
         for (Event event : currentRoom.getEvents()) {
         	if (event instanceof Enigma) { 
-        		speak.setEnabled(true);
-        	} else {
-        		speak.setEnabled(false);
+        		hasEvent = true;
+        		break;
         	}
-        
         }
+        speak.setEnabled(hasEvent);
                 
     }
     

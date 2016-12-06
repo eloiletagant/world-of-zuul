@@ -69,16 +69,18 @@ public class Enigma extends Event {
      * This method will test if the answer is correct.
      * @param playerAnswer
      */
-    public boolean checkAnswer(String playerAnswer) {
-        if (playerAnswer.equals(answer)) {
-            //System.out.println("Good answer !");
+    public boolean checkAnswer(String playerAnswer)
+    {
+    	String anAnswer=playerAnswer.toLowerCase();
+        if (playerAnswer.contains(answer))
+        {
             disableEnigma();
-            return getPlayer().getInventory().addItem(super.getItem());
-            
-        } else {
-            System.out.println("Wrong answer retry it later !");
-            return false;
-            
+            return getPlayer().getInventory().addItem(super.getItem());  
+        }
+        else
+        {
+            //System.out.println("Wrong answer retry it later !");
+            return false;  
         }
     }
 
