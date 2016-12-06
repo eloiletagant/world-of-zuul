@@ -791,17 +791,16 @@ public class Game extends JFrame {
         if (doors.containsKey("right"))
             right.setEnabled(true);    
             
-        
-        //enigmas
+      //enigmas
         //This method allows to active and disabled the speak button in fonction of the room.
+        boolean hasEvent = false;
         for (Event event : currentRoom.getEvents()) {
         	if (event instanceof Enigma) { 
-        		speak.setEnabled(true);
-        	} else {
-        		speak.setEnabled(false);
+        		hasEvent = true;
+        		break;
         	}
-        
         }
+        speak.setEnabled(hasEvent);
                 
     }
     
