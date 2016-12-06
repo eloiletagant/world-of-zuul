@@ -473,12 +473,12 @@ public class Game extends JFrame {
 			NPC merlin = new NPC("Merlin", 15, 2, false);
 			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
 			String a1 = "The socks";
-			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1); 
+			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
 			rooms.get(1).addEvent(enigma1); //1 instead of 9
 			
 			//KARADOC
 			NPC karadoc = new NPC("Karadoc", 15, 2, false);
-			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with \"T\", ends with \"T\" and has \"T\" in it?", "Teapot");
+			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with T, ends with T and has T in it?", "Teapot");
 			rooms.get(4).addEvent(enigma2);
 			
 			//PERCEVAL
@@ -856,7 +856,6 @@ public class Game extends JFrame {
     	
     	//erase the frame
     	clickerFrame.setVisible(false);
-    	clicker.resetClicker();
     	manageButtons();
 		result = clicker.getClicks();
 		
@@ -912,7 +911,7 @@ public class Game extends JFrame {
         // logo.setBackground(Color.BLACK);
         
         
-        for (Event event : player.getLocation().getEvents()) {
+        for (Event event : currentRoom.getEvents()) {
         	if (event instanceof Enigma) {
         		question = ((Enigma) event).getQuestion();
         	}
