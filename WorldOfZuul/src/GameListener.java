@@ -8,6 +8,7 @@ import javax.swing.*;
 import character.NPC;
 import character.Player;
 import event.Enigma;
+import event.Event;
 import item.Item;
 import item.Weapon;
 import room.Door;
@@ -98,6 +99,12 @@ public class GameListener implements ActionListener {
     		}
     		
         } else if (e.getSource() == game.getEnigmaButton()) {
+        	// We are looking for the enigma in the player current room
+            for (Event event : game.getPlayer().getLocation().getEvents()) {
+            	if (event instanceof Enigma) {
+            		enigma = (Enigma) event;
+            	}
+            }
         	if (enigma.checkAnswer(game.getTypingArea().getText())) {
         		game.setTextEvent("Well done, you get it!");
         	} else {
