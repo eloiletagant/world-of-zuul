@@ -865,10 +865,13 @@ public class Game extends JFrame {
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
 		
-		if(win)
+		if(win){
 			currentRoom.getEvents().remove(0);
+		}
 		
-        if(player.getHealth()==0)
+		healthBar.setValue(player.getHealth()); 
+        
+		if(player.getHealth()==0)
         {
         	this.dispose();
         	new GameOver();
