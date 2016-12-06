@@ -814,7 +814,6 @@ public class Game extends JFrame {
         changePicture();
         manageButtons();
         isEnemy = false;
-        System.out.println(player.getHealth());
         
         //get the eventual fight of the room
         for (Event event : currentRoom.getEvents()) {
@@ -832,7 +831,10 @@ public class Game extends JFrame {
 				clicker.clickerLauncher(10);
 
         	}
-        
+        }
+        if(player.getHealth()==0)
+        {
+        	System.exit(1);
         }
         
     }
