@@ -62,10 +62,6 @@ public class Victory extends JFrame implements ActionListener {
         this.setVisible(true);
         
     }    
-     
-    public static void main(String[] args) {
-        Victory win = new Victory();
-    }
 
     public void actionPerformed(ActionEvent e) {
         game = new Game();

@@ -848,14 +848,8 @@ public class Game extends JFrame {
         		//launch the clicker game
         		clicker.resetClicker();
 				clicker.clickerLauncher(10);
-
         	}
         }
-        if(player.getHealth()==0)
-        {
-        	this.dispose();
-        	GameOver.main();
-        } 
     }
     
     /**
@@ -870,10 +864,15 @@ public class Game extends JFrame {
 		
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
-		if(win) {
-			currentRoom.getEvents().remove(0);
-		}
 		
+		if(win)
+			currentRoom.getEvents().remove(0);
+		
+        if(player.getHealth()==0)
+        {
+        	this.dispose();
+        	new GameOver();
+        } 
     }
     
     

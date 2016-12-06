@@ -62,10 +62,6 @@ public class GameOver extends JFrame implements ActionListener {
         this.setVisible(true);
         
     }    
-     
-    public static void main() {
-        GameOver death = new GameOver();
-    }
 
     public void actionPerformed(ActionEvent e) {
         game = new Game();
