@@ -61,7 +61,7 @@ public class InventoryInterface extends JFrame {
         //top bar of the inventory creation
         top = new JPanel (new GridLayout (1,3));
         //back contains a Button including an icon
-        backIcon = new ImageIcon("pictures/back.png");
+        backIcon = new ImageIcon(this.getClass().getResource("/back.png"));
 		back = new JButton ("BACK", backIcon);
         back.setBackground(Color.black);
         back.setOpaque(true);
@@ -80,7 +80,7 @@ public class InventoryInterface extends JFrame {
         goldLabel.setOpaque(true);
         goldLabel.setForeground(Color.yellow);
         goldLabel.setFont(police);
-        goldIcon = new ImageIcon("pictures/gold.png");
+        goldIcon = new ImageIcon(this.getClass().getResource("/gold.png"));
         goldIconLabel = new JLabel(goldIcon);
         goldIconLabel.setBackground(Color.black);
         goldIconLabel.setOpaque(true);
@@ -493,17 +493,17 @@ public class InventoryInterface extends JFrame {
     		{
     			if (anItem.getDescription().contains("door"))
     			{
-    				anIcon=new ImageIcon("pictures/key1.png");
+    				anIcon = new ImageIcon(this.getClass().getResource("/key1.png"));
     			}
     			else if (anItem.getDescription().contains("chest") || anItem.getDescription().contains("treasure"))
     			{
-    				anIcon=new ImageIcon("pictures/key2.png");
+    				anIcon = new ImageIcon(this.getClass().getResource("/key2.png"));
     			}
     		}
     		else if (anItem.getName()==name)
     		{
     			name=name.toLowerCase();
-    			anIcon=new ImageIcon("pictures/"+name+".png");
+    			anIcon = new ImageIcon(this.getClass().getResource("/"+name+".png"));
     		}
     	}
     	return anIcon;

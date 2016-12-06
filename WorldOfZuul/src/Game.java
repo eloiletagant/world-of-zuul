@@ -46,6 +46,7 @@ import room.LockedDoor;
 import room.Room;
 import item.*;
 
+import java.net.URL;
 
 
 public class Game extends JFrame {
@@ -69,7 +70,7 @@ public class Game extends JFrame {
     private JPanel globalPanel, buttonsPanel, healthBag, healthBarPanel, panelFB, buttonDirection, textDisplay;
     private JTextField typingArea;
     
-    private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthIcons, wen, bubble;
+    private ImageIcon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthIcons, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
     private JFrame enigmaFrame;
@@ -102,15 +103,16 @@ public class Game extends JFrame {
     	/*****************************
          ****** Pictures instantiation
          *****************************/
-        room = new ImageIcon ("pictures/Room0.png");
-        arrowRight = new ImageIcon("pictures/arrowRight.png");
-        arrowFront = new ImageIcon("pictures/arrowFront.png");
-        arrowBehind = new ImageIcon ("pictures/arrowBehind.png");
-        arrowLeft = new ImageIcon("pictures/arrowLeft.png");
-        inventory = new ImageIcon("pictures/bag.png");
-        healthIcons = new ImageIcon("pictures/healthIcons.jpg");
-        wen = new ImageIcon("pictures/loupe_5.png");
-        bubble = new ImageIcon("pictures/Dialogue.png");
+
+        room = new ImageIcon(Game.class.getResource("/Room0.png"));
+        arrowRight = new ImageIcon(Game.class.getResource("/arrowRight.png"));
+        arrowFront = new ImageIcon(Game.class.getResource("/arrowFront.png"));
+        arrowBehind = new ImageIcon (Game.class.getResource("/arrowBehind.png"));
+        arrowLeft = new ImageIcon(Game.class.getResource("/arrowLeft.png"));
+        inventory = new ImageIcon(Game.class.getResource("/bag.png"));
+        healthIcons = new ImageIcon(Game.class.getResource("/healthIcons.jpg"));
+        wen = new ImageIcon(Game.class.getResource("/loupe_5.png"));
+        bubble = new ImageIcon(Game.class.getResource("/Dialogue.png"));
         
          
         /**********************
@@ -287,7 +289,7 @@ public class Game extends JFrame {
         //bar.setUI(new MyProgressUI());
         
         
-        Icon clickIcon = new ImageIcon("pictures/clicker.jpeg");
+        Icon clickIcon = new ImageIcon(Game.class.getResource("/clicker.jpeg"));
         clickButton = new JButton("Click to attack!", clickIcon);
         clickButton.addActionListener(clicker);
         clickButton.setBackground(Color.BLACK);
@@ -810,7 +812,7 @@ public class Game extends JFrame {
      */
     private void changePicture()
     {
-        room = new ImageIcon("pictures/"+ currentRoom.getDescription()+".png");
+        room = new ImageIcon(Game.class.getResource("/" + currentRoom.getDescription() + ".png"));
         pictureRoom.setIcon(room); 
     }
     
@@ -909,7 +911,7 @@ public class Game extends JFrame {
         enigmaButton.setBorderPainted(false);
           
         image.setBackground(Color.BLACK);
-        Icon interogationPoint = new ImageIcon("./pictures/interrogation.jpg");
+        Icon interogationPoint = new ImageIcon(Game.class.getResource("/interrogation.jpg"));
         logo = new JLabel (interogationPoint);
         // logo.setBackground(Color.BLACK);
         

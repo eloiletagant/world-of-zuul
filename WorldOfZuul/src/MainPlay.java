@@ -50,7 +50,7 @@ public class MainPlay extends JFrame implements ActionListener {
     	
     	
         //Image on the background
-        backPicture = new ImageIcon("pictures/chateau.jpg");
+        backPicture = new ImageIcon(this.getClass().getResource("/chateau.jpg"));
         pictureLabel = new JLabel();
         pictureLabel.setIcon(backPicture);
         
