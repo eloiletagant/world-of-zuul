@@ -856,6 +856,7 @@ public class Game extends JFrame {
     	
     	//erase the frame
     	clickerFrame.setVisible(false);
+    	clicker.resetClicker();
     	manageButtons();
 		result = clicker.getClicks();
 		

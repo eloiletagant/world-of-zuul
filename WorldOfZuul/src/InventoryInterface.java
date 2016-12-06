@@ -113,8 +113,9 @@ public class InventoryInterface extends JFrame {
         //frame building including the top bar and the body of the inventory
         inventoryFrame= new JFrame("My inventory");  
         inventoryFrame.add(myPanel);
-        inventoryFrame.setSize(500, 500);
-        inventoryFrame.pack();
+        inventoryFrame.setSize(700, 400);
+        inventoryFrame.setResizable(false);
+        //inventoryFrame.pack();
         inventoryFrame.setVisible(true);
     }
     	

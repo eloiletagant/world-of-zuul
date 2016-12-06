@@ -121,7 +121,9 @@ public class Clicker implements ActionListener, Runnable  {
     public void resetClicker()
     {
     	clicks = 0;
+    	game.getClickLabel().setText("Clicks: " + clicks);
         time = 0;
+        game.getBar().setValue(time);
     }
 }
 
