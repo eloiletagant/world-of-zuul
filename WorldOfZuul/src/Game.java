@@ -863,7 +863,7 @@ public class Game extends JFrame {
         }
         if(player.getHealth()==0)
         {
-        	System.exit(1);
+        	GameOver.main();
         }
         
     }
