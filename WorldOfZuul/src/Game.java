@@ -153,7 +153,7 @@ public class Game extends JFrame {
         healthBag.add(search);
         
         
-        //TEXT DISPLAY --> EN COURS (ANATOLE)
+        //TEXT DISPLAY 
         
         
         textDescRoom = new JLabel("Welcome to Dungeon Clicker", JLabel.CENTER);
@@ -815,7 +815,8 @@ public class Game extends JFrame {
     public void move(String way) {
     	
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
-        setText(currentRoom.getDescription());
+        textDescRoom.setText("You are in the "+ currentRoom.getDescription());
+       // textDescRoom.setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
         manageButtons();
@@ -868,6 +869,7 @@ public class Game extends JFrame {
      * This method modifies the text which is displays in the game
      * @param aText the text to display in the game
      */
+    
     public void setText(String aText)
     {
     	textDescRoom.setText("<html>You are in the "+ currentRoom.getDescription()+"<br>"+aText+"</html>");    	 
