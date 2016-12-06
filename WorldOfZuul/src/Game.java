@@ -473,7 +473,7 @@ public class Game extends JFrame {
 			NPC merlin = new NPC("Merlin", 15, 2, false);
 			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
 			String a1 = "The socks";
-			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
+			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1); 
 			rooms.get(1).addEvent(enigma1); //1 instead of 9
 			
 			//KARADOC
