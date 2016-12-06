@@ -69,19 +69,29 @@ public class Enigma extends Event {
      * This method will test if the answer is correct.
      * @param playerAnswer
      */
-    public boolean checkAnswer(String playerAnswer)
+    public String checkAnswer(String playerAnswer)
     {
     	String anAnswer=playerAnswer.toLowerCase();
-        if (playerAnswer.contains(answer))
+    	String toReturn;
+        if (anAnswer.contains(answer))
         {
             disableEnigma();
-            return getPlayer().getInventory().addItem(super.getItem());  
+            if (getPlayer().getInventory().addItem(super.getItem())==false)
+            {
+            	toReturn="<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later please </html>";
+            }
+            else
+            {
+            	getPlayer().getInventory().addItem(super.getItem());
+            	toReturn="<html>Well done, you get it!<br>You won "+super.getItem().getName()+". Congratulations !!!</html>";
+            	super.setItem(null);
+            } 
         }
         else
         {
-            //System.out.println("Wrong answer retry it later !");
-            return false;  
+            toReturn="Wrong answer, try again !";  
         }
+        return toReturn;
     }
 
 }

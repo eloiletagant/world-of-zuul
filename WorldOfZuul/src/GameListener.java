@@ -85,7 +85,23 @@ public class GameListener implements ActionListener {
         	game.openInventory();
         	
         } else if (e.getSource() == game.getSpeak()) {
-            game.displayEnigma();
+        	for (Event event : game.getPlayer().getLocation().getEvents()) {
+            	if (event instanceof Enigma) {
+            		enigma = (Enigma) event;
+            	}
+            }
+        	if (enigma.getEnable()==true)
+        	{
+        		game.displayEnigma();
+        	}
+        	else if(enigma.getItem()!=null)
+        	{
+        		game.setText(enigma.checkAnswer(enigma.getAnswer()));
+        	}
+        	else
+        	{
+        		game.setText("You already won this reward.");
+        	}
             
         } else if (e.getSource() == game.getSearch())  {
     		if (game.getPlayer().getLocation().hasChest()){
@@ -98,19 +114,18 @@ public class GameListener implements ActionListener {
     			game.setText("There is no chest in this room !");
     		}
     		
-        } else if (e.getSource() == game.getEnigmaButton()) {
+        } else if (e.getSource() == game.getEnigmaButton())
+        {
         	// We are looking for the enigma in the player current room
-            for (Event event : game.getPlayer().getLocation().getEvents()) {
-            	if (event instanceof Enigma) {
+            for (Event event : game.getPlayer().getLocation().getEvents())
+            {
+            	if (event instanceof Enigma)
+            	{
             		enigma = (Enigma) event;
             	}
             }
-        	if (enigma.checkAnswer(game.getTypingArea().getText())) {
-        		game.setTextEvent("Well done, you get it!");
-        		game.getEnigmaFrame().dispose();
-        	} else {
-        		game.setTextEvent("Sorry, try again!");
-        	}
+            game.setText(enigma.checkAnswer(game.getTypingArea().getText()));
+            game.getEnigmaFrame().dispose();
         }
     }
 }
