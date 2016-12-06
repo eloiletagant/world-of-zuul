@@ -32,7 +32,7 @@ public class Player {
 	 * He starts the game at the Home Room.
 	 * At the beginning, the damage bonus are set to 0 by default. It will be change when using some items like weapons or potions.
      */
-    public Player(String newName)
+    public Player(String newName, int maxHealth)
     {
         if (newName.equals(""))
         {
@@ -42,12 +42,12 @@ public class Player {
         {
             name = newName;
         }
+        this.maxHealth = maxHealth;
         health = 20;
         inventory = new Inventory(10);
         nbHandsAvailable = 2;
         //set up a start room (useful for test)
         location = new Room("Home", 0);
-        maxHealth = 20;
         maxHands = 2;
         damagesBonus = 0;
     }

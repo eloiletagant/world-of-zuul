@@ -70,6 +70,7 @@ public class InventoryInterface extends JFrame {
         back.setOpaque(true);
         back.setForeground(Color.yellow);
         back.setFont(police);
+        back.setBorderPainted(false);
 
 
         goldLabel = new JLabel("GOLD :" + inventoryPlayer.getGold());
@@ -94,7 +95,7 @@ public class InventoryInterface extends JFrame {
         
         
       //Listeners for buttons action
-        evt= new InventoryInterfaceListener(this);
+        evt = new InventoryInterfaceListener(this, game);
         back.addMouseListener(evt);
         
         buttonItems = new JButton[inventoryPlayer.getNbItems()];

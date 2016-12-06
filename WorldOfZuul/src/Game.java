@@ -61,14 +61,15 @@ public class Game extends JFrame {
     private boolean inventoryIsOpen = false;
     public  Sound sound;
    
+    private int maxHealth = 20; //declared here to build the GUI
     
     private JButton left, behind, front, right, bag, search, speak, enigmaButton; 
     //direction arrows and bag (inventory)
     private JLabel textDescRoom, textEvent, pictureRoom, health, textEnigma;
-    private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
+    private JPanel globalPanel, buttonsPanel, healthBag, healthBarPanel, panelFB, buttonDirection, textDisplay;
     private JTextField typingArea;
     
-    private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthBar, wen, bubble;
+    private Icon room, arrowRight, arrowLeft, arrowFront, arrowBehind, inventory, healthIcons, wen, bubble;
     private InventoryInterface showInventory;
     private GameListener l;
     
@@ -81,7 +82,7 @@ public class Game extends JFrame {
     private JButton clickButton, doneButton;
     private JPanel clickerDownPanel;
     private JLabel clickLabel;
-    private JProgressBar bar;
+    private JProgressBar bar, healthBar;
     private static int MIN = 0;
     private static int MAX = 1500; //hundredth of seconds
     private Container clickerGlobalPanel;
@@ -107,7 +108,7 @@ public class Game extends JFrame {
         arrowBehind = new ImageIcon ("pictures/arrowBehind.png");
         arrowLeft = new ImageIcon("pictures/arrowLeft.png");
         inventory = new ImageIcon("pictures/bag.png");
-        healthBar = new ImageIcon("pictures/barredeVie.jpg");
+        healthIcons = new ImageIcon("pictures/healthIcons.jpg");
         wen = new ImageIcon("pictures/loupe_5.png");
         bubble = new ImageIcon("pictures/Dialogue.png");
         
@@ -130,24 +131,41 @@ public class Game extends JFrame {
         healthBag.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         healthBag.setBackground(Color.black);
         
+        
+        
         //Label which contains the player's bar life
-        health = new JLabel (healthBar); 
+        health = new JLabel (healthIcons); 
         health.setBackground(Color.black);
+        healthBar = new JProgressBar();
+        healthBar.setMinimum(0);
+        healthBar.setMaximum(maxHealth);
+        healthBar.setValue(maxHealth);
+        healthBar.setBackground(Color.black);
+        healthBar.setForeground(Color.yellow);
+        healthBar.setOpaque(true);
+        
+        healthBarPanel = new JPanel(new GridLayout(2,1));
+        healthBarPanel.setBackground(Color.black);
+        healthBarPanel.add(healthBar);
+        healthBarPanel.add(health);
          
         bag = new JButton(inventory);
         bag.setBackground(Color.black);
         bag.addActionListener(l);
+        bag.setBorderPainted(false);
         
         search = new JButton(wen);
         search.setBackground(Color.black);
         search.addActionListener(l);
+        search.setBorderPainted(false);
         
         speak = new JButton(bubble);
         speak.setBackground(Color.black);
         speak.setEnabled(false);
         speak.addActionListener(l);
+        speak.setBorderPainted(false);
         
-        healthBag.add(health);
+        healthBag.add(healthBarPanel);
         healthBag.add(speak);
         healthBag.add(bag);
         healthBag.add(search);
@@ -229,7 +247,7 @@ public class Game extends JFrame {
         this.pack();
         this.setVisible(true);
     	
-    	player = new Player ("Kaamelott");
+    	player = new Player ("Kaamelott", maxHealth);
     	rooms = new ArrayList<Room>();
     	
     	//create the frame of the clicker
@@ -266,17 +284,18 @@ public class Game extends JFrame {
     	bar = new JProgressBar();
         bar.setMinimum(MIN);
         bar.setMaximum(MAX);
-        bar.setStringPainted(true);
+        //bar.setStringPainted(true);
         //bar.setUI(new MyProgressUI());
         
         
-        Icon clickIcon = new ImageIcon("pictures/clicker_swords.png");
+        Icon clickIcon = new ImageIcon("pictures/clicker.jpeg");
         clickButton = new JButton("Click to attack!", clickIcon);
         clickButton.addActionListener(clicker);
         clickButton.setBackground(Color.BLACK);
         clickButton.setForeground(Color.YELLOW);
         clickButton.setFont(new Font("Kristen ITC", Font.BOLD, 40));
         clickButton.setOpaque(true);
+        clickButton.setBorderPainted(false);
         
         clickLabel = new JLabel("Clicks: " + clicker.getClicks(), JLabel.CENTER);
         clickLabel.setBackground(Color.BLACK);
@@ -308,6 +327,13 @@ public class Game extends JFrame {
     	return bar;
     }
     
+    public JProgressBar getHealthBar() {
+    	return healthBar;
+    }
+    
+    public int getMaxHealth() {
+    	return maxHealth;
+    }
     
     /**
      * Accessor for the "player" attribute
@@ -459,7 +485,7 @@ public class Game extends JFrame {
 			NPC karadoc = new NPC("Karadoc", 15, 2, false);
 			//String q2 = "test";
 			//String a2 = "test";
-			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with “T”, ends with “T” and has “T” in it?", "Teapot");
+			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with ï¿½Tï¿½, ends with ï¿½Tï¿½ and has ï¿½Tï¿½ in it?", "Teapot");
 			rooms.get(4).addEvent(enigma2);
 			
 			//PERCEVAL

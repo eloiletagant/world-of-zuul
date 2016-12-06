@@ -11,8 +11,9 @@ import item.*;
  * @version 10/11/2016
  */
 public class Fight extends Event {
-    private boolean isWin;
-
+	    
+	private boolean isWin;
+	    
     /**
      * Constructor of a fight
      *
@@ -62,21 +63,18 @@ public class Fight extends Event {
     	}
     	
     	playerDamages = (int)((float) playerDamages * (1.0 + ((float) clicks /clicksRequireds)));
-    	while(this.getPlayer().getHealth() > 0 && this.getNpc().getHealth() > 0)
-    	{
+    	while(this.getPlayer().getHealth() > 0 && this.getNpc().getHealth() > 0) {
     		this.getPlayer().manageHealth(-npcDamages);
+    		//game.getHealthBar().setValue(getPlayer().getHealth());
     		//System.out.println("You lost " + npcDamages + " hp");
     		//System.out.println(this.getPlayer().getHealth());
     		this.getNpc().manageHealth(-playerDamages);
     		//System.out.println("The enemy lost " + playerDamages + " hp");
     		//System.out.println(this.getNpc().getHealth());
     	}
-    	if(this.getPlayer().getHealth() == 0)
-    	{
+    	if(this.getPlayer().getHealth() == 0) {
     		return false;
-    	}
-    	else
-    	{
+    	} else {
     		return true;
     	}
     	

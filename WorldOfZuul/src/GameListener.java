@@ -39,7 +39,7 @@ public class GameListener implements ActionListener {
     	
     	doors = game.getPlayer().getLocation().getDoors();
     	Weapon w = new Weapon("", "", 0, true, 0);
-    	Player player = new Player("");
+    	Player player = new Player("", game.getMaxHealth());
     	NPC npc = new NPC("", 0, 0, true);
 		Enigma enigma = new Enigma("", w, player, npc, "", "");
 		
