@@ -912,7 +912,7 @@ public class Game extends JFrame {
         // logo.setBackground(Color.BLACK);
         
         
-        for (Event event : currentRoom.getEvents()) {
+        for (Event event : player.getLocation().getEvents()) {
         	if (event instanceof Enigma) {
         		question = ((Enigma) event).getQuestion();
         	}
