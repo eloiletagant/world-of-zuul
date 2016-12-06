@@ -428,6 +428,11 @@ public class Game extends JFrame {
     	}
     }
     
+    public InventoryInterface getShowInventory()
+    {
+    	return showInventory;
+    }
+    
     
     /**
      * Method used to create all the 33 rooms present in the game
@@ -734,7 +739,6 @@ public class Game extends JFrame {
     	  if (aChest.getNbItems()==0)
 		  {
 	  		  textEvent.setText("This chest is empty.");
-	  		 
 		  }
     	  else
     	  {

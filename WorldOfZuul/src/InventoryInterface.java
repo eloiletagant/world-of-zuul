@@ -246,6 +246,10 @@ public class InventoryInterface extends JFrame {
     	effects.setText("");
     	care.setText("");
     	actions.removeAll();
+    	use.setEnabled(true);
+    	sell.setEnabled(true);
+    	equip.setEnabled(true);
+    	unequip.setEnabled(true);
     	
     	
         //creation of actions according to type of item
