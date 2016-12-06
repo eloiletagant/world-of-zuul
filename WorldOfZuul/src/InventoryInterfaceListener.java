@@ -126,6 +126,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     				 if (((Consumable) myItem).getCare()>0)
     				 {
     					 inventory.getPlayer().manageHealth(((Consumable) myItem).getCare());
+    					 inventory.getGame().getHealthBar().setValue(inventory.getPlayer().getHealth());
     				 }
     				 else if (((Consumable) myItem).getDamage()>0)
     				 {
