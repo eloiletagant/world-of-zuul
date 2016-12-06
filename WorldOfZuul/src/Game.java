@@ -56,7 +56,7 @@ public class Game extends JFrame {
     private Consumable c1, c2, c3, c4, c5, c6, c7,c8;
     private Key k1, k2, k3, k4, k5, k6, k7;
     private Lock l1, l2, l3, l4, l5, l6, l7;
-    private Chest ch1, ch2, ch3, ch4;
+    private Chest ch1, ch2, ch3, ch4,ch5;
     private ArrayList<Room> rooms; 
     private boolean inventoryIsOpen = false;
     public  Sound sound;
@@ -611,13 +611,10 @@ public class Game extends JFrame {
         createDoor(rooms.get(26), rooms.get(25) , "front");
         createDoor(rooms.get(26), rooms.get(6) , "behind");        
         //Room 27
-        createLockedDoor(rooms.get(27),  rooms.get(28), "front", l6);
+        createLockedDoor(rooms.get(27),  rooms.get(29), "front", l6);
         createDoor(rooms.get(27), rooms.get(25) , "left");
-        //Room 28
-        createDoor(rooms.get(28), rooms.get(29) , "front");
-        createDoor(rooms.get(28), rooms.get(27) , "behind");
         //Room 29
-        createDoor(rooms.get(29), rooms.get(28) , "behind");
+        createDoor(rooms.get(29), rooms.get(27) , "behind");
         //Room 30
         createDoor(rooms.get(30), rooms.get(17) , "right");
         createDoor(rooms.get(30), rooms.get(31) , "left");
@@ -660,11 +657,11 @@ public class Game extends JFrame {
         l3 = new Lock();
         l3.addKey(k4);
         l4 = new Lock();
-        l4.addKey(k5);
+        l4.addKey(k7);
         l5 = new Lock();
         l5.addKey(k6);
         l6 = new Lock();
-        l6.addKey(k7);
+        l6.addKey(k5);
         l7 = new Lock();
         l7.addKey(k1);
         ch1 = new Chest("Ali baba box", "This box contains something for you.", 2, 5, l1);
@@ -677,11 +674,12 @@ public class Game extends JFrame {
         ch3 = new Chest("Gift Box", "This box contains something for you.", 2, 30, l3);
         ch3.addItem(c5);
         ch3.addItem(w3);
-        ch4 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l4);
-        ch4.addItem(c8);
+        ch4 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l6);
         ch4.addItem(c4);
         ch4.addItem(c3);
         ch4.addItem(k6);
+        ch5 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l4);
+        ch5.addItem(c8);
 
     }
     
@@ -704,6 +702,7 @@ public class Game extends JFrame {
      */ 
      private void addChestsToRooms() {
     	 rooms.get(8).addChest(ch1);
+    	 rooms.get(7).addChest(ch5);
     	 rooms.get(29).addChest(ch4);
     	 rooms.get(15).addChest(ch3);
     	 rooms.get(12).addChest(ch2);
