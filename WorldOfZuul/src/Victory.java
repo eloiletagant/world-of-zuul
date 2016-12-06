@@ -30,7 +30,7 @@ public class Victory extends JFrame implements ActionListener {
     	
     	
         //Image on the background
-        backPicture = new ImageIcon("pictures/chateau.jpg");
+        backPicture = new ImageIcon("pictures/Victory.jpg");
         pictureLabel = new JLabel();
         pictureLabel.setIcon(backPicture);
         
