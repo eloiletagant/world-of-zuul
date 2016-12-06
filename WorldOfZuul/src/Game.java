@@ -893,9 +893,10 @@ public class Game extends JFrame {
     void displayEnigma()
     {
         enigmaFrame = new JFrame();
-        JPanel globalFrame = new JPanel (new GridLayout (1,2));
+        JPanel globalFrame = new JPanel(new GridLayout(2,1));
         JPanel image = new JPanel(); 
-        JPanel enigma = new JPanel (new GridLayout (3,1));
+        JPanel enigma = new JPanel(new BorderLayout());
+        JPanel answer = new JPanel(new GridLayout(2,1));
         JLabel logo = new JLabel();
         Font police = new Font ("Kristen ITC", Font.BOLD, 14);
         
@@ -903,7 +904,9 @@ public class Game extends JFrame {
         enigmaButton.setFont(police);
         enigmaButton.addActionListener(l);
         enigmaButton.setBackground(Color.black);
+        enigmaButton.setOpaque(true);
         enigmaButton.setForeground(Color.YELLOW);
+        enigmaButton.setBorderPainted(false);
           
         image.setBackground(Color.BLACK);
         Icon interogationPoint = new ImageIcon("./pictures/interrogation.jpg");
@@ -933,17 +936,19 @@ public class Game extends JFrame {
         
         image.add(logo);
         
-        enigma.add(textEnigma);
-        enigma.add(typingArea);
-        enigma.add(enigmaButton);
+        answer.add(typingArea);
+        answer.add(enigmaButton);
+        
+        enigma.add(image, BorderLayout.WEST);
+        enigma.add(answer, BorderLayout.CENTER);
          
-        globalFrame.add(image);
+        globalFrame.add(textEnigma);
         globalFrame.add(enigma);
         
 
         enigmaFrame.add(globalFrame);
         enigmaFrame.pack();
-        enigmaFrame.setSize(500,200);
+        enigmaFrame.setSize(550,180);
         enigmaFrame.setLocationRelativeTo(null);
         enigmaFrame.setResizable(false);
         
