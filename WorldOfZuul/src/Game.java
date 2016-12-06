@@ -478,7 +478,7 @@ public class Game extends JFrame {
 			
 			//KARADOC
 			NPC karadoc = new NPC("Karadoc", 15, 2, false);
-			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with T, ends with T and has T in it?", "Teapot");
+			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with \"T\", ends with T and has T in it?", "Teapot");
 			rooms.get(4).addEvent(enigma2);
 			
 			//PERCEVAL
