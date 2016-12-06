@@ -503,7 +503,7 @@ public class Game extends JFrame {
 			NPC skeleton = new NPC("Skeleton",10, 2, true);
 			Fight fight4 = new Fight("fight4",k6,player,skeleton);
 			rooms.get(20).addEvent(fight4);
-			//CREEPER
+			//CREEPER 
 			NPC creeper = new NPC("Creeper",30, 2, true);
 			Fight fight5 = new Fight("fight5",w1,player,creeper);
 			rooms.get(16).addEvent(fight5);

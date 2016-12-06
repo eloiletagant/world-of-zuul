@@ -117,6 +117,6 @@ public abstract class Item
 	}
 	public void equip()
 	{
-		
+		 
 	}
 }
