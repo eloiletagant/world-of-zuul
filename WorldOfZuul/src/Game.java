@@ -412,31 +412,22 @@ public class Game extends JFrame {
     	return typingArea;
     }
     
-    public void setOpenningInventory(boolean state) {
-    	inventoryIsOpen = state;
-    }
     
     /**
      * Method used to open the inventory from the GameListener
      * @param open
      */
-    public void openInventory(boolean open) {
-    	if (open) {
+    public void openInventory() {
+    	if (showInventory==null)
+    	{
     		showInventory = new InventoryInterface(player.getInventory(), player,this);
     	}
     	else
     	{
-    		if (showInventory.getVisibility()==true)
-    		{
-    			showInventory.exitInventory();
-    		}
+    		showInventory.manageInventory();
     	}
     }
     
-    public boolean getInventoryIsOpen()
-    {
-    	return inventoryIsOpen;
-    }
     
     /**
      * Method used to create all the 33 rooms present in the game

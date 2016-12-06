@@ -103,8 +103,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     	 i=0;
     	 if(evt.getSource() == inventory.getBack())
          {
-    		 inventory.exitInventory();
-    		 game.setOpenningInventory(false);
+    		 inventory.manageInventory();
          }
     	 else if(evt.getSource()==inventory.getUse())
          {
@@ -138,7 +137,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     					 }
     				 }
     				 inventory.getInventory().deleteItem(myItem);
-        			 inventory.exitInventory();
+        			 inventory.manageInventory();
     			 }
     			 else if (myItem instanceof Key) 
     	         {
@@ -152,8 +151,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 {
     	    				 	 inventory.getGame().setText("You have unlocked the door.");
     	    				 	 inventory.getInventory().deleteItem(myItem);
-    	    				 	 inventory.getGame().openInventory(false);
-    	    				 	 inventory.getGame().setOpenningInventory(false);
+    	    				 	 //inventory.getGame().openInventory(false);
     	    				 	 //inventory.exitInventory();
     	    					 break; 
     	    				 }
@@ -171,7 +169,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 
     	    				 inventory.getGame().setText("You have unlocked the chest.");
 	    				 	 inventory.getInventory().deleteItem(myItem);
-	        	             inventory.exitInventory();
+	        	             inventory.manageInventory();
     	    			 }
     	    			 else
 	    				 {
@@ -190,7 +188,7 @@ public class InventoryInterfaceListener extends MouseAdapter
         		 if (myItem instanceof Weapon)
         		 {
         			 ((Weapon) myItem).equip();
-        			 inventory.exitInventory();
+        			 inventory.manageInventory();
         		 }
         	 }
          }
@@ -201,7 +199,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     		 {
     			 ((Weapon) myItem).equip();
     		 }
-    		 inventory.exitInventory();
+    		 inventory.manageInventory();
          }
          else if(evt.getSource()==inventory.getSell())
          {
@@ -210,7 +208,7 @@ public class InventoryInterfaceListener extends MouseAdapter
         		 myItem=inventory.searchItemDisplayed();
             	 inventory.getInventory().manageGold(myItem.getPrice());
               	 inventory.getInventory().deleteItem(myItem);
-              	 inventory.exitInventory();
+              	 inventory.manageInventory();
         	 }
          }
     	 else

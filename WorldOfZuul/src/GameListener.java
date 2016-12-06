@@ -80,15 +80,8 @@ public class GameListener implements ActionListener {
     	    	}
     		}
         	
-        } else if (e.getSource() == game.getBagB()) {
-        	if (game.getInventoryIsOpen()) {
-        		game.openInventory(false);
-        		game.setOpenningInventory(false);
-        	} else {  
-        		//the inventory is close, so we can open it
-        		game.openInventory(true);
-        		game.setOpenningInventory(true);
-        	}
+        } else if (e.getSource() == game.getBagB()){
+        	game.openInventory();
         	
         } else if (e.getSource() == game.getSpeak()) {
             game.displayEnigma();

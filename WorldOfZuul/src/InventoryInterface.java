@@ -223,18 +223,18 @@ public class InventoryInterface extends JFrame {
     public void displayItem(Item anItem)
     {
     	anItem.setManaged();
-    	exitInventory();
+    	manageInventory();
     	Font police = new Font ("Kristen ITC", Font.BOLD, 14);
     	Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
     	
     	backIcon = new ImageIcon("pictures/back.png");
-		back2 = new JButton ("BACK", backIcon);
-        back2.setBackground(Color.black);
-        back2.setOpaque(true);
-        back2.setForeground(Color.yellow);
-        back2.setFont(police);
-        
-        back2.addMouseListener(evt);
+//		back2 = new JButton ("BACK", backIcon);
+//        back2.setBackground(Color.black);
+//        back2.setOpaque(true);
+//        back2.setForeground(Color.yellow);
+//        back2.setFont(police);
+//        
+//        back2.addMouseListener(evt);
         
         title = new JLabel ("INVENTORY : " + anItem.getName(), JLabel.CENTER);
         title.setBackground(Color.black);
@@ -481,33 +481,22 @@ public class InventoryInterface extends JFrame {
     	return anIcon;
     }
     
-    public boolean getVisibility()
-    {
-    	if (inventoryFrame.isVisible()==true)
-    	{
-    		return true;
-    	}
-    	else
-    	{
-    		return false;
-    	}
-    }
-    
     /**
      * This method changes the view of the inventory : general view or focus on an item.
      */
-    public void exitInventory()
+    public void manageInventory()
     {
-    	if (viewInventory == true)
+    	if (inventoryFrame.isVisible() == true)
     	{
     		inventoryFrame.setVisible(false);
-    		viewInventory=false;
+    		//viewInventory=false;
     	}
     	else
     	{
-    		itemFrame.setVisible(false);
-        	inventoryFrame = new InventoryInterface(inventoryPlayer, player,game);
-    		viewInventory=true;
+    		//itemFrame.setVisible(false);
+    		inventoryFrame.setVisible(true);
+        	//inventoryFrame = new InventoryInterface(inventoryPlayer, player,game);
+    		//viewInventory=true;
     	}    	
     }
     
