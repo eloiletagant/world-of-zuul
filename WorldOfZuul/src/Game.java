@@ -867,6 +867,7 @@ public class Game extends JFrame {
 		
 		if(win){
 			currentRoom.getEvents().remove(0);
+			setTextEvent("You won the fight ! for this time ...");
 		}
 		
 		healthBar.setValue(player.getHealth()); 
