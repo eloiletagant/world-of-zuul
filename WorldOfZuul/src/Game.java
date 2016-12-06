@@ -863,9 +863,9 @@ public class Game extends JFrame {
         }
         if(player.getHealth()==0)
         {
+        	this.dispose();
         	GameOver.main();
-        }
-        
+        } 
     }
     
     /**
