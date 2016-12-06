@@ -6,28 +6,27 @@ import item.*;
 import room.*;
 
 /**
- * This class allows creating a functional counter using the external listeners.
+ * This class allows to interact with buttons which are in the inventory.
+ * It does an action according to the event.
  * 
  * @author 
  * @version 
  */
 public class InventoryInterfaceListener extends MouseAdapter 
 {
-    //attributes
+    //inventory attributes
     private InventoryInterface inventory;
     private ArrayList<Item> items;
     private Item myItem;
     private int i;
     private HashMap<String,Door> doors;
-    private Game game;
     
     /**
      * The Constructor for the listener
      */
-    public InventoryInterfaceListener(InventoryInterface c, Game g)
+    public InventoryInterfaceListener(InventoryInterface c)
     {
     	inventory = c;
-    	game = g;
     }
     /**
      * action to do when the mouse flies on buttons
@@ -37,9 +36,10 @@ public class InventoryInterfaceListener extends MouseAdapter
      {
     	 items = inventory.getInventory().getItems();
     	 Item anItem=inventory.searchItemDisplayed();
-    	 i=0;
+    	 int i=0;
     	 if (evt.getSource() != inventory.getBack())
 		 {
+    		 //if the equip button is disabled, a message is displayed to explain
     		 if (evt.getSource() == inventory.getEquip())
     		 {
     			 if (inventory.getEquip().isEnabled()==false)
@@ -57,6 +57,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     				 }
     			 }
     		 }
+    		//if the sell button is disabled, a message is displayed to explain
     		 else if(evt.getSource() == inventory.getSell())
     		 {
     			 if (inventory.getSell().isEnabled()==false)
@@ -64,6 +65,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     				 inventory.getSell().setToolTipText("You can not sell this item.");
     			 }
     		 }
+    		//if the use button is disabled, a message is displayed to explain
     		 else if(evt.getSource() == inventory.getUse())
     		 {
     			 if (inventory.getUse().isEnabled()==false)
@@ -81,6 +83,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     		 }
     		 else
     		 {
+    			//when the mouse flies on items, a message with the name of object is displayed
     			 for (Item item : items)
         		 {
         			 if (evt.getSource() == inventory.getItemToDisplay(i))
@@ -101,19 +104,23 @@ public class InventoryInterfaceListener extends MouseAdapter
      {
     	 items = inventory.getInventory().getItems();
     	 i=0;
+    	 //back button closes the inventory
     	 if(evt.getSource() == inventory.getBack())
          {
     		 inventory.manageInventory();
          }
+    	//back2 button closes the item view
     	 else if(evt.getSource() == inventory.getBack2())
          {
     		 inventory.manageInventory();
          }
+    	//use button does lots of things depending on type of object
     	 else if(evt.getSource()==inventory.getUse())
          {
     		 myItem=inventory.searchItemDisplayed();
     		 if (inventory.getUse().isEnabled()==true)
         	 {
+    			 //if consumable, this function applies effect of the object
     			 if (myItem instanceof Consumable)
     			 {
     				 if (((Consumable) myItem).getCare()>0)
@@ -143,10 +150,10 @@ public class InventoryInterfaceListener extends MouseAdapter
     				 inventory.getInventory().deleteItem(myItem);
         			 inventory.manageInventory();
     			 }
+    			 //if key, this function tries to open the door or chest
     			 else if (myItem instanceof Key) 
     	         {
-    				 //utilis� uniquement quand y a un chest ou une doorlocked dans la pi�ce o� l'on est
-    	    		 doors=inventory.getPlayer().getLocation().getDoors();
+    				 doors=inventory.getPlayer().getLocation().getDoors();
     	    		 for (Map.Entry<String,Door> door : doors.entrySet())
     	    		 {
     	    			 if (door.getValue().isLocked()==true)
@@ -182,6 +189,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     	         }
         	 }
          }
+    	 //equip button equips the weapon to the player
     	 else if(evt.getSource()==inventory.getEquip())
          {
     		 myItem=inventory.searchItemDisplayed();
@@ -194,6 +202,7 @@ public class InventoryInterfaceListener extends MouseAdapter
         		 }
         	 }
          }
+    	//unequip button unequips the weapon from the player
     	 else if(evt.getSource()==inventory.getUnequip())
          {
     		 myItem=inventory.searchItemDisplayed();
@@ -203,6 +212,7 @@ public class InventoryInterfaceListener extends MouseAdapter
     		 }
     		 inventory.manageInventory();
          }
+    	//sell button sells the item, gives money to player and deletes this item in the inventory
          else if(evt.getSource()==inventory.getSell())
          {
         	 if (inventory.getSell().isEnabled()==true)
@@ -215,6 +225,7 @@ public class InventoryInterfaceListener extends MouseAdapter
          }
     	 else
          {
+    		//item button displays item view
     		 for (Item item : items)
         	 {
         		 if (evt.getSource() == inventory.getItemToDisplay(i))

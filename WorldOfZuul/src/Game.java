@@ -52,7 +52,7 @@ public class Game extends JFrame {
 	
     private Room currentRoom;
     private Player player;
-    private Weapon w1, w2, w3, w4;
+    private Weapon w1, w2, w3, w4,w5;
     private Consumable c1, c2, c3, c4, c5, c6, c7,c8;
     private Key k1, k2, k3, k4, k5, k6, k7;
     private Lock l1, l2, l3, l4, l5, l6, l7;
@@ -503,13 +503,15 @@ public class Game extends JFrame {
 			NPC skeleton = new NPC("Skeleton",10, 2, true);
 			Fight fight4 = new Fight("fight4",k6,player,skeleton);
 			rooms.get(20).addEvent(fight4);
-			//CREEPER
+			//CREEPER 
 			NPC creeper = new NPC("Creeper",30, 2, true);
 			Fight fight5 = new Fight("fight5",w1,player,creeper);
 			rooms.get(16).addEvent(fight5);
 			//MONKEY KING
-			NPC monkey = new NPC("Monkey King",100, 2, true);
-			Fight fight6 = new Fight("fight boss !",w2,player,monkey);
+			NPC monkey = new NPC("Monkey King",150, 4, true);
+			monkey.getInventory().addItem(w5);
+			monkey.getInventory().getItems().get(0).equip();
+			Fight fight6 = new Fight("fight boss !",k7,player,monkey);
 			rooms.get(32).addEvent(fight6);
     }
     
@@ -634,6 +636,7 @@ public class Game extends JFrame {
     	w2 = new Weapon("Bow", "This bow is for a true Robin wood.", 90, true, 5);
         w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7);
         w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9);
+        w5 = new Weapon("spoon", "This is a spoon", 30, true, 1);
         c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vend�e !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
         c2 = new Consumable("Bread", "This bread was cooked by the baker of the village.", 5, true, "It gets 1 health point to the person who eats it.", 1, 0, false);
         c3 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
@@ -860,9 +863,9 @@ public class Game extends JFrame {
         }
         if(player.getHealth()==0)
         {
-        	System.exit(1);
-        }
-        
+        	this.dispose();
+        	GameOver.main();
+        } 
     }
     
     /**

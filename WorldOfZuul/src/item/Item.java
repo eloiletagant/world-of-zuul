@@ -115,4 +115,8 @@ public abstract class Item
 			this.display=true;
 		}
 	}
+	public void equip()
+	{
+		 
+	}
 }
