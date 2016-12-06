@@ -455,14 +455,14 @@ public class Game extends JFrame {
 			String q2 = "test";
 			String a2 = "test";
 			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, q2, a2);
-			//rooms.get(4).addEvent(enigma2);
+			rooms.get(4).addEvent(enigma2);
 			
 			//PERCEVAL
 			NPC perceval = new NPC("Perceval", 20, 2, false);
 			String q3 = "test";
 			String a3 = "test";
 			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, q3, a3);
-			//rooms.get(27).addEvent(enigma3);
+			rooms.get(27).addEvent(enigma3);
 			
 		//NPC Enemy
 			//MINOTAUR
