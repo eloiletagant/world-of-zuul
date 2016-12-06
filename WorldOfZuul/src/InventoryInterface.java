@@ -47,7 +47,7 @@ public class InventoryInterface extends JFrame {
      * Constructor for objects of class InventoryInterface.
      * This method creates a Frame which will be display the inventory of the player
      */
-    private InventoryInterface(Inventory anInventory, Player aPlayer, Game aGame)
+    public InventoryInterface(Inventory anInventory, Player aPlayer, Game aGame)
     {
     	//information from game
     	inventoryPlayer = anInventory;
