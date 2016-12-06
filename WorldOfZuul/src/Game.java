@@ -814,12 +814,14 @@ public class Game extends JFrame {
      */
     public void move(String way) {
     	
+    	
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         textDescRoom.setText("You are in the "+ currentRoom.getDescription());
        // textDescRoom.setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
         manageButtons();
+        textEvent.setText(""); 
         isEnemy = false;
         
         //get the eventual fight of the room
