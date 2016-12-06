@@ -467,7 +467,7 @@ public class Game extends JFrame {
 			//MINOTAUR
 			NPC minotaur = new NPC("Minotaur",5, 2, true);
 			Fight fight1 = new Fight("fight1",w3,player,minotaur);
-			//rooms.get().addEvent(fight1);
+			rooms.get(3).addEvent(fight1);
 			//SPIDER
 			NPC spider = new NPC("Spider",5, 2, true);
 			Fight fight2 = new Fight("fight2",k3,player,spider);
@@ -813,7 +813,8 @@ public class Game extends JFrame {
         player.moveRoom(currentRoom);
         changePicture();
         manageButtons();
-        
+        isEnemy = false;
+        System.out.println(player.getHealth());
         
         //get the eventual fight of the room
         for (Event event : currentRoom.getEvents()) {
@@ -821,12 +822,13 @@ public class Game extends JFrame {
         		isEnemy = ((Fight) event).getNpc().getEnemy();
         	}
         }
-       
+
         //if there is an event
         if (!currentRoom.getEvents().isEmpty()) {
         	//if the npc is an enemy :
         	if (isEnemy) {
         		//launch the clicker game
+        		clicker.resetClicker();
 				clicker.clickerLauncher(10);
 
         	}

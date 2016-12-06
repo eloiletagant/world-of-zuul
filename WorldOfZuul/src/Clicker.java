@@ -118,5 +118,10 @@ public class Clicker implements ActionListener, Runnable  {
         }
     }
     
+    public void resetClicker()
+    {
+    	clicks = 0;
+        time = 0;
+    }
 }
 
