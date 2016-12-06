@@ -1,5 +1,11 @@
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JComponent;
+import javax.swing.plaf.basic.BasicProgressBarUI;
 
 public class Clicker implements ActionListener, Runnable  {
 	
@@ -7,49 +13,35 @@ public class Clicker implements ActionListener, Runnable  {
     private int time = 0;
     private int winScore;
     
-    private static int MIN = 0;
-    private static int MAX = 15;
+
+    private static int MAX;
     
-    private boolean win = false;
+    //private boolean win = false;
     private boolean running = false;
-    private boolean done = false;
+    private volatile boolean done = false;
     private Game game;
     
         
-    public Clicker(Game g) {
+    public Clicker(Game g, int max) {
     	game = g;
+    	MAX = max;
     }
     
-    public int clickerLauncher (int clicksAsked) {
+    /**
+     * 
+     * @param clicksAsked
+     */
+    public void clickerLauncher (int clicksAsked){
         
     	game.getClickerFrame().setVisible(true);
     	
     	winScore = clicksAsked;
     	
-    	
     	game.getLeftB().setEnabled(false);
     	game.getRightB().setEnabled(false);
     	game.getBehindB().setEnabled(false);
     	game.getFrontB().setEnabled(false);  
-    	
 
-
-        /*
-        if (done) {
-        	game.getLeftB().setEnabled(true);
-        	game.getRightB().setEnabled(true);
-        	game.getBehindB().setEnabled(true);
-        	game.getFrontB().setEnabled(true);  
-        }
-        
-        
-        /*
-        while (!done) {	
-        	game.getClickerFrame().getContentPane().repaint();
-        }*/
-    	System.out.println(clicks);
-        return clicks;
-        
     }
     
 
@@ -68,6 +60,10 @@ public class Clicker implements ActionListener, Runnable  {
     public int getWinScore() {
         return winScore;
     }
+    
+    public boolean getDone() {
+    	return done;
+    }
 
     
     //buttons listener
@@ -80,15 +76,14 @@ public class Clicker implements ActionListener, Runnable  {
             if (time != MAX) {
                 clicks++;
                 game.getClickLabel().setText("Clicks: " + clicks);
-                //percentage of victory
-                //progression = (clicks * 100) / winScore;
-                //progressionBar();
-                if (clicks >= winScore) {
-                	//player win
+                
+                if (clicks == winScore) {
+                	//if the goal is reached
                     running = false;
-                    win = true;
                     done = true;
-                    game.getClickerFrame().setVisible(false);
+                    //game.getClickButton().setEnabled(false);
+                    //game.getDoneButton().setEnabled(true);
+                    game.updateFightScore();
                 }
             }
             //trigger the timer in the first click
@@ -99,10 +94,8 @@ public class Clicker implements ActionListener, Runnable  {
       
             }
         }
+    	
     }
-    
-
-    
     
     //timer
     @Override
@@ -110,18 +103,13 @@ public class Clicker implements ActionListener, Runnable  {
         while (running) {
         	//time is over
             if (time == MAX) {
-                if (clicks >= winScore) {
-                	win = true;
-                } else {
-                	win = false;
-                }
                 running = false;
                 done = true;
-                game.getClickerFrame().setVisible(false);
+                game.getDoneButton().setEnabled(true);
             }
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException message) {
                 // empty catch block
             }
@@ -132,3 +120,4 @@ public class Clicker implements ActionListener, Runnable  {
     }
     
 }
+

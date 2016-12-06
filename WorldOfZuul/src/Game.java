@@ -59,9 +59,7 @@ public class Game extends JFrame {
     private ArrayList<Room> rooms; 
     private boolean inventoryIsOpen = false;
     public  Sound sound;
-    
-    private static int MIN = 0;
-    private static int MAX = 15;
+   
     
     private JButton left, behind, front, right, bag, search, speak; //direction arrows and bag (inventory)
     private JLabel title, text, pictureRoom, health, answer;
@@ -77,11 +75,14 @@ public class Game extends JFrame {
     //for the clicker game
     private Clicker clicker;
     private JFrame clickerFrame;
-    private JButton clickButton;
+    private JButton clickButton, doneButton;
+    private JPanel clickerDownPanel;
     private JLabel clickLabel;
     private JProgressBar bar;
-    
+    private static int MIN = 0;
+    private static int MAX = 1500; //hundredth of seconds
     private Container clickerGlobalPanel;
+    private int result;
     
     
     /**
@@ -262,33 +263,39 @@ public class Game extends JFrame {
     
     public void createClickerFrame() {
         
-    	clicker = new Clicker(this);
+    	clicker = new Clicker(this, MAX);
     	
     	clickerFrame = new JFrame();
-    	clickerFrame.setSize(400, 450);
-    	clickerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    	clickerFrame.setSize(700, 300);
+    	clickerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	clickerFrame.setResizable(false);
-    	clickerFrame.setLocationRelativeTo(null);
+    	
     	
         //bar.setStringPainted(true);
     	bar = new JProgressBar();
         bar.setMinimum(MIN);
         bar.setMaximum(MAX);
+        bar.setStringPainted(true);
+        //bar.setUI(new MyProgressUI());
         
-        clickButton = new JButton("Click Here!");
+        
+        Icon clickIcon = new ImageIcon("pictures/clicker_swords.png");
+        clickButton = new JButton("Click to attack!", clickIcon);
         clickButton.addActionListener(clicker);
-        clickButton.setFont(new Font("Arial", 1, 40));
+        clickButton.setFont(new Font("Kristen ITC", Font.BOLD, 40));
+        clickButton.setOpaque(true);
         
         clickLabel = new JLabel("Clicks: " + clicker.getClicks(), JLabel.CENTER);
-        clickLabel.setFont(new Font("Arial", 0, 20));
+        clickLabel.setFont(new Font("Kristen ITC", Font.BOLD, 30));
         
-        clickerGlobalPanel = new JPanel(new GridLayout(3,1));
+        
+        clickerGlobalPanel = new JPanel(new BorderLayout());
         clickerGlobalPanel.add(bar, BorderLayout.NORTH);
         clickerGlobalPanel.add(clickButton, BorderLayout.CENTER);
         clickerGlobalPanel.add(clickLabel, BorderLayout.SOUTH);
         
         clickerFrame.add(clickerGlobalPanel);
-        clickerFrame.pack();
+        clickerFrame.setLocationRelativeTo(null);
         clickerFrame.setVisible(false);
 
     }
@@ -785,33 +792,51 @@ public class Game extends JFrame {
     
     /**
      * Method used to move in a next room linked to the current room
+     * @param result 
      * @param way: The direction of the next room
      */
-    public void move(String way)
-    {
+    public void move(String way) {
+    	
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
         manageDirectionButtons();
         manageEgnimButton();
-        if(!player.getLocation().getEvents().isEmpty()) 
-        {
-        	if(player.getLocation().getEvents().get(0).getNpc().getEnemy());
-        	{
+        
+        if (!player.getLocation().getEvents().isEmpty()) {
+        	
+        	if (player.getLocation().getEvents().get(0).getNpc().getEnemy()) {
         		
-        		int nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
-        		
-        		int result = clicker.clickerLauncher((10));
-        		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
-        		if(win)
-        		{
-        			player.getLocation().getEvents().remove(0);
-        		}
+				clicker.clickerLauncher(10);
+				System.out.println("clicker launched");
+
         	}
+        
         }
         
     }
+    
+    /**
+     * calculates the score when a fight (clicker game) is over
+     */
+    public void updateFightScore() {
+    	
+    	System.out.println(clicker.getClicks());
+    	
+    	//erase the frame
+    	clickerFrame.setVisible(false);
+    	manageDirectionButtons();
+		result = clicker.getClicks();
+		
+		int nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
+		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
+		if(win) {
+			player.getLocation().getEvents().remove(0);
+		}
+		
+    }
+    
     /**
      * This method allows to active and disactive the speak button in fonction of the room. 
      */
