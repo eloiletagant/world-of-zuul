@@ -273,14 +273,19 @@ public class Game extends JFrame {
         Icon clickIcon = new ImageIcon("pictures/clicker_swords.png");
         clickButton = new JButton("Click to attack!", clickIcon);
         clickButton.addActionListener(clicker);
+        clickButton.setBackground(Color.BLACK);
+        clickButton.setForeground(Color.YELLOW);
         clickButton.setFont(new Font("Kristen ITC", Font.BOLD, 40));
         clickButton.setOpaque(true);
         
         clickLabel = new JLabel("Clicks: " + clicker.getClicks(), JLabel.CENTER);
+        clickLabel.setBackground(Color.BLACK);
+        clickLabel.setForeground(Color.YELLOW);
         clickLabel.setFont(new Font("Kristen ITC", Font.BOLD, 30));
         
         
         clickerGlobalPanel = new JPanel(new BorderLayout());
+        clickerGlobalPanel.setBackground(Color.BLACK);
         clickerGlobalPanel.add(bar, BorderLayout.NORTH);
         clickerGlobalPanel.add(clickButton, BorderLayout.CENTER);
         clickerGlobalPanel.add(clickLabel, BorderLayout.SOUTH);
