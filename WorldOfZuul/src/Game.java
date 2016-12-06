@@ -37,6 +37,7 @@ import java.util.HashMap;
 
 import character.NPC;
 import character.Player;
+import event.Enigma;
 import event.Event;
 import event.Fight;
 import room.Door;
@@ -48,7 +49,6 @@ import item.*;
 
 public class Game extends JFrame {
 	
-    private Parser parser;
     private Room currentRoom;
     private Player player;
     private Weapon w1, w2, w3, w4;
@@ -61,8 +61,9 @@ public class Game extends JFrame {
     public  Sound sound;
    
     
-    private JButton left, behind, front, right, bag, search, speak; //direction arrows and bag (inventory)
-    private JLabel title, text, pictureRoom, health, answer;
+    private JButton left, behind, front, right, bag, search, speak, enigmaButton; 
+    //direction arrows and bag (inventory)
+    private JLabel textDescRoom, textEvent, pictureRoom, health, textEnigma;
     private JPanel globalPanel, buttonsPanel, healthBag, panelFB, buttonDirection, textDisplay;
     private JTextField typingArea;
     
@@ -70,7 +71,8 @@ public class Game extends JFrame {
     private InventoryInterface showInventory;
     private GameListener l;
     
-    
+    private boolean isEnemy;
+    private String question;
     
     //for the clicker game
     private Clicker clicker;
@@ -92,7 +94,6 @@ public class Game extends JFrame {
     	
     	//Game Listener creation
         l = new GameListener(this);
-        parser = new Parser(this);
         
         Font font = new Font ("Kristen ITC", Font.BOLD, 14);
         
@@ -154,31 +155,20 @@ public class Game extends JFrame {
         //TEXT DISPLAY --> EN COURS (ANATOLE)
         
         
-        text = new JLabel("Welcome to Dungeon Clicker", JLabel.CENTER);
-        text.setForeground(Color.yellow);
-        text.setFont(font);
-
-        //button = new JButton("Clear");
-        //button.addActionListener(this);
-         
-        answer = new JLabel("test", JLabel.CENTER);
-        answer.setForeground(Color.yellow);
-        answer.setFont(font);
+        textDescRoom = new JLabel("Welcome to Dungeon Clicker", JLabel.CENTER);
+        textDescRoom.setForeground(Color.yellow);
+        textDescRoom.setFont(font);
         
-        //typingArea = new JTextField(20);
-        //typingArea.setBackground(Color.black);
-        //typingArea.setForeground(Color.WHITE);
-        //typingArea.addKeyListener(parser);
-        //Create new custom border for JTextField
-        //Border border = BorderFactory.createLineBorder(Color.red);
-        //:typingArea.setBorder(border);
+        textEvent = new JLabel("", JLabel.CENTER);
+        textEvent.setForeground(Color.yellow);
+        textEvent.setFont(font);
         
         //create the panel which contains all the text
-        textDisplay = new JPanel();
+        textDisplay = new JPanel(new GridLayout(2,1));
         textDisplay.setBackground(Color.black);
-        textDisplay.add(text); 
-        //textDisplay.add(typingArea); 
-        //textDisplay.add(answer);
+        textDisplay.add(textDescRoom);
+        textDisplay.add(textEvent);
+
         
         /*******************************************
          ****** Declaration of all direction buttons 
@@ -247,18 +237,18 @@ public class Game extends JFrame {
     	createAllRooms();
     	setEvents();
         createAllDoors(rooms);
-        manageDirectionButtons();
+        manageButtons();
         testAddItemsToInventory();
         player.moveRoom(rooms.get(0));
         addChestsToRooms();
-        
         
     	sound = new Sound();
     	sound.playSound("music/SoundCave.wav");
     }
     
-    public void setAnswer(String s) {
-    	answer.setText(s);
+    public void setTextEvent(String s) {
+    	textEvent.setText(s);
+    	textEvent.repaint();
     }
     
     public void createClickerFrame() {
@@ -441,7 +431,7 @@ public class Game extends JFrame {
 			//Fight fight = new Fight("Hello",w1,player,roiArthur);
 			//rooms.get(1).addEvent(fight);
 			
-			//TRADER
+    	//TRADER
 			//BOHORT
 			NPC bohort = new NPC("Borhort",10, 2, true);
 			//Trade trade1 = new Fight("trade1",w1,player,bohort);
@@ -451,25 +441,33 @@ public class Game extends JFrame {
 			//Trade trade2 = new Fight("trade2",w1,player,lancelot);
 			//rooms.get(31).addEvent(trade2);
 			
-			//NPC ENIGMA
+		//NPC ENIGMA
 			//MERLIN
-			NPC merlin = new NPC("Merlin",15, 2, false);
-			//Enigma enigma1 = new Enigma("Enigma1",k1,player,merlin);
-			//rooms.get(9).addEvent(enigma1);
+			NPC merlin = new NPC("Merlin", 15, 2, false);
+			String q1 = "test";
+			String a1 = "test";
+			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
+			rooms.get(1).addEvent(enigma1); //1 instead of 9
+			
 			//KARADOC
-			NPC karadoc = new NPC("Karadoc",15, 2, false);
-			//Enigma enigma2 = new Enigma("Enigma2",k2,player,karadoc);
+			NPC karadoc = new NPC("Karadoc", 15, 2, false);
+			String q2 = "test";
+			String a2 = "test";
+			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, q2, a2);
 			//rooms.get(4).addEvent(enigma2);
+			
 			//PERCEVAL
-			NPC perceval = new NPC("Perceval",20, 2, false);
-			//Enigma enigma3 = new Enigma("Enigma3",k5,player,perceval);
+			NPC perceval = new NPC("Perceval", 20, 2, false);
+			String q3 = "test";
+			String a3 = "test";
+			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, q3, a3);
 			//rooms.get(27).addEvent(enigma3);
 			
 		//NPC Enemy
 			//MINOTAUR
 			NPC minotaur = new NPC("Minotaur",5, 2, true);
 			Fight fight1 = new Fight("fight1",w3,player,minotaur);
-			rooms.get(1).addEvent(fight1);
+			//rooms.get().addEvent(fight1);
 			//SPIDER
 			NPC spider = new NPC("Spider",5, 2, true);
 			Fight fight2 = new Fight("fight2",k3,player,spider);
@@ -709,7 +707,7 @@ public class Game extends JFrame {
     	  String itemAdded="You won ";
     	  if (aChest.getNbItems()==0)
 		  {
-	  		  text.setText("This chest is empty.");
+	  		  textEvent.setText("This chest is empty.");
 	  		 
 		  }
     	  else
@@ -734,7 +732,7 @@ public class Game extends JFrame {
     			  }
     		  }
     		  itemAdded=itemAdded+" and "+gold+" gold."+textToAdd;
-    		  text.setText(itemAdded); 
+    		  textEvent.setText(itemAdded); 
     		  while (i!=0)
     		  {
     			  aChest.deleteItem(chestInv.get(0));
@@ -761,24 +759,37 @@ public class Game extends JFrame {
      * This method checks the presence of doors for the current room. 
      * A direction button is activated if the door associated to the direction is present and unlocked
      */
-    public void manageDirectionButtons()
-    {
-            HashMap<String, Door> doors;
-            doors = currentRoom.getDoors();
-           
-            front.setEnabled(false);
-            behind.setEnabled(false);
-            left.setEnabled(false);
-            right.setEnabled(false);
+    public void manageButtons() {
+        HashMap<String, Door> doors;
+        doors = currentRoom.getDoors();
+       
+        //directions
+        front.setEnabled(false);
+        behind.setEnabled(false);
+        left.setEnabled(false);
+        right.setEnabled(false);
+        
+        if (doors.containsKey("front"))
+            front.setEnabled(true);
+        if (doors.containsKey("behind"))
+            behind.setEnabled(true);
+        if (doors.containsKey("left"))
+            left.setEnabled(true);
+        if (doors.containsKey("right"))
+            right.setEnabled(true);    
             
-            if (doors.containsKey("front"))
-                front.setEnabled(true);
-            if (doors.containsKey("behind"))
-                behind.setEnabled(true);
-            if (doors.containsKey("left"))
-                left.setEnabled(true);
-            if (doors.containsKey("right"))
-                right.setEnabled(true);     	
+        
+        //enigmas
+        //This method allows to active and disabled the speak button in fonction of the room.
+        for (Event event : currentRoom.getEvents()) {
+        	if (event instanceof Enigma) { 
+        		speak.setEnabled(true);
+        	} else {
+        		speak.setEnabled(false);
+        	}
+        
+        }
+                
     }
     
     /**
@@ -801,15 +812,22 @@ public class Game extends JFrame {
         setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
-        manageDirectionButtons();
-        manageEgnimButton();
+        manageButtons();
         
-        if (!player.getLocation().getEvents().isEmpty()) {
-        	
-        	if (player.getLocation().getEvents().get(0).getNpc().getEnemy()) {
-        		
+        
+        //get the eventual fight of the room
+        for (Event event : currentRoom.getEvents()) {
+        	if (event instanceof Fight) {
+        		isEnemy = ((Fight) event).getNpc().getEnemy();
+        	}
+        }
+       
+        //if there is an event
+        if (!currentRoom.getEvents().isEmpty()) {
+        	//if the npc is an enemy :
+        	if (isEnemy) {
+        		//launch the clicker game
 				clicker.clickerLauncher(10);
-				System.out.println("clicker launched");
 
         	}
         
@@ -826,32 +844,17 @@ public class Game extends JFrame {
     	
     	//erase the frame
     	clickerFrame.setVisible(false);
-    	manageDirectionButtons();
+    	manageButtons();
 		result = clicker.getClicks();
 		
-		int nbr = Integer.valueOf(player.getLocation().getDescription().split("m")[1]);
-		boolean win = player.getLocation().getEvents().get(0).runFight(result,nbr * 10);
+		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
+		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
 		if(win) {
-			player.getLocation().getEvents().remove(0);
+			currentRoom.getEvents().remove(0);
 		}
 		
     }
     
-    /**
-     * This method allows to active and disactive the speak button in fonction of the room. 
-     */
-    public void manageEgnimButton ()
-    {
-        if (player.getLocation() == rooms.get(4) || player.getLocation() == rooms.get(9) || player.getLocation() == rooms.get(27))
-        { 
-        	//System.out.print("noimom"); 
-            speak.setEnabled(true);
-        }                
-        else 
-        {
-        	speak.setEnabled(false);
-        }
-    }
     
     /**
      * This method modifies the text which is displays in the game
@@ -859,63 +862,78 @@ public class Game extends JFrame {
      */
     public void setText(String aText)
     {
-    	text.setText("<html>You are in the "+ currentRoom.getDescription()+"<br>"+aText+"</html>");    	 
+    	textDescRoom.setText("<html>You are in the "+ currentRoom.getDescription()+"<br>"+aText+"</html>");    	 
     }
+    
+    /**
+     * display a frame which contains the enigma
+     */
     void displayEnigma()
     {
         JFrame enigmaFrame = new JFrame();
-        JPanel globalFram = new JPanel (new GridLayout (1,2));
-        JPanel egnima = new JPanel (new GridLayout (2,1));
+        JPanel globalFrame = new JPanel (new GridLayout (1,2));
+        JPanel image = new JPanel(); 
+        JPanel enigma = new JPanel (new GridLayout (3,1));
         JLabel logo = new JLabel();
-         
+        Font police = new Font ("Kristen ITC", Font.BOLD, 14);
         
-        JPanel image = new JPanel();   
+        enigmaButton = new JButton("Submit!");
+        enigmaButton.setFont(police);
+        enigmaButton.addActionListener(l);
+        enigmaButton.setBackground(Color.black);
+        enigmaButton.setForeground(Color.YELLOW);
+          
         image.setBackground(Color.BLACK);
-        Icon interogationPoint = new ImageIcon("./pictures/Question.png");
+        Icon interogationPoint = new ImageIcon("./pictures/interrogation.jpg");
         logo = new JLabel (interogationPoint);
         // logo.setBackground(Color.BLACK);
-         
-         JLabel textEgnima = new JLabel ("EGnimeeeee", JLabel.CENTER);
-         textEgnima.setBackground(Color.BLACK);
-         textEgnima.setForeground(Color.YELLOW);
-         textEgnima.setOpaque(true);
-         Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-         textEgnima.setFont(police);
-         
-         JTextField typingArea = new JTextField(20);
-       
         
         
-        //typingArea.addKeyListener(parser);
+        for (Event event : currentRoom.getEvents()) {
+        	if (event instanceof Enigma) {
+        		question = ((Enigma) event).getQuestion();
+        	}
+        }
         
-        //Create new custom border for JTextField
-     //   Border border = BorderFactory.createLineBorder(Color.red);
-      //  typingArea.setBorder(border);
-         
-       
-        
-       
-        
+        textEnigma = new JLabel (question, JLabel.CENTER);
+        textEnigma.setBackground(Color.BLACK);
+        textEnigma.setForeground(Color.YELLOW);
+        textEnigma.setOpaque(true);
+        textEnigma.setFont(police);
+
         typingArea = new JTextField(20);
         typingArea.setBackground(Color.black);
-        typingArea.setForeground(Color.WHITE);
-       // typingArea.addKeyListener(parser);
+        typingArea.setForeground(Color.YELLOW);
+        
+        //Create new custom border for JTextField
+        //Border border = BorderFactory.createLineBorder(Color.red);
+        //typingArea.setBorder(border);
         
         image.add(logo);
         
-        egnima.add(textEgnima);
-        egnima.add(typingArea);
+        enigma.add(textEnigma);
+        enigma.add(typingArea);
+        enigma.add(enigmaButton);
+         
+        globalFrame.add(image);
+        globalFrame.add(enigma);
         
-        globalFram.add(image);
-        globalFram.add(egnima);
-        
-        enigmaFrame.setSize(500,500);
-        
-        
-        enigmaFrame.add(globalFram);
+
+        enigmaFrame.add(globalFrame);
         enigmaFrame.pack();
+        enigmaFrame.setLocationRelativeTo(null);
+        enigmaFrame.setResizable(false);
+        
         enigmaFrame.setVisible(true);
         
+    }
+    
+    public JButton getEnigmaButton() {
+    	return enigmaButton;
+    }
+    
+    public JLabel getEnigmaLabel() {
+    	return textEnigma;
     }
     
 }

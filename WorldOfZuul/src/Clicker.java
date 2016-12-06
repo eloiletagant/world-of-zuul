@@ -61,8 +61,9 @@ public class Clicker implements ActionListener, Runnable  {
         return winScore;
     }
     
-    public boolean getDone() {
-    	return done;
+    private void isDone() {
+    	game.updateFightScore();
+    	//possiblity to display infos on the screen
     }
 
     
@@ -72,18 +73,15 @@ public class Clicker implements ActionListener, Runnable  {
         
     	if (e.getSource() == game.getClickButton()) {
 
-        	//behavior
+        	//behavior on the click button
             if (time != MAX) {
                 clicks++;
                 game.getClickLabel().setText("Clicks: " + clicks);
-                
+              //if the goal is reached 
                 if (clicks == winScore) {
-                	//if the goal is reached
                     running = false;
                     done = true;
-                    //game.getClickButton().setEnabled(false);
-                    //game.getDoneButton().setEnabled(true);
-                    game.updateFightScore();
+                    isDone();
                 }
             }
             //trigger the timer in the first click
@@ -105,15 +103,16 @@ public class Clicker implements ActionListener, Runnable  {
             if (time == MAX) {
                 running = false;
                 done = true;
-                game.getDoneButton().setEnabled(true);
+                isDone();
             }
             
             try {
+            	//sleep for 0.01 second
                 Thread.sleep(10);
             } catch (InterruptedException message) {
                 // empty catch block
             }
-            if (!running) continue;
+            if (!running) continue;           
             time++;
             game.getBar().setValue(time);
         }

@@ -14,7 +14,7 @@ public class Enigma extends Event {
 
     private String question;
     private String answer;
-    private boolean enable;
+    private boolean enable; //enigma answered or not
 
     /**
      * Constructor of the class enigma. This method will generate an enigma.
@@ -42,35 +42,12 @@ public class Enigma extends Event {
     public String getQuestion() { return question; }
 
     /**
-     * disable an enigma
-     */
-    public void disableEnigma()
-    {
-    	enable = false;
-    }
-    
-    /**
      * accessor
      */
-    public boolean getEnable()
-    {
+    public boolean getEnable() {
     	return enable;
     }
     
-    /**
-     * This method will test if the answer is correct.
-     * @param playerAnswer
-     */
-    public boolean checkAnswer(String playerAnswer) {
-        if (playerAnswer.equals(answer)) {
-            System.out.println("Good answer ! ");
-            return getPlayer().getInventory().addItem(super.getItem());
-        } else {
-            System.out.println("Wrong answer retry it later !");
-            return false;
-        }
-    }
-
     public void setQuestion(String newQuestion) {
         question = newQuestion;
     }
@@ -78,4 +55,32 @@ public class Enigma extends Event {
     public void setAnswer(String newAnswer) {
         answer = newAnswer;
     }
+    
+    /**
+     * disable an enigma
+     */
+    public void disableEnigma() {
+    	enable = false;
+    }
+    
+
+    
+    /**
+     * This method will test if the answer is correct.
+     * @param playerAnswer
+     */
+    public boolean checkAnswer(String playerAnswer) {
+        if (playerAnswer.equals(answer)) {
+            System.out.println("Good answer !");
+            disableEnigma();
+            return getPlayer().getInventory().addItem(super.getItem());
+            
+        } else {
+            System.out.println("Wrong answer retry it later !");
+            return false;
+            
+        }
+    }
+
+
 }

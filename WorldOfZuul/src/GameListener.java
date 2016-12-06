@@ -4,7 +4,12 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+
+import character.NPC;
 import character.Player;
+import event.Enigma;
+import item.Item;
+import item.Weapon;
 import room.Door;
 /**
  * This class allows to listen the game interface and to perform actions
@@ -17,12 +22,7 @@ public class GameListener implements ActionListener {
     
 	private Game game;
 	private HashMap<String, Door> doors;
-	private JFrame myFrame;
-	private JLabel myLabel;
-	private JPanel myPanel;
-	private JButton myButton;
-
-
+	
     /**
      * GameListener constructor
     */   
@@ -35,66 +35,52 @@ public class GameListener implements ActionListener {
      * @param e: The source of the action in the game class
      */
     
-    public void actionPerformed(ActionEvent e)
-    {
-    	doors=game.getPlayer().getLocation().getDoors();
-    	if (e.getSource() == game.getFrontB())
-    	{
-    		if (doors.containsKey("front"))
-    		{
-    			if(doors.get("front").isLocked() == false)
-    			{
+    public void actionPerformed(ActionEvent e) {
+    	
+    	doors = game.getPlayer().getLocation().getDoors();
+    	Weapon w = new Weapon("", "", 0, true, 0);
+    	Player player = new Player("");
+    	NPC npc = new NPC("", 0, 0, true);
+		Enigma enigma = new Enigma("", w, player, npc, "", "");
+		
+    	
+    	if (e.getSource() == game.getFrontB()) {
+    		if (doors.containsKey("front")) {
+    			if(doors.get("front").isLocked() == false) {
     				game.move("front");
-    			}
-    			else
-    	    	{
+    			} else {
     				game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
-    	}
-    	else if (e.getSource() == game.getBehindB())
-        {
-        	if (doors.containsKey("behind"))
-    		{
-    			if(doors.get("behind").isLocked() == false)
-    			{
+    		
+    	} else if (e.getSource() == game.getBehindB()) {
+        	if (doors.containsKey("behind")) {
+    			if(doors.get("behind").isLocked() == false) {
     				game.move("behind");
-    			}
-    			else
-    	    	{
+    			} else {
     				game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
-        }
-    	else if (e.getSource() == game.getRightB())
-        {
-        	if (doors.containsKey("right"))
-    		{
-    			if(doors.get("right").isLocked() == false)
-    			{
+        	
+        } else if (e.getSource() == game.getRightB()) {
+        	if (doors.containsKey("right")) {
+    			if(doors.get("right").isLocked() == false) {
     				game.move("right");
-    			}
-    			else
-    	    	{
+    			} else {
     	    		game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
-        } 
-    	else if (e.getSource() == game.getLeftB())
-        {
-        	if (doors.containsKey("left"))
-    		{
-    			if(doors.get("left").isLocked() == false)
-    			{
+        	
+        } else if (e.getSource() == game.getLeftB()) {
+        	if (doors.containsKey("left")) {
+    			if(doors.get("left").isLocked() == false) {
     				game.move("left");
-    			}
-    			else
-    	    	{
+    			} else {
     				game.setText("This door is locked. You need a key to open this door. Try to open it by opening your inventory !");
     	    	}
     		}
-        }
-    	else if (e.getSource() == game.getBagB()) {
+        	
+        } else if (e.getSource() == game.getBagB()) {
         	if (game.getInventoryIsOpen()) {
         		game.openInventory(false);
         		game.setOpenningInventory(false);
@@ -103,26 +89,28 @@ public class GameListener implements ActionListener {
         		game.openInventory(true);
         		game.setOpenningInventory(true);
         	}
-        }
-    	else if (e.getSource() == game.getSpeak())
-        {
+        	
+        } else if (e.getSource() == game.getSpeak()) {
             game.displayEnigma();
-        }
-    	else if (e.getSource() == game.getSearch())
-        {
+            
+        } else if (e.getSource() == game.getSearch())  {
     		if (game.getPlayer().getLocation().hasChest()){
     			if (game.getPlayer().getLocation().getChest().getLock().getLock() == true){
     				game.setText("This chest is locked. You need a key to open this chest. Try to open it by opening your inventory !");
     			} else {
     				game.getItemsFromChest(game.getPlayer().getLocation().getChest());
     			}
-    		}
-    		else {
+    		} else {
     			game.setText("There is no chest in this room !");
     		}
+    		
+        } else if (e.getSource() == game.getEnigmaButton()) {
+        	if (enigma.checkAnswer(game.getTypingArea().getText())) {
+        		game.setTextEvent("Well done, you get it!");
+        	} else {
+        		game.setTextEvent("Sorry, try again!");
+        	}
         }
-        	
     }
-
-   }
+}
      

@@ -26,9 +26,7 @@ public class MainPlay extends JFrame implements ActionListener {
     private int nbrRoom = 0; 
     private Game game;
     
-    
     private Font font, titleFont, playFont;
-
 
     public MainPlay() {
     	
@@ -70,9 +68,6 @@ public class MainPlay extends JFrame implements ActionListener {
                   
         //Add buttons on the panel
         buttonsPanel.add(start);
-       
-       
-        
         
         //Creation final panel
         globalPanel = new JPanel(new BorderLayout ());

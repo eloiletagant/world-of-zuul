@@ -10,18 +10,8 @@ import javax.swing.*;
  
 public class Parser extends JFrame implements KeyListener, ActionListener {
      
-    //Uncomment this if you wish to turn off focus
-    //traversal.  The focus subsystem consumes
-    //focus traversal keys, such as Tab and Shift Tab.
-    //If you uncomment the following line of code, this
-    //disables focus traversal and the Tab events will
-    //become available to the key event listener.
-    //typingArea.setFocusTraversalKeysEnabled(false);
 
-     
-    //getContentPane().add(typingArea, BorderLayout.PAGE_START);
-    //getContentPane().add(button, BorderLayout.PAGE_END);
- 
+	private static final long serialVersionUID = 1L;
 	private String output;
 	private Game game;
 	
@@ -33,19 +23,27 @@ public class Parser extends JFrame implements KeyListener, ActionListener {
      
     /** Handle the key typed event from the text field. */
     public void keyTyped(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            System.out.println("test parser");
+        }   
     }
      
     /** Handle the key pressed event from the text field. */
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ENTER){
         	output = game.getTypingArea().getText();
-            game.setAnswer(output);
-            
+            game.setTextEvent(output);
+            System.out.println("test parser");
+            game.setVisible(false);
+            game.setVisible(true);
         }   
     }
      
     /** Handle the key released event from the text field. */
     public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            System.out.println("test parser");
+        }   
     }
      
     /** Handle the button click : to clear the fields */

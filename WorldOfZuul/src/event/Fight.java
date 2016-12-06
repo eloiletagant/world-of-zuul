@@ -21,13 +21,12 @@ public class Fight extends Event {
      * @param player      Character the player of the game
      * @param npc         NPC which is involved in the event
      */
-    public Fight(String description, Item item, Player player, NPC npc) {
+    public Fight (String description, Item item, Player player, NPC npc) {
         super(description, item, player, npc);
         isWin = false;
     }
 
-    public boolean getResult()
-    {
+    public boolean getResult() {
     	return isWin;
     }
     //the methods will be created during the implementation of the game
@@ -37,8 +36,7 @@ public class Fight extends Event {
      * @param clicksRequireds > clicks
      * @return return the result of the fight : true = win, false = loose
      */
-    public boolean runFight(int clicks, int clicksRequireds)
-    { 
+    public boolean runFight(int clicks, int clicksRequireds) { 
     	int playerDamages = 1;
     	int npcDamages = 1;
     	for(Item test : this.getPlayer().getInventory().getItems())
