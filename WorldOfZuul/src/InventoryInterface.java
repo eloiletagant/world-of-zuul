@@ -190,34 +190,41 @@ public class InventoryInterface extends JFrame {
         //use button building
         use= new JButton("USE");
         use.setBackground(Color.black);
+        use.setOpaque(true);
         use.setForeground(Color.yellow);
         use.setFont(police);
-        use.setBorderPainted(false);
         use.addMouseListener(evt);
+        use.setBorderPainted(false);
+        
+             
         
         //sell button building
         sell= new JButton("SELL");
         sell.setBackground(Color.black);
+        sell.setOpaque(true);
         sell.setForeground(Color.yellow);
         sell.setFont(police);
-        sell.setBorderPainted(false);
         sell.addMouseListener(evt);
+        sell.setBorderPainted(false);
+        
         
         //equip button building
         equip= new JButton("EQUIP");
 		equip.setBackground(Color.black);
+		equip.setOpaque(true);
 		equip.setForeground(Color.yellow);
 		equip.setFont(police);
-		equip.setBorderPainted(false);
 		equip.addMouseListener(evt);
+		equip.setBorderPainted(false);
 		
 		//unequip button building
 		unequip= new JButton("UNEQUIP");
 		unequip.setBackground(Color.black);
+		unequip.setOpaque(true);
 		unequip.setForeground(Color.yellow);
 		unequip.setFont(police);
-		unequip.setBorderPainted(false);
 		unequip.addMouseListener(evt);
+		unequip.setBorderPainted(false);
         
 		//Panel view building
     	view=new JPanel(new BorderLayout());

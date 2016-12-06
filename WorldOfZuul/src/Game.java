@@ -943,6 +943,7 @@ public class Game extends JFrame {
 
         enigmaFrame.add(globalFrame);
         enigmaFrame.pack();
+        enigmaFrame.setSize(500,200);
         enigmaFrame.setLocationRelativeTo(null);
         enigmaFrame.setResizable(false);
         
