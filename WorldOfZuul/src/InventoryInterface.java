@@ -10,60 +10,57 @@ import room.*;
  * This method creates the frame with the design of the inventory.
  * It allows displaying items of the inventory of the player.
  * 
- * @author Group4
- * @version 01/12/2016
+ * @author Grotop4
+ * @version 06/12/2016
  */
 public class InventoryInterface extends JFrame {
 	
     //button building
     private JButton back, back2, use, sell, equip, unequip, aButton;
-    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, effects;
-    private JPanel myPanel, up, inventory, down, gold, view, actions, completeDescription;
-    private JFrame inventoryFrame, itemFrame;
-    private Inventory inventoryPlayer;
-    private Player player;
-    private Icon anIcon, backIcon, goldIcon;
-    private int counter = 0;
-    private Item myItem;
-    private Weapon myWeapon;
-    private Consumable myConsumable;
-    private boolean viewInventory = true;
-    private boolean aWeapon,lock;
-    private InventoryInterfaceListener evt;
-    private String name;
+    //store button for all items in the inventory;
     private JButton[] buttonItems;
+    //label building
+    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, effects;
+    //panel building
+    private JPanel myPanel, top, inventory, gold, view, actions, completeDescription;
+    //frame building
+    private JFrame inventoryFrame, itemFrame;
+    //inventory of the player
+    private Inventory inventoryPlayer;
+    //the player
+    private Player player;
+    //the game
     private Game game;
+    //doors of the room where the player is
     private HashMap<String,Door> doors;
+    //some icons
+    private Icon anIcon, backIcon, goldIcon;
+    private Item myItem;
+    private String name;
+    private InventoryInterfaceListener evt;
+    private Font police = new Font ("Kristen ITC", Font.BOLD, 14);
+    private Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
+    
     
 
     /**
-     * Constructor for objects of class InventoryInterface
+     * Constructor for objects of class InventoryInterface.
+     * This method creates a Frame which will be display the inventory of the player
      */
-    public InventoryInterface(Inventory anInventory, Player aPlayer, Game aGame)
+    private InventoryInterface(Inventory anInventory, Player aPlayer, Game aGame)
     {
+    	//information from game
     	inventoryPlayer = anInventory;
     	player = aPlayer;
     	game = aGame;
+    	
+    	//inventory building
         myPanel = new JPanel(new BorderLayout ());
-        up = new JPanel (new GridLayout (1,3));
-        inventory = new JPanel (new GridLayout (0,5,10,10));
-        inventory.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
-        inventory.setBackground(Color.black);
-        down = new JPanel (new GridLayout (1,1));
-        
-        Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-        
-        
-        title = new JLabel ("INVENTORY", JLabel.CENTER);
-        title.setBackground(Color.black);
-        title.setOpaque(true);
-        title.setForeground(Color.yellow);
-        title.setFont(police);
-        
-        
         myPanel.setBackground(Color.black);
         
-		
+        //top bar of the inventory creation
+        top = new JPanel (new GridLayout (1,3));
+        //back contains a Button including an icon
         backIcon = new ImageIcon("pictures/back.png");
 		back = new JButton ("BACK", backIcon);
         back.setBackground(Color.black);
@@ -71,8 +68,13 @@ public class InventoryInterface extends JFrame {
         back.setForeground(Color.yellow);
         back.setFont(police);
         back.setBorderPainted(false);
-
-
+        //title of the inventory
+        title = new JLabel ("INVENTORY", JLabel.CENTER);
+        title.setBackground(Color.black);
+        title.setOpaque(true);
+        title.setForeground(Color.yellow);
+        title.setFont(police);
+        //panel that contains information about gold
         goldLabel = new JLabel("GOLD :" + inventoryPlayer.getGold());
         goldLabel.setBackground(Color.black);
         goldLabel.setOpaque(true);
@@ -87,45 +89,243 @@ public class InventoryInterface extends JFrame {
 		gold.add(goldLabel);
 		gold.setBackground(Color.black);
         gold.setOpaque(true);
-
+        //top bar inventory building with the back button, the title and information about gold
+        top.add(back);
+        top.add(title);
+        top.add(gold);
         
-        up.add(back);
-        up.add(title);
-        up.add(gold);
+        //body inventory creation
+        inventory = new JPanel (new GridLayout (0,5,10,10));
+        inventory.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+        inventory.setBackground(Color.black);
         
-        
-      //Listeners for buttons action
-        evt = new InventoryInterfaceListener(this, game);
+        //Listeners for buttons action
+        evt = new InventoryInterfaceListener(this);
         back.addMouseListener(evt);
         
-        buttonItems = new JButton[inventoryPlayer.getNbItems()];
-        for (Item item : inventoryPlayer.getItems())
-        {
-        	aButton=getJButton(item);
-        	buttonItems[counter] = aButton;
-        	buttonItems[counter].addMouseListener(evt);
-           	inventory.add(buttonItems[counter]);
-           	counter+=1;
-        }
-    	
-        while (counter!=inventoryPlayer.getMaxItems())
-		{
-			JPanel empty = new JPanel();
-			empty.setBackground(new Color(70, 63, 55));
-			inventory.add(empty);
-			counter+=1;
-		}    
+        //fill the body inventory
+        fillInventory(); 
         
-        
-        myPanel.add(up,BorderLayout.NORTH);
+        //myPanel building with the top bar and the body
+        myPanel.add(top,BorderLayout.NORTH);
         myPanel.add(inventory,BorderLayout.CENTER);
-        myPanel.add(down,BorderLayout.SOUTH);
         
+        //frame building including the top bar and the body of the inventory
         inventoryFrame= new JFrame("My inventory");  
         inventoryFrame.add(myPanel);
         inventoryFrame.setSize(500, 500);
         inventoryFrame.pack();
         inventoryFrame.setVisible(true);
+    }
+    	
+    /**
+     * This method creates a new window in order to display information about the given item.
+     * @param anItem to display
+     */
+    private void designItem()
+    {
+    	//item view building
+		itemFrame = new JFrame("My item");
+    	itemFrame.setSize(500, 500);
+    	top = new JPanel (new GridLayout (1,2));
+    	
+    	//back button building
+		back2 = new JButton ("BACK", backIcon);
+        back2.setBackground(Color.black);
+        back2.setOpaque(true);
+        back2.setForeground(Color.yellow);
+        back2.setFont(police);        
+        back2.addMouseListener(evt);
+        back2.setBorderPainted(false);
+        //title building
+        title = new JLabel ("",JLabel.CENTER);
+        title.setBackground(Color.black);
+        title.setOpaque(true);
+        title.setForeground(Color.yellow);
+        title.setFont(police);
+
+        
+        //top bar of the item view building
+        top.add(back2);
+        top.add(title);
+    	
+        //item picture building
+    	iconLabel=new JLabel();
+    	iconLabel.setBackground(new Color(70, 63, 55));
+        iconLabel.setOpaque(true);
+        
+        //description of the item building with the name,the description and the price of the object
+        completeDescription=new JPanel(new GridLayout(0,1));
+        completeDescription.setBackground(new Color(70, 63, 55));
+        completeDescription.setOpaque(true);
+        nom=new JLabel("");
+        nom.setForeground(Color.white);
+        nom.setFont(police2);
+        description=new JLabel("");
+        description.setForeground(Color.white);
+        description.setFont(police2);
+        price=new JLabel("");
+        price.setForeground(Color.white);
+        price.setFont(police2);
+        damages=new JLabel("");
+    	damages.setForeground(Color.white);
+    	damages.setFont(police2);
+        effects=new JLabel("");
+    	effects.setForeground(Color.white);
+    	effects.setFont(police2);
+		care=new JLabel("");
+    	care.setForeground(Color.white);
+    	care.setFont(police2);
+        completeDescription.add(nom);
+        completeDescription.add(description);
+        completeDescription.add(price);
+        completeDescription.add(damages);
+        completeDescription.add(effects);
+        completeDescription.add(care);
+        
+        //actions panel creation. it contains some buttons
+        actions= new JPanel(new GridLayout(1,2));
+        
+        //use button building
+        use= new JButton("USE");
+        use.setBackground(Color.black);
+        use.setForeground(Color.yellow);
+        use.setFont(police);
+        use.setBorderPainted(false);
+        use.addMouseListener(evt);
+        
+        //sell button building
+        sell= new JButton("SELL");
+        sell.setBackground(Color.black);
+        sell.setForeground(Color.yellow);
+        sell.setFont(police);
+        sell.setBorderPainted(false);
+        sell.addMouseListener(evt);
+        
+        //equip button building
+        equip= new JButton("EQUIP");
+		equip.setBackground(Color.black);
+		equip.setForeground(Color.yellow);
+		equip.setFont(police);
+		equip.setBorderPainted(false);
+		equip.addMouseListener(evt);
+		
+		//unequip button building
+		unequip= new JButton("UNEQUIP");
+		unequip.setBackground(Color.black);
+		unequip.setForeground(Color.yellow);
+		unequip.setFont(police);
+		unequip.setBorderPainted(false);
+		unequip.addMouseListener(evt);
+        
+		//Panel view building
+    	view=new JPanel(new BorderLayout());
+    	view.add(top,BorderLayout.NORTH);
+    	view.add(iconLabel,BorderLayout.CENTER);
+    	view.add(completeDescription,BorderLayout.EAST);
+    }
+    
+    /**
+     * 
+     * @param anItem
+     */
+    public void displayItem(Item anItem)
+    {
+    	anItem.setManaged();
+    	manageInventory();
+    	if (itemFrame==null)
+    	{
+    		designItem();
+    	}
+    	title.setText("INVENTORY : "+anItem.getName());
+    	iconLabel.setIcon(getIcon(anItem));
+    	nom.setText("Name : "+anItem.getName());
+    	description.setText("Description : "+anItem.getDescription());
+    	price.setText("Price : "+anItem.getPrice() + " golds");
+    	damages.setText("");
+    	effects.setText("");
+    	care.setText("");
+    	actions.removeAll();
+    	
+    	
+        //creation of actions according to type of item
+        //if the item is a weapon, add damages to the complete description
+        if (anItem instanceof Weapon)
+        {
+        	damages.setText("Damages : "+((Weapon) anItem).getDamages());
+            //if this item is not equiped by the player, a button equip is created
+        	if (((Weapon) anItem).getEquiped()==false)
+        	{
+        		actions.add(equip);
+        		//if another weapon is already equiped by the player, the equip button is disabled
+        		if (searchEquiped()==true)
+        		{
+        			equip.setEnabled(false);
+        		}
+        	}
+        	//if the item is equiped by the player, a button unequip is created
+        	else
+        	{
+        		actions.add(unequip);
+        		
+        	}         
+        }
+        //if the item is a consumable or a key, a button use is created
+        else
+        {
+            actions.add(use);
+    		//if the item is a key,  the button use is disabled is there are no locked door and no chest in the room where the player is
+    		if (anItem instanceof Key)
+            {
+    	    	if (searchLock()==false)
+    	    	{
+    	    		use.setEnabled(false);
+    	    	}
+            }
+    		//if the item is a consumable and it needs to act with a weapon
+    		if (searchEquiped()==false)
+    		{
+    			if (anItem instanceof Consumable)
+    			{
+    				if (((Consumable) anItem).getWeapon()==true)
+    				{
+    					use.setEnabled(false);
+    				}
+    			}
+    		}
+            //if the item is a consumable
+            if(anItem instanceof Consumable)
+            {
+            	use.setEnabled(true);
+            	effects.setText("Effect : "+((Consumable) anItem).getEffect());
+            	if (((Consumable) anItem).getCare()!=0)
+            	{
+            		care.setText("Care : "+((Consumable) anItem).getCare()+" HP");
+            	}
+            	else
+            	{
+            		if (((Consumable) anItem).getWeapon()==true)
+            		{
+            			damages.setText("Damages added to your weapon : "+((Consumable) anItem).getDamage()+" HP");
+            		}
+            		else
+            		{
+            			damages.setText("Damages added : "+((Consumable) anItem).getDamage()+" HP");
+
+            		}
+            	}
+            }
+        }
+    	actions.add(sell);
+        //if the item is not sellable, the sell button is disabled
+        if (anItem.getSellAble()==false)
+    	{
+    		sell.setEnabled(false);
+    	}
+        view.add(actions,BorderLayout.SOUTH);
+    	itemFrame.add(view);
+    	itemFrame.pack();
+    	itemFrame.setVisible(true);
     }
 
     /**
@@ -191,7 +391,7 @@ public class InventoryInterface extends JFrame {
     
     /**
      * This method returns the equip button
-     * @return JButton use
+     * @return JButton equip
      */
     public JButton getEquip()
     {
@@ -200,7 +400,7 @@ public class InventoryInterface extends JFrame {
     
     /**
      * This method returns the unequip button
-     * @return JButton use
+     * @return JButton unequip
      */
     public JButton getUnequip()
     {
@@ -223,199 +423,6 @@ public class InventoryInterface extends JFrame {
     public JButton getItemToDisplay(int i)
     {
     	return buttonItems[i];
-    }
-    
-    /**
-     * This method creates a new window and display all information of the given item.
-     * @param anItem to display
-     */
-    public void displayItem(Item anItem)
-    {
-    	anItem.setManaged();
-    	manageInventory();
-    	Font police = new Font ("Kristen ITC", Font.BOLD, 14);
-    	Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
-    	
-    	backIcon = new ImageIcon("pictures/back.png");
-		back2 = new JButton ("BACK", backIcon);
-        back2.setBackground(Color.black);
-        back2.setOpaque(true);
-        back2.setForeground(Color.yellow);
-        back2.setFont(police);        
-        back2.addMouseListener(evt);
-        
-        title = new JLabel ("INVENTORY : " + anItem.getName(), JLabel.CENTER);
-        title.setBackground(Color.black);
-        title.setOpaque(true);
-        title.setForeground(Color.yellow);
-        title.setFont(police);
-        
-        up = new JPanel (new GridLayout (1,2));
-        up.add(back2);
-        up.add(title);
-    	
-    	itemFrame = new JFrame(anItem.getName());
-    	itemFrame.setSize(500, 500);
-    	
-    	iconLabel=new JLabel(getIcon(anItem));
-    	iconLabel.setBackground(new Color(70, 63, 55));
-        iconLabel.setOpaque(true);
-        
-        completeDescription=new JPanel(new GridLayout(0,1));
-        completeDescription.setBackground(new Color(70, 63, 55));
-        completeDescription.setOpaque(true);
-        
-        nom=new JLabel("Name : "+anItem.getName());
-        nom.setForeground(Color.white);
-        nom.setFont(police2);
-        completeDescription.add(nom);
-        description=new JLabel("Description : "+anItem.getDescription());
-        description.setForeground(Color.white);
-        description.setFont(police2);
-        completeDescription.add(description);
-        price=new JLabel("Price : "+anItem.getPrice() + " golds");
-        price.setForeground(Color.white);
-        price.setFont(police2);
-        completeDescription.add(price);
-        
-        sell= new JButton("SELL");
-        sell.setBackground(Color.black);
-        sell.setForeground(Color.yellow);
-        sell.setFont(police);
-        
-        actions= new JPanel(new GridLayout(1,2));
-        
-        aWeapon=false;
-    	for (Item item : inventoryPlayer.getItems())
-    	 {
-    		 if (item instanceof Weapon)
-    		 {
-    			 if (((Weapon) item).getEquiped()==true)
-    			 {
-    				 aWeapon=true;
-    			 }
-    		 }
-    	 }
-        
-        if (anItem instanceof Weapon)
-        {
-        	myWeapon = new Weapon(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Weapon) anItem).getDamages());
-        	damages=new JLabel("Damages : "+myWeapon.getDamages());
-        	damages.setForeground(Color.white);
-        	damages.setFont(police2);
-        	completeDescription.add(damages);
-        	if (((Weapon) anItem).getEquiped()==false)
-        	{
-        		equip= new JButton("EQUIP");
-        		equip.setBackground(Color.black);
-        		equip.setForeground(Color.yellow);
-        		equip.setFont(police);
-        		actions.add(equip);
-        		equip.addMouseListener(evt);
-        		if (aWeapon==true)
-        		{
-        			equip.setEnabled(false);
-        		}
-        	}
-        	else
-        	{
-        		unequip= new JButton("UNEQUIP");
-        		unequip.setBackground(Color.black);
-        		unequip.setForeground(Color.yellow);
-        		unequip.setFont(police);
-        		actions.add(unequip);
-        		unequip.addMouseListener(evt);
-        	}
-        	actions.add(sell);
-            sell.addMouseListener(evt);           
-        }
-        else
-        {
-        	use= new JButton("USE");
-        	use.setBackground(Color.black);
-            use.setForeground(Color.yellow);
-            use.setFont(police);
-            actions.add(use);
-    		use.addMouseListener(evt);
-    		if (anItem instanceof Key)
-            {
-            	doors=player.getLocation().getDoors();
-            	lock=false;
-            	for (Map.Entry<String,Door> door : doors.entrySet())
-       		 	{
-            		if (door.getValue().isLocked()==true)
-            		{
-            			lock=true;
-            		}
-       		 	}
-            	if (player.getLocation().hasChest()==true)
-            	{
-            		lock=true;
-            	}
-            	if (lock==false)
-            	{
-            		use.setEnabled(false);
-            	}
-            }
-    		if (aWeapon==false)
-    		{
-    			if (anItem instanceof Consumable)
-    			{
-    				if (((Consumable) anItem).getWeapon()==true)
-    				{
-    					use.setEnabled(false);
-    				}
-    			}
-    		}
-    		actions.add(sell);
-    		sell.addMouseListener(evt);
-            if (anItem.getSellAble()==false)
-        	{
-        		sell.setEnabled(false);
-        	}
-            if(anItem instanceof Consumable)
-            {
-            	myConsumable = new Consumable(anItem.getName(), anItem.getDescription(), anItem.getPrice(), anItem.getSellAble(), ((Consumable) anItem).getEffect(), ((Consumable) anItem).getCare(), ((Consumable) anItem).getDamage(), ((Consumable) anItem).getWeapon());
-            	effects=new JLabel("Effect : "+myConsumable.getEffect());
-            	effects.setForeground(Color.white);
-            	effects.setFont(police2);
-            	completeDescription.add(effects);
-            	if (myConsumable.getCare()!=0)
-            	{
-            		care=new JLabel("Care : "+myConsumable.getCare()+" HP");
-                	care.setForeground(Color.white);
-                	care.setFont(police2);
-                	completeDescription.add(care);
-            	}
-            	else
-            	{
-            		if (myConsumable.getWeapon()==true)
-            		{
-            			damages=new JLabel("Damages added to your weapon : "+myConsumable.getDamage()+" HP");
-            		}
-            		else
-            		{
-            			damages=new JLabel("Damages added : "+myConsumable.getDamage()+" HP");
-
-            		}
-                	damages.setForeground(Color.white);
-                	damages.setFont(police2);
-                	completeDescription.add(damages);
-            	}
-            }
-        }
-        
-        
-        
-    	view=new JPanel(new BorderLayout());
-    	view.add(up,BorderLayout.NORTH);
-    	view.add(iconLabel,BorderLayout.CENTER);
-    	view.add(completeDescription,BorderLayout.EAST);
-    	view.add(actions,BorderLayout.SOUTH);
-    	
-    	itemFrame.add(view);
-    	itemFrame.pack();
-    	itemFrame.setVisible(true);
     }
     
     /**
@@ -450,11 +457,12 @@ public class InventoryInterface extends JFrame {
      * @param item
      * @return JButton
      */
-    public JButton getJButton(Item anItem)
+    private JButton getJButton(Item anItem)
     {
     	anIcon=getIcon(anItem);
 		aButton= new JButton(anIcon);
 		aButton.setBackground(new Color(70, 63, 55));
+		aButton.setBorderPainted(false);
     	return aButton;
     }
     
@@ -464,7 +472,7 @@ public class InventoryInterface extends JFrame {
      * @param item
      * @return JButton
      */
-    public Icon getIcon(Item anItem)
+    private Icon getIcon(Item anItem)
     {
     	for (Item item : inventoryPlayer.getItems())
     	{
@@ -490,6 +498,81 @@ public class InventoryInterface extends JFrame {
     }
     
     /**
+     * This method searches if the player is in a room with something is locked.
+     * @return lock (true if there is a locker, false if there is not.)
+     */
+    private boolean searchLock()
+    {
+    	doors=player.getLocation().getDoors();
+    	boolean lock=false;
+    	for (Map.Entry<String,Door> door : doors.entrySet())
+		{
+    		if (door.getValue().isLocked()==true)
+    		{
+    			lock=true;
+    		}
+		}
+    	if (player.getLocation().hasChest()==true)
+    	{
+    		if (player.getLocation().getChest().getLock().getLock()==true)
+    		{
+    			lock=true;
+    		}
+    	}
+    	return lock;
+    	
+    }
+    
+    
+    /**
+     * This method searches if the player is equiped of a weapon.
+     * @return equiped (true if the player is equiped, false if he is not.)
+     */
+    private boolean searchEquiped()
+    {
+    	boolean equiped=false;
+    	for (Item item : inventoryPlayer.getItems())
+    	 {
+    		 if (item instanceof Weapon)
+    		 {
+    			 if (((Weapon) item).getEquiped()==true)
+    			 {
+    				 equiped=true;
+    			 }
+    		 }
+    	 }
+    	return equiped;
+    }
+    
+    /**
+     * This method updates contents of the inventory
+     */
+    private void fillInventory()
+    {
+    	inventory.removeAll();
+    	goldLabel.setText("GOLD :" + inventoryPlayer.getGold());
+    	//item buttons building
+        buttonItems = new JButton[inventoryPlayer.getNbItems()];
+        int counter=0;
+        for (Item item : inventoryPlayer.getItems())
+        {
+        	aButton=getJButton(item);
+        	buttonItems[counter] = aButton;
+        	buttonItems[counter].addMouseListener(evt);
+           	inventory.add(buttonItems[counter]);
+           	counter+=1;
+        }
+        //empty location building
+        while (counter!=inventoryPlayer.getMaxItems())
+		{
+			JPanel empty = new JPanel();
+			empty.setBackground(new Color(70, 63, 55));
+			inventory.add(empty);
+			counter+=1;
+		}  
+    }
+
+    /**
      * This method changes the view of the inventory : general view or focus on an item.
      */
     public void manageInventory()
@@ -497,7 +580,6 @@ public class InventoryInterface extends JFrame {
     	if (inventoryFrame.isVisible() == true)
     	{
     		inventoryFrame.setVisible(false);
-    		//viewInventory=false;
     	}
     	else
     	{
@@ -505,11 +587,8 @@ public class InventoryInterface extends JFrame {
     			{
     				itemFrame.setVisible(false);
     			}
+    		fillInventory();
     		inventoryFrame.setVisible(true);
-        	//inventoryFrame = new InventoryInterface(inventoryPlayer, player,game);
-    		//viewInventory=true;
     	}    	
-    }
-    
-    
+    }    
 } 
