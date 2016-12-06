@@ -164,11 +164,20 @@ public class InventoryInterface extends JFrame {
     
     /**
      * This method returns the back button
-     * @return JButton back
+     * @return JButton back from the general inventory
      */
     public JButton getBack()
     {
     	return back;
+    }
+    
+    /**
+     * This method returns the back2 button
+     * @return JButton back2 from the item displayed
+     */
+    public JButton getBack2()
+    {
+    	return back2;
     }
     
     /**
@@ -228,13 +237,12 @@ public class InventoryInterface extends JFrame {
     	Font police2 = new Font ("Kristen ITC", Font.BOLD, 12);
     	
     	backIcon = new ImageIcon("pictures/back.png");
-//		back2 = new JButton ("BACK", backIcon);
-//        back2.setBackground(Color.black);
-//        back2.setOpaque(true);
-//        back2.setForeground(Color.yellow);
-//        back2.setFont(police);
-//        
-//        back2.addMouseListener(evt);
+		back2 = new JButton ("BACK", backIcon);
+        back2.setBackground(Color.black);
+        back2.setOpaque(true);
+        back2.setForeground(Color.yellow);
+        back2.setFont(police);        
+        back2.addMouseListener(evt);
         
         title = new JLabel ("INVENTORY : " + anItem.getName(), JLabel.CENTER);
         title.setBackground(Color.black);
@@ -243,7 +251,7 @@ public class InventoryInterface extends JFrame {
         title.setFont(police);
         
         up = new JPanel (new GridLayout (1,2));
-        up.add(back);
+        up.add(back2);
         up.add(title);
     	
     	itemFrame = new JFrame(anItem.getName());
@@ -493,7 +501,10 @@ public class InventoryInterface extends JFrame {
     	}
     	else
     	{
-    		//itemFrame.setVisible(false);
+    		if (itemFrame!=null)
+    			{
+    				itemFrame.setVisible(false);
+    			}
     		inventoryFrame.setVisible(true);
         	//inventoryFrame = new InventoryInterface(inventoryPlayer, player,game);
     		//viewInventory=true;

@@ -105,6 +105,10 @@ public class InventoryInterfaceListener extends MouseAdapter
          {
     		 inventory.manageInventory();
          }
+    	 else if(evt.getSource() == inventory.getBack2())
+         {
+    		 inventory.manageInventory();
+         }
     	 else if(evt.getSource()==inventory.getUse())
          {
     		 myItem=inventory.searchItemDisplayed();
@@ -151,8 +155,6 @@ public class InventoryInterfaceListener extends MouseAdapter
     	    				 {
     	    				 	 inventory.getGame().setText("You have unlocked the door.");
     	    				 	 inventory.getInventory().deleteItem(myItem);
-    	    				 	 //inventory.getGame().openInventory(false);
-    	    				 	 //inventory.exitInventory();
     	    					 break; 
     	    				 }
     	    				 else
