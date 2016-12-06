@@ -71,7 +71,7 @@ public class Enigma extends Event {
      */
     public boolean checkAnswer(String playerAnswer) {
         if (playerAnswer.equals(answer)) {
-            System.out.println("Good answer !");
+            //System.out.println("Good answer !");
             disableEnigma();
             return getPlayer().getInventory().addItem(super.getItem());
             

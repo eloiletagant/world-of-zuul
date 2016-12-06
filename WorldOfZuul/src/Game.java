@@ -40,6 +40,7 @@ import character.Player;
 import event.Enigma;
 import event.Event;
 import event.Fight;
+import event.Trade;
 import room.Door;
 import room.LockedDoor;
 import room.Room;
@@ -434,12 +435,12 @@ public class Game extends JFrame {
     	//TRADER
 			//BOHORT
 			NPC bohort = new NPC("Borhort",10, 2, true);
-			//Trade trade1 = new Fight("trade1",w1,player,bohort);
-			//rooms.get(24).addEvent(trade1);
+			Trade trade1 = new Trade("trade1",w1,player,bohort);
+			rooms.get(24).addEvent(trade1);
 			//LANCELOT
 			NPC lancelot = new NPC("Lancelot",10, 2, true);
-			//Trade trade2 = new Fight("trade2",w1,player,lancelot);
-			//rooms.get(31).addEvent(trade2);
+			Trade trade2 = new Trade("trade2",w1,player,lancelot);
+			rooms.get(31).addEvent(trade2);
 			
 		//NPC ENIGMA
 			//MERLIN
