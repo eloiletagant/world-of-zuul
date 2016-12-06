@@ -100,8 +100,10 @@ public class GameListener implements ActionListener {
         } else if (e.getSource() == game.getEnigmaButton()) {
         	if (enigma.checkAnswer(game.getTypingArea().getText())) {
         		game.setTextEvent("Well done, you get it!");
+        		System.out.println(game.getTypingArea().getText());
         	} else {
         		game.setTextEvent("Sorry, try again!");
+        		System.out.println(game.getTypingArea().getText());
         	}
         }
     }

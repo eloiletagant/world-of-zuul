@@ -70,10 +70,9 @@ public class Enigma extends Event {
      * @param playerAnswer
      */
     public boolean checkAnswer(String playerAnswer) {
-        if (playerAnswer.equals(answer)) {
-            //System.out.println("Good answer !");
+        if (playerAnswer == answer) {
             disableEnigma();
-            return getPlayer().getInventory().addItem(super.getItem());
+            return true;
             
         } else {
             System.out.println("Wrong answer retry it later !");

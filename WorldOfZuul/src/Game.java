@@ -917,6 +917,7 @@ public class Game extends JFrame {
         for (Event event : currentRoom.getEvents()) {
         	if (event instanceof Enigma) {
         		question = ((Enigma) event).getQuestion();
+                System.out.println(((Enigma) event).getAnswer());
         	}
         }
         
