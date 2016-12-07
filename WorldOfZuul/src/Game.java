@@ -873,22 +873,30 @@ public class Game extends JFrame {
     	clickerFrame.setVisible(false);
     	manageButtons();
 		result = clicker.getClicks();
-		
+		String toReturn;
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
 		
-		if(win){
+		if(win)
+		{
+			if (player.getInventory().addItem(currentRoom.getEvents().get(0).getItem())==false)
+            {
+				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later please </html>");
+            }
+            else
+            {
+            	player.getInventory().addItem(currentRoom.getEvents().get(0).getItem());
+            	setText("<html>Well done, you won the fight!<br>You won "+currentRoom.getEvents().get(0).getItem().getName()+". Congratulations !!!</html>");
+            	currentRoom.getEvents().get(0).setItem(null);
+            } 
 			currentRoom.getEvents().remove(0);
-			setTextEvent("You won the fight ! congrats");
 		}
-		
 		healthBar.setValue(player.getHealth()); 
-        
 		if(player.getHealth()==0)
         {
         	this.dispose();
         	new GameOver();
-        } 
+        }
     }
     
     
