@@ -492,7 +492,7 @@ public class Game extends JFrame {
 		//NPC Enemy
 			//MINOTAUR
 			NPC minotaur = new NPC("Minotaur",5, 2, true);
-			Fight fight1 = new Fight("fight1",c6,player,minotaur);
+			Fight fight1 = new Fight("fight1",k7,player,minotaur);
 			rooms.get(3).addEvent(fight1);
 			//SPIDER
 			NPC spider = new NPC("Spider",5, 2, true);
@@ -504,7 +504,7 @@ public class Game extends JFrame {
 			rooms.get(25).addEvent(fight3);
 			//SKELETON
 			NPC skeleton = new NPC("Skeleton",10, 2, true);
-			Fight fight4 = new Fight("fight4",c9,player,skeleton);
+			Fight fight4 = new Fight("fight4",c6,player,skeleton);
 			rooms.get(20).addEvent(fight4);
 			//CREEPER 
 			NPC creeper = new NPC("Creeper",30, 2, true);
@@ -680,6 +680,7 @@ public class Game extends JFrame {
         ch4 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l6);
         ch4.addItem(c3);
         ch4.addItem(k6);
+        ch4.addItem(c9);
         ch5 = new Chest("Cheast", "This box contains something for you.", 2, 30, l4);
         ch5.addItem(c8);
         ch5.addItem(c4);
