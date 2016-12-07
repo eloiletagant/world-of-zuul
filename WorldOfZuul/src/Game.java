@@ -823,7 +823,14 @@ public class Game extends JFrame {
     	
     	
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
-        textDescRoom.setText("You are in the "+ currentRoom.getDescription());
+        if(currentRoom==rooms.get(1))
+        {
+        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck …");
+        }
+        else
+        {
+        	textDescRoom.setText("You are in the "+ currentRoom.getDescription());
+        }
        // textDescRoom.setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();
