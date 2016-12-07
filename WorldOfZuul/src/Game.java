@@ -827,7 +827,7 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ?<br> You must kill the boss to save the world and loot the holy grall!<br> You will have to find your path in this creepy labyrinth! But your path<br> will be strewn with pitfalls. To access the boss, you will have to answer<br> several enigma by staying alive. But it will be not easy because you will meet a lot of beasts.<br> To help you get started you just earned 100 pieces. Use them wisely.<br> Good luck !</html>");
+        	textDescRoom.setText("<html>Welcome in the dungeon! You must kill the boss to loot the holy grall!<br> You will have to find your path in this creepy labyrinth!<br> But your path will be strewn with pitfalls. To access the boss, you will have<br> to answer several enigma by staying alive. To help you get started you just earned 100 pieces. Use them wisely.<br> Good luck !</html>");
         }
         else if (currentRoom==rooms.get(24)) 
         { 
