@@ -665,7 +665,7 @@ public class Game extends JFrame {
         l6 = new Lock();
         l6.addKey(k5);
         l7 = new Lock();
-        l7.addKey(k1);
+        l7.addKey(k1); 
         ch1 = new Chest("Little box", "This box contains something for you.", 2, 5, l1);
         ch1.addItem(c2);
         ch1.addItem(w1);
