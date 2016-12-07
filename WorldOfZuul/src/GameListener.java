@@ -106,7 +106,7 @@ public class GameListener implements ActionListener {
         } else if (e.getSource() == game.getSearch())  {
     		if (game.getPlayer().getLocation().hasChest()){
     			if (game.getPlayer().getLocation().getChest().getLock().getLock() == true){
-    				game.setText("This chest is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+    				game.setText("The chest "+game.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
     			} else {
     				game.getItemsFromChest(game.getPlayer().getLocation().getChest());
     			}

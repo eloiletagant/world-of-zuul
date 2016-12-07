@@ -263,7 +263,7 @@ public class Game extends JFrame {
         addChestsToRooms();
         
     	sound = new Sound();
-    	sound.playSound("music/SoundCave.wav");
+    	sound.playSound("/SoundCave.wav");
     }
     
     public void setTextEvent(String s) {
