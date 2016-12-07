@@ -1,7 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
-import java.awt.event.*;
 import character.*;
 import item.*;
 import room.*;
@@ -15,7 +14,11 @@ import room.*;
  */
 public class InventoryInterface extends JFrame {
 	
-    //button building
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//button building
     private JButton back, back2, use, sell, equip, unequip, aButton;
     //store button for all items in the inventory;
     private JButton[] buttonItems;

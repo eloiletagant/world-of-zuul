@@ -473,7 +473,7 @@ public class Game extends JFrame {
 		//NPC ENIGMA
 			//MERLIN
 			NPC merlin = new NPC("Merlin", 15, 2, false);
-			String q1 = "<html>\"Frankly, a potion to make piss blue, it necessarily presses the minute\" <br> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
+			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
 			String a1 = "socks";
 			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
 			rooms.get(9).addEvent(enigma1);
@@ -665,11 +665,11 @@ public class Game extends JFrame {
         l6 = new Lock();
         l6.addKey(k5);
         l7 = new Lock();
-        l7.addKey(k1); 
-        ch1 = new Chest("Little box", "This box contains something for you.", 2, 5, l1);
+        l7.addKey(k1);
+        ch1 = new Chest("Ali baba box", "This box contains something for you.", 2, 5, l1);
         ch1.addItem(c2);
         ch1.addItem(w1);
-        ch2 = new Chest("Ali baba box","This box contains something for you.", 3, 15, l2);
+        ch2 = new Chest("Little box","This box contains something for you.", 3, 15, l2);
         ch2.addItem(c1);
         ch2.addItem(c6);
         ch2.addItem(w2);
@@ -825,17 +825,11 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the<br>"
-        			                 + "boss to save the world and loot the famous treasure! You will have to find your path in<br>"
-        			                 + "this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you<br>"
-        			                 + "will have to answer several enigma by staying alive. But it will be not easy because you <br>"
-        			                 + "will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them <br>"
-        			                 + "wisely. Good luck ...");
+        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
         }
         else if (currentRoom==rooms.get(24)) 
         {
-        	textDescRoom.setText("<html>Must stop this bullshit from north and south! Once and for all, the north, depending <br>"
-        			+ "on our orientation, it changes everything!");
+        	textDescRoom.setText("Must stop this bullshit from north and south! Once and for all, the north, depending on our orientation, it changes everything!");
         }
         else if (currentRoom==rooms.get(31))
         {
@@ -879,30 +873,22 @@ public class Game extends JFrame {
     	clickerFrame.setVisible(false);
     	manageButtons();
 		result = clicker.getClicks();
-		String toReturn;
+		
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
 		
-		if(win)
-		{
-			if (player.getInventory().addItem(currentRoom.getEvents().get(0).getItem())==false)
-            {
-				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later please </html>");
-            }
-            else
-            {
-            	player.getInventory().addItem(currentRoom.getEvents().get(0).getItem());
-            	setText("<html>Well done, you won the fight!<br>You won "+currentRoom.getEvents().get(0).getItem().getName()+". Congratulations !!!</html>");
-            	currentRoom.getEvents().get(0).setItem(null);
-            } 
+		if(win){
 			currentRoom.getEvents().remove(0);
+			setTextEvent("You won the fight ! congrats");
 		}
+		
 		healthBar.setValue(player.getHealth()); 
+        
 		if(player.getHealth()==0)
         {
         	this.dispose();
         	new GameOver();
-        }
+        } 
     }
     
     
