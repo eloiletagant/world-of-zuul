@@ -12,7 +12,6 @@ public class DoorTest {
 
 	private Door door;
 	private Player character;
-	private Room room;
 	
 	public DoorTest() {
 	}
@@ -20,7 +19,7 @@ public class DoorTest {
 	@Before
 	public void setUp() {
 		door = new Door(new Room("Garden", 0));
-		character = new Player("Jason");
+		character = new Player("Jason", 20);
 	}
 
 	/**

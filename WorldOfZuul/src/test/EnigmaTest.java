@@ -27,21 +27,10 @@ public class EnigmaTest {
 		//potion is the loot get by find the answer.
 	    potion = new Consumable("potion", "description", 10, true, "become invisible", 10, 0, false);
 		john = new NPC("jean le paysant",35,4,true);
-		peter = new Player("Peter",40, 2);
+		peter = new Player("Peter", 40, 2);
 		enigma = new Enigma ("Stupid enigma", potion, peter, john,"1 + 1 = ?","2");
 	}
 	
-    /**
-     * Method testTestAnswer
-     * <p>This method checks if the method of comparison of answer works well.</p>
-     */
-	@Test
-	public void testCheckAnswer()
-	{
-	     assertTrue(enigma.checkAnswer("2"));
-	     assertFalse(enigma.checkAnswer("11"));
-
-	}
 	
     /**
      * Method testSetAnswer

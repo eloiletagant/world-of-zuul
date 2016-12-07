@@ -18,7 +18,6 @@ public class Player {
     private int health; //Start with 20 HP by default. The character die when his hp felt to 0
     private Inventory inventory; //All items of the character are present on the inventory
     private Room location; //Position of the character
-    private int nbHandsAvailable; //Number of hands open to wear weapons : 2 by default and max, and never < 0
     private int maxHealth; // the maximum hp of the player (20) nobody can have maxhp < 5
     private int maxHands;// [0,4]
     private int damagesBonus;// [-5,5]

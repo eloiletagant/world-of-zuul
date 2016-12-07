@@ -20,7 +20,7 @@ public class FightTest {
 	@Before
 	public void setUp()
 	{
-		Player c1 = new Player("Gael");
+		Player c1 = new Player("Gael", 20);
 		NPC lapin = new NPC("TruiteVelue",60,2,true);
 		Weapon w1 = new Weapon("Epee de merde", "Elle roks du poney", 1, true, 2);
 		w1.equip();

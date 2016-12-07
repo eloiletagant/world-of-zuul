@@ -19,7 +19,7 @@ public class CharacterTest
 	@Before
 	public void setUp()
 	{
-		c1 = new Player("Pseudo");
+		c1 = new Player("Pseudo", 20);
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class CharacterTest
 	@Test
 	public void testCharacterEmptyName()
 	{
-		Player c2 = new Player("");
+		Player c2 = new Player("Player", 20);
 		assertEquals(c2.getName(), "Kaamelott");	
 	}
 	
