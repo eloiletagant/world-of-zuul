@@ -666,10 +666,10 @@ public class Game extends JFrame {
         l6.addKey(k5);
         l7 = new Lock();
         l7.addKey(k1);
-        ch1 = new Chest("Ali baba box", "This box contains something for you.", 2, 5, l1);
+        ch1 = new Chest("Little box", "This box contains something for you.", 2, 5, l1);
         ch1.addItem(c2);
         ch1.addItem(w1);
-        ch2 = new Chest("Little box","This box contains something for you.", 3, 15, l2);
+        ch2 = new Chest("Ali baba box","This box contains something for you.", 3, 15, l2);
         ch2.addItem(c1);
         ch2.addItem(c6);
         ch2.addItem(w2);
@@ -825,11 +825,17 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
+        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the<br>"
+        			                 + "boss to save the world and loot the famous treasure! You will have to find your path in<br>"
+        			                 + "this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you<br>"
+        			                 + "will have to answer several enigma by staying alive. But it will be not easy because you will<br>"
+        			                 + "meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely.<br>"
+        			                 + " Good luck ...");
         }
         else if (currentRoom==rooms.get(24)) 
         {
-        	textDescRoom.setText("Must stop this bullshit from north and south! Once and for all, the north, depending on our orientation, it changes everything!");
+        	textDescRoom.setText("<html>Must stop this bullshit from north and south! Once and for all, the north, depending <br>"
+        			+ "on our orientation, it changes everything!");
         }
         else if (currentRoom==rooms.get(31))
         {
