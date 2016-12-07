@@ -56,7 +56,7 @@ public class Game extends JFrame {
 	private Room currentRoom;
     private Player player;
     private Weapon w1, w2, w3, w4,w5;
-    private Consumable c1, c2, c3, c4, c5, c6, c7,c8;
+    private Consumable c1, c2, c3, c4, c5, c6, c7,c8,c9;
     private Key k1, k2, k3, k4, k5, k6, k7;
     private Lock l1, l2, l3, l4, l5, l6, l7;
     private Chest ch1, ch2, ch3, ch4,ch5;
@@ -492,7 +492,7 @@ public class Game extends JFrame {
 		//NPC Enemy
 			//MINOTAUR
 			NPC minotaur = new NPC("Minotaur",5, 2, true);
-			Fight fight1 = new Fight("fight1",w3,player,minotaur);
+			Fight fight1 = new Fight("fight1",c6,player,minotaur);
 			rooms.get(3).addEvent(fight1);
 			//SPIDER
 			NPC spider = new NPC("Spider",5, 2, true);
@@ -504,7 +504,7 @@ public class Game extends JFrame {
 			rooms.get(25).addEvent(fight3);
 			//SKELETON
 			NPC skeleton = new NPC("Skeleton",10, 2, true);
-			Fight fight4 = new Fight("fight4",k6,player,skeleton);
+			Fight fight4 = new Fight("fight4",c9,player,skeleton);
 			rooms.get(20).addEvent(fight4);
 			//CREEPER 
 			NPC creeper = new NPC("Creeper",30, 2, true);
@@ -645,6 +645,7 @@ public class Game extends JFrame {
         c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         c8 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
+        c9 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
         k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
         k2 = new Key("Sesame", "This key has magic power and will help you to find a treasure.", 20, false);
         k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
