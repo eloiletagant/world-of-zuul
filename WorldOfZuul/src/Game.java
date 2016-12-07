@@ -462,7 +462,7 @@ public class Game extends JFrame {
 			
     	//TRADER
 			//BOHORT
-			NPC bohort = new NPC("Borhort",10, 2, true);
+			NPC bohort = new NPC("Borhort",10, 2, true); 
 			Trade trade1 = new Trade("trade1",w1,player,bohort);
 			rooms.get(24).addEvent(trade1);
 			//LANCELOT 
