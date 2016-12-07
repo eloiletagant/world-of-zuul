@@ -297,17 +297,6 @@ public class InventoryInterface extends JFrame {
     	    		use.setEnabled(false);
     	    	}
             }
-    		//if the item is a consumable and it needs to act with a weapon
-    		if (searchEquiped()==false)
-    		{
-    			if (anItem instanceof Consumable)
-    			{
-    				if (((Consumable) anItem).getWeapon()==true)
-    				{
-    					use.setEnabled(false);
-    				}
-    			}
-    		}
             //if the item is a consumable
             if(anItem instanceof Consumable)
             {
@@ -330,6 +319,17 @@ public class InventoryInterface extends JFrame {
             		}
             	}
             }
+            //if the item is a consumable and it needs to act with a weapon
+    		if (searchEquiped()==false)
+    		{
+    			if (anItem instanceof Consumable)
+    			{
+    				if (((Consumable) anItem).getWeapon()==true)
+    				{
+    					use.setEnabled(false);
+    				}
+    			}
+    		}
         }
     	actions.add(sell);
         //if the item is not sellable, the sell button is disabled
