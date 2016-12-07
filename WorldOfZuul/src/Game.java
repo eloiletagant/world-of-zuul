@@ -508,7 +508,7 @@ public class Game extends JFrame {
 			rooms.get(20).addEvent(fight4);
 			//CREEPER 
 			NPC creeper = new NPC("Creeper",30, 2, true);
-			Fight fight5 = new Fight("fight5",w1,player,creeper);
+			Fight fight5 = new Fight("fight5",w4,player,creeper);
 			rooms.get(16).addEvent(fight5);
 			//MONKEY KING
 			NPC monkey = new NPC("Monkey King",150, 4, true);
