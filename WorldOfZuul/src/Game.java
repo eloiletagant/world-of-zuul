@@ -40,7 +40,6 @@ import character.Player;
 import event.Enigma;
 import event.Event;
 import event.Fight;
-import event.Trade;
 import room.Door;
 import room.LockedDoor;
 import room.Room;
@@ -56,7 +55,7 @@ public class Game extends JFrame {
 	private Room currentRoom;
     private Player player;
     private Weapon w1, w2, w3, w4,w5;
-    private Consumable c1, c2, c3, c4, c5, c6, c7,c8,c9;
+    private Consumable c1, c2, c3, c4, c5, c6, c8, c9;
     private Key k1, k2, k3, k4, k5, k6, k7;
     private Lock l1, l2, l3, l4, l5, l6, l7;
     private Chest ch1, ch2, ch3, ch4,ch5;
@@ -75,7 +74,6 @@ public class Game extends JFrame {
     private InventoryInterface showInventory;
     private GameListener l;
     private JFrame enigmaFrame;
-    private boolean isEnemy;
     private String question;
     
     //for the clicker game
@@ -643,7 +641,7 @@ public class Game extends JFrame {
         c4 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         c5 = new Consumable("Eggplant", "This vegetable allow adding damage point. It was cultivated by Guethenoc", 10, true, "It gets 1 damage point to the person who eats it.", 0, 1, false);
         c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
-        c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
+        //c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         c8 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         c9 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
         k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
@@ -846,7 +844,6 @@ public class Game extends JFrame {
         changePicture();
         manageButtons();
         textEvent.setText(""); 
-        isEnemy = false;
         
         //get the eventual fight of the room
         for (Event event : currentRoom.getEvents()) {
@@ -878,7 +875,6 @@ public class Game extends JFrame {
     	clickerFrame.setVisible(false);
     	manageButtons();
 		result = clicker.getClicks();
-		String toReturn;
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 3);
 		
