@@ -8,16 +8,17 @@ import javax.swing.*;
 public class Victory extends JFrame implements ActionListener {
     //button building
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton restart;
     private JLabel pictureLabel;
     private JPanel globalPanel, buttonsPanel; 
     
-    private ImageIcon backPicture, room, room2;
+    private ImageIcon backPicture;
     
-    private int nbrRoom = 0; 
-    private Game game;
-    
-    private Font font,playFont;
+    private Font playFont;
 
     public Victory() {
     	
@@ -25,10 +26,8 @@ public class Victory extends JFrame implements ActionListener {
         this.setSize(800, 600);
         this.setTitle("Victory"); 
     	
-        font = new Font("Kristen ITC", Font.BOLD, 14);
         playFont = new Font("Kristen ITC", Font.BOLD, 40);
-    	
-    	
+    	   	
         //Image on the background
         backPicture = new ImageIcon("pictures/Victory.jpg");
         pictureLabel = new JLabel();
@@ -64,7 +63,7 @@ public class Victory extends JFrame implements ActionListener {
     }    
 
     public void actionPerformed(ActionEvent e) {
-        game = new Game();
+        new Game();
         this.dispose();
     }
 
