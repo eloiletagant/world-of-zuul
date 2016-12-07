@@ -460,7 +460,7 @@ public class Game extends JFrame {
 			//Fight fight = new Fight("Hello",w1,player,roiArthur);
 			//rooms.get(1).addEvent(fight);
 			
-    	//TRADER
+    	//TRADER 
 			//BOHORT
 			NPC bohort = new NPC("Borhort",10, 2, true); 
 			Trade trade1 = new Trade("trade1",w1,player,bohort);
