@@ -485,8 +485,8 @@ public class Game extends JFrame {
 			
 			//PERCEVAL
 			NPC perceval = new NPC("Perceval", 20, 2, false);
-			String a3 = "letter e";
-			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>I am the beginning of everything, the end of time and space, the beginning of every end, and the end of every place. What am I?</html>", a3);
+			//String a3 = "letter e";
+			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>I am the beginning of everything, the end of time and space, the beginning of every end, and the end of every place. What am I?</html>", "e");
 			rooms.get(27).addEvent(enigma3);
 			
 		//NPC Enemy
