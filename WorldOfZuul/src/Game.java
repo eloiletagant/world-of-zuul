@@ -486,7 +486,7 @@ public class Game extends JFrame {
 			//PERCEVAL
 			NPC perceval = new NPC("Perceval", 20, 2, false);
 			//String a3 = "letter e";
-			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>I'm tall when I'm young, I'm short when I'm old. What am I?</html>", "Candle");
+			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>\"Vous pouvez être sûr que si Joseph d'Arimathie n'a pas été trop idiot, le graal est un bocal d'anchois!\" + "<br> "+I'm tall when I'm young, I'm short when I'm old. What am I?</html>", "Candle");
 			rooms.get(27).addEvent(enigma3);
 			
 		//NPC Enemy
