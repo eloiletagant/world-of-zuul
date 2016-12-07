@@ -63,6 +63,7 @@ public class GameOver extends JFrame implements ActionListener {
     }    
 
     public void actionPerformed(ActionEvent e) {
+    	new Game();
         this.dispose();
     }
 
