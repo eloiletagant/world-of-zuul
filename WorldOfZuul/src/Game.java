@@ -860,7 +860,7 @@ public class Game extends JFrame {
                 		{
                 			//launch the clicker game
                 			clicker.resetClicker();
-        					clicker.clickerLauncher(10);
+        					clicker.clickerLauncher(10); 
                 		}
                 	}
                 }
