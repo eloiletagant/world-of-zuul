@@ -81,7 +81,6 @@ public class Player {
         {
             maxHands = nbHandsMax;
         }
-        nbHandsAvailable = maxHands;
         if (hpMax < 5)
         {
             maxHealth = 5;
