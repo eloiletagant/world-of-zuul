@@ -462,13 +462,13 @@ public class Game extends JFrame {
 			
     	//TRADER 
 			//BOHORT
-			NPC bohort = new NPC("Borhort",10, 2, true); 
-			Trade trade1 = new Trade("trade1",w1,player,bohort);
-			rooms.get(24).addEvent(trade1);
+			//NPC bohort = new NPC("Borhort",10, 2, true); 
+			//Trade trade1 = new Trade("trade1",w1,player,bohort);
+			//rooms.get(24).addEvent(trade1);
 			//LANCELOT 
-			NPC lancelot = new NPC("Lancelot",10, 2, true);
-			Trade trade2 = new Trade("trade2",w1,player,lancelot);
-			rooms.get(31).addEvent(trade2);
+			//NPC lancelot = new NPC("Lancelot",10, 2, true);
+			//Trade trade2 = new Trade("trade2",w1,player,lancelot);
+			//rooms.get(31).addEvent(trade2);
 			
 		//NPC ENIGMA
 			//MERLIN
@@ -511,7 +511,7 @@ public class Game extends JFrame {
 			Fight fight5 = new Fight("fight5",w4,player,creeper);
 			rooms.get(16).addEvent(fight5);
 			//MONKEY KING
-			NPC monkey = new NPC("Monkey King",150, 4, true);
+			NPC monkey = new NPC("Monkey King",100, 4, true);
 			monkey.getInventory().addItem(w5);
 			monkey.getInventory().getItems().get(0).equip();
 			Fight fight6 = new Fight("fight boss !",w5,player,monkey);
@@ -596,8 +596,8 @@ public class Game extends JFrame {
         //Room 21 
         createDoor(rooms.get(21), rooms.get(1) , "front");
         //Room 22
-        createDoor(rooms.get(22), rooms.get(23) , "right");
-        createDoor(rooms.get(22), rooms.get(14) , "left");
+        createDoor(rooms.get(22), rooms.get(23) , "left");
+        createDoor(rooms.get(22), rooms.get(14) , "right");
         //Room 23
         createDoor(rooms.get(23), rooms.get(22) , "front");
         createDoor(rooms.get(23), rooms.get(20) , "left");
