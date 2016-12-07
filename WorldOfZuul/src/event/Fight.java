@@ -63,7 +63,8 @@ public class Fight extends Event {
     	}
     	
     	playerDamages = (int)((float) playerDamages * (1.0 + ((float) clicks /clicksRequireds)));
-    	while(this.getPlayer().getHealth() > 0 && this.getNpc().getHealth() > 0) {
+    	while(this.getPlayer().getHealth() > 0 && this.getNpc().getHealth() > 0)
+    	{
     		this.getPlayer().manageHealth(-npcDamages);
     		//game.getHealthBar().setValue(getPlayer().getHealth());
     		//System.out.println("You lost " + npcDamages + " hp");

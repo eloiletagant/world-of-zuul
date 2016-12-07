@@ -473,7 +473,7 @@ public class Game extends JFrame {
 		//NPC ENIGMA
 			//MERLIN
 			NPC merlin = new NPC("Merlin", 15, 2, false);
-			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
+			String q1 = "<html>\"Frankly, a potion to make piss blue, it necessarily presses the minute\" <br> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
 			String a1 = "socks";
 			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
 			rooms.get(9).addEvent(enigma1);
@@ -873,22 +873,30 @@ public class Game extends JFrame {
     	clickerFrame.setVisible(false);
     	manageButtons();
 		result = clicker.getClicks();
-		
+		String toReturn;
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
 		
-		if(win){
+		if(win)
+		{
+			if (player.getInventory().addItem(currentRoom.getEvents().get(0).getItem())==false)
+            {
+				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later please </html>");
+            }
+            else
+            {
+            	player.getInventory().addItem(currentRoom.getEvents().get(0).getItem());
+            	setText("<html>Well done, you won the fight!<br>You won "+currentRoom.getEvents().get(0).getItem().getName()+". Congratulations !!!</html>");
+            	currentRoom.getEvents().get(0).setItem(null);
+            } 
 			currentRoom.getEvents().remove(0);
-			setTextEvent("You won the fight ! congrats");
 		}
-		
 		healthBar.setValue(player.getHealth()); 
-        
 		if(player.getHealth()==0)
         {
         	this.dispose();
         	new GameOver();
-        } 
+        }
     }
     
     
