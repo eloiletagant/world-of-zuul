@@ -243,7 +243,7 @@ public class Game extends JFrame {
          **** Frame parameters
          *********************/
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("WOZ");    
+        this.setTitle("Dungeon Clicker");    
         this.add(globalPanel);
         this.setSize(500, 500);
         this.pack();
