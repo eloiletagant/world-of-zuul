@@ -1,28 +1,25 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 
-import java.awt.event.ActionListener; 
 import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
-import java.awt.Image;
 
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.util.Scanner;
 
 public class Interface extends JFrame {
     
-    
-    
-    //button building
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//button building
     protected JButton myButton1= new JButton("PLAY");
     protected JButton myButton2= new JButton("SETTING");
     protected JButton left = new JButton("left");
@@ -36,7 +33,6 @@ public class Interface extends JFrame {
         //Icon myIcon= new ImageIcon("./chateau.jpg");
         JPanel myPanel = new JPanel(new BorderLayout ());
         JPanel panelButton = new JPanel (new BorderLayout ());
-        JPanel Button = new JPanel (new GridLayout (2,1));
 
         Icon flecheRIght = new ImageIcon("./Fdroite.jpg");
         Icon flecheFront = new ImageIcon("./Fhaut.jpg");
