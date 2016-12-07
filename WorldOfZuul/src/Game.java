@@ -860,7 +860,8 @@ public class Game extends JFrame {
                 		{
                 			//launch the clicker game
                 			clicker.resetClicker();
-        					clicker.clickerLauncher(10); 
+                			int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
+        					clicker.clickerLauncher(nbr*3); 
                 		}
                 	}
                 }
@@ -879,7 +880,7 @@ public class Game extends JFrame {
 		result = clicker.getClicks();
 		String toReturn;
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
-		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
+		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 3);
 		
 		if(win)
 		{
