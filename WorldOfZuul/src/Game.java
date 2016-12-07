@@ -857,9 +857,11 @@ public class Game extends JFrame {
                 	//if the npc is an enemy :
                 	if (event.getNpc().getEnemy()) {
                 		if (event.getItem()!=null && event.getNpc().getHealth() != 0)
-                		//launch the clicker game
-                		clicker.resetClicker();
-        				clicker.clickerLauncher(10);
+                		{
+                			//launch the clicker game
+                			clicker.resetClicker();
+        					clicker.clickerLauncher(10); 
+                		}
                 	}
                 }
         	}

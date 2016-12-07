@@ -98,10 +98,12 @@ public class GameListener implements ActionListener {
         	}
             
         } else if (e.getSource() == game.getSearch())  {
+        	boolean anEvent=false;
         	for (Event event : game.getPlayer().getLocation().getEvents())
             {
             	if (event instanceof Fight)
             	{
+            		anEvent=true;
             		if (event.getItem()!=null)
             		{
             			if (game.getPlayer().getInventory().getItems().add(event.getItem()))
@@ -114,18 +116,18 @@ public class GameListener implements ActionListener {
             			}
             		}
             	}
-            	else
-            	{
-            		if (game.getPlayer().getLocation().hasChest()){
-            			if (game.getPlayer().getLocation().getChest().getLock().getLock() == true){
-            				game.setText("The chest "+game.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
-            			} else {
-            				game.getItemsFromChest(game.getPlayer().getLocation().getChest());
-            			}
-            		} else {
-            			game.setText("There is no chest in this room !");
-            		}
-            	}
+        	}
+        	if (anEvent==false)
+        	{
+        		if (game.getPlayer().getLocation().hasChest()){
+        			if (game.getPlayer().getLocation().getChest().getLock().getLock() == true){
+        				game.setText("The chest "+game.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+        			} else {
+        				game.getItemsFromChest(game.getPlayer().getLocation().getChest());
+        			}
+        		} else {
+        			game.setText("There is no chest in this room !");
+        		}
         	}
         } else if (e.getSource() == game.getEnigmaButton())
         {
