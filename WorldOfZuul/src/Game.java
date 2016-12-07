@@ -904,6 +904,7 @@ public class Game extends JFrame {
         }
 		if(monkey.getHealth() == 0 && player.getHealth()>0)
 		{
+			this.dispose();
 			new Victory();
 		}
     }
