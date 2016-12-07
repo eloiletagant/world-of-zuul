@@ -56,7 +56,7 @@ public class Game extends JFrame {
 	private Room currentRoom;
     private Player player;
     private Weapon w1, w2, w3, w4,w5;
-    private Consumable c1, c2, c3, c4, c5, c6, c7,c8;
+    private Consumable c1, c2, c3, c4, c5, c6, c7,c8,c9;
     private Key k1, k2, k3, k4, k5, k6, k7;
     private Lock l1, l2, l3, l4, l5, l6, l7;
     private Chest ch1, ch2, ch3, ch4,ch5;
@@ -473,7 +473,7 @@ public class Game extends JFrame {
 		//NPC ENIGMA
 			//MERLIN
 			NPC merlin = new NPC("Merlin", 15, 2, false);
-			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
+			String q1 = "<html>\"Frankly, a potion to make piss blue, it necessarily presses the minute\" <br> I never far from my twist, I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
 			String a1 = "socks";
 			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
 			rooms.get(9).addEvent(enigma1);
@@ -492,7 +492,7 @@ public class Game extends JFrame {
 		//NPC Enemy
 			//MINOTAUR
 			NPC minotaur = new NPC("Minotaur",5, 2, true);
-			Fight fight1 = new Fight("fight1",w3,player,minotaur);
+			Fight fight1 = new Fight("fight1",k7,player,minotaur);
 			rooms.get(3).addEvent(fight1);
 			//SPIDER
 			NPC spider = new NPC("Spider",5, 2, true);
@@ -504,17 +504,17 @@ public class Game extends JFrame {
 			rooms.get(25).addEvent(fight3);
 			//SKELETON
 			NPC skeleton = new NPC("Skeleton",10, 2, true);
-			Fight fight4 = new Fight("fight4",k6,player,skeleton);
+			Fight fight4 = new Fight("fight4",c6,player,skeleton);
 			rooms.get(20).addEvent(fight4);
 			//CREEPER 
 			NPC creeper = new NPC("Creeper",30, 2, true);
-			Fight fight5 = new Fight("fight5",w1,player,creeper);
+			Fight fight5 = new Fight("fight5",w4,player,creeper);
 			rooms.get(16).addEvent(fight5);
 			//MONKEY KING
 			NPC monkey = new NPC("Monkey King",150, 4, true);
 			monkey.getInventory().addItem(w5);
 			monkey.getInventory().getItems().get(0).equip();
-			Fight fight6 = new Fight("fight boss !",k7,player,monkey);
+			Fight fight6 = new Fight("fight boss !",w5,player,monkey);
 			rooms.get(32).addEvent(fight6);
     }
     
@@ -645,6 +645,7 @@ public class Game extends JFrame {
         c6 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
         c7 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
         c8 = new Consumable("Potion", "This potion was prepared by Merlin with all his love", 20, true, "It gets 2 damage point to a weapon when the player flips it on his weapon.", 0, 2, true);
+        c9 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
         k1 = new Key("Hodor", "This key opens a very cold door.", 20, false);
         k2 = new Key("Sesame", "This key has magic power and will help you to find a treasure.", 20, false);
         k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
@@ -679,6 +680,7 @@ public class Game extends JFrame {
         ch4 = new Chest("Treasure box", "This box contains something for you.", 4, 60, l6);
         ch4.addItem(c3);
         ch4.addItem(k6);
+        ch4.addItem(c9);
         ch5 = new Chest("Cheast", "This box contains something for you.", 2, 30, l4);
         ch5.addItem(c8);
         ch5.addItem(c4);
@@ -825,7 +827,12 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
+        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the<br>"
+        			                 + "boss to save the world and loot the holy grall! You will have to find your path in<br>"
+        			                 + "this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you<br>"
+        			                 + "will have to answer several enigma by staying alive. But it will be not easy because you <br>"
+        			                 + "will meet a lot of beasts. To help you get started you just earned 100 pieces. Use them <br>"
+        			                 + "wisely. Good luck ...");
         }
         else if (currentRoom==rooms.get(24)) 
         {
