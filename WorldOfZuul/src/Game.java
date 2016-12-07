@@ -883,7 +883,7 @@ public class Game extends JFrame {
 			if (player.getInventory().addItem(currentRoom.getEvents().get(0).getItem())==false)
             {
 				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later and check the chest</html>");
-            }
+            } 
             else
             {
             	player.getInventory().addItem(currentRoom.getEvents().get(0).getItem());
