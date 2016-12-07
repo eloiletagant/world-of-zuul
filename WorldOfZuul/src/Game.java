@@ -635,7 +635,7 @@ public class Game extends JFrame {
         w3 = new Weapon("Butcher knife", "It is a terrible weapon for a real butcher.", 30, true, 7);
         w4 = new Weapon("Sword", "This sword is the weapon the most dreaded in the world of Kaamelott.", 90, true, 9);
         w5 = new Weapon("spoon", "This is a spoon", 30, true, 1);
-        c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vend�e !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
+        c1 = new Consumable("Brioche", "This brioche was cooked by the best people in the world and comes from Vendee !!!.", 10, true, "It gets 2 health points to the person who eats it.", 2, 0, false);
         c2 = new Consumable("Bread", "This bread was cooked by the baker of the village.", 5, true, "It gets 1 health point to the person who eats it.", 1, 0, false);
         c3 = new Consumable("Cookies", "This cookies was cooked by the Mie caline and it is delicious.", 15, true, "It gets 3 health points to the person who eats it.", 3, 0, false);
         c4 = new Consumable("Pineapple", "This fruit allow adding damage point. It was cultivated by Guethenoc", 15, true, "It gets 1 damage point to a weapon when the player scrubs it into his weapon.", 0, 1, true);
