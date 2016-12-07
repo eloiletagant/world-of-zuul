@@ -465,7 +465,7 @@ public class Game extends JFrame {
 			NPC bohort = new NPC("Borhort",10, 2, true);
 			Trade trade1 = new Trade("trade1",w1,player,bohort);
 			rooms.get(24).addEvent(trade1);
-			//LANCELOT
+			//LANCELOT 
 			NPC lancelot = new NPC("Lancelot",10, 2, true);
 			Trade trade2 = new Trade("trade2",w1,player,lancelot);
 			rooms.get(31).addEvent(trade2);
@@ -480,7 +480,7 @@ public class Game extends JFrame {
 			
 			//KARADOC
 			NPC karadoc = new NPC("Karadoc", 15, 2, false);
-			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "What begins with T, ends with T and has T in it?", "teapot");
+			Enigma enigma2 = new Enigma("Enigma2", k2, player, karadoc, "<html>As long as i have my cauldron, nothing can happen to me!!<br>What begins with T, ends with T and has T in it?</html>", "teapot");
 			rooms.get(4).addEvent(enigma2);
 			
 			//PERCEVAL
@@ -825,7 +825,15 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
+        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
+        }
+        else if (currentRoom==rooms.get(24)) 
+        {
+        	textDescRoom.setText("Must stop this bullshit from north and south! Once and for all, the north, depending on our orientation, it changes everything!");
+        }
+        else if (currentRoom==rooms.get(31))
+        {
+        	textDescRoom.setText("Good luck for the monkey is very hard ! Equip your best weapon to beat this monster");
         }
         else 
         {
