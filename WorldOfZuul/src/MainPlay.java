@@ -9,24 +9,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
 public class MainPlay extends JFrame implements ActionListener {
-    //button building
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//button building
     
 	private JButton start;
-    private JLabel text, title, pictureLabel;
+    private JLabel title, pictureLabel;
     private JPanel globalPanel, buttonsPanel, topPanel; 
     
-    private ImageIcon backPicture, room, room2;
-    
-    private int nbrRoom = 0; 
-    private Game game;
-    
-    private Font font, titleFont, playFont;
+    private ImageIcon backPicture;
+
+    private Font titleFont, playFont;
 
     public MainPlay() {
     	
@@ -34,7 +34,6 @@ public class MainPlay extends JFrame implements ActionListener {
         this.setSize(500, 500);
         this.setTitle("Launcher"); 
     	
-        font = new Font("Kristen ITC", Font.BOLD, 14);
         titleFont = new Font("Kristen ITC", Font.ITALIC, 28);
         playFont = new Font("Kristen ITC", Font.BOLD, 40);
     
@@ -85,11 +84,11 @@ public class MainPlay extends JFrame implements ActionListener {
     }    
      
     public static void main(String[] args) {
-        MainPlay main = new MainPlay();
+        new MainPlay();
     }
 
     public void actionPerformed(ActionEvent e) {
-        game = new Game();
+        new Game();
         this.dispose();
     }
 
