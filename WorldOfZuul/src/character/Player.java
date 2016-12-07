@@ -44,7 +44,6 @@ public class Player {
         this.maxHealth = maxHealth;
         health = 20;
         inventory = new Inventory(10);
-        nbHandsAvailable = 2;
         //set up a start room (useful for test)
         location = new Room("Home", 0);
         maxHands = 2;
