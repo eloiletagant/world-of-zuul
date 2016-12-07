@@ -6,18 +6,19 @@ import javax.swing.*;
 
 
 public class GameOver extends JFrame implements ActionListener {
-    //button building
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//button building
     
 	private JButton restart;
     private JLabel pictureLabel;
     private JPanel globalPanel, buttonsPanel; 
     
-    private ImageIcon backPicture, room, room2;
+    private ImageIcon backPicture;
     
-    private int nbrRoom = 0; 
-    private Game game;
-    
-    private Font font,playFont;
+    private Font playFont;
 
     public GameOver() {
     	
@@ -25,10 +26,8 @@ public class GameOver extends JFrame implements ActionListener {
         this.setSize(800, 600);
         this.setTitle("Game Over"); 
     	
-        font = new Font("Kristen ITC", Font.BOLD, 14);
         playFont = new Font("Kristen ITC", Font.BOLD, 40);
-    	
-    	
+    	    	
         //Image on the backgrounds
         backPicture = new ImageIcon("pictures/death.jpg");
         pictureLabel = new JLabel();
@@ -64,7 +63,6 @@ public class GameOver extends JFrame implements ActionListener {
     }    
 
     public void actionPerformed(ActionEvent e) {
-        game = new Game();
         this.dispose();
     }
 

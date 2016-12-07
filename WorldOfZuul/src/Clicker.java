@@ -1,11 +1,5 @@
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.basic.BasicProgressBarUI;
 
 public class Clicker implements ActionListener, Runnable  {
 	
@@ -18,7 +12,6 @@ public class Clicker implements ActionListener, Runnable  {
     
     //private boolean win = false;
     private boolean running = false;
-    private volatile boolean done = false;
     private Game game;
     
         
@@ -80,7 +73,6 @@ public class Clicker implements ActionListener, Runnable  {
               //if the goal is reached 
                 if (clicks == winScore) {
                     running = false;
-                    done = true;
                     isDone();
                 }
             }
@@ -102,7 +94,6 @@ public class Clicker implements ActionListener, Runnable  {
         	//time is over
             if (time == MAX) {
                 running = false;
-                done = true;
                 isDone();
             }
             

@@ -1,15 +1,10 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
-import javax.swing.*;
 
 import character.NPC;
 import character.Player;
 import event.Enigma;
 import event.Event;
-import item.Item;
 import item.Weapon;
 import room.Door;
 /**

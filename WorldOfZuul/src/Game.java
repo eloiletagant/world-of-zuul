@@ -30,7 +30,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.border.Border;
+//import javax.swing.border.Border;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,12 +46,14 @@ import room.LockedDoor;
 import room.Room;
 import item.*;
 
-import java.net.URL;
-
 
 public class Game extends JFrame {
 	
-    private Room currentRoom;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Room currentRoom;
     private Player player;
     private Weapon w1, w2, w3, w4,w5;
     private Consumable c1, c2, c3, c4, c5, c6, c7,c8;
@@ -59,7 +61,6 @@ public class Game extends JFrame {
     private Lock l1, l2, l3, l4, l5, l6, l7;
     private Chest ch1, ch2, ch3, ch4,ch5;
     private ArrayList<Room> rooms; 
-    private boolean inventoryIsOpen = false;
     public  Sound sound;
    
     private int maxHealth = 20; //declared here to build the GUI
@@ -80,8 +81,7 @@ public class Game extends JFrame {
     //for the clicker game
     private Clicker clicker;
     private JFrame clickerFrame;
-    private JButton clickButton, doneButton;
-    private JPanel clickerDownPanel;
+    private JButton clickButton;
     private JLabel clickLabel;
     private JProgressBar bar, healthBar;
     private static int MIN = 0;
@@ -825,7 +825,7 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck …");
+        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck ï¿½");
         }
         else if (currentRoom==rooms.get(24)) 
         {
