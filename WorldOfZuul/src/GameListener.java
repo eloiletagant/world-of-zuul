@@ -3,8 +3,7 @@ import java.util.*;
 
 import character.NPC;
 import character.Player;
-import event.Enigma;
-import event.Event;
+import event.*;
 import item.Weapon;
 import room.Door;
 /**
@@ -99,16 +98,35 @@ public class GameListener implements ActionListener {
         	}
             
         } else if (e.getSource() == game.getSearch())  {
-    		if (game.getPlayer().getLocation().hasChest()){
-    			if (game.getPlayer().getLocation().getChest().getLock().getLock() == true){
-    				game.setText("The chest "+game.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
-    			} else {
-    				game.getItemsFromChest(game.getPlayer().getLocation().getChest());
-    			}
-    		} else {
-    			game.setText("There is no chest in this room !");
-    		}
-    		
+        	for (Event event : game.getPlayer().getLocation().getEvents())
+            {
+            	if (event instanceof Fight)
+            	{
+            		if (event.getItem()!=null)
+            		{
+            			if (game.getPlayer().getInventory().getItems().add(event.getItem()))
+            			{
+            				game.setText("Well done, you recover your reward "+event.getItem().getName()+" !");
+            			}
+            			else
+            			{
+            				game.setText("Your bag is full... You need to sell some items. Come back later to cover your reward please ");
+            			}
+            		}
+            	}
+            	else
+            	{
+            		if (game.getPlayer().getLocation().hasChest()){
+            			if (game.getPlayer().getLocation().getChest().getLock().getLock() == true){
+            				game.setText("The chest "+game.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+            			} else {
+            				game.getItemsFromChest(game.getPlayer().getLocation().getChest());
+            			}
+            		} else {
+            			game.setText("There is no chest in this room !");
+            		}
+            	}
+        	}
         } else if (e.getSource() == game.getEnigmaButton())
         {
         	// We are looking for the enigma in the player current room

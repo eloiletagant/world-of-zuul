@@ -827,12 +827,7 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the<br>"
-        			                 + "boss to save the world and loot the holy grall! You will have to find your path in<br>"
-        			                 + "this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you<br>"
-        			                 + "will have to answer several enigma by staying alive. But it will be not easy because you <br>"
-        			                 + "will meet a lot of beasts. To help you get started you just earned 100 pieces. Use them <br>"
-        			                 + "wisely. Good luck ...");
+        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
         }
         else if (currentRoom==rooms.get(24)) 
         {
@@ -856,19 +851,19 @@ public class Game extends JFrame {
         //get the eventual fight of the room
         for (Event event : currentRoom.getEvents()) {
         	if (event instanceof Fight) {
-        		isEnemy = ((Fight) event).getNpc().getEnemy();
+        		//isEnemy = ((Fight) event).getNpc().getEnemy();
+        		//if there is an event
+                if (!currentRoom.getEvents().isEmpty()) {
+                	//if the npc is an enemy :
+                	if (event.getNpc().getEnemy()) {
+                		if (event.getItem()!=null)
+                		//launch the clicker game
+                		clicker.resetClicker();
+        				clicker.clickerLauncher(10);
+                	}
+                }
         	}
-        }
-
-        //if there is an event
-        if (!currentRoom.getEvents().isEmpty()) {
-        	//if the npc is an enemy :
-        	if (isEnemy) {
-        		//launch the clicker game
-        		clicker.resetClicker();
-				clicker.clickerLauncher(10);
-        	}
-        }
+        } 
     }
     
     /**
@@ -880,22 +875,30 @@ public class Game extends JFrame {
     	clickerFrame.setVisible(false);
     	manageButtons();
 		result = clicker.getClicks();
-		
+		String toReturn;
 		int nbr = Integer.valueOf(currentRoom.getDescription().split("m")[1]);
 		boolean win = currentRoom.getEvents().get(0).runFight(result,nbr * 10);
 		
-		if(win){
-			currentRoom.getEvents().remove(0);
-			setTextEvent("You won the fight ! congrats");
+		if(win)
+		{
+			if (player.getInventory().addItem(currentRoom.getEvents().get(0).getItem())==false)
+            {
+				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later please </html>");
+            }
+            else
+            {
+            	player.getInventory().addItem(currentRoom.getEvents().get(0).getItem());
+            	setText("<html>Well done, you won the fight!<br>You won "+currentRoom.getEvents().get(0).getItem().getName()+". Congratulations !!!</html>");
+            	currentRoom.getEvents().get(0).setItem(null);
+            } 
+			//currentRoom.getEvents().remove(0);
 		}
-		
 		healthBar.setValue(player.getHealth()); 
-        
 		if(player.getHealth()==0)
         {
         	this.dispose();
         	new GameOver();
-        } 
+        }
     }
     
     
