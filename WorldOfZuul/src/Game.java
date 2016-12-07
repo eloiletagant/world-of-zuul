@@ -827,7 +827,7 @@ public class Game extends JFrame {
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
         if(currentRoom==rooms.get(1))
         {
-        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck �");
+        	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ?<br> You must kill the boss to save the world and loot the holy grall!<br> You will have to find your path in this creepy labyrinth! But your path<br> will be strewn with pitfalls. To access the boss, you will have to answer<br> several enigma by staying alive. But it will be not easy because you will meet a lot of beasts.<br> To help you get started you just earned 100 pieces. Use them wisely.<br> Good luck !</html>");
         }
         else if (currentRoom==rooms.get(24)) 
         {
@@ -856,7 +856,7 @@ public class Game extends JFrame {
                 if (!currentRoom.getEvents().isEmpty()) {
                 	//if the npc is an enemy :
                 	if (event.getNpc().getEnemy()) {
-                		if (event.getItem()!=null)
+                		if (event.getItem()!=null && event.getNpc().getHealth() != 0)
                 		//launch the clicker game
                 		clicker.resetClicker();
         				clicker.clickerLauncher(10);
@@ -883,7 +883,7 @@ public class Game extends JFrame {
 		{
 			if (player.getInventory().addItem(currentRoom.getEvents().get(0).getItem())==false)
             {
-				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later please </html>");
+				setText("<html>Well done, you get it!<br>Your bag is full... You need to sell some items. Come back later and check the chest</html>");
             }
             else
             {
