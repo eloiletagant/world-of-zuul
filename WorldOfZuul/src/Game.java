@@ -243,7 +243,7 @@ public class Game extends JFrame {
          **** Frame parameters
          *********************/
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("WOZ");    
+        this.setTitle("Dungeon Clicker");    
         this.add(globalPanel);
         this.setSize(500, 500);
         this.pack();
@@ -263,7 +263,7 @@ public class Game extends JFrame {
         addChestsToRooms();
         
     	sound = new Sound();
-    	sound.playSound("music/SoundCave.wav");
+    	sound.playSound("/SoundCave.wav");
     }
     
     public void setTextEvent(String s) {
@@ -823,7 +823,22 @@ public class Game extends JFrame {
     	
     	
         currentRoom = currentRoom.getDoors().get(way).getNextRoom();
-        textDescRoom.setText("You are in the "+ currentRoom.getDescription());
+        if(currentRoom==rooms.get(1))
+        {
+        	textDescRoom.setText("Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the boss to save the world and loot the famous treasure! You will have to find your path in this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you will have to answer several enigma by staying alive. But it will be not easy because you will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them wisely. Good luck …");
+        }
+        else if (currentRoom==rooms.get(24)) 
+        {
+        	textDescRoom.setText("Must stop this bullshit from north and south! Once and for all, the north, depending on our orientation, it changes everything!");
+        }
+        else if (currentRoom==rooms.get(31))
+        {
+        	textDescRoom.setText("Good luck for the monkey is very hard ! Equip your best weapon to beat this monster");
+        }
+        else 
+        {
+        	textDescRoom.setText("You are in the "+ currentRoom.getDescription());
+        }
        // textDescRoom.setText(currentRoom.getDescription());
         player.moveRoom(currentRoom);
         changePicture();

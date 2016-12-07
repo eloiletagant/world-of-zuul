@@ -32,7 +32,7 @@ public class MainPlay extends JFrame implements ActionListener {
     	
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 500);
-        this.setTitle("World Of Zuul"); 
+        this.setTitle("Launcher"); 
     	
         font = new Font("Kristen ITC", Font.BOLD, 14);
         titleFont = new Font("Kristen ITC", Font.ITALIC, 28);
