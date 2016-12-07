@@ -827,10 +827,10 @@ public class Game extends JFrame {
         if(currentRoom==rooms.get(1))
         {
         	textDescRoom.setText("<html>Welcome in this dungeon! Are you ready to fight this terrific world ? You must kill the<br>"
-        			                 + "boss to save the world and loot the famous treasure! You will have to find your path in<br>"
+        			                 + "boss to save the world and loot the holy grall! You will have to find your path in<br>"
         			                 + "this creepy labyrinth! But your path will be strewn with pitfalls. To access the boss, you<br>"
         			                 + "will have to answer several enigma by staying alive. But it will be not easy because you <br>"
-        			                 + "will meet a lot of beasts. To help you get started you just earned 50 pieces. Use them <br>"
+        			                 + "will meet a lot of beasts. To help you get started you just earned 100 pieces. Use them <br>"
         			                 + "wisely. Good luck ...");
         }
         else if (currentRoom==rooms.get(24)) 
