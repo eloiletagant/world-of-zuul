@@ -88,7 +88,7 @@ public class Game extends JFrame {
     private static int MAX = 1500; //hundredth of seconds
     private Container clickerGlobalPanel;
     private int result;
-    
+    private NPC monkey;
     
     /**
      * Create the game and initialize its internal map.
@@ -486,7 +486,7 @@ public class Game extends JFrame {
 			//PERCEVAL
 			NPC perceval = new NPC("Perceval", 20, 2, false);
 			//String a3 = "letter e";
-			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>\"You can be sure that if Joseph of Arimathea has not been too much idiot, the grail is an anchovy jar!\"<br> I'm tall when I'm young, I'm short when I'm old. What am I?</html>", "Candle");
+			Enigma enigma3 = new Enigma("Enigma3", k5, player, perceval, "<html>\"You can be sure that if Joseph of Arimathea has not been too much idiot, the grail is an anchovy jar!\"<br> I'm tall when I'm young, I'm short when I'm old. What am I?</html>", "candle");
 			rooms.get(27).addEvent(enigma3);
 			
 		//NPC Enemy
@@ -511,7 +511,7 @@ public class Game extends JFrame {
 			Fight fight5 = new Fight("fight5",w4,player,creeper);
 			rooms.get(16).addEvent(fight5);
 			//MONKEY KING
-			NPC monkey = new NPC("Monkey King",100, 4, true);
+			monkey = new NPC("Monkey King",100, 4, true);
 			monkey.getInventory().addItem(w5);
 			monkey.getInventory().getItems().get(0).equip();
 			Fight fight6 = new Fight("fight boss !",w5,player,monkey);
@@ -901,6 +901,10 @@ public class Game extends JFrame {
         	this.dispose();
         	new GameOver();
         }
+		if(monkey.getHealth() == 0 && player.getHealth()>0)
+		{
+			new Victory();
+		}
     }
     
     
