@@ -473,7 +473,7 @@ public class Game extends JFrame {
 		//NPC ENIGMA
 			//MERLIN
 			NPC merlin = new NPC("Merlin", 15, 2, false);
-			String q1 = "<html> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
+			String q1 = "<html>\"Frankly, a potion to make piss blue, it necessarily presses the minute\" <br> I never far from my twist <br/> I am often associated with the vomiting perfum <br/> From a part of the boby which is not really beautiful <br/> Located far from the olfactory organ! </html>";
 			String a1 = "socks";
 			Enigma enigma1 = new Enigma("Enigma1", k1, player, merlin, q1, a1);
 			rooms.get(9).addEvent(enigma1);
