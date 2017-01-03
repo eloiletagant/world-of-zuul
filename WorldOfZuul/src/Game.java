@@ -648,9 +648,9 @@ public class Game extends JFrame {
         k2 = new Key("Sesame", "This key has magic power and will help you to find a treasure.", 20, false);
         k3 = new Key("Musse-Clef", "This key opens a chest.", 20, false);
         k4 = new Key("Tabou-Clef", "This key opens a chest.", 20, false);
-        k5 = new Key("Clef-Bar", "This key opens a chest.", 20, false);
+        k5 = new Key("Clef-Bar", "This key opens a door.", 20, false);
         k6 = new Key("Nu-Clef-ere", "This key opens a door.", 20, false);
-        k7 = new Key("Gy-Clef", "This key opens a door.", 20, false);
+        k7 = new Key("Gy-Clef", "This key opens a chest.", 20, false);
         l1 = new Lock();
         l1.addKey(k3);
         l2 = new Lock();
